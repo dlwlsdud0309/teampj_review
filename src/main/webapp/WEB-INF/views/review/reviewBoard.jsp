@@ -92,8 +92,7 @@
 </c:forEach>
 
 <!-- <a href="reviewWriteview">리뷰작성</a> -->
-<button onclick="location.href='reviewWriteview'">리뷰작성</button>
->
+<button type="button" onclick="location.href='reviewWriteview'">리뷰작성</button>
 </div>
 
 </body>
