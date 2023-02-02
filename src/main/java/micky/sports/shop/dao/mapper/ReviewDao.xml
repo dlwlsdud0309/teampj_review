@@ -22,7 +22,7 @@
 		<result column="r_step" property="r_step" />
 		<result column="r_indent" property="r_indent" />
 		<result column="r_filesrc" property="r_filesrc" />
-		<collection property="MemberDto" resultMap="MemberDto" />
+		<collection property="memberDto" resultMap="MemberDto" />
 	</resultMap>
 	
 	<!-- 2.join위해 사용한 MemberDto -->
