@@ -32,6 +32,10 @@ public class ReviewService implements MickyServiceInter{
 		
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
 		ArrayList<ReviewDto> review_list=rdao.reviewboard();
+		for (ReviewDto reviewDto : review_list) {
+			System.out.println(reviewDto.getM_id());
+			System.out.println("왜 안나오는가 : "+reviewDto.getMemberDto().getM_id());
+		}
 	
 		model.addAttribute("review_list", review_list);
 	}

@@ -22,30 +22,41 @@
 		<result column="r_step" property="r_step" />
 		<result column="r_indent" property="r_indent" />
 		<result column="r_filesrc" property="r_filesrc" />
+		<collection property="MemberDto" resultMap="MemberDto" />
 	</resultMap>
 	
 	<!-- 2.join위해 사용한 MemberDto -->
 	<resultMap type="micky.sports.shop.dto.MemberDto" id="MemberDto">
-		<id column="m_id" property="m_id" />
+		<result column="m_id" property="m_id" />
+		<result column="m_pw" property="m_pw" />
+		<result column="m_name" property="m_name" />
+		<result column="m_tel" property="m_tel" />
+		<result column="m_name2" property="m_name2" />
+		<result column="m_email" property="m_email" />
+		<result column="m_grade" property="m_grade" />
+		<result column="m_age" property="m_age" />
+		<result column="m_gender" property="m_gender" />
+		<result column="m_cash" property="m_cash" />
+		<result column="m_filesrc" property="m_filesrc" />
 	</resultMap>
 
-	<select id="reviewboard" parameterType="micky.sports.shop.dto.ReviewDto" resultType="micky.sports.shop.dto.ReviewDto">
+	<select id="reviewboard" parameterType="micky.sports.shop.dto.ReviewDto" resultMap="ReviewDto">
 		<!-- SELECT R_NO,M_ID,R_TITLE,R_CONTENT,R_ID,R_RETITLE,
 		R_RECONTENT,R_YNN,R_DATE,R_GROUP,R_STEP,R_INDENT,R_FILESRC FROM REVIEW
 		ORDER BY R_GROUP DESC, R_STEP ASC -->
 		
 		<!-- 오라클 join -->
-		SELECT R.R_NO,M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
+		<!-- SELECT R.R_NO,M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
 		R.R_RECONTENT,R.R_YNN,R.R_DATE,R.R_GROUP,R.R_STEP,R.R_INDENT,R.R_FILESRC
 		FROM MEMBER M, REVIEW R
 		WHERE M.M_ID=R.M_ID
-		ORDER BY R.R_GROUP DESC, R.R_STEP ASC
+		ORDER BY R.R_GROUP DESC, R.R_STEP ASC -->
 		
 		<!-- ansi join -->
-		<!-- SELECT R.R_NO,M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
+		SELECT R.R_NO,M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
 		R.R_RECONTENT,R.R_YNN,R.R_DATE,R.R_GROUP,R.R_STEP,R.R_INDENT,R.R_FILESRC
 		FROM MEMBER M INNER JOIN REVIEW R
-		ON M.M_ID=R.M_ID -->
+		ON M.M_ID=R.M_ID
 	</select>
 	
 	<!-- <select id="reviewmemberboard" resultType="micky.sports.shop.dto.MemberDto">
