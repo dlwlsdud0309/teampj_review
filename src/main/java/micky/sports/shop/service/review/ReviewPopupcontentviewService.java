@@ -30,12 +30,13 @@ public class ReviewPopupcontentviewService implements MickyServiceInter{
 				(HttpServletRequest) map.get("request");
 		
 		String r_no=request.getParameter("r_no");
+//		int r_no1=Integer.parseInt(r_no);
 		
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
 		ArrayList<ReviewDto> popup_list=rdao.popupview(r_no);
 		
 		for (ReviewDto reviewDto : popup_list) {
-			System.out.println(reviewDto.getR_title()); //결과 확인
+			System.out.println(reviewDto.getR_no()); //결과 확인
 		}
 		
 		model.addAttribute("popup_list", popup_list);
