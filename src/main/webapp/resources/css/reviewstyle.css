@@ -84,3 +84,17 @@ div{
 	top: 50px;
 	position: absolute;
 }
+
+
+
+/* =============== reviewListview=============== */
+.col11{
+	width: 20%;
+	vertical-align: top;
+}
+.col22{
+	width: 60%;
+}
+.col33{
+	width: 20%;
+}

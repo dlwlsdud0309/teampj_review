@@ -29,50 +29,16 @@
 	});
 	
 	
-	/* CSS는 나중에 하자... */
+	/* CSS는 나중에 하자 */
 	/* $(document).ready(function(){ /* 써야함 */
-		$("button").click(function(){
+		/* $("button").click(function(){
 			$("a").show();
-			/* alert("아오"); */
+				alert("아오");
 		});
 	}); */
 	
 	
 	
-	/* 리뷰작성하기 눌렀을 때 뜨는 팝업창 */
-	/* $(document).ready(function(){
-		$("button").bPopup();
-	}); */
-	/* function reviewWriteview() {
-		window.open("reviewWriteview"); //새창이 열림
-	}; */
-	
-	/* $(document).ready(function(){
-		$("button").click({
-			onOpen: function reviewWriteview() {
-				alert('onOpen fired'); 
-				}
-		});
-	}); */
-	
-	 // Semicolon (;) to ensure closing of earlier scripting
-    // Encapsulation
-    // $ is assigned to jQuery
-    /* ;(function($) {
-         // DOM Ready
-        $(function() {
-            // Binding a click event
-            // From jQuery v.1.7.0 use .on() instead of .bind()
-            $('#write').bind('click', function(e) {
-                // Prevents the default action to be triggered. 
-                e.preventDefault();
-                // Triggering bPopup when click event is fired
-                $('#element_to_pop_up').bPopup({
-                	location.href="reviewWriteview";
-                });
-            });
-        });
-    })(jQuery); */
 	
     
 		
@@ -81,9 +47,15 @@
 
 <body>
 <h3>Reviewboard</h3>
+<!-- 오류 -->
+<%-- <a href="reviewContentview">${review_list.m_id }TEMP님</a> --%>
+
+<!-- 임시로 지정 -->
+<a href="reviewListview">TEMP님</a>
+
+
 
 <div class="review_table">
-
 <!-- Button that triggers the popup
             <button id="write">리뷰작성</button>
             Element to pop up

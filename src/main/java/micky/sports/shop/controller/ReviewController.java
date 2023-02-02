@@ -37,6 +37,15 @@ public class ReviewController {
 		return "review/reviewWriteview";
 	}
 	
+//	마이페이지-카테고리 리뷰로 접근
+	@RequestMapping("/reviewListview")
+	public String reviewListview(Model model) {
+		System.out.println("=====reviewListview====");
+		
+		return "review/reviewListview";
+	}
+	
+	
 	@RequestMapping("/reviewWrite")
 	public String reviewWrite(HttpServletRequest request, Model model) {
 		System.out.println("=====reviewWrite====");
