@@ -92,7 +92,7 @@
 		R.R_RECONTENT,R.R_YNN,R.R_DATE,R.R_GROUP,R.R_STEP,R.R_INDENT,R.R_FILESRC
 		FROM MEMBER M, REVIEW R
 		WHERE M.M_ID=R.M_ID
-        AND M.M_ID=#{param1}
+        <!-- AND M.M_ID=#{param1} -->
 		ORDER BY R.R_GROUP DESC, R.R_STEP ASC
 	</select>
 	
