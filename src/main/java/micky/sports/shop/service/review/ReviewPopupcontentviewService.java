@@ -12,36 +12,33 @@ import micky.sports.shop.dao.ReviewDao;
 import micky.sports.shop.dto.ReviewDto;
 import micky.sports.shop.service.MickyServiceInter;
 
-public class ReviewMylistviewService implements MickyServiceInter{
+public class ReviewPopupcontentviewService implements MickyServiceInter{
 
-	private SqlSession sqlSession;
+	SqlSession sqlSession;
 	
-	public ReviewMylistviewService(SqlSession sqlSession) {
+	public ReviewPopupcontentviewService(SqlSession sqlSession) {
 		this.sqlSession=sqlSession;
 	}
 	
 	@Override
 	public void execute(Model model) {
-		System.out.println(">>>ReviewMylistService");
+		System.out.println(">>>ReviewPopupviewService");
 		
 //		model에서 request를 풀어내는 방법
 		Map<String, Object> map=model.asMap(); //model을 Map으로 변환
 		HttpServletRequest request=
 				(HttpServletRequest) map.get("request");
 		
-		String account=request.getParameter("account");
-		System.out.println("account : "+account);
-		
+		String r_no=request.getParameter("r_no");
 		
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
-		ArrayList<ReviewDto> review_mylist=rdao.mylistview(account);
+		ArrayList<ReviewDto> popup_list=rdao.popupview(r_no);
 		
-		for (ReviewDto reviewDto : review_mylist) {
-			System.out.println(reviewDto.getR_date());
-			System.out.println(reviewDto.getMemberDto().getM_id());
+		for (ReviewDto reviewDto : popup_list) {
+			System.out.println(reviewDto.getR_title()); //결과 확인
 		}
 		
-		model.addAttribute("review_mylist", review_mylist);
+		model.addAttribute("popup_list", popup_list);
 	}
 
 }

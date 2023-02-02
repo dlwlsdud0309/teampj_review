@@ -87,12 +87,19 @@
 		ORDER BY R.R_GROUP DESC, R.R_STEP ASC
 	</select> -->
 
-	<select id="mylistview" parameterType="micky.sports.shop.dto.ReviewDto" resultType="micky.sports.shop.dto.ReviewDto">
+	<select id="mylistview" parameterType="micky.sports.shop.dto.ReviewDto" resultMap="ReviewDto">
 		SELECT R.R_NO,M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
 		R.R_RECONTENT,R.R_YNN,R.R_DATE,R.R_GROUP,R.R_STEP,R.R_INDENT,R.R_FILESRC
 		FROM MEMBER M, REVIEW R
 		WHERE M.M_ID=R.M_ID
-        <!-- AND M.M_ID=#{param1} -->
+        AND M.M_ID=#{param1}
 		ORDER BY R.R_GROUP DESC, R.R_STEP ASC
+	</select>
+	
+	<select id="popupview" resultType="micky.sports.shop.dto.ReviewDto">
+		SELECT R_NO,M_ID,R_TITLE,R_CONTENT,R_RETITLE,
+		R_RECONTENT,R_YNN,R_DATE,R_GROUP,R_STEP,R_INDENT,R_FILESRC FROM REVIEW
+		WHERE R_NO=#{param1}
+		ORDER BY R_GROUP DESC, R_STEP ASC
 	</select>
 </mapper>

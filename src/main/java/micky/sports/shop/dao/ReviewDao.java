@@ -14,7 +14,9 @@ public interface ReviewDao {
 	public void write(String m_id,String r_title,String r_content,String r_filesrc);
 	public void delete(String r_no);
 	
-//	public ArrayList<ReviewDto> mylistview(String account);
-	public ArrayList<ReviewDto> mylistview();
+	public ArrayList<ReviewDto> mylistview(String account);
+//	public ArrayList<ReviewDto> mylistview();
+	
+	public ArrayList<ReviewDto> popupview(String r_no);
 
 }

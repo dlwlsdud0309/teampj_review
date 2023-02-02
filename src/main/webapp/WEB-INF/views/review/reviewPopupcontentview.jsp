@@ -8,10 +8,12 @@
 <link rel="stylesheet" href="../resources/css/reviewstyle.css" />
 </head>
 <body>
-<h3>reviewMylistview</h3>
-<%-- <input type="hidden" value="${review_mylist.m_id }" /> --%>
+<h3>reviewPopupcontentview</h3>
+<%-- <input type="hidden" value="${popup_list.r_no }" /> --%>
 <h1>상품리뷰</h1>
 <p>리뷰 작성 시 적립 가능한 최대 마일리지</p>
+<%-- <p>${popup_list.r_title }</p> --%>
+${popup_list.r_no }
 <div>
 	<p>
 		리뷰 리워드 혜택 안내
@@ -42,39 +44,40 @@
 	</ul>
 	<div class="clear" ></div>
 	<hr />
-	<div class="reviewListview_total">
-		<div class="reviewListview_label">
-			<div class="row">
-				<div class="cell col11">
-					<div class="reviewListview_img_box">
-						<a href="reviewBoard">이미지</a>
-					</div>
-					<div>
-						<button>수정</button><button>삭제</button>
-					</div>
-				</div>
-				<div class="cell col22">
-					<div>
-						<div class="cell">
-							<div>
-								<a href="reviewBoard">상품명</a>
-							</div>
-						</div>
-						<div class="cell">
-							<div>
-								<span>아이디</span><span>작성날짜</span>
-							</div>
+	<form action="" >
+		<div class="reviewListview_total">
+			<div class="reviewListview_label">
+				<div class="row">
+					<div class="cell col11">
+						<div class="reviewListview_img_box">
+							<a href="reviewBoard">이미지</a>
 						</div>
 						<div>
-							<div>리뷰제목</div>
-							<div>리뷰내용</div>
-							<div>업로드 이미지</div>
+							<button>수정</button><button>삭제</button>
+						</div>
+					</div>
+					<div class="cell col22">
+						<div>
+							<div class="cell">
+								<div>
+									<a href="reviewBoard">상품명</a>
+								</div>
+							</div>
+							<div class="cell">
+								<div>
+									<span>아이디</span><span>${review_mylist.r_date }</span>
+								</div>
+							</div>
+							<div>
+								<div>리뷰제목</div>
+								<div>리뷰내용</div>
+								<div>업로드 이미지</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	
+	</form>
 </body>
 </html>

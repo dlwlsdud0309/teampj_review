@@ -36,12 +36,6 @@
 				alert("아오");
 		});
 	}); */
-	
-	
-	
-	
-    
-		
 </script>
 </head>
 
@@ -54,8 +48,6 @@
 <!-- 임시로 지정 -->
 <!-- <a href="reviewListview">TEMP님</a> -->
 
-
-
 <div class="review_table">
 
 
@@ -67,7 +59,7 @@
 				<div class="review_box">
 					<div class="review_label">
 						<input type="hidden" value="${list.r_no }" />
-						<p>${list.m_id }</p>
+						<p>${list.memberDto.m_id }</p>
 						<p>${list.r_title }</p>
 						<p class="user_date">
 							<span>★★★★★</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>${list.m_id }</span>
@@ -92,7 +84,7 @@
 			</div>
 			<div >
 				<!-- 수정/삭제 -->
-				<a class="atag" href="#">수정</a>
+				<a class="atag" href="reviewPopupcontentview?r_no=${list.r_no }">수정</a>
 				<a class="atag" href="reviewDelete?r_no=${list.r_no }">삭제</a>
 			</div>
 		</div>

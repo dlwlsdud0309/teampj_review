@@ -35,7 +35,10 @@ public class ReviewWriteService implements MickyServiceInter{
 		String attachPath="resources\\reviewupload\\";
 		String uploadPath=request.getSession().getServletContext().getRealPath("/");
 		
-		String path="C:\\2022spring\\springwork1\\micky_SportsWear_review\\src\\main\\webapp\\resources\\reviewupload";
+//		학원에서 작업
+//		String path="C:\\2022spring\\springwork1\\micky_SportsWear_review\\src\\main\\webapp\\resources\\reviewupload";
+//		노트북에서 작업
+		String path="C:\\2023spring\\springwork1\\micky_SportsWear_review\\src\\main\\webapp\\resources\\reviewupload";
 		
 		MultipartRequest req=null;
 		try {
