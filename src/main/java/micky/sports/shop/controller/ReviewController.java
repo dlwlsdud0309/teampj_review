@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import micky.sports.shop.service.MickyServiceInter;
 import micky.sports.shop.service.review.ReviewDeleteService;
+import micky.sports.shop.service.review.ReviewMylistviewService;
 import micky.sports.shop.service.review.ReviewService;
 import micky.sports.shop.service.review.ReviewWriteService;
 
@@ -35,11 +36,15 @@ public class ReviewController {
 	
 	
 //	마이페이지-카테고리 리뷰로 접근
-	@RequestMapping("/reviewListview")
-	public String reviewListview(Model model) {
-		System.out.println("=====reviewListview====");
+	@RequestMapping("/reviewMylistview")
+	public String reviewListview(HttpServletRequest request, Model model) {
+		System.out.println("=====reviewMylistview====");
 		
-		return "review/reviewListview";
+		model.addAttribute("request", request);
+		mickyServiceInter=new ReviewMylistviewService(sqlSession);
+		mickyServiceInter.execute(model);
+		
+		return "review/reviewMylistview";
 	}
 	
 //	작성 폼(Popup)

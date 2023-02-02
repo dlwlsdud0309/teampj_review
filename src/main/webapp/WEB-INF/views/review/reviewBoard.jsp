@@ -48,25 +48,16 @@
 <body>
 <h3>Reviewboard</h3>
 <!-- 오류 -->
-<%-- <a href="reviewContentview">${review_list.m_id }TEMP님</a> --%>
+<%-- <a href="reviewMylistview?account=${review_mylist.m_id }" >마이페이지</a> --%>
+<a href="reviewMylistview" >마이페이지</a>
 
 <!-- 임시로 지정 -->
-<a href="reviewListview">TEMP님</a>
+<!-- <a href="reviewListview">TEMP님</a> -->
 
 
 
 <div class="review_table">
-<!-- Button that triggers the popup
-            <button id="write">리뷰작성</button>
-            Element to pop up
-            <div id="element_to_pop_up">Content of popup</div> -->
 
-<!-- <input type="button" value="리뷰작성" onclick="goPopup();" />
-<div id="popup" class="Pstyle">
-asdasd
-</div> -->
-
-<button>왜..</button>
 
 <!-- core태그 사용 -->
 <c:forEach items="${review_list }" var="list">
@@ -100,6 +91,7 @@ asdasd
 				<img src="../resources/img/NT7UN10J_NT7UN10J_primary.jpg" width="100" alt="그린 클리프 반팔 라운드티" />
 			</div>
 			<div >
+				<!-- 수정/삭제 -->
 				<a class="atag" href="#">수정</a>
 				<a class="atag" href="reviewDelete?r_no=${list.r_no }">삭제</a>
 			</div>
@@ -109,19 +101,8 @@ asdasd
 
 <!-- <a href="reviewWriteview">리뷰작성</a> -->
 <button onclick="location.href='reviewWriteview'">리뷰작성</button>
-<!-- <button id="popup" onclick="javascript:openPopup('reviewWriteview')">리뷰작성</button> -->
-<!-- <button onclick="reviewWriteview();">리뷰작성</button> -->
-<!-- <input type="button" value="리뷰작성" onclick="reviewWriteview()" /> -->
+>
 </div>
-<script>
-	/* 리뷰작성하기 눌렀을 때 뜨는 팝업창 */
-	/* $(document).ready(function(){
-		$('.practice').bPopup();
-	}); */
-	/* function goPopup(){
-    	$("#popup").bPopup();
-    } */
 
-</script>
 </body>
 </html>

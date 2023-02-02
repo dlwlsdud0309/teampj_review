@@ -66,4 +66,22 @@
 	<delete id="delete">
 		DELETE FROM REVIEW WHERE R_NO=#{param1}
 	</delete>
+	
+	<!-- <select id="mylist" parameterType="micky.sports.shop.dto.ReviewDto" resultType="micky.sports.shop.dto.ReviewDto">
+		SELECT R.R_NO,M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
+		R.R_RECONTENT,R.R_YNN,R.R_DATE,R.R_GROUP,R.R_STEP,R.R_INDENT,R.R_FILESRC
+		FROM MEMBER M, REVIEW R
+		WHERE M.M_ID=R.M_ID
+        AND M.M_ID=#{param1}
+		ORDER BY R.R_GROUP DESC, R.R_STEP ASC
+	</select> -->
+
+	<select id="mylistview" parameterType="micky.sports.shop.dto.ReviewDto" resultType="micky.sports.shop.dto.ReviewDto">
+		SELECT R.R_NO,M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
+		R.R_RECONTENT,R.R_YNN,R.R_DATE,R.R_GROUP,R.R_STEP,R.R_INDENT,R.R_FILESRC
+		FROM MEMBER M, REVIEW R
+		WHERE M.M_ID=R.M_ID
+        <!-- AND M.M_ID=#{param1} -->
+		ORDER BY R.R_GROUP DESC, R.R_STEP ASC
+	</select>
 </mapper>

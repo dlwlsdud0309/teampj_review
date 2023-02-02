@@ -8,7 +8,8 @@
 <link rel="stylesheet" href="../resources/css/reviewstyle.css" />
 </head>
 <body>
-<h3>reviewListview</h3>
+<h3>reviewMylistview</h3>
+<%-- <input type="hidden" value="${review_mylist.m_id }" /> --%>
 <h1>상품리뷰</h1>
 <p>리뷰 작성 시 적립 가능한 최대 마일리지</p>
 <div>
@@ -61,7 +62,7 @@
 						</div>
 						<div class="cell">
 							<div>
-								<span>아이디</span><span>작성날짜</span>
+								<span>아이디</span><span>${review_mylist.r_date }</span>
 							</div>
 						</div>
 						<div>

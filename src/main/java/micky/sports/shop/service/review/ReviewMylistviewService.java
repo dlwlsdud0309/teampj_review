@@ -9,31 +9,37 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
 import micky.sports.shop.dao.ReviewDao;
-import micky.sports.shop.dto.MemberDto;
 import micky.sports.shop.dto.ReviewDto;
 import micky.sports.shop.service.MickyServiceInter;
 
-public class ReviewService implements MickyServiceInter{
+public class ReviewMylistviewService implements MickyServiceInter{
 
 	private SqlSession sqlSession;
 	
-	public ReviewService(SqlSession sqlSession) {
+	public ReviewMylistviewService(SqlSession sqlSession) {
 		this.sqlSession=sqlSession;
 	}
 	
 	@Override
 	public void execute(Model model) {
-		System.out.println(">>>>ReviewService");
-	
-		//request는 검색창에서 필요
-		Map<String, Object> map=model.asMap();
+		System.out.println(">>>ReviewMylistService");
+		
+//		model에서 request를 풀어내는 방법
+		Map<String, Object> map=model.asMap(); //model을 Map으로 변환
 		HttpServletRequest request=
 				(HttpServletRequest) map.get("request");
 		
+		String account=request.getParameter("account");
+		System.out.println("account : "+account);
+		
+		
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
-		ArrayList<ReviewDto> review_list=rdao.reviewboard();
-	
-		model.addAttribute("review_list", review_list);
+		ArrayList<ReviewDto> review_mylist=rdao.mylistview();
+		for (ReviewDto reviewDto : review_mylist) {
+			System.out.println(reviewDto.getR_date());
+		}
+		
+		model.addAttribute("review_mylist", review_mylist);
 	}
 
 }
