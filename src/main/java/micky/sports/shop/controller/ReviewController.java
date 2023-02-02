@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import micky.sports.shop.service.MickyServiceInter;
+import micky.sports.shop.service.review.ReviewDeleteService;
 import micky.sports.shop.service.review.ReviewService;
 import micky.sports.shop.service.review.ReviewWriteService;
 
@@ -20,6 +21,8 @@ public class ReviewController {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	
+//	임시 메인페이지
 	@RequestMapping("/reviewBoard")
 	public String reviewBoard(HttpServletRequest request,Model model) {
 		System.out.println("=====reviewBoard====");
@@ -30,12 +33,6 @@ public class ReviewController {
 		return "review/reviewBoard";
 	}
 	
-	@RequestMapping("/reviewWriteview")
-	public String reviewWriteview(Model model) {
-		System.out.println("=====reviewWriteview====");
-		
-		return "review/reviewWriteview";
-	}
 	
 //	마이페이지-카테고리 리뷰로 접근
 	@RequestMapping("/reviewListview")
@@ -45,7 +42,15 @@ public class ReviewController {
 		return "review/reviewListview";
 	}
 	
+//	작성 폼(Popup)
+	@RequestMapping("/reviewWriteview")
+	public String reviewWriteview(Model model) {
+		System.out.println("=====reviewWriteview====");
+		
+		return "review/reviewWriteview";
+	}
 	
+//	작성
 	@RequestMapping("/reviewWrite")
 	public String reviewWrite(HttpServletRequest request, Model model) {
 		System.out.println("=====reviewWrite====");
@@ -56,4 +61,17 @@ public class ReviewController {
 		
 		return "redirect:reviewBoard";
 	}
+	
+//	삭제
+	@RequestMapping("/reviewDelete")
+	public String reviewDelete(HttpServletRequest request, Model model) {
+		System.out.println("=====reviewDelete====");
+		
+		model.addAttribute("request", request);
+		mickyServiceInter=new ReviewDeleteService(sqlSession);
+		mickyServiceInter.execute(model);
+		
+		return "redirect:reviewBoard";
+	}
+	
 }

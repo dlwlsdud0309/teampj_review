@@ -39,31 +39,37 @@
 		<li>리워드가 적립된 리뷰는 삭제가 불가하며, 삭제버튼이 노출되지 않습니다.</li>
 		<li>리워드가 적립된 리뷰에 대한 삭제 요청은 고객센터로 문의해주세요.</li>
 	</ul>
+	<div class="clear" ></div>
 	<hr />
 	<div class="reviewListview_total">
 		<div class="reviewListview_label">
 			<div class="row">
 				<div class="cell col11">
 					<div class="reviewListview_img_box">
-						이미지
+						<a href="reviewBoard">이미지</a>
 					</div>
-					
+					<div>
+						<button>수정</button><button>삭제</button>
+					</div>
 				</div>
-				<div>
-					<div class="cell col22">
-					<div class="cell">
-						<div>상품이미지</div>
-						<div>상품명</div>
-					</div>
-					<div class="cell">
+				<div class="cell col22">
+					<div>
+						<div class="cell">
+							<div>
+								<a href="reviewBoard">상품명</a>
+							</div>
+						</div>
+						<div class="cell">
+							<div>
+								<span>아이디</span><span>작성날짜</span>
+							</div>
+						</div>
 						<div>
-							<span>아이디</span><span>작성날짜</span>
+							<div>리뷰제목</div>
+							<div>리뷰내용</div>
+							<div>업로드 이미지</div>
 						</div>
 					</div>
-						<div>리뷰제목</div>
-						<div>리뷰내용</div>
-						<div>업로드 이미지</div>
-				</div>
 				</div>
 			</div>
 		</div>

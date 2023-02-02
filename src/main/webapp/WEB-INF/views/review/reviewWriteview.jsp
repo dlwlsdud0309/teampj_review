@@ -26,6 +26,10 @@
 			텍스트 리뷰 : 500M | 사진 첨부 리뷰 : 1,000M 적립
 		</div>
 			<table>
+				<tr>
+					<td class="left">작성자</td>
+					<td><input type="text" name="m_id" /></td>
+				</tr>
 				<!-- <tr>
 					reviewdao.xml에서 'TEMP'로 사용 중
 				

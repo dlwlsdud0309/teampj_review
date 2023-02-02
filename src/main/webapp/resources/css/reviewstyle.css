@@ -1,3 +1,7 @@
+.clear{
+	clear: both;
+}
+
 /* =============== reviewBoard=============== */
 .review_table{
 	display: table;
@@ -88,13 +92,14 @@ div{
 
 
 /* =============== reviewListview=============== */
+.reviewListview_total{
+	display: table;
+	width: 80%;
+}
 .col11{
-	width: 20%;
+	width: 30%;
 	vertical-align: top;
 }
 .col22{
-	width: 60%;
-}
-.col33{
-	width: 20%;
+	width: 70%;
 }
