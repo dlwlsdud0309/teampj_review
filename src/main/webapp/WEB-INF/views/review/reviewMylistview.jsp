@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,15 +44,18 @@
 	</ul>
 	<div class="clear" ></div>
 	<hr />
+	
 	<div class="reviewListview_total">
 		<div class="reviewListview_label">
+		<c:forEach items="${review_mylist }" var="mylist">
 			<div class="row">
 				<div class="cell col11">
 					<div class="reviewListview_img_box">
-						<a href="reviewBoard">이미지</a>
+						<a href="reviewBoard"><img src="../resources/img/NT7UN10J_NT7UN10J_primary.jpg" width="200" alt="" /></a>
 					</div>
 					<div>
-						<button>수정</button><button>삭제</button>
+						<button type="button" onclick="location.href='reviewPopupcontentview?r_no=${mylist.r_no }'">수정</button>
+						<button type="button" onclick="location.href='reviewDelete?r_no=${mylist.r_no }'">삭제</button>
 					</div>
 				</div>
 				<div class="cell col22">
@@ -62,17 +67,18 @@
 						</div>
 						<div class="cell">
 							<div>
-								<span>아이디</span><span>작성날짜</span>
+								<span>${mylist.m_id }</span>&nbsp;<span><fmt:formatDate value="${mylist.r_date }" pattern="yyyy.MM.dd"/></span>
 							</div>
 						</div>
 						<div>
-							<div>리뷰제목</div>
-							<div>리뷰내용</div>
-							<div>업로드 이미지</div>
+							<div>${mylist.r_title }</div>
+							<div>${mylist.r_content }</div>
+							<div><img src="../resources/img/NT7UN10J_NT7UN10J_primary.jpg" width="200" alt="" /></div>
 						</div>
 					</div>
 				</div>
 			</div>
+		</c:forEach>
 		</div>
 	</div>
 	

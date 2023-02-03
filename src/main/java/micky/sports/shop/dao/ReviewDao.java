@@ -16,6 +16,7 @@ public interface ReviewDao {
 	
 //	public ArrayList<ReviewDto> mylistview(String account);
 	public ArrayList<ReviewDto> mylistview();
+//	public ReviewDto mylistview();
 	
 //	public ArrayList<ReviewDto> popupview(String r_no);
 	public ReviewDto popupview(String r_no);
