@@ -1,6 +1,5 @@
 package micky.sports.shop.service.review;
 
-import java.util.ArrayList;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -30,16 +29,13 @@ public class ReviewPopupcontentviewService implements MickyServiceInter{
 				(HttpServletRequest) map.get("request");
 		
 		String r_no=request.getParameter("r_no");
-//		int r_no1=Integer.parseInt(r_no);
 		
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
-		ArrayList<ReviewDto> popup_list=rdao.popupview(r_no);
+//		ArrayList<ReviewDto> popup_list=rdao.popupview(r_no);
+		ReviewDto popupview=rdao.popupview(r_no);
 		
-		for (ReviewDto reviewDto : popup_list) {
-			System.out.println(reviewDto.getR_no()); //결과 확인
-		}
 		
-		model.addAttribute("popup_list", popup_list);
+		model.addAttribute("popupview", popupview);
 	}
 
 }

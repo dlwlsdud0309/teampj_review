@@ -51,7 +51,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<input type="submit" value="입력" />
+						<input type="submit" value="작성하기" />
 					</td>
 				</tr>
 			</table>

@@ -13,21 +13,23 @@
 <body>
 <h3>reviewPopupcontentview</h3>
 <h1>리뷰 수정하기</h1>
-
+<%-- <input type="hidden" name="r_no" value="${popup_list.r_no }" /> --%>
 <input type="button" value="리뷰작성" onclick="rWrite();" />
 
 <div id="styleID_ReviewWriteview" class="styleClassReviewWriteview">
 	<div id="title_content">
-		<form action="reviewWrite" method="post" enctype="multipart/form-data">
+		<form action="reviewPopupcontentupdate" method="post" enctype="multipart/form-data">
 		<h3 class="popup_review_title">상품리뷰쓰기</h3>
 		<div>
 			<strong>리뷰 리워드 혜택 제공</strong> <br />
 			텍스트 리뷰 : 500M | 사진 첨부 리뷰 : 1,000M 적립
 		</div>
+		<br />
+		<br />
 			<table>
 				<tr>
 					<td class="left">작성자</td>
-					<td><input type="text" name="m_id" /></td>
+					<td><input type="text" name="m_id" value="${popupview.m_id }" /></td>
 				</tr>
 				<!-- <tr>
 					reviewdao.xml에서 'TEMP'로 사용 중
@@ -38,19 +40,21 @@
 				</tr> -->
 				<tr>
 					<td class="left">제목</td>
-					<td><input type="text" name="r_title" /></td>
+					<td><input type="text" name="r_title" value="${popupview.r_title }" /></td>
 				</tr>
 				<tr>
 					<td class="left">내용</td>
-					<td><textarea name="r_content" rows="10"></textarea></td>
+					<td>
+						<textarea name="r_content" rows="10">${popupview.r_content }</textarea>
+					</td>
 				</tr>
 				<tr>
 					<td class="left">파일첨부</td>
-					<td><input type="file" name="r_filesrc" /></td>
+					<td><input type="file" name="r_filesrc" />${popupview.r_filesrc }</td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<input type="submit" value="입력" />
+						<input type="submit" value="작성하기" />
 					</td>
 				</tr>
 			</table>
