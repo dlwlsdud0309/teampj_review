@@ -91,9 +91,15 @@
 		</div>
 	</div>
 </c:forEach>
-
 <!-- <a href="reviewWriteview">리뷰작성</a> -->
 <button type="button" onclick="location.href='reviewWriteview'">리뷰작성</button>
+<br />
+
+<!-- 페이징 처리 -->
+<c:forEach begin="1" end="10" var="i">
+	<a href="reviewBoard?page=${i }">${i }</a>
+</c:forEach>
+
 </div>
 
 </body>

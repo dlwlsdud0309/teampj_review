@@ -37,5 +37,14 @@ if(loginid.equals("admintest")){
 로그인한 아이디 : ${sessionScope.loginid }
 
 
+
+
+<%-- <%@include file="review/reviewBoard.jsp" %> --%>
+<%-- <%@include file="/WEB-INF/views/include/review/reviewBoard.jsp" %> --%>
+<%-- <jsp:include page="/WEB-INF/views/review/include/reviewBoard.jsp"></jsp:include> --%>
+<%-- <jsp:include page="review/reviewBoard.jsp" flush="true"></jsp:include> --%>
+<%-- <%@include file="review/reviewBoard.jsp" %> --%>
+<%-- <jsp:include page="/WEB-INF/views/review/reviewBoard.jsp" flush="true"></jsp:include>--%>
+<%-- <jsp:include page="review/reviewBoard.jsp" flush="false"></jsp:include> --%>
 </body>
 </html>

@@ -9,7 +9,7 @@ public interface ReviewDao {
 	public ArrayList<ReviewDto> ReviewDto();
 	
 	
-	public ArrayList<ReviewDto> reviewboard();
+	public ArrayList<ReviewDto> reviewboard(int start, int end);
 //	public void write(String r_title,String r_content,String r_filesrc);
 	public void write(String m_id,String r_title,String r_content,String r_filesrc);
 	public void delete(String r_no);
@@ -26,4 +26,5 @@ public interface ReviewDao {
 //	public void modify(String r_no, String m_id, String r_title, String r_content);
 	public void modify(String r_no, String r_title, String r_content);
 
+	public int selectReviewboardTotCount();
 }
