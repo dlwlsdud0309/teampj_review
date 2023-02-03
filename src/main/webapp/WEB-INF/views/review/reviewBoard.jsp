@@ -80,7 +80,8 @@
 				<span><fmt:formatDate value="${list.r_date }" pattern="yyyy.MM.dd"/></span>
 			</div>
 			<div class="img_box">
-				<img src="../resources/img/NT7UN10J_NT7UN10J_primary.jpg" width="100" alt="그린 클리프 반팔 라운드티" />
+				<%-- <img src="../resources/reviewupload/${list.r_filesrc }" width="100" alt="그린 클리프 반팔 라운드티" /> --%>
+				<img src="../resources/reviewupload/${list.r_filesrc }" width="100" alt="" />
 			</div>
 			<div >
 				<!-- 수정/삭제 -->
