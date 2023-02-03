@@ -21,5 +21,8 @@ public interface ReviewDao {
 	public ReviewDto popupview(String r_no);
 	
 //	public ReviewDto popupupdate(String r_no);
+	
+//	public void modify(String r_no, String m_id, String r_title, String r_content);
+	public void modify(String r_no, String r_title, String r_content);
 
 }

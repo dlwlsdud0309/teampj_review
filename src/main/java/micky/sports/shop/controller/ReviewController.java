@@ -7,10 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import micky.sports.shop.service.MickyServiceInter;
 import micky.sports.shop.service.review.ReviewDeleteService;
 import micky.sports.shop.service.review.ReviewMylistviewService;
+import micky.sports.shop.service.review.ReviewPopupcontentmodifyService;
 import micky.sports.shop.service.review.ReviewPopupcontentupdateService;
 import micky.sports.shop.service.review.ReviewPopupcontentviewService;
 import micky.sports.shop.service.review.ReviewService;
@@ -104,5 +106,22 @@ public class ReviewController {
 //		
 //		return "review/reviewPopupcontentupdate";
 //	}
+	
+//	Popup 수정하기
+	@RequestMapping("/reviewPopupcontentmodify")
+	public String reviewPopupcontentmodify(HttpServletRequest request, Model model) {
+		System.out.println("=====reviewPopupcontentmodify====");
+		
+//		String r_title=request.getParameter("r_title");
+//		String r_content=request.getParameter("r_content");
+//		System.out.println("r_title : "+r_title);
+//		System.out.println("r_content : "+r_content);
+		
+		model.addAttribute("request", request);
+		mickyServiceInter=new ReviewPopupcontentmodifyService(sqlSession);
+		mickyServiceInter.execute(model);
+		
+		return "redirect:reviewBoard";
+	}
 	
 }
