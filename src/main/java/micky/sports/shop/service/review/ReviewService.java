@@ -74,6 +74,9 @@ public class ReviewService implements MickyServiceInter{
 		
 		ArrayList<ReviewDto> review_list=rdao.reviewboard(rowStart,rowEnd);
 		model.addAttribute("review_list", review_list);
+		
+		model.addAttribute("totRowcnt", total);
+		model.addAttribute("searchVO", searchVO);
 	}
 
 }

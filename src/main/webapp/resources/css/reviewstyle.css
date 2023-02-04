@@ -59,7 +59,14 @@ div{
 	display: hidden;
 	/* visibility: hidden; */
 }
-
+.paging>a{
+	text-align: center;
+	position: relative;
+	text-decoration: none;
+}
+.paging>a:hover{
+	text-decoration: none;
+}
 
 
 /* =============== reviewWriteview=============== */
