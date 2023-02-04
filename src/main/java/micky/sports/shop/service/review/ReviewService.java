@@ -1,6 +1,7 @@
 package micky.sports.shop.service.review;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,20 +34,41 @@ public class ReviewService implements MickyServiceInter{
 		SearchVO searchVO=
 				(SearchVO) map.get("searchVO");
 		
-		
+//		페이지 가져오기
 		String strPage=request.getParameter("page");
-		
 		if (strPage==null) {
 			strPage="1";
 		}
 		
-		System.out.println("page : "+strPage);
+//		=================================================================
+//		searchType 가져오기
+		String[] selectType=request.getParameterValues("selectType");
+		String r_score="";
+		if (selectType!=null) {
+			for (String val : selectType) {
+				if (val.equals("r_score")) {
+					r_score="r_score";
+				}
+			}
+		}
 		
-		//setPage 통해 보내기
+//		searchKeyword 가져오기
+		String searchKeyword=request.getParameter("searchKeyword");
+		if (searchKeyword==null) {
+			searchKeyword="";
+		}
+
+//		int total=0;
+//		if (r_score.equals("")) {
+//			
+//		}
+		
+//		=================================================================
+		
+//		setPage 통해 보내기
 		int page=Integer.parseInt(strPage);
 		searchVO.setPage(page);
-		
-		
+
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
 		
 		

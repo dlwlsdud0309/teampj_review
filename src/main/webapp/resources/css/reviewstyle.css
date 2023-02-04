@@ -12,6 +12,9 @@
 .review_total{
 	cursor: pointer;
 }
+.search{
+	text-align: right;
+}
 .row{
 	display: table-row; /* tr */
 }

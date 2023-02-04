@@ -120,4 +120,10 @@
 		SELECT COUNT(*) FROM REVIEW
 	</select>
 	
+	<select id="replyview" resultType="micky.sports.shop.dto.ReviewDto">
+		<!-- SELECT R_NO,M_ID,R_TITLE,R_CONTENT,R_RETITLE,
+		R_RECONTENT,R_YNN,R_DATE,R_GROUP,R_STEP,R_INDENT,R_FILESRC,R_SCORE FROM REVIEW
+		WHERE R_NO=#{param1}
+		ORDER BY R_GROUP DESC, R_STEP ASC -->
+	</select>
 </mapper>

@@ -15,6 +15,7 @@ import micky.sports.shop.service.review.ReviewMylistviewService;
 import micky.sports.shop.service.review.ReviewPopupcontentmodifyService;
 import micky.sports.shop.service.review.ReviewPopupcontentupdateService;
 import micky.sports.shop.service.review.ReviewPopupcontentviewService;
+import micky.sports.shop.service.review.ReviewReplyviewService;
 import micky.sports.shop.service.review.ReviewService;
 import micky.sports.shop.service.review.ReviewWriteService;
 import micky.sports.shop.vopage.SearchVO;
@@ -127,4 +128,15 @@ public class ReviewController {
 		return "redirect:reviewBoard";
 	}
 	
+//	답글달기 폼
+	@RequestMapping("/reviewReplyview")
+	public String reviewReplyview(HttpServletRequest request, Model model) {
+		System.out.println("=====reviewReplyview====");
+		
+		model.addAttribute("request", request);
+		mickyServiceInter=new ReviewReplyviewService(sqlSession);
+		mickyServiceInter.execute(model);
+		
+		return "review/reviewBoard";
+	}
 }

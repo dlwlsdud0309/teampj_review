@@ -27,4 +27,6 @@ public interface ReviewDao {
 	public void modify(String r_no, String r_title, String r_content);
 
 	public int selectReviewboardTotCount();
+	
+	public void replyview(String r_no);
 }

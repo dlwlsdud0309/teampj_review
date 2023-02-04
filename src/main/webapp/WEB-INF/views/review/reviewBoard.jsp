@@ -50,7 +50,6 @@
 
 <div class="review_table">
 
-
 <!-- core태그 사용 -->
 <c:forEach items="${review_list }" var="list">
 	<div class="row">
@@ -87,6 +86,7 @@
 				<!-- 수정/삭제 -->
 				<a class="atag" href="reviewPopupcontentview?r_no=${list.r_no }">수정</a>
 				<a class="atag" href="reviewDelete?r_no=${list.r_no }">삭제</a>
+				<a class="atag" href="replyview?r_no=${list.r_no }">답글</a>
 			</div>
 		</div>
 	</div>
@@ -99,6 +99,7 @@
 총 게시글 : ${totRowcnt }건 <br />
 현재페이지/전체페이지 : ${searchVO.page }/${searchVO.totPage } <br />
 <hr />
+<form action="reviewBoard" method="post">
 	<div class="paging">
 		<c:if test="${searchVO.page>1 }">
 			<a href="reviewBoard?page=1">&lt;&lt;</a>
@@ -119,8 +120,22 @@
 			<a href="reviewBoard?page=${searchVO.totPage }">&nbsp;&nbsp;&nbsp;&nbsp;>></a>
 		</c:if>
 	</div>
+	
+	<!-- 검색기능 추가 -->
+	<div class="search">
+		<!-- 추천순, 최신순, 별점순 -->
+		<!-- 별점순 -->
+		<!-- <input type="checkbox" name="searchType" value="r_score" /> -->
+		<select name="selectType">
+			<option value="r_score">별점순</option>
+		</select>
+		<input type="text" name="searchKeyword" placeholder="리뷰 키워드 검색"/>
+		<input type="submit" value="검색" />
+	</div>	
+</form>
+	</div>
 
-</div>
+
 
 </body>
 </html>
