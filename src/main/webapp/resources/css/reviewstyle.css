@@ -71,6 +71,23 @@ div{
 	text-decoration: none;
 }
 
+/* =============== review-replyToggle=============== */
+.reply_label{
+	color: red;
+	border: 1px solid black;
+	padding: 4px;
+}
+input#replyToggle{
+	display: none;
+}
+div#reply_box{
+	display: none;
+}
+input#replyToggle:checked+div#reply_box{
+	display: block;
+}
+
+
 
 /* =============== reviewWriteview=============== */
 .styleClassReviewWriteview{
@@ -99,6 +116,31 @@ div{
 	position: absolute;
 }
 
+/* =============== 별점 =============== */
+.star {
+   position: relative;
+   font-size: 2rem;
+   color: #ddd;
+ }
+ 
+.star input {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.star span {
+  width: 0;
+  position: absolute; 
+  left: 0;
+  color: #ff7f00;
+  overflow: hidden;
+  pointer-events: none;
+}
+   
 
 
 /* =============== reviewListview=============== */

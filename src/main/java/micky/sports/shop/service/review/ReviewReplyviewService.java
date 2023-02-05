@@ -30,7 +30,7 @@ public class ReviewReplyviewService implements MickyServiceInter{
 		String r_no=request.getParameter("r_no");
 		
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
-		ReviewDto replyview=rdao.replyview(r_no);
+//		ReviewDto replyview=rdao.replyview(r_no);
 		
 	}
 

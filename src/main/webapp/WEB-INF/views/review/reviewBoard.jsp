@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="../resources/css/reviewstyle.css" />
 <script src="../resources/js/jquery-3.6.1.min.js"></script>
 <script src="../resources/js/jquery.bpopup.min.js"></script>
+<script src="../resources/js/scriptjsp.js"></script>
 <!-- <script>
 	function user_content() {
 		alert("ihi");
@@ -23,23 +24,17 @@
 			$(this).toggleClass("u_content").toggleClass("u_contentGray");
 			
 		});
-		/* $("a").click(function(){
-			alert("왜");
-		}); */
 	});
 	
-	
-	/* CSS는 나중에 하자 */
-	/* $(document).ready(function(){ /* 써야함 */
-		/* $("button").click(function(){
-			$("a").show();
-				alert("아오");
-		});
-	}); */
+	function callpoint() {
+		//alert("r_score:"+"${list.r_score}");
+		$('#star2').css('width','${list.r_score*10}%'); //ok
+		//document.querySelector(`.star span`).style.width = '${review.repoint*10}%';//ok
+	}
 </script>
 </head>
 
-<body>
+<body onload="callpoint();">
 <h3>Reviewboard</h3>
 <!-- 오류 -->
 <%-- <a href="reviewMylistview?account=${review_mylist.m_id }" >마이페이지</a> --%>
@@ -61,7 +56,11 @@
 						<p>${list.memberDto.m_id }</p>
 						<p>${list.r_title }</p>
 						<p class="user_date">
-							<span>★★★★★</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>${list.m_id }</span>
+							<span class="star">
+								★★★★★
+								<span class="star2">★★★★★</span>
+								${list.r_score }
+							</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>${list.m_id }</span>
 						</p>
 						<div class="product_option">
 							<strong>구매옵션</strong>&nbsp;<span>색상</span>&nbsp;<span>사이즈</span>
@@ -69,6 +68,29 @@
 						<div class="user_content" onclick="user_content()"> <!-- commend -->
 							<p class="u_content">${list.r_content }</p> 
 						</div>
+						
+						<!-- lebel 이용한 답글란 toggle -->
+						<!-- <div class="reply_div">
+							<label class="reply_label" for="replyToggle">답글</label>
+							<input id="replyToggle" type="checkbox" />
+							<div id="reply_box">
+								<table>
+									<tr>
+										<td class="left">작성자</td>
+										<td><input type="text" name="r_id" /></td>
+									</tr>
+									<tr>
+										<td class="left">제목</td>
+										<td><input type="text" name="r_retitle" /></td>
+									</tr>
+									<tr>
+										<td class="left">내용</td>
+										<td><textarea name="r_recontent" rows="10"></textarea></td>
+									</tr>
+								</table>
+							</div>
+						</div> -->
+						
 					</div>
 				</div>
 			</div>
@@ -82,11 +104,14 @@
 				<%-- <img src="../resources/reviewupload/${list.r_filesrc }" width="100" alt="그린 클리프 반팔 라운드티" /> --%>
 				<img src="../resources/reviewupload/${list.r_filesrc }" width="100" alt="" />
 			</div>
-			<div >
+			<div>
 				<!-- 수정/삭제 -->
 				<a class="atag" href="reviewPopupcontentview?r_no=${list.r_no }">수정</a>
 				<a class="atag" href="reviewDelete?r_no=${list.r_no }">삭제</a>
-				<a class="atag" href="replyview?r_no=${list.r_no }">답글</a>
+				<%-- <a class="atag" href="replyview?r_no=${list.r_no }">답글</a> --%>
+
+
+				
 			</div>
 		</div>
 	</div>

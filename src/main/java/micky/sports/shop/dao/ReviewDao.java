@@ -11,7 +11,7 @@ public interface ReviewDao {
 	
 	public ArrayList<ReviewDto> reviewboard(int start, int end);
 //	public void write(String r_title,String r_content,String r_filesrc);
-	public void write(String m_id,String r_title,String r_content,String r_filesrc);
+	public void write(String m_id,String r_title,String r_content,String r_filesrc,String r_point);
 	public void delete(String r_no);
 	
 //	public ArrayList<ReviewDto> mylistview(String account);
@@ -29,4 +29,6 @@ public interface ReviewDao {
 	public int selectReviewboardTotCount();
 	
 	public void replyview(String r_no);
+	
+	public ReviewDto getReview(String r_no);
 }

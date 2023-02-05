@@ -34,6 +34,8 @@ public class ReviewService implements MickyServiceInter{
 		SearchVO searchVO=
 				(SearchVO) map.get("searchVO");
 		
+		String r_no=request.getParameter("r_no");
+		
 //		페이지 가져오기
 		String strPage=request.getParameter("page");
 		if (strPage==null) {
@@ -72,6 +74,7 @@ public class ReviewService implements MickyServiceInter{
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
 		
 		
+		
 		int total=rdao.selectReviewboardTotCount();
 		System.out.println("total : "+total);
 		
@@ -99,6 +102,8 @@ public class ReviewService implements MickyServiceInter{
 		
 		model.addAttribute("totRowcnt", total);
 		model.addAttribute("searchVO", searchVO);
+		
+
 	}
 
 }

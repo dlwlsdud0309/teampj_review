@@ -3,6 +3,7 @@ package micky.sports.shop.service.review;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
@@ -11,6 +12,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import micky.sports.shop.dao.ReviewDao;
+import micky.sports.shop.dto.ReviewDto;
 import micky.sports.shop.service.MickyServiceInter;
 
 public class ReviewWriteService implements MickyServiceInter{
@@ -29,6 +31,8 @@ public class ReviewWriteService implements MickyServiceInter{
 		Map<String, Object> map=model.asMap(); //model을 Map으로 변환
 		HttpServletRequest request=
 				(HttpServletRequest) map.get("request");
+		
+
 		
 		
 //		reviewupload code=================
@@ -58,10 +62,20 @@ public class ReviewWriteService implements MickyServiceInter{
 			r_filesrc="";
 		}
 		
+		
+//		리뷰 별점
+		String r_score=req.getParameter("r_score");
+		
+		HttpSession session=request.getSession();
+		session.removeAttribute("r_score");
+		
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
 //		rdao.write(r_title,r_content,r_filesrc);
 		
-		rdao.write(m_id,r_title,r_content,r_filesrc);
+		
+
+		
+		rdao.write(m_id,r_title,r_content,r_filesrc,r_score);
 		
 	}
 
