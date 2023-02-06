@@ -32,4 +32,6 @@ public interface ReviewDao {
 	public void replyview(String r_no);
 	
 	public ReviewDto getReview(String r_no);
+	
+	public int selectReviewboardTotCount(String searchKeyword);
 }

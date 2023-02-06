@@ -59,7 +59,7 @@
 						<p class="user_date">
 							<span class="star">
 								★★★★★
-								<span class="star2">★★★★★</span>
+								<span id="star2">★★★★★</span>
 								${list.r_score }
 							</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>${list.m_id }</span>
 						</p>
@@ -90,7 +90,7 @@
 									</tr>
 								</table>
 							</div>
-						</div> -->
+						</div> --> <!-- lebel 이용한 답글란 toggle -->
 						
 					</div>
 				</div>
