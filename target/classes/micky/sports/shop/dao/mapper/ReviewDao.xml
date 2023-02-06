@@ -6,6 +6,14 @@
     "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="micky.sports.shop.dao.ReviewDao">
+	<sql id="includereviewBoard">
+		<choose>
+			<when test="param4==2">
+				WHERE R_CONTENT LIKE '%'||#{param3}||'%'
+				ORDER BY R_SCORE DESC, R_GROUP DESC
+			</when>
+		</choose>
+	</sql>
 
 	<!-- 1.join위해 사용한 ReviewDto -->
 	<resultMap type="micky.sports.shop.dto.ReviewDto" id="ReviewDto">
@@ -59,7 +67,7 @@
 		ORDER BY R.R_GROUP DESC, R.R_STEP ASC -->
 		
 		<!-- rownum과 join 함께 사용 -->
-		SELECT ROWNUM, R_NO,M_ID,R_TITLE,R_CONTENT,R_ID,R_RETITLE,
+		<!-- SELECT ROWNUM, R_NO,M_ID,R_TITLE,R_CONTENT,R_ID,R_RETITLE,
 		R_RECONTENT,R_YNN,R_DATE,R_GROUP,R_STEP,R_INDENT,R_FILESRC,R_SCORE
 		FROM (SELECT ROWNUM ROWNO,R.* FROM
 		(SELECT R.R_NO,M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
@@ -67,7 +75,36 @@
 		FROM MEMBER M, REVIEW R
 		WHERE M.M_ID=R.M_ID
 		ORDER BY R.R_GROUP DESC, R.R_STEP ASC) R)
+		WHERE ROWNO BETWEEN #{param1} AND #{param2} -->
+		
+		<!-- 검색어 넣고 -->
+		SELECT R_NO,M_ID,R_TITLE,R_CONTENT,R_ID,R_RETITLE,
+		R_RECONTENT,R_YNN,R_DATE,R_GROUP,R_STEP,R_INDENT,R_FILESRC,R_SCORE
+		FROM (SELECT ROWNUM ROWNO,R.* FROM
+		(SELECT R.R_NO,M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
+		R.R_RECONTENT,R.R_YNN,R.R_DATE,R.R_GROUP,R.R_STEP,R.R_INDENT,R.R_FILESRC,R.R_SCORE
+		FROM MEMBER M, REVIEW R
+		WHERE M.M_ID=R.M_ID
+		ORDER BY R.R_GROUP DESC, R.R_STEP ASC) R)
+		
 		WHERE ROWNO BETWEEN #{param1} AND #{param2}
+		
+		
+		
+		
+		<!-- 검색폴더 30번부터 -->
+		select R_NO,M_ID,R_TITLE,R_CONTENT,R_ID,R_RETITLE,
+		R_RECONTENT,R_YNN,R_DATE,R_GROUP,R_STEP,R_INDENT,R_FILESRC,R_SCORE
+		from (SELECT ROWNUM ROWNO,R.* FROM
+		(SELECT R.R_NO,M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
+		R.R_RECONTENT,R.R_YNN,R.R_DATE,R.R_GROUP,R.R_STEP,R.R_INDENT,R.R_FILESRC,R.R_SCORE
+		FROM MEMBER M, REVIEW R
+		WHERE M.M_ID=R.M_ID
+		ORDER BY R.R_GROUP DESC, R.R_STEP ASC) R)
+		where r_content like '%확인%'
+		and ROWNO BETWEEN 1 AND 10
+		order by R_SCORE DESC, R_GROUP DESC;
+		
 	</select>
 	
 	
@@ -84,7 +121,6 @@
 	<delete id="delete">
 		DELETE FROM REVIEW WHERE R_NO=#{param1}
 	</delete>
-	
 	
 
 	<select id="mylistview" parameterType="micky.sports.shop.dto.ReviewDto" resultMap="ReviewDto">
@@ -115,10 +151,6 @@
 		WHERE R_NO=#{param1}
 	</update>
 	
-	<select id="selectReviewboardTotCount" resultType="Integer">
-		SELECT COUNT(*) FROM REVIEW
-	</select>
-	
 	<select id="replyview" resultType="micky.sports.shop.dto.ReviewDto">
 		<!-- SELECT R_NO,M_ID,R_TITLE,R_CONTENT,R_RETITLE,
 		R_RECONTENT,R_YNN,R_DATE,R_GROUP,R_STEP,R_INDENT,R_FILESRC,R_SCORE FROM REVIEW
@@ -126,30 +158,11 @@
 		ORDER BY R_GROUP DESC, R_STEP ASC -->
 	</select>
 	
-	
-	<!-- <select id="selectReviewboardTotCount1" parameterType="micky.sports.shop.dto.ReviewDto" resultType="Integer" resultMap="ReviewDto">
-		SELECT COUNT(*) FROM
-		(SELECT ROWNUM, R_NO,M_ID,R_TITLE,R_CONTENT,R_ID,R_RETITLE,
-		R_RECONTENT,R_YNN,R_DATE,R_GROUP,R_STEP,R_INDENT,R_FILESRC,R_SCORE
-		FROM (SELECT ROWNUM ROWNO,R.* FROM
-		(SELECT R.R_NO,M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
-		R.R_RECONTENT,R.R_YNN,R.R_DATE,R.R_GROUP,R.R_STEP,R.R_INDENT,R.R_FILESRC,R.R_SCORE
-		FROM MEMBER M, REVIEW R
-		WHERE M.M_ID=R.M_ID
-		ORDER BY R_SCORE DESC, R_GROUP DESC) R))
-	</select>  -->
+	<select id="selectReviewboardTotCount1" resultType="Integer">
+		SELECT COUNT(*) FROM REVIEW
+	</select>
+
 	<select id="selectReviewboardTotCount2" resultType="Integer" >
-		<!-- SELECT COUNT(*) FROM
-		(SELECT ROWNUM, R_NO,M_ID,R_TITLE,R_CONTENT,R_ID,R_RETITLE,
-		R_RECONTENT,R_YNN,R_DATE,R_GROUP,R_STEP,R_INDENT,R_FILESRC,R_SCORE
-		FROM (SELECT ROWNUM ROWNO,R.* FROM
-		(SELECT R.R_NO,M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
-		R.R_RECONTENT,R.R_YNN,R.R_DATE,R.R_GROUP,R.R_STEP,R.R_INDENT,R.R_FILESRC,R.R_SCORE
-		FROM MEMBER M, REVIEW R
-		WHERE M.M_ID=R.M_ID
-		AND R_CONTENT LIKE '%'||#{param1}||'%'
-		ORDER BY R_SCORE DESC, R_GROUP DESC) R)) -->
-		
 		SELECT COUNT(*) FROM REVIEW WHERE R_CONTENT LIKE '%'||#{param1}||'%'
 		ORDER BY R_SCORE DESC, R_GROUP DESC
 	</select>
