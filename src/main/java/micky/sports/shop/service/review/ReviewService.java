@@ -46,6 +46,13 @@ public class ReviewService implements MickyServiceInter{
 //		searchType 가져오기
 		String[] selectType=request.getParameterValues("selectType");
 		String r_score="";
+		
+		if (selectType!=null) {
+			for (int i = 0; i < selectType.length; i++) {
+				System.out.println("selectType[i] : "+selectType[i]);
+			}
+		}
+		
 		if (selectType!=null) {
 			for (String val : selectType) {
 				if (val.equals("r_score")) {
@@ -59,11 +66,9 @@ public class ReviewService implements MickyServiceInter{
 		if (searchKeyword==null) {
 			searchKeyword="";
 		}
+		
+		System.out.println("searchKeyword : " + searchKeyword);
 
-//		int total=0;
-//		if (r_score.equals("")) {
-//			
-//		}
 		
 //		=================================================================
 		
@@ -72,30 +77,23 @@ public class ReviewService implements MickyServiceInter{
 		searchVO.setPage(page);
 
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
+
+//		토탈 글의 개수 구하기
+//		int total=rdao.selectReviewboardTotCount();
+		int total=0;
+		if (r_score.equals("r_score")) {
+			total=rdao.selectReviewboardTotCount2(searchKeyword);
+		}
 		
 		
-		
-		int total=rdao.selectReviewboardTotCount();
 		System.out.println("total : "+total);
 		
 		searchVO.pageCalculate(total);
 		
-		//계산된 내용 출력
-		System.out.println("totRow : "+total);
-		System.out.println("clickpage : "+page);
-		System.out.println("pageStart : "+searchVO.getPageStart());
-		System.out.println("pageEnd : "+searchVO.getPageEnd());
-		System.out.println("pageTot : "+searchVO.getTotPage());
-		System.out.println("rowStart : "+searchVO.getRowStart());
-		System.out.println("rowEnd : "+searchVO.getRowEnd());
-		
-//		for (ReviewDto reviewDto : review_list) {
-//			System.out.println(reviewDto.getM_id());
-//			System.out.println("왜 안나오는가 : "+reviewDto.getMemberDto().getM_id());
-//		}
 		
 		int rowStart=searchVO.getRowStart();
 		int rowEnd=searchVO.getRowEnd();
+		
 		
 		ArrayList<ReviewDto> review_list=rdao.reviewboard(rowStart,rowEnd);
 		model.addAttribute("review_list", review_list);
