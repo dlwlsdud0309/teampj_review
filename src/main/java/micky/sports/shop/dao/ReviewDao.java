@@ -10,6 +10,11 @@ public interface ReviewDao {
 	
 	
 	public ArrayList<ReviewDto> reviewboard(int start, int end);
+//	public ReviewDto reviewboard(int start, int end);
+	
+	
+	
+	
 //	public void write(String r_title,String r_content,String r_filesrc);
 	public void write(String m_id,String r_title,String r_content,String r_filesrc,String r_point);
 	public void delete(String r_no);

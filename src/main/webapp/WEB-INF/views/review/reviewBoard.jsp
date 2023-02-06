@@ -43,8 +43,17 @@
 <!-- 임시로 지정 -->
 <!-- <a href="reviewListview">TEMP님</a> -->
 
-<div class="review_table">
+<!-- 데이터 값 하나만 확인 -->
+<%-- <p>r_title : ${review_list.r_title }</p>
+<span  class="star">
+        ★★★★★
+        <span id="star2">★★★★★</span>
+        <input type="range"  value="1" step="1" min="0" max="10">
+      </span>
+      <br /> --%>
 
+
+<div class="review_table">
 <!-- core태그 사용 -->
 <c:forEach items="${review_list }" var="list">
 	<div class="row">
@@ -98,18 +107,18 @@
 		</div>
 		<div class="cell col2">
 			<div>
-				<%-- <span>${list.r_date }</span> --%>
+				<span>${list.r_date }</span>
 				<span><fmt:formatDate value="${list.r_date }" pattern="yyyy.MM.dd"/></span>
 			</div>
 			<div class="img_box">
-				<%-- <img src="../resources/reviewupload/${list.r_filesrc }" width="100" alt="그린 클리프 반팔 라운드티" /> --%>
+				<img src="../resources/reviewupload/${list.r_filesrc }" width="100" alt="그린 클리프 반팔 라운드티" />
 				<img src="../resources/reviewupload/${list.r_filesrc }" width="100" alt="" />
 			</div>
 			<div>
 				<!-- 수정/삭제 -->
 				<a class="atag" href="reviewPopupcontentview?r_no=${list.r_no }">수정</a>
 				<a class="atag" href="reviewDelete?r_no=${list.r_no }">삭제</a>
-				<%-- <a class="atag" href="replyview?r_no=${list.r_no }">답글</a> --%>
+				<a class="atag" href="replyview?r_no=${list.r_no }">답글</a>
 
 
 				
@@ -117,6 +126,8 @@
 		</div>
 	</div>
 </c:forEach>
+
+
 <!-- <a href="reviewWriteview">리뷰작성</a> -->
 <button type="button" onclick="location.href='reviewWriteview'">리뷰작성</button>
 <br />
