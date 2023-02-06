@@ -35,17 +35,10 @@ public class ReviewService implements MickyServiceInter{
 				(SearchVO) map.get("searchVO");
 		
 		String r_no=request.getParameter("r_no");
+
 		
-//		페이지 가져오기
-		String strPage=request.getParameter("page");
-		if (strPage==null) {
-			strPage="1";
-		}
-		
-//		=================================================================
 //		searchType 가져오기
 		String[] selectType=request.getParameterValues("selectType");
-		String r_score="";
 		
 		if (selectType!=null) {
 			for (int i = 0; i < selectType.length; i++) {
@@ -53,8 +46,9 @@ public class ReviewService implements MickyServiceInter{
 			}
 		}
 		
-		if (selectType!=null) {
-			for (String val : selectType) {
+		String r_score="";
+		if (selectType!=null){
+			for (String val : selectType){
 				if (val.equals("r_score")) {
 					r_score="r_score";
 				}
@@ -70,7 +64,11 @@ public class ReviewService implements MickyServiceInter{
 		System.out.println("searchKeyword : " + searchKeyword);
 
 		
-//		=================================================================
+//		페이지 가져오기
+		String strPage=request.getParameter("page");
+		if (strPage==null) {
+			strPage="1";
+		}		
 		
 //		setPage 통해 보내기
 		int page=Integer.parseInt(strPage);
@@ -79,11 +77,11 @@ public class ReviewService implements MickyServiceInter{
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
 
 //		토탈 글의 개수 구하기
-//		int total=rdao.selectReviewboardTotCount();
-		int total=0;
-		if (r_score.equals("r_score")) {
-			total=rdao.selectReviewboardTotCount2(searchKeyword);
-		}
+		int total=rdao.selectReviewboardTotCount();
+//		int total=0;
+//		if (r_score.equals("r_score")) {
+//			total=rdao.selectReviewboardTotCount2(searchKeyword);
+//		}
 		
 		
 		System.out.println("total : "+total);

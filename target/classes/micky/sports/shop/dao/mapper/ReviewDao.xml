@@ -115,9 +115,9 @@
 		WHERE R_NO=#{param1}
 	</update>
 	
-	<!-- <select id="selectReviewboardTotCount" resultType="Integer">
+	<select id="selectReviewboardTotCount" resultType="Integer">
 		SELECT COUNT(*) FROM REVIEW
-	</select> -->
+	</select>
 	
 	<select id="replyview" resultType="micky.sports.shop.dto.ReviewDto">
 		<!-- SELECT R_NO,M_ID,R_TITLE,R_CONTENT,R_RETITLE,

@@ -26,14 +26,15 @@
 		});
 	});
 	
-	function callpoint() {
+	/* function callpoint() {
 		//alert("r_score:"+"${list.r_score}");
-		$('#star2').css('width','${list.r_score*10}%'); //ok
+		$('#star${scnt }').css('width','${list.r_score*10}%'); //ok
 		//document.querySelector(`.star span`).style.width = '${review.repoint*10}%';//ok
-	}
+	} */
 </script>
 </head>
 
+<!-- <body onload="callpoint();"> -->
 <body onload="callpoint();">
 <h3>Reviewboard</h3>
 <!-- 오류 -->
@@ -46,7 +47,6 @@
 
 
 <div class="review_table">
-<!-- core태그 사용 -->
 <c:forEach items="${review_list }" var="list">
 	<div class="row">
 		<div class="cell col1">
@@ -59,7 +59,7 @@
 						<p class="user_date">
 							<span class="star">
 								★★★★★
-								<span id="star2">★★★★★</span>
+								<span id="star2" style="width:${list.r_score*10}%">★★★★★</span>
 								${list.r_score }
 							</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>${list.m_id }</span>
 						</p>
