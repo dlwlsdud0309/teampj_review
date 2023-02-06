@@ -126,9 +126,6 @@
 		ORDER BY R_GROUP DESC, R_STEP ASC -->
 	</select>
 	
-	<select id="selectReviewboardTotCount2" resultType="Integer">
-		SELECT * FROM REVIEW WHERE R_CONTENT LIKE '%'||#{param1}||'%' ORDER BY R_SCORE DESC, R_GROUP DESC
-	</select>
 	
 	<!-- <select id="selectReviewboardTotCount1" parameterType="micky.sports.shop.dto.ReviewDto" resultType="Integer" resultMap="ReviewDto">
 		SELECT COUNT(*) FROM
@@ -140,9 +137,9 @@
 		FROM MEMBER M, REVIEW R
 		WHERE M.M_ID=R.M_ID
 		ORDER BY R_SCORE DESC, R_GROUP DESC) R))
-	</select>
-	<select id="selectReviewboardTotCount2" parameterType="micky.sports.shop.dto.ReviewDto" resultType="Integer" resultMap="ReviewDto">
-		SELECT COUNT(*) FROM
+	</select>  -->
+	<select id="selectReviewboardTotCount2" resultType="Integer" >
+		<!-- SELECT COUNT(*) FROM
 		(SELECT ROWNUM, R_NO,M_ID,R_TITLE,R_CONTENT,R_ID,R_RETITLE,
 		R_RECONTENT,R_YNN,R_DATE,R_GROUP,R_STEP,R_INDENT,R_FILESRC,R_SCORE
 		FROM (SELECT ROWNUM ROWNO,R.* FROM
@@ -151,6 +148,9 @@
 		FROM MEMBER M, REVIEW R
 		WHERE M.M_ID=R.M_ID
 		AND R_CONTENT LIKE '%'||#{param1}||'%'
-		ORDER BY R_SCORE DESC, R_GROUP DESC) R))
-	</select> -->
+		ORDER BY R_SCORE DESC, R_GROUP DESC) R)) -->
+		
+		SELECT COUNT(*) FROM REVIEW WHERE R_CONTENT LIKE '%'||#{param1}||'%'
+		ORDER BY R_SCORE DESC, R_GROUP DESC
+	</select>
 </mapper>

@@ -77,11 +77,13 @@ public class ReviewService implements MickyServiceInter{
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
 
 //		토탈 글의 개수 구하기
-		int total=rdao.selectReviewboardTotCount();
-//		int total=0;
-//		if (r_score.equals("r_score")) {
-//			total=rdao.selectReviewboardTotCount2(searchKeyword);
-//		}
+//		int total=rdao.selectReviewboardTotCount();
+		int total=0;
+		if (r_score.equals("r_score")) {
+			total=rdao.selectReviewboardTotCount2(searchKeyword);
+		}else if(r_score.equals("")) {
+			total=rdao.selectReviewboardTotCount(searchKeyword);
+		}
 		
 		
 		System.out.println("total : "+total);
