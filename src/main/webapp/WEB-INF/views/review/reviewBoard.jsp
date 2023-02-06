@@ -30,7 +30,7 @@
 		//alert("r_score:"+"${list.r_score}");
 		$('#star2').css('width','${list.r_score*10}%'); //ok
 		//document.querySelector(`.star span`).style.width = '${review.repoint*10}%';//ok
-	};
+	}
 </script>
 </head>
 
@@ -67,8 +67,7 @@
 						<p class="user_date">
 							<span class="star">
 								★★★★★
-								<span id="star2">★★★★★</span>
-								<input type="range" value="1" step="1" min="0" max="10">
+								<span class="star2">★★★★★</span>
 								${list.r_score }
 							</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>${list.m_id }</span>
 						</p>
