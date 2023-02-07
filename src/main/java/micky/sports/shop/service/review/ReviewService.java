@@ -34,11 +34,6 @@ public class ReviewService implements MickyServiceInter{
 		
 //selectType@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 		String[] selectType=request.getParameterValues("selectType");
-		if (selectType!=null) {
-			for (int i = 0; i < selectType.length; i++) {
-				System.out.println("selectType[i] : "+selectType[i]);
-			}
-		}
 		
 		String r_recently="";
 		String r_score="";
