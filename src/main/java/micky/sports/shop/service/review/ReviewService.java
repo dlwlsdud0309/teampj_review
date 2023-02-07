@@ -67,15 +67,11 @@ public class ReviewService implements MickyServiceInter{
 		if (searchType!=null){
 			for (String val : searchType){
 				if (val.equals("r_score")) {
-					//if (r_score==null || r_score.equals("")) {
 						model.addAttribute("r_score", "true");
 						r_score="r_score";
-					//}
 				}else if (val.equals("r_recently")) {
-					//if (r_recently==null || r_recently.equals("")) {
 						model.addAttribute("r_recently", "true");
 						r_recently="r_recently";
-					//}
 				}
 			}
 		}
@@ -118,14 +114,10 @@ public class ReviewService implements MickyServiceInter{
 		}
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ searchType
 		
-		
-		
-		
 		searchVO.pageCalculate(total);
 		
 		int rowStart=searchVO.getRowStart();
 		int rowEnd=searchVO.getRowEnd();
-		
 		
 //		checkbox
 //searchType @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@

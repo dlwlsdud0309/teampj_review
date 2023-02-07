@@ -32,7 +32,8 @@ public class ReviewController {
 //	임시 메인페이지
 //	@RequestMapping(method = RequestMethod.POST, value = "/reviewBoard")
 	@RequestMapping("/reviewBoard")
-	public String reviewBoard(HttpServletRequest request,SearchVO searchVO,Model model) {
+	public String reviewBoard(HttpServletRequest request,
+			SearchVO searchVO,Model model) {
 		System.out.println("=====reviewBoard====");
 		
 		model.addAttribute("searchVO", searchVO);
@@ -116,11 +117,6 @@ public class ReviewController {
 	@RequestMapping("/reviewPopupcontentmodify")
 	public String reviewPopupcontentmodify(HttpServletRequest request, Model model) {
 		System.out.println("=====reviewPopupcontentmodify====");
-		
-//		String r_title=request.getParameter("r_title");
-//		String r_content=request.getParameter("r_content");
-//		System.out.println("r_title : "+r_title);
-//		System.out.println("r_content : "+r_content);
 		
 		model.addAttribute("request", request);
 		mickyServiceInter=new ReviewPopupcontentmodifyService(sqlSession);
