@@ -120,6 +120,7 @@
 			<a href="reviewBoard?page=1">&lt;&lt;</a>
 			<a href="reviewBoard?page=${searchVO.page-1 }">&nbsp;&nbsp;&lt;&nbsp;&nbsp;</a>
 		</c:if>
+		
 		<c:forEach begin="${searchVO.pageStart }" end="${searchVO.pageEnd }" var="i">
 			<c:choose>
 				<c:when test="${i eq searchVO.page }">
@@ -138,37 +139,16 @@
 	
 	<!-- 검색기능 추가 -->
 	<div class="search">
-		<!-- select, option -->
 		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+		<!-- select -->
 		<!-- 추천순, 최신순, 별점순 -->
 		<!-- 별점순 -->
-		<!-- <input type="checkbox" name="searchType" value="r_score" /> -->
-		
-		<%-- <select name="selectType">
-			<c:choose>
-				<c:when test="${r_recently }">
-					<option ${param.selectType=="r_recently"?"selected":"" } value="recently">최신순</option>
-				</c:when>
-				<c:otherwise>
-					<option value="recently">최신순</option>
-				</c:otherwise>
-			</c:choose>
-			<c:choose>
-				<c:when test="${r_score }">
-						<option ${param.selectType=="r_score"?"selected":"" } value="r_score">별점순</option>
-				</c:when>
-				<c:otherwise>
-						<option value="r_score" >별점순</option>
-				</c:otherwise>
-			</c:choose>
-		</select> --%>
-		
 		<%-- <select name="selectType" >
 			<option ${param.selectType=="r_recently"?"selected":"" } value="r_recently">최신순</option>
 			<option ${param.selectType=="r_score"?"selected":"" } value="r_score">별점순</option>
 		</select> --%>
 		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-		
+		<!-- checkbox -->
 		<c:choose>
 			<c:when test="${r_recently }">
 				<input type="checkbox" name="searchType" value="r_recently" checked /> 최신순
@@ -185,7 +165,7 @@
 				<input type="checkbox" name="searchType" value="r_score" /> 별점순
 			</c:otherwise>
 		</c:choose>
-		
+		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 		<input type="text" name="searchKeyword" placeholder="리뷰 키워드 검색" value="${resk }"/>
 		<input type="submit" value="검색" />
 		<br />

@@ -1,5 +1,6 @@
 package micky.sports.shop.service.review;
 
+import java.util.Iterator;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,34 +32,28 @@ public class ReviewService implements MickyServiceInter{
 		
 		String r_no=request.getParameter("r_no");
 		
-		//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-////		searchType 가져오기
+//selectType@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 //		String[] selectType=request.getParameterValues("selectType");
-//		
 //		if (selectType!=null) {
 //			for (int i = 0; i < selectType.length; i++) {
 //				System.out.println("selectType[i] : "+selectType[i]);
 //			}
 //		}
 //		
-//		String r_score="";
 //		String r_recently="";
-//		if (selectType!=null){
-//			for (String val : selectType){
-//				if (val.equals("r_score")) {
-//					if (r_score==null || r_score.equals("")) {
-//						model.addAttribute("r_score", "true");
-//						r_score="r_score";
-//					}
-//				}else if (val.equals("r_recently")) {
-//					if (r_recently==null || r_recently.equals("")) {
-//						model.addAttribute("r_recently", "true");
-//						r_recently="r_recently";
-//					}
+//		String r_score="";
+//		
+//		if (selectType!=null) {
+//			for (String val : selectType) {
+//				if(val.equals("r_recently")) {
+//					r_recently="r_recently";
+//				}else if(val.equals("r_score")) {
+//					r_score="r_score";
 //				}
 //			}
 //		}
-		//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@selectType
+//searchType @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 		String[] searchType=request.getParameterValues("searchType");
 		
 		if (searchType!=null) {
@@ -84,6 +79,7 @@ public class ReviewService implements MickyServiceInter{
 				}
 			}
 		}
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ searchType
 		
 //		searchKeyword 가져오기
 		String searchKeyword=request.getParameter("searchKeyword");
@@ -108,28 +104,8 @@ public class ReviewService implements MickyServiceInter{
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
 
 //		총 글의 개수 구하기
-//		select
-//		int total=0;
-//		total=rdao.selectReviewboardTotCount1(searchKeyword);
-//		if ((r_recently==null && r_score==null) || (r_recently.equals("") && r_score.equals(""))) {
-//			total=rdao.selectReviewboardTotCount1(searchKeyword);
-//		}else if (r_recently.equals("r_recently")) {
-//			total=rdao.selectReviewboardTotCount2(searchKeyword);
-//		}else if (r_score.equals("r_score")) {
-//			total=rdao.selectReviewboardTotCount3(searchKeyword);
-//		}
-		
-//		checkbox로 수정
-//		int total=0;
-//		if ((r_recently.equals("") && r_score.equals("")) || (r_recently.equals("r_recently") && r_score.equals("r_score"))) { //모두 선택하지 않았을 경우
-//			total=rdao.selectReviewboardTotCount1(searchKeyword);
-//		}else if (r_recently.equals("r_recently") && r_score.equals("")) { //최신만
-//			total=rdao.selectReviewboardTotCount2(searchKeyword);
-//		}else if (r_recently.equals("") && r_score.equals("r_score")) { //별점만
-//			total=rdao.selectReviewboardTotCount3(searchKeyword);
-//		}
-		
-//		재수정
+//		checkbox
+//searchType @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 		int total=0;
 		if (r_recently.equals("r_recently") && r_score.equals("")) {
 			total=rdao.selectReviewboardTotCount1(searchKeyword);
@@ -140,31 +116,19 @@ public class ReviewService implements MickyServiceInter{
 		}else if (r_recently.equals("") && r_score.equals("")) {
 			total=rdao.selectReviewboardTotCount4(searchKeyword);
 		}
-				
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ searchType
+		
+		
+		
+		
 		searchVO.pageCalculate(total);
 		
 		int rowStart=searchVO.getRowStart();
 		int rowEnd=searchVO.getRowEnd();
 		
-//		select-option
-//		if ((r_recently==null && r_score==null) || (r_recently.equals("") && r_score.equals(""))) {
-//			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"1"));
-//		}else if (r_recently.equals("r_recently")) {
-//			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"2"));
-//		}else if(r_score.equals("r_score")) {
-//			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"3"));
-//		}
 		
-//		select-option
-//		if ((r_recently.equals("") && r_score.equals("")) || (r_recently.equals("r_recently") && r_score.equals("r_score"))) {
-//			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"1"));
-//		}else if (r_recently.equals("r_recently") && r_score.equals("")) {
-//			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"2"));
-//		}else if(r_recently.equals("") && r_score.equals("r_score")) {
-//			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"3"));
-//		}
-		
-//		재수정
+//		checkbox
+//searchType @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 		if (r_recently.equals("r_recently") && r_score.equals("")) {
 			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"1"));
 		}else if (r_recently.equals("") && r_score.equals("r_score")) {
@@ -174,7 +138,7 @@ public class ReviewService implements MickyServiceInter{
 		}else if (r_recently.equals("") && r_score.equals("")) {
 			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"4"));
 		}
-		
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ searchType		
 		model.addAttribute("totRowcnt", total);
 		model.addAttribute("searchVO", searchVO);
 	}
