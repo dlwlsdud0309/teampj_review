@@ -2,7 +2,6 @@ package micky.sports.shop.dao;
 
 import java.util.ArrayList;
 
-import micky.sports.shop.dto.MemberDto;
 import micky.sports.shop.dto.ReviewDto;
 
 public interface ReviewDao {
@@ -33,7 +32,7 @@ public interface ReviewDao {
 	
 	public ReviewDto getReview(String r_no);
 	
-//	public Integer selectReviewboardTotCount1(String searchKeyword);
 	public int selectReviewboardTotCount1(String searchKeyword);
 	public int selectReviewboardTotCount2(String searchKeyword);
+	public int selectReviewboardTotCount3(String searchKeyword);
 }
