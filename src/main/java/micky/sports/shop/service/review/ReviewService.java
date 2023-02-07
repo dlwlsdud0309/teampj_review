@@ -166,13 +166,13 @@ public class ReviewService implements MickyServiceInter{
 		
 //		재수정
 		if (r_recently.equals("r_recently") && r_score.equals("")) {
-			rdao.reviewboard(rowStart,rowEnd,searchKeyword,"1");
+			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"1"));
 		}else if (r_recently.equals("") && r_score.equals("r_score")) {
-			rdao.reviewboard(rowStart,rowEnd,searchKeyword,"2");
+			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"2"));
 		}else if (r_recently.equals("r_recently") && r_score.equals("r_score")) {
-			rdao.reviewboard(rowStart,rowEnd,searchKeyword,"3");
+			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"3"));
 		}else if (r_recently.equals("") && r_score.equals("")) {
-			rdao.reviewboard(rowStart,rowEnd,searchKeyword,"4");
+			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"4"));
 		}
 		
 		model.addAttribute("totRowcnt", total);
