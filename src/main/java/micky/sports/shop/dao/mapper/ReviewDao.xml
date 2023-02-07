@@ -59,7 +59,17 @@
 	</resultMap>
 
 	<select id="reviewboard" parameterType="micky.sports.shop.dto.ReviewDto" resultMap="ReviewDto">
-
+		<!-- 검색어 넣고 -->
+		SELECT ROWNUM,R_NO,M_ID,R_TITLE,R_CONTENT,R_ID,R_RETITLE,
+		R_RECONTENT,R_YNN,R_DATE,R_GROUP,R_STEP,R_INDENT,R_FILESRC,R_SCORE
+		FROM (SELECT ROWNUM ROWNO,R.* FROM
+		(SELECT R.R_NO,M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
+		R.R_RECONTENT,R.R_YNN,R.R_DATE,R.R_GROUP,R.R_STEP,R.R_INDENT,R.R_FILESRC,R.R_SCORE
+		FROM MEMBER M, REVIEW R
+		WHERE M.M_ID=R.M_ID
+		ORDER BY R.R_GROUP DESC, R.R_STEP ASC) R)
+		<include refid="includeReviewBoard"/>
+		
 		
 		<!-- 오라클 join -->
 		<!-- SELECT R.R_NO,M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
@@ -85,17 +95,6 @@
 		WHERE M.M_ID=R.M_ID
 		ORDER BY R.R_GROUP DESC, R.R_STEP ASC) R)
 		WHERE ROWNO BETWEEN #{param1} AND #{param2} -->
-		
-		<!-- 검색어 넣고 -->
-		SELECT ROWNUM,R_NO,M_ID,R_TITLE,R_CONTENT,R_ID,R_RETITLE,
-		R_RECONTENT,R_YNN,R_DATE,R_GROUP,R_STEP,R_INDENT,R_FILESRC,R_SCORE
-		FROM (SELECT ROWNUM ROWNO,R.* FROM
-		(SELECT R.R_NO,M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
-		R.R_RECONTENT,R.R_YNN,R.R_DATE,R.R_GROUP,R.R_STEP,R.R_INDENT,R.R_FILESRC,R.R_SCORE
-		FROM MEMBER M, REVIEW R
-		WHERE M.M_ID=R.M_ID
-		ORDER BY R.R_GROUP DESC, R.R_STEP ASC) R)
-		<include refid="includeReviewBoard"/>
 		
 	</select>
 	
@@ -156,11 +155,11 @@
 
 	<select id="selectReviewboardTotCount2" resultType="Integer">
 		SELECT COUNT(*) FROM REVIEW WHERE R_CONTENT LIKE '%'||#{param1}||'%'
-		ORDER BY R_GROUP DESC, R_STEP ASC
+		<!-- ORDER BY R_GROUP DESC, R_STEP ASC -->
 	</select>
 
 	<select id="selectReviewboardTotCount3" resultType="Integer" >
 		SELECT COUNT(*) FROM REVIEW WHERE R_CONTENT LIKE '%'||#{param1}||'%'
-		ORDER BY R_SCORE DESC, R_GROUP DESC
+		<!-- ORDER BY R_SCORE DESC, R_GROUP DESC -->
 	</select>
 </mapper>

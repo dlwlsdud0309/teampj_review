@@ -31,29 +31,56 @@ public class ReviewService implements MickyServiceInter{
 		
 		String r_no=request.getParameter("r_no");
 		
-//		searchType 가져오기
-		String[] selectType=request.getParameterValues("selectType");
+		//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+////		searchType 가져오기
+//		String[] selectType=request.getParameterValues("selectType");
+//		
+//		if (selectType!=null) {
+//			for (int i = 0; i < selectType.length; i++) {
+//				System.out.println("selectType[i] : "+selectType[i]);
+//			}
+//		}
+//		
+//		String r_score="";
+//		String r_recently="";
+//		if (selectType!=null){
+//			for (String val : selectType){
+//				if (val.equals("r_score")) {
+//					if (r_score==null || r_score.equals("")) {
+//						model.addAttribute("r_score", "true");
+//						r_score="r_score";
+//					}
+//				}else if (val.equals("r_recently")) {
+//					if (r_recently==null || r_recently.equals("")) {
+//						model.addAttribute("r_recently", "true");
+//						r_recently="r_recently";
+//					}
+//				}
+//			}
+//		}
+		//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+		String[] searchType=request.getParameterValues("searchType");
 		
-		if (selectType!=null) {
-			for (int i = 0; i < selectType.length; i++) {
-				System.out.println("selectType[i] : "+selectType[i]);
+		if (searchType!=null) {
+			for (int i = 0; i < searchType.length; i++) {
+				System.out.println("searchType[i] : "+searchType[i]);
 			}
 		}
 		
-		String r_score="";
 		String r_recently="";
-		if (selectType!=null){
-			for (String val : selectType){
+		String r_score="";
+		if (searchType!=null){
+			for (String val : searchType){
 				if (val.equals("r_score")) {
-					if (r_score==null || r_score.equals("")) {
+					//if (r_score==null || r_score.equals("")) {
 						model.addAttribute("r_score", "true");
 						r_score="r_score";
-					}
+					//}
 				}else if (val.equals("r_recently")) {
-					if (r_recently==null || r_recently.equals("")) {
+					//if (r_recently==null || r_recently.equals("")) {
 						model.addAttribute("r_recently", "true");
 						r_recently="r_recently";
-					}
+					//}
 				}
 			}
 		}
@@ -81,14 +108,26 @@ public class ReviewService implements MickyServiceInter{
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
 
 //		총 글의 개수 구하기
+//		int total=0;
+//		total=rdao.selectReviewboardTotCount1(searchKeyword);
+//		if ((r_recently==null && r_score==null) || (r_recently.equals("") && r_score.equals(""))) {
+//			total=rdao.selectReviewboardTotCount1(searchKeyword);
+//		}else if (r_recently.equals("r_recently")) {
+//			total=rdao.selectReviewboardTotCount2(searchKeyword);
+//		}else if (r_score.equals("r_score")) {
+//			total=rdao.selectReviewboardTotCount3(searchKeyword);
+//		}
+		
 		int total=0;
-		if ((r_recently==null && r_score==null) || (r_recently.equals("") && r_score.equals(""))) {
+		if ((r_recently.equals("") && r_score.equals("")) || (r_recently.equals("r_recently") && r_score.equals("r_score"))) { //모두 선택하지 않았을 경우
 			total=rdao.selectReviewboardTotCount1(searchKeyword);
-		}else if (r_recently.equals("r_recently")) {
+		}else if (r_recently.equals("r_recently") && r_score.equals("")) { //최신만
 			total=rdao.selectReviewboardTotCount2(searchKeyword);
-		}else if (r_score.equals("r_score")) {
+		}else if (r_recently.equals("") && r_score.equals("r_score")) { //별점만
 			total=rdao.selectReviewboardTotCount3(searchKeyword);
 		}
+//		else if (r_recently.equals("r_recently") && r_score.equals("r_score") ) { //최신만
+//			total=rdao.selectReviewboardTotCount1(searchKeyword);
 				
 		searchVO.pageCalculate(total);
 		
@@ -96,11 +135,19 @@ public class ReviewService implements MickyServiceInter{
 		int rowEnd=searchVO.getRowEnd();
 		
 		
-		if ((r_recently==null && r_score==null) || (r_recently.equals("") && r_score.equals(""))) {
+//		if ((r_recently==null && r_score==null) || (r_recently.equals("") && r_score.equals(""))) {
+//			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"1"));
+//		}else if (r_recently.equals("r_recently")) {
+//			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"2"));
+//		}else if(r_score.equals("r_score")) {
+//			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"3"));
+//		}
+		
+		if ((r_recently.equals("") && r_score.equals("")) || (r_recently.equals("r_recently") && r_score.equals("r_score"))) {
 			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"1"));
-		}else if (r_recently.equals("r_recently")) {
+		}else if (r_recently.equals("r_recently") && r_score.equals("")) {
 			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"2"));
-		}else if(r_score.equals("r_score")) {
+		}else if(r_recently.equals("") && r_score.equals("r_score")) {
 			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"3"));
 		}
 		

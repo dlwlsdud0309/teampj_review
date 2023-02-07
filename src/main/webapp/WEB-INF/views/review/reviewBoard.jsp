@@ -172,6 +172,8 @@
 		<input type="checkbox" name="searchType" value="r_score" /> 별점순
 		<input type="text" name="searchKeyword" placeholder="리뷰 키워드 검색" value="${resk }"/>
 		<input type="submit" value="검색" />
+		<br />
+		<br />
 	</div>	
 </form>
 	</div>

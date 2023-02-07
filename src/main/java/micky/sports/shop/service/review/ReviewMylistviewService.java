@@ -41,10 +41,11 @@ public class ReviewMylistviewService implements MickyServiceInter{
 		/* ReviewDto myaccount=rdao.mylistview(); */
 		
 		
-		for (ReviewDto reviewDto : review_mylist) {
-			System.out.println(reviewDto.getR_date());
-			System.out.println(reviewDto.getMemberDto().getM_id());
-		}
+		/*
+		 * for (ReviewDto reviewDto : review_mylist) {
+		 * System.out.println(reviewDto.getR_date());
+		 * System.out.println(reviewDto.getMemberDto().getM_id()); }
+		 */
 		
 		model.addAttribute("review_mylist", review_mylist);
 	}
