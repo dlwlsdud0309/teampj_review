@@ -23,6 +23,7 @@ public class ReviewService implements MickyServiceInter{
 	public void execute(Model model) {
 		System.out.println(">>>>ReviewService");
 	
+		//request는 검색창에서 필요
 		Map<String, Object> map=model.asMap();
 		HttpServletRequest request=
 				(HttpServletRequest) map.get("request");
@@ -30,6 +31,7 @@ public class ReviewService implements MickyServiceInter{
 				(SearchVO) map.get("searchVO");
 		
 		String r_no=request.getParameter("r_no");
+
 		
 //		searchType 가져오기
 		String[] selectType=request.getParameterValues("selectType");
@@ -41,19 +43,10 @@ public class ReviewService implements MickyServiceInter{
 		}
 		
 		String r_score="";
-		String r_recently="";
 		if (selectType!=null){
 			for (String val : selectType){
 				if (val.equals("r_score")) {
-					if (r_score==null || r_score.equals("")) {
-						model.addAttribute("r_score", "true");
-						r_score="r_score";
-					}
-				}else if (val.equals("r_recently")) {
-					if (r_recently==null || r_recently.equals("")) {
-						model.addAttribute("r_recently", "true");
-						r_recently="r_recently";
-					}
+					r_score="r_score";
 				}
 			}
 		}
@@ -63,10 +56,9 @@ public class ReviewService implements MickyServiceInter{
 		if (searchKeyword==null) {
 			searchKeyword="";
 		}
-		System.out.println("sk : "+searchKeyword);
 		
-//		검색어 유지기능
-		model.addAttribute("resk",searchKeyword);
+		System.out.println("searchKeyword : " + searchKeyword);
+
 		
 //		페이지 가져오기
 		String strPage=request.getParameter("page");
@@ -80,14 +72,13 @@ public class ReviewService implements MickyServiceInter{
 
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
 
-//		총 글의 개수 구하기
+//		토탈 글의 개수 구하기
+//		int total=rdao.selectReviewboardTotCount();
 		int total=0;
-		if ((r_recently==null && r_score==null) || (r_recently.equals("") && r_score.equals(""))) {
+		if (r_score.equals("")) {
 			total=rdao.selectReviewboardTotCount1(searchKeyword);
-		}else if (r_recently.equals("r_recently")) {
-			total=rdao.selectReviewboardTotCount2(searchKeyword);
 		}else if (r_score.equals("r_score")) {
-			total=rdao.selectReviewboardTotCount3(searchKeyword);
+			total=rdao.selectReviewboardTotCount2(searchKeyword);
 		}
 				
 		searchVO.pageCalculate(total);
@@ -96,16 +87,23 @@ public class ReviewService implements MickyServiceInter{
 		int rowEnd=searchVO.getRowEnd();
 		
 		
-		if ((r_recently==null && r_score==null) || (r_recently.equals("") && r_score.equals(""))) {
-			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"1"));
-		}else if (r_recently.equals("r_recently")) {
-			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"2"));
-		}else if(r_score.equals("r_score")) {
-			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"3"));
-		}
 		
+//		ArrayList<ReviewDto> review_list=null;
+		if (r_score.equals("")) {
+//			total=rdao.selectReviewboardTotCount2(searchKeyword);
+			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"1"));
+		}else if(r_score.equals("r_score")) {
+//			total=rdao.selectReviewboardTotCount(searchKeyword);
+			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"2"));
+		}
+//		rdao.reviewboard(rowStart,rowEnd);
+				
+		
+//		model.addAttribute("review_list", review_list);
 		model.addAttribute("totRowcnt", total);
 		model.addAttribute("searchVO", searchVO);
+		
+
 	}
 
 }

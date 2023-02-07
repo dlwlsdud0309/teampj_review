@@ -1,9 +1,3 @@
-<%@page import="java.sql.DriverManager"%>
-<%@page import="micky.sports.shop.dto.ReviewDto"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="micky.sports.shop.db.DBCon"%>
-<%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -17,7 +11,13 @@
 <script src="../resources/js/jquery-3.6.1.min.js"></script>
 <script src="../resources/js/jquery.bpopup.min.js"></script>
 <script src="../resources/js/scriptjsp.js"></script>
+<!-- <script>
+	function user_content() {
+		alert("ihi");
+	}
+</script> -->
 <script>
+	
 	$(document).ready(function(){
 		$(".u_content").click(function(){
 			/* $(this).addClass("u_content"); */
@@ -25,16 +25,25 @@
 			
 		});
 	});
+	
+	/* function callpoint() {
+		//alert("r_score:"+"${list.r_score}");
+		$('#star${scnt }').css('width','${list.r_score*10}%'); //ok
+		//document.querySelector(`.star span`).style.width = '${review.repoint*10}%';//ok
+	} */
 </script>
 </head>
 
+<!-- <body onload="callpoint();"> -->
 <body onload="callpoint();">
 <h3>Reviewboard</h3>
 <!-- 오류 -->
 <%-- <a href="reviewMylistview?account=${review_mylist.m_id }" >마이페이지</a> --%>
-<!-- <a href="reviewListview">TEMP님</a> -->
-<!-- 임시로 지정 -->
 <a href="reviewMylistview" >마이페이지</a>
+
+<!-- 임시로 지정 -->
+<!-- <a href="reviewListview">TEMP님</a> -->
+
 
 
 <div class="review_table">
@@ -89,9 +98,7 @@
 		</div>
 		<div class="cell col2">
 			<div>
-				<span>
-					<fmt:formatDate value="${list.r_date }" pattern="yyyy.MM.dd"/>
-				</span>
+				<span><fmt:formatDate value="${list.r_date }" pattern="yyyy.MM.dd"/></span>
 			</div>
 			<div class="img_box">
 				<img src="../resources/reviewupload/${list.r_filesrc }" width="100" alt="" />
@@ -102,10 +109,15 @@
 				<a class="atag" href="reviewDelete?r_no=${list.r_no }">삭제</a>
 				<a class="atag" href="replyview?r_no=${list.r_no }">답글</a>
 
+
+				
 			</div>
 		</div>
 	</div>
 </c:forEach>
+
+
+<!-- <a href="reviewWriteview">리뷰작성</a> -->
 <button type="button" onclick="location.href='reviewWriteview'">리뷰작성</button>
 <br />
 
@@ -140,31 +152,10 @@
 		<!-- 추천순, 최신순, 별점순 -->
 		<!-- 별점순 -->
 		<!-- <input type="checkbox" name="searchType" value="r_score" /> -->
-		
-		<%-- <select name="selectType">
-			<c:choose>
-				<c:when test="${r_recently }">
-					<option ${param.selectType=="r_recently"?"selected":"" } value="recently">최신순</option>
-				</c:when>
-				<c:otherwise>
-					<option value="recently">최신순</option>
-				</c:otherwise>
-			</c:choose>
-			<c:choose>
-				<c:when test="${r_score }">
-						<option ${param.selectType=="r_score"?"selected":"" } value="r_score">별점순</option>
-				</c:when>
-				<c:otherwise>
-						<option value="r_score" >별점순</option>
-				</c:otherwise>
-			</c:choose>
-		</select> --%>
-		
-		<select name="selectType" >
-			<option ${param.selectType=="r_recently"?"selected":"" } value="r_recently">최신순</option>
-			<option ${param.selectType=="r_score"?"selected":"" } value="r_score">별점순</option>
+		<select name="selectType">
+			<option value="r_score">별점순</option>
 		</select>
-		<input type="text" name="searchKeyword" placeholder="리뷰 키워드 검색" value="${resk }"/>
+		<input type="text" name="searchKeyword" placeholder="리뷰 키워드 검색"/>
 		<input type="submit" value="검색" />
 	</div>	
 </form>

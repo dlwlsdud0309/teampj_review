@@ -14,11 +14,6 @@
 			<when test="param4==2">
 				WHERE R_CONTENT LIKE '%'||#{param3}||'%'
 				AND ROWNO BETWEEN #{param1} AND #{param2}
-				ORDER BY R_GROUP DESC
-			</when>
-			<when test="param4==3">
-				WHERE R_CONTENT LIKE '%'||#{param3}||'%'
-				AND ROWNO BETWEEN #{param1} AND #{param2}
 				ORDER BY R_SCORE DESC, R_GROUP DESC
 			</when>
 		</choose>
@@ -154,12 +149,7 @@
 		SELECT COUNT(*) FROM REVIEW
 	</select>
 
-	<select id="selectReviewboardTotCount2" resultType="Integer">
-		SELECT COUNT(*) FROM REVIEW WHERE R_CONTENT LIKE '%'||#{param1}||'%'
-		ORDER BY R_GROUP DESC, R_STEP ASC
-	</select>
-
-	<select id="selectReviewboardTotCount3" resultType="Integer" >
+	<select id="selectReviewboardTotCount2" resultType="Integer" >
 		SELECT COUNT(*) FROM REVIEW WHERE R_CONTENT LIKE '%'||#{param1}||'%'
 		ORDER BY R_SCORE DESC, R_GROUP DESC
 	</select>
