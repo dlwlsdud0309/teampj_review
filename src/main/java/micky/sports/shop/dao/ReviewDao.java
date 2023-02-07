@@ -28,12 +28,12 @@ public interface ReviewDao {
 //	public void modify(String r_no, String m_id, String r_title, String r_content);
 	public void modify(String r_no, String r_title, String r_content);
 
-	public int selectReviewboardTotCount1(String searchKeyword);
 	
 	public void replyview(String r_no);
 	
 	public ReviewDto getReview(String r_no);
 	
 //	public Integer selectReviewboardTotCount1(String searchKeyword);
+	public int selectReviewboardTotCount1(String searchKeyword);
 	public int selectReviewboardTotCount2(String searchKeyword);
 }

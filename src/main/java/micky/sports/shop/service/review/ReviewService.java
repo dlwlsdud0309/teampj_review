@@ -1,7 +1,5 @@
 package micky.sports.shop.service.review;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,8 +8,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
 import micky.sports.shop.dao.ReviewDao;
-import micky.sports.shop.dto.MemberDto;
-import micky.sports.shop.dto.ReviewDto;
 import micky.sports.shop.service.MickyServiceInter;
 import micky.sports.shop.vopage.SearchVO;
 
@@ -79,31 +75,31 @@ public class ReviewService implements MickyServiceInter{
 //		토탈 글의 개수 구하기
 //		int total=rdao.selectReviewboardTotCount();
 		int total=0;
-		
-		
-		System.out.println("total : "+total);
-		
+		if (r_score.equals("")) {
+			total=rdao.selectReviewboardTotCount1(searchKeyword);
+		}else if (r_score.equals("r_score")) {
+			total=rdao.selectReviewboardTotCount2(searchKeyword);
+		}
+				
 		searchVO.pageCalculate(total);
-		
 		
 		int rowStart=searchVO.getRowStart();
 		int rowEnd=searchVO.getRowEnd();
 		
 		
-		ArrayList<ReviewDto> review_list=null;
 		
+//		ArrayList<ReviewDto> review_list=null;
 		if (r_score.equals("")) {
 //			total=rdao.selectReviewboardTotCount2(searchKeyword);
-			rdao.reviewboard(rowStart,rowEnd,searchKeyword,"1");
+			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"1"));
 		}else if(r_score.equals("r_score")) {
 //			total=rdao.selectReviewboardTotCount(searchKeyword);
-			rdao.reviewboard(rowStart,rowEnd,searchKeyword,"2");
+			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"2"));
 		}
-				
 //		rdao.reviewboard(rowStart,rowEnd);
+				
 		
-		
-		model.addAttribute("review_list", review_list);
+//		model.addAttribute("review_list", review_list);
 		model.addAttribute("totRowcnt", total);
 		model.addAttribute("searchVO", searchVO);
 		
