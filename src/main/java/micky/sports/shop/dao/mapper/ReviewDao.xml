@@ -21,6 +21,8 @@
 				AND ROWNO BETWEEN #{param1} AND #{param2}
 				ORDER BY R_SCORE DESC, R_GROUP DESC
 			</when>
+			<otherwise>
+			</otherwise>
 		</choose>
 	</sql>
 

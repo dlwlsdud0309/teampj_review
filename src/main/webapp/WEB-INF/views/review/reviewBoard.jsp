@@ -168,8 +168,23 @@
 		</select> --%>
 		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 		
-		<input type="checkbox" name="searchType" value="r_recently" /> 최신순
-		<input type="checkbox" name="searchType" value="r_score" /> 별점순
+		<c:choose>
+			<c:when test="${r_recently }">
+				<input type="checkbox" name="searchType" value="r_recently" checked /> 최신순
+			</c:when>
+			<c:otherwise>
+				<input type="checkbox" name="searchType" value="r_recently" /> 최신순
+			</c:otherwise>
+		</c:choose>
+		<c:choose>
+			<c:when test="${r_score }">
+				<input type="checkbox" name="searchType" value="r_score" checked /> 별점순
+			</c:when>
+			<c:otherwise>
+				<input type="checkbox" name="searchType" value="r_score" /> 별점순
+			</c:otherwise>
+		</c:choose>
+		
 		<input type="text" name="searchKeyword" placeholder="리뷰 키워드 검색" value="${resk }"/>
 		<input type="submit" value="검색" />
 		<br />
