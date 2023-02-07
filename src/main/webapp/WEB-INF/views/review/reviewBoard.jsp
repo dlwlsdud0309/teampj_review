@@ -137,6 +137,8 @@
 	
 	<!-- 검색기능 추가 -->
 	<div class="search">
+		<!-- select, option -->
+		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 		<!-- 추천순, 최신순, 별점순 -->
 		<!-- 별점순 -->
 		<!-- <input type="checkbox" name="searchType" value="r_score" /> -->
@@ -160,10 +162,14 @@
 			</c:choose>
 		</select> --%>
 		
-		<select name="selectType" >
+		<%-- <select name="selectType" >
 			<option ${param.selectType=="r_recently"?"selected":"" } value="r_recently">최신순</option>
 			<option ${param.selectType=="r_score"?"selected":"" } value="r_score">별점순</option>
-		</select>
+		</select> --%>
+		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+		
+		<input type="checkbox" name="searchType" value="r_recently" /> 최신순
+		<input type="checkbox" name="searchType" value="r_score" /> 별점순
 		<input type="text" name="searchKeyword" placeholder="리뷰 키워드 검색" value="${resk }"/>
 		<input type="submit" value="검색" />
 	</div>	
