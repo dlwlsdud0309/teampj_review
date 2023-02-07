@@ -35,6 +35,14 @@ public class ReviewController {
 	public String reviewBoard(HttpServletRequest request,SearchVO searchVO,Model model) {
 		System.out.println("=====reviewBoard====");
 		
+//		String[] selectType=request.getParameterValues("selectType");
+//		if (selectType!=null) {
+//			for (int i = 0; i < selectType.length; i++) {
+//				System.out.println("selectType[i] : "+selectType[i]);
+//			}
+//		}
+		
+		
 		model.addAttribute("searchVO", searchVO);
 		model.addAttribute("request", request);
 		mickyServiceInter=new ReviewService(sqlSession);
