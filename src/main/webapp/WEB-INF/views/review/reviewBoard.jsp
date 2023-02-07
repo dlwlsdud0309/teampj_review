@@ -50,7 +50,8 @@
 						<p class="user_date">
 							<span class="star">
 								★★★★★
-								<span id="star2" style="width:${list.r_score*10}%">★★★★★</span>
+								<span id="star2" style="width:${list.r_score*16}%">★★★★★</span>
+								<!-- style="width:${list.r_score*16}%"를 15로 지정했을시 별이 덜 채워짐 -->
 								${list.r_score }
 							</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>${list.m_id }</span>
 						</p>
@@ -122,7 +123,7 @@
 		<c:forEach begin="${searchVO.pageStart }" end="${searchVO.pageEnd }" var="i">
 			<c:choose>
 				<c:when test="${i eq searchVO.page }">
-					<span style="color:red; font-weight: bold">${i }&nbsp;&nbsp;</span>
+					<span style="color:red; font-weight: bold;">${i }&nbsp;&nbsp;</span>
 				</c:when>
 				<c:otherwise>
 					<a href="reviewBoard?page=${i }" style="text-decoration: none">${i }&nbsp;&nbsp;</a>
