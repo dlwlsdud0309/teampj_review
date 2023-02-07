@@ -127,7 +127,7 @@
 					<span style="color:red; font-weight: bold;">${i }&nbsp;&nbsp;</span>
 				</c:when>
 				<c:otherwise>
-					<a href="reviewBoard?page=${i }" style="text-decoration: none">${i }&nbsp;&nbsp;</a>
+					<a href="reviewBoard?page=${i }&rb_recently=${r_recently}&rb_score=${r_score}&searchKeyword=${resk}" style="text-decoration: none">${i }&nbsp;&nbsp;</a>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
@@ -143,13 +143,13 @@
 		<!-- select -->
 		<!-- 추천순, 최신순, 별점순 -->
 		<!-- 별점순 -->
-		<%-- <select name="selectType" >
+		<select name="selectType" >
 			<option ${param.selectType=="r_recently"?"selected":"" } value="r_recently">최신순</option>
 			<option ${param.selectType=="r_score"?"selected":"" } value="r_score">별점순</option>
-		</select> --%>
+		</select>
 		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 		<!-- checkbox -->
-		<c:choose>
+		<%-- <c:choose>
 			<c:when test="${r_recently }">
 				<input type="checkbox" name="searchType" value="r_recently" checked /> 최신순
 			</c:when>
@@ -164,7 +164,7 @@
 			<c:otherwise>
 				<input type="checkbox" name="searchType" value="r_score" /> 별점순
 			</c:otherwise>
-		</c:choose>
+		</c:choose> --%>
 		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 		<input type="text" name="searchKeyword" placeholder="리뷰 키워드 검색" value="${resk }"/>
 		<input type="submit" value="검색" />

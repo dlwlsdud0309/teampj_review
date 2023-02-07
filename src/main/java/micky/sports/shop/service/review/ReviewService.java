@@ -33,49 +33,63 @@ public class ReviewService implements MickyServiceInter{
 		String r_no=request.getParameter("r_no");
 		
 //selectType@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-//		String[] selectType=request.getParameterValues("selectType");
-//		if (selectType!=null) {
-//			for (int i = 0; i < selectType.length; i++) {
-//				System.out.println("selectType[i] : "+selectType[i]);
-//			}
-//		}
-//		
-//		String r_recently="";
-//		String r_score="";
-//		
-//		if (selectType!=null) {
-//			for (String val : selectType) {
-//				if(val.equals("r_recently")) {
-//					r_recently="r_recently";
-//				}else if(val.equals("r_score")) {
-//					r_score="r_score";
-//				}
-//			}
-//		}
-//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@selectType
-//searchType @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-		String[] searchType=request.getParameterValues("searchType");
-		
-		if (searchType!=null) {
-			for (int i = 0; i < searchType.length; i++) {
-				System.out.println("searchType[i] : "+searchType[i]);
+		String[] selectType=request.getParameterValues("selectType");
+		if (selectType!=null) {
+			for (int i = 0; i < selectType.length; i++) {
+				System.out.println("selectType[i] : "+selectType[i]);
 			}
 		}
 		
 		String r_recently="";
 		String r_score="";
-		if (searchType!=null){
-			for (String val : searchType){
-				if (val.equals("r_score")) {
-						model.addAttribute("r_score", "true");
-						r_score="r_score";
-				}else if (val.equals("r_recently")) {
-						model.addAttribute("r_recently", "true");
-						r_recently="r_recently";
+		
+		if (selectType!=null) {
+			for (String val : selectType) {
+				if(val.equals("r_recently")) {
+					model.addAttribute("r_recently", "true");
+					r_recently="r_recently";
+				}else if(val.equals("r_score")) {
+					model.addAttribute("r_score", "true");
+					r_score="r_score";
 				}
 			}
 		}
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@selectType
+//searchType @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//		String[] searchType=request.getParameterValues("searchType");
+//		
+//		if (searchType!=null) {
+//			for (int i = 0; i < searchType.length; i++) {
+//				System.out.println("searchType[i] : "+searchType[i]);
+//			}
+//		}
+//		
+//		String r_recently="";
+//		String r_score="";
+//		if (searchType!=null){
+//			for (String val : searchType){
+//				if (val.equals("r_score")) {
+//						model.addAttribute("r_score", "true");
+//						r_score="r_score";
+//				}else if (val.equals("r_recently")) {
+//						model.addAttribute("r_recently", "true");
+//						r_recently="r_recently";
+//				}
+//			}
+//		}
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ searchType
+		
+//		rb_recently, rb_score
+		String rb_recently=request.getParameter("rb_recently");
+		String rb_score=request.getParameter("rb_score");
+		if (rb_recently!=null || rb_score!=null) {
+			if (rb_recently.equals("true")) {
+				r_recently="r_recently";
+			}
+			if (rb_score.equals("true")) {
+				r_score="r_score";
+			}
+		}
 		
 //		searchKeyword 가져오기
 		String searchKeyword=request.getParameter("searchKeyword");
@@ -100,8 +114,6 @@ public class ReviewService implements MickyServiceInter{
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
 
 //		총 글의 개수 구하기
-//		checkbox
-//searchType @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 		int total=0;
 		if (r_recently.equals("r_recently") && r_score.equals("")) {
 			total=rdao.selectReviewboardTotCount1(searchKeyword);
@@ -112,15 +124,12 @@ public class ReviewService implements MickyServiceInter{
 		}else if (r_recently.equals("") && r_score.equals("")) {
 			total=rdao.selectReviewboardTotCount4(searchKeyword);
 		}
-//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ searchType
 		
 		searchVO.pageCalculate(total);
 		
 		int rowStart=searchVO.getRowStart();
 		int rowEnd=searchVO.getRowEnd();
 		
-//		checkbox
-//searchType @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 		if (r_recently.equals("r_recently") && r_score.equals("")) {
 			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"1"));
 		}else if (r_recently.equals("") && r_score.equals("r_score")) {
@@ -130,7 +139,6 @@ public class ReviewService implements MickyServiceInter{
 		}else if (r_recently.equals("") && r_score.equals("")) {
 			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"4"));
 		}
-//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ searchType		
 		model.addAttribute("totRowcnt", total);
 		model.addAttribute("searchVO", searchVO);
 	}
