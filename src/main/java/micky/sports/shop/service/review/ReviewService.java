@@ -108,6 +108,7 @@ public class ReviewService implements MickyServiceInter{
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
 
 //		총 글의 개수 구하기
+//		select
 //		int total=0;
 //		total=rdao.selectReviewboardTotCount1(searchKeyword);
 //		if ((r_recently==null && r_score==null) || (r_recently.equals("") && r_score.equals(""))) {
@@ -118,23 +119,34 @@ public class ReviewService implements MickyServiceInter{
 //			total=rdao.selectReviewboardTotCount3(searchKeyword);
 //		}
 		
-		int total=0;
-		if ((r_recently.equals("") && r_score.equals("")) || (r_recently.equals("r_recently") && r_score.equals("r_score"))) { //모두 선택하지 않았을 경우
-			total=rdao.selectReviewboardTotCount1(searchKeyword);
-		}else if (r_recently.equals("r_recently") && r_score.equals("")) { //최신만
-			total=rdao.selectReviewboardTotCount2(searchKeyword);
-		}else if (r_recently.equals("") && r_score.equals("r_score")) { //별점만
-			total=rdao.selectReviewboardTotCount3(searchKeyword);
-		}
-//		else if (r_recently.equals("r_recently") && r_score.equals("r_score") ) { //최신만
+//		checkbox로 수정
+//		int total=0;
+//		if ((r_recently.equals("") && r_score.equals("")) || (r_recently.equals("r_recently") && r_score.equals("r_score"))) { //모두 선택하지 않았을 경우
 //			total=rdao.selectReviewboardTotCount1(searchKeyword);
+//		}else if (r_recently.equals("r_recently") && r_score.equals("")) { //최신만
+//			total=rdao.selectReviewboardTotCount2(searchKeyword);
+//		}else if (r_recently.equals("") && r_score.equals("r_score")) { //별점만
+//			total=rdao.selectReviewboardTotCount3(searchKeyword);
+//		}
+		
+//		재수정
+		int total=0;
+		if (r_recently.equals("r_recently") && r_score.equals("")) {
+			total=rdao.selectReviewboardTotCount1(searchKeyword);
+		}else if (r_recently.equals("") && r_score.equals("r_score")) {
+			total=rdao.selectReviewboardTotCount2(searchKeyword);
+		}else if (r_recently.equals("r_recently") && r_score.equals("r_score")) {
+			total=rdao.selectReviewboardTotCount3(searchKeyword);
+		}else if (r_recently.equals("") && r_score.equals("")) {
+			total=rdao.selectReviewboardTotCount4(searchKeyword);
+		}
 				
 		searchVO.pageCalculate(total);
 		
 		int rowStart=searchVO.getRowStart();
 		int rowEnd=searchVO.getRowEnd();
 		
-		
+//		select-option
 //		if ((r_recently==null && r_score==null) || (r_recently.equals("") && r_score.equals(""))) {
 //			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"1"));
 //		}else if (r_recently.equals("r_recently")) {
@@ -143,12 +155,24 @@ public class ReviewService implements MickyServiceInter{
 //			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"3"));
 //		}
 		
-		if ((r_recently.equals("") && r_score.equals("")) || (r_recently.equals("r_recently") && r_score.equals("r_score"))) {
-			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"1"));
-		}else if (r_recently.equals("r_recently") && r_score.equals("")) {
-			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"2"));
-		}else if(r_recently.equals("") && r_score.equals("r_score")) {
-			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"3"));
+//		select-option
+//		if ((r_recently.equals("") && r_score.equals("")) || (r_recently.equals("r_recently") && r_score.equals("r_score"))) {
+//			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"1"));
+//		}else if (r_recently.equals("r_recently") && r_score.equals("")) {
+//			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"2"));
+//		}else if(r_recently.equals("") && r_score.equals("r_score")) {
+//			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"3"));
+//		}
+		
+//		재수정
+		if (r_recently.equals("r_recently") && r_score.equals("")) {
+			rdao.reviewboard(rowStart,rowEnd,searchKeyword,"1");
+		}else if (r_recently.equals("") && r_score.equals("r_score")) {
+			rdao.reviewboard(rowStart,rowEnd,searchKeyword,"2");
+		}else if (r_recently.equals("r_recently") && r_score.equals("r_score")) {
+			rdao.reviewboard(rowStart,rowEnd,searchKeyword,"3");
+		}else if (r_recently.equals("") && r_score.equals("")) {
+			rdao.reviewboard(rowStart,rowEnd,searchKeyword,"4");
 		}
 		
 		model.addAttribute("totRowcnt", total);

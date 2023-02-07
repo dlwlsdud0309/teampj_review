@@ -9,19 +9,69 @@
 	<sql id="includeReviewBoard">
 		<choose>
 			<when test="param4==1">
-				WHERE ROWNO BETWEEN #{param1} AND #{param2}
+				SELECT ROWNUM,R_NO,M_ID,R_TITLE,R_CONTENT,R_ID,R_RETITLE,
+				R_RECONTENT,R_YNN,R_DATE,R_GROUP,R_STEP,R_INDENT,R_FILESRC,R_SCORE
+				FROM (SELECT ROWNUM ROWNO,R.* FROM
+				(SELECT R.R_NO,M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
+				R.R_RECONTENT,R.R_YNN,R.R_DATE,R.R_GROUP,R.R_STEP,R.R_INDENT,R.R_FILESRC,R.R_SCORE
+				FROM MEMBER M, REVIEW R
+				WHERE M.M_ID=R.M_ID
+				ORDER BY R.R_GROUP DESC, R.R_STEP ASC) R
+		        WHERE R_CONTENT LIKE '%'||#{param3}||'%'
+		        )
+		        WHERE ROWNO BETWEEN 1 AND 10
+				<!-- WHERE ROWNO BETWEEN #{param1} AND #{param2} -->
 			</when>
 			<when test="param4==2">
-				WHERE R_CONTENT LIKE '%'||#{param3}||'%'
+				SELECT ROWNUM,R_NO,M_ID,R_TITLE,R_CONTENT,R_ID,R_RETITLE,
+				R_RECONTENT,R_YNN,R_DATE,R_GROUP,R_STEP,R_INDENT,R_FILESRC,R_SCORE
+				FROM (SELECT ROWNUM ROWNO,R.* FROM
+				(SELECT R.R_NO,M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
+				R.R_RECONTENT,R.R_YNN,R.R_DATE,R.R_GROUP,R.R_STEP,R.R_INDENT,R.R_FILESRC,R.R_SCORE
+				FROM MEMBER M, REVIEW R
+				WHERE M.M_ID=R.M_ID
+				ORDER BY R.R_GROUP DESC, R.R_STEP ASC) R
+		        WHERE R_CONTENT LIKE '%'||#{param3}||'%'
+		        )
+		        WHERE ROWNO BETWEEN 1 AND 10
+		        ORDER BY R_SCORE DESC
+				<!-- WHERE R_CONTENT LIKE '%'||#{param3}||'%'
 				AND ROWNO BETWEEN #{param1} AND #{param2}
-				ORDER BY R_GROUP DESC
+				ORDER BY R_GROUP DESC -->
 			</when>
 			<when test="param4==3">
+				SELECT ROWNUM,R_NO,M_ID,R_TITLE,R_CONTENT,R_ID,R_RETITLE,
+				R_RECONTENT,R_YNN,R_DATE,R_GROUP,R_STEP,R_INDENT,R_FILESRC,R_SCORE
+				FROM (SELECT ROWNUM ROWNO,R.* FROM
+				(SELECT R.R_NO,M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
+				R.R_RECONTENT,R.R_YNN,R.R_DATE,R.R_GROUP,R.R_STEP,R.R_INDENT,R.R_FILESRC,R.R_SCORE
+				FROM MEMBER M, REVIEW R
+				WHERE M.M_ID=R.M_ID
+				ORDER BY R.R_GROUP DESC, R.R_STEP ASC) R
 				WHERE R_CONTENT LIKE '%'||#{param3}||'%'
+				)
+				WHERE ROWNO BETWEEN 1 AND 10
+				ORDER BY R_SCORE DESC,R_GROUP DESC
+				<!-- WHERE R_CONTENT LIKE '%'||#{param3}||'%'
 				AND ROWNO BETWEEN #{param1} AND #{param2}
-				ORDER BY R_SCORE DESC, R_GROUP DESC
+				ORDER BY R_SCORE DESC, R_GROUP DESC -->
+			</when>
+			<when test="param==4">
+				SELECT ROWNUM,R_NO,M_ID,R_TITLE,R_CONTENT,R_ID,R_RETITLE,
+				R_RECONTENT,R_YNN,R_DATE,R_GROUP,R_STEP,R_INDENT,R_FILESRC,R_SCORE
+				FROM (SELECT ROWNUM ROWNO,R.* FROM
+				(SELECT R.R_NO,M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
+				R.R_RECONTENT,R.R_YNN,R.R_DATE,R.R_GROUP,R.R_STEP,R.R_INDENT,R.R_FILESRC,R.R_SCORE
+				FROM MEMBER M, REVIEW R
+				WHERE M.M_ID=R.M_ID
+				ORDER BY R.R_GROUP DESC, R.R_STEP ASC) R
+		        WHERE R_CONTENT LIKE '%'||#{param3}||'%'
+		        )
+		        WHERE ROWNO BETWEEN 1 AND 10
+		        
 			</when>
 			<otherwise>
+				
 			</otherwise>
 		</choose>
 	</sql>
@@ -61,8 +111,24 @@
 	</resultMap>
 
 	<select id="reviewboard" parameterType="micky.sports.shop.dto.ReviewDto" resultMap="ReviewDto">
-		<!-- 검색어 넣고 -->
-		SELECT ROWNUM,R_NO,M_ID,R_TITLE,R_CONTENT,R_ID,R_RETITLE,
+		<!-- 검색어 넣고1 -->
+		<include refid="includeReviewBoard"/>
+		
+        <!-- SELECT ROWNUM,R_NO,M_ID,R_TITLE,R_CONTENT,R_ID,R_RETITLE,
+		R_RECONTENT,R_YNN,R_DATE,R_GROUP,R_STEP,R_INDENT,R_FILESRC,R_SCORE
+		FROM (SELECT ROWNUM ROWNO,R.* FROM
+		(SELECT R.R_NO,M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
+		R.R_RECONTENT,R.R_YNN,R.R_DATE,R.R_GROUP,R.R_STEP,R.R_INDENT,R.R_FILESRC,R.R_SCORE
+		FROM MEMBER M, REVIEW R
+		WHERE M.M_ID=R.M_ID
+		ORDER BY R.R_GROUP DESC, R.R_STEP ASC) R
+		
+        WHERE R_CONTENT LIKE '%'||#{param3}||'%'
+        )
+        WHERE ROWNO BETWEEN 1 AND 10 -->
+	
+		<!-- 검색어 넣고2 -->
+		<!-- SELECT ROWNUM,R_NO,M_ID,R_TITLE,R_CONTENT,R_ID,R_RETITLE,
 		R_RECONTENT,R_YNN,R_DATE,R_GROUP,R_STEP,R_INDENT,R_FILESRC,R_SCORE
 		FROM (SELECT ROWNUM ROWNO,R.* FROM
 		(SELECT R.R_NO,M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
@@ -70,7 +136,7 @@
 		FROM MEMBER M, REVIEW R
 		WHERE M.M_ID=R.M_ID
 		ORDER BY R.R_GROUP DESC, R.R_STEP ASC) R)
-		<include refid="includeReviewBoard"/>
+		<include refid="includeReviewBoard"/> -->
 		
 		
 		<!-- 오라클 join -->
@@ -151,17 +217,33 @@
 		ORDER BY R_GROUP DESC, R_STEP ASC -->
 	</select>
 	
-	<select id="selectReviewboardTotCount1" resultType="Integer">
+	<!-- <select id="selectReviewboardTotCount1" resultType="Integer">
 		SELECT COUNT(*) FROM REVIEW
 	</select>
 
 	<select id="selectReviewboardTotCount2" resultType="Integer">
 		SELECT COUNT(*) FROM REVIEW WHERE R_CONTENT LIKE '%'||#{param1}||'%'
-		<!-- ORDER BY R_GROUP DESC, R_STEP ASC -->
+		ORDER BY R_GROUP DESC, R_STEP ASC
 	</select>
 
 	<select id="selectReviewboardTotCount3" resultType="Integer" >
 		SELECT COUNT(*) FROM REVIEW WHERE R_CONTENT LIKE '%'||#{param1}||'%'
-		<!-- ORDER BY R_SCORE DESC, R_GROUP DESC -->
+		ORDER BY R_SCORE DESC, R_GROUP DESC
+	</select> -->
+	
+	<select id="selectReviewboardTotCount1" resultType="Integer">
+		SELECT COUNT(*) FROM REVIEW WHERE R_CONTENT LIKE '%'||#{param1}||'%'
+	</select>
+	
+	<select id="selectReviewboardTotCount2" resultType="Integer">
+		SELECT COUNT(*) FROM REVIEW WHERE R_CONTENT LIKE '%'||#{param1}||'%'
+	</select>
+	
+	<select id="selectReviewboardTotCount3" resultType="Integer">
+		SELECT COUNT(*) FROM REVIEW WHERE R_CONTENT LIKE '%'||#{param1}||'%'
+	</select>
+	
+	<select id="selectReviewboardTotCount4" resultType="Integer">
+		SELECT COUNT(*) FROM REVIEW
 	</select>
 </mapper>
