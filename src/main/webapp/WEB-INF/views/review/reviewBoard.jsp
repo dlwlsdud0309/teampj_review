@@ -25,6 +25,15 @@
 			
 		});
 	});
+	
+	function soulution(${list.r_score}){
+		var avgScore=0;
+		var sum=0;
+		for (var i = 0; i < ${list.r_score}.length; i++) {
+			sum+=${list.r_score[i]};
+		}
+		return avgScore=${sum/list.r_score}.length;
+	}
 </script>
 </head>
 
@@ -36,44 +45,57 @@
 <!-- 임시로 지정 -->
 <a href="reviewMylistview" >마이페이지</a>
 	
-	
 <div class="review_table">
-	<!-- 검색기능 추가 -->
-	<div class="search">
-		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-		<!-- select -->
-		<!-- 추천순, 최신순, 별점순 -->
-		<select name="selectType" >
-			<option ${param.selectType=="r_recently"?"selected":"" } value="r_recently">최신순</option>
-			<option ${param.selectType=="r_score"?"selected":"" } value="r_score">별점순</option>
-		</select>
-		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-		<!-- checkbox -->
-		<%-- <c:choose>
-			<c:when test="${r_recently }">
-				<input type="checkbox" name="searchType" value="r_recently" checked /> 최신순
-			</c:when>
-			<c:otherwise>
-				<input type="checkbox" name="searchType" value="r_recently" /> 최신순
-			</c:otherwise>
-		</c:choose>
-		<c:choose>
-			<c:when test="${r_score }">
-				<input type="checkbox" name="searchType" value="r_score" checked /> 별점순
-			</c:when>
-			<c:otherwise>
-				<input type="checkbox" name="searchType" value="r_score" /> 별점순
-			</c:otherwise>
-		</c:choose> --%>
-		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-		<input type="text" name="searchKeyword" placeholder="리뷰 키워드 검색" value="${resk }"/>
-		<input type="submit" value="검색" />
-		<br />
-		<br />
-	</div>	
+		<div class="selectandsearch_box">
+			<div class="select_box">
+				<h3>리뷰</h3>
+			</div>
+			<div><a class="atag_reviewwrite" href="reviewWriteview">리뷰작성</a></div>
+			<br />
+			<div class="avg_star">
+				<div class="tablerow">
+					<div class="tablecell">
+					<span class="user_date">
+						<span class="star">
+							★★★★★
+							<span id="star2" style="width:${avgScore*20}%">★★★★★</span>
+						</span>
+					</span>
+					</div>
+					<div class="tablerow">
+						<b>&nbsp;&nbsp;&nbsp;&nbsp;총점</b>
+					</div>
+				</div>
+				<div>
+					<b>${totRowcnt }개의 REVIEWS</b>
+				</div>
+			</div>
+			<br />
+		</div>
+	
+	<hr />	
+</div>
+<div class="clear" ></div>
+<div class="review_table">
+		<form action="reviewBoard" method="post">
+	<div class="row">
+		<div class="cell col1">
+		<!-- 검색기능 추가 -->
+			<select name="selectType" >
+						<option ${param.selectType=="r_recently"?"selected":"" } value="r_recently">최신순</option>
+						<option ${param.selectType=="r_score"?"selected":"" } value="r_score">별점순</option>
+			</select>
+		</div>
+		<div class="cell col2">
+			<div class="search_box">
+				<input type="text" name="searchKeyword" placeholder="리뷰 키워드 검색" size="10" value="${resk }"/>
+				<input type="submit" value="검색" />
+			</div>
+		</div>
+	</div>
+		</form>
 <c:forEach items="${review_list }" var="list">
 	<div class="row">
-		
 		<div class="cell col1">
 			<div class="review_total">
 				<div class="review_box">
@@ -81,14 +103,21 @@
 						<input type="hidden" value="${list.r_no }" />
 						<p>${list.memberDto.m_id }</p>
 						<p>${list.r_title }</p>
-						<p class="user_date">
-							<span class="star">
-								★★★★★
-								<span id="star2" style="width:${list.r_score*16}%">★★★★★</span>
-								<!-- style="width:${list.r_score*16}%"를 15로 지정했을시 별이 덜 채워짐 -->
-								${list.r_score }
-							</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>${list.m_id }</span>
-						</p>
+						<div class="tablerow">
+							<div class="tablecell">
+							<span class="user_date">
+								<span class="star">
+									★★★★★
+									<span id="star2" style="width:${list.r_score*20}%">★★★★★</span>
+								</span>
+							</span>
+							</div>
+							<div class="tablerow">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;${list.m_id }</span>
+							</div>
+						</div>
+						
+						
 						<div class="product_option">
 							<strong>구매옵션</strong>&nbsp;<span>색상</span>&nbsp;<span>사이즈</span>
 						</div>
@@ -141,7 +170,7 @@
 		</div>
 	</div>
 </c:forEach>
-<button type="button" onclick="location.href='reviewWriteview'">리뷰작성</button>
+
 <br />
 
 <!-- 페이징 처리 -->
@@ -170,12 +199,11 @@
 			<a href="reviewBoard?page=${searchVO.totPage }">&nbsp;&nbsp;&nbsp;&nbsp;>></a>
 		</c:if>
 	</div>
-	
-	
 </form>
 	</div>
-
-
-
+<br />
+<br />
+<br />
+<br />
 </body>
 </html>
