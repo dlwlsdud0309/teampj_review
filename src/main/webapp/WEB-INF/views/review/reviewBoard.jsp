@@ -26,18 +26,10 @@
 		});
 	});
 	
-	function soulution(${list.r_score}){
-		var avgScore=0;
-		var sum=0;
-		for (var i = 0; i < ${list.r_score}.length; i++) {
-			sum+=${list.r_score[i]};
-		}
-		return avgScore=${sum/list.r_score}.length;
-	}
 </script>
 </head>
 
-<body onload="callpoint();">
+<body>
 <h3>Reviewboard</h3>
 <!-- 오류 -->
 <%-- <a href="reviewMylistview?account=${review_mylist.m_id }" >마이페이지</a> --%>
@@ -145,7 +137,7 @@
 				<!-- 수정/삭제 -->
 				<a class="atag" href="reviewPopupcontentview?r_no=${list.r_no }">수정</a>
 				<a class="atag" href="reviewDelete?r_no=${list.r_no }">삭제</a>
-				<a class="atag" href="replyview?r_no=${list.r_no }">답글</a>
+				<a class="atag" href="reviewPopupReplycontentview?r_no=${list.r_no }">답글</a>
 
 			</div>
 		</div>

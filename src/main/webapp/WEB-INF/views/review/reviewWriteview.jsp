@@ -50,7 +50,7 @@
 					<td class="star">
 						★★★★★
 						<span class="star2">★★★★★</span>
-						<input type="range" onclick="redeptlist(this);" oninput="drawStar(this)" value="1" step="1" min="0" max="5"/>
+						<input type="range" onclick="redeptlist(this);" oninput="drawStar(this)" value="1" step="1" min="0" max="10"/>
 					</td>
 				</tr>
 				<tr>

@@ -126,7 +126,7 @@ public class ReviewController {
 	}
 	
 //	답글달기 폼
-	@RequestMapping("/reviewReplyview")
+	@RequestMapping("/reviewPopupReplycontentview")
 	public String reviewReplyview(HttpServletRequest request, Model model) {
 		System.out.println("=====reviewReplyview====");
 		
@@ -134,6 +134,7 @@ public class ReviewController {
 		mickyServiceInter=new ReviewReplyviewService(sqlSession);
 		mickyServiceInter.execute(model);
 		
-		return "review/reviewBoard";
+		return "review/reviewPopupReplycontentview";
 	}
+	
 }
