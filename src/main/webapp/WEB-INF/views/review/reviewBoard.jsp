@@ -94,6 +94,9 @@
 		</div>
 	</div>
 		</form>
+		
+<c:set var="totalStar" value="0" />
+<c:set var="avgStar" value="0" />
 <c:forEach items="${review_list }" var="list">
 	<div class="row">
 		<div class="cell col1">
@@ -109,6 +112,7 @@
 								<span class="star">
 									★★★★★
 									<span id="star2" style="width:${list.r_score*20}%">★★★★★</span>
+									<c:set var="totalStar" value="${totalStar+list.r_score }"/>
 								</span>
 							</span>
 							</div>
@@ -124,29 +128,6 @@
 						<div class="user_content" onclick="user_content()"> <!-- commend -->
 							<p class="u_content">${list.r_content }</p> 
 						</div>
-						
-						<!-- lebel 이용한 답글란 toggle -->
-						<!-- <div class="reply_div">
-							<label class="reply_label" for="replyToggle">답글</label>
-							<input id="replyToggle" type="checkbox" />
-							<div id="reply_box">
-								<table>
-									<tr>
-										<td class="left">작성자</td>
-										<td><input type="text" name="r_id" /></td>
-									</tr>
-									<tr>
-										<td class="left">제목</td>
-										<td><input type="text" name="r_retitle" /></td>
-									</tr>
-									<tr>
-										<td class="left">내용</td>
-										<td><textarea name="r_recontent" rows="10"></textarea></td>
-									</tr>
-								</table>
-							</div>
-						</div> --> <!-- lebel 이용한 답글란 toggle -->
-						
 					</div>
 				</div>
 			</div>
@@ -169,8 +150,10 @@
 			</div>
 		</div>
 	</div>
+	
 </c:forEach>
-
+totalStar : <c:out value="${totalStar }"/>
+avgStar : <c:out value="${avgStar+(totalStar/list_r_score.length) }"/>
 <br />
 
 <!-- 페이징 처리 -->
