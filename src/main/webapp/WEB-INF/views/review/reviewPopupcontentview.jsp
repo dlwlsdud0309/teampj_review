@@ -39,7 +39,7 @@
 	<div id="title_content">
 		<!-- <form action="reviewPopupcontentupdate" method="post" enctype="multipart/form-data"> -->
 
-		<form action="reviewPopupcontentmodify" method="post">
+		<form action="reviewPopupcontentmodify" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="r_no" value="${popupview.r_no }" />
 			<h3 class="popup_review_title">상품리뷰쓰기</h3>
 			<div>
@@ -72,8 +72,7 @@
 					<tr>
 						<td class="left">파일첨부</td>
 						<td colspan="2">
-							파일
-							<!-- <input type="file" name="r_filesrc" /> -->
+							<input type="file" name="r_filesrc" />
 						</td>
 					</tr>
 					<tr>

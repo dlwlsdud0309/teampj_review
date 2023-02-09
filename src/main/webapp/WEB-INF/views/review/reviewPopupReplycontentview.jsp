@@ -26,7 +26,7 @@
 			<input type="hidden" name="r_step" value="${replyview.r_step }" />
 			<input type="hidden" name="r_indent" value="${replyview.r_indent }" />
 			<input type="hidden" name="r_score" value="${replyview.r_score }" />
-			<h3 class="popup_review_title">상품리뷰쓰기</h3>
+			<h3 class="popup_review_title">답글쓰기</h3>
 			<div>
 				<strong>리뷰 리워드 혜택 제공</strong> <br />
 				텍스트 리뷰 : 500M | 사진 첨부 리뷰 : 1,000M 적립
@@ -38,6 +38,10 @@
 						<td class="left">작성자</td>
 						<td>${replyview.m_id }</td>
 					</tr>
+					<tr>
+						<td class="left">관리자</td>
+						<td><input type="text" name="r_id" /></td>
+					</tr>
 					<!-- <tr>
 						reviewdao.xml에서 'TEMP'로 사용 중
 					
@@ -47,18 +51,15 @@
 					</tr> -->
 					<tr>
 						<td class="left">제목</td>
-						<td><input type="text" name="r_title" value="${replyview.r_title }" />
+						<td>
+							<input type="text" name="r_retitle" value="${replyview.r_title }" />
 						</td>
 					</tr>
 					<tr>
 						<td class="left">내용</td>
 						<td>
-							<textarea name="r_content" rows="10">${replyview.r_content }</textarea>
+							<textarea name="r_recontent" rows="10">${replyview.r_content }</textarea>
 						</td>
-					</tr>
-					<tr>
-						<td class="left">파일첨부</td>
-						<td><input type="file" name="r_filesrc" /></td>
 					</tr>
 					<tr>
 						<td colspan="2">

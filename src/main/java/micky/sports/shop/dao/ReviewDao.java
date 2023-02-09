@@ -23,11 +23,10 @@ public interface ReviewDao {
 	
 //	public ReviewDto popupupdate(String r_no);
 	
-//	public void modify(String r_no, String m_id, String r_title, String r_content);
-	public void modify(String r_no, String r_title, String r_content, String r_score);
-//	public void modify(String r_no, String r_title, String r_content);
+	public void modify(String r_no, String r_title, String r_content, String r_score, String r_filesrc);
 	
 	public ReviewDto replyview(String r_no);
+	public ReviewDto reply(String r_no, String r_id, String r_retitle, String r_recontent);
 	
 	public ReviewDto getReview(String r_no);
 

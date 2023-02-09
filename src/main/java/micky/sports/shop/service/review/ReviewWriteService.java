@@ -57,23 +57,16 @@ public class ReviewWriteService implements MickyServiceInter{
 		String r_title=req.getParameter("r_title");
 		String r_content=req.getParameter("r_content");
 		String r_filesrc=req.getFilesystemName("r_filesrc");
+		String r_score=req.getParameter("r_score");
 		
 		if (r_filesrc==null) {
 			r_filesrc="";
 		}
 		
-		
-//		리뷰 별점
-		String r_score=req.getParameter("r_score");
-		
 		HttpSession session=request.getSession();
 		session.removeAttribute("r_score");
 		
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
-//		rdao.write(r_title,r_content,r_filesrc);
-		
-		
-
 		
 		rdao.write(m_id,r_title,r_content,r_filesrc,r_score);
 		
