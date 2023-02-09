@@ -7,13 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import micky.sports.shop.service.MickyServiceInter;
 import micky.sports.shop.service.review.ReviewDeleteService;
 import micky.sports.shop.service.review.ReviewMylistviewService;
 import micky.sports.shop.service.review.ReviewPopupcontentmodifyService;
-import micky.sports.shop.service.review.ReviewPopupcontentupdateService;
 import micky.sports.shop.service.review.ReviewPopupcontentviewService;
 import micky.sports.shop.service.review.ReviewReplyService;
 import micky.sports.shop.service.review.ReviewReplyviewService;
