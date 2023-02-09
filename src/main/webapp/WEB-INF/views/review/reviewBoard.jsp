@@ -26,9 +26,9 @@
 		});
 		
 		/* 답글버튼 눌렀을 때 작동하도록 */
-		$("#atag_reply").click(function () {
+		$(".atag_reply").click(function () {
 			/* alert("하이") */
-			$(this).toggleClass("reply_box");
+			/* $(this).hide(".reply_box"); */
 		})
 	});
 	
