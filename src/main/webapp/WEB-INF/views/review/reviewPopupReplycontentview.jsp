@@ -9,19 +9,23 @@
 <script src="../resources/js/jquery-3.6.1.min.js"></script>
 <script src="../resources/js/jquery.bpopup.min.js"></script>
 
+
 </head>
 <body>
 <h3>reviewPopupReplycontentview</h3>
-<h1>리뷰 수정하기</h1>
+<h1>리뷰 답글달기</h1>
 <input type="button" value="리뷰작성" onclick="rWrite();" />
 
 
 <div id="styleID_ReviewWriteview" class="styleClassReviewWriteview">
 	<div id="title_content">
 		<!-- <form action="reviewPopupcontentupdate" method="post" enctype="multipart/form-data"> -->
-
 		<form action="reviewPopupreply" method="post">
 			<input type="hidden" name="r_no" value="${replyview.r_no }" />
+			<input type="hidden" name="r_group" value="${replyview.r_group }" />
+			<input type="hidden" name="r_step" value="${replyview.r_step }" />
+			<input type="hidden" name="r_indent" value="${replyview.r_indent }" />
+			<input type="hidden" name="r_score" value="${replyview.r_score }" />
 			<h3 class="popup_review_title">상품리뷰쓰기</h3>
 			<div>
 				<strong>리뷰 리워드 혜택 제공</strong> <br />

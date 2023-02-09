@@ -166,6 +166,7 @@
 	<update id="modify">
 		UPDATE REVIEW SET R_TITLE=#{param2},
 		R_CONTENT=#{param3}
+		<!-- R_CONTENT=#{param3}, R_SCORE=#{param4} -->
 		WHERE R_NO=#{param1}
 	</update>
 	

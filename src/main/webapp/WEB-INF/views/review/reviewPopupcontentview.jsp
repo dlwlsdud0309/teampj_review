@@ -8,6 +8,25 @@
 <link rel="stylesheet" href="../resources/css/reviewstyle.css" />
 <script src="../resources/js/jquery-3.6.1.min.js"></script>
 <script src="../resources/js/jquery.bpopup.min.js"></script>
+<script src="../resources/js/scriptjsp.js"></script>
+
+<script>
+  
+	function redeptlist(target) {
+		alert("target : "+target.value);
+
+		//var pointvalue=document.getElementById("point").value;
+		//$('input#starInput[name=r_score]').attr('value',target.value);	
+		$('#starInput[name=r_score]').attr('value',target.value);	
+	}
+	
+	function getvalue(target) {
+		alert(target.value);
+		//컨트롤러에 전달해서 session에 보관해보자
+		//location.href="starpoint?point="+target.value;
+		//document.getElementById("data").innerHTML=tmpvalue;
+	} 
+</script>
 
 </head>
 <body>
@@ -27,9 +46,14 @@
 				<strong>리뷰 리워드 혜택 제공</strong> <br />
 				텍스트 리뷰 : 500M | 사진 첨부 리뷰 : 1,000M 적립
 			</div>
-			<br />
-			<br />
 				<table>
+					<tr id="data">
+						<td class="star">
+							★★★★★
+							<span class="star2" style="width:${popupview.r_score}%">★★★★★</span>
+							<input type="range" onclick="redeptlist(this);" oninput="drawStar(this)" value="1" step="1" min="0" max="5"/>
+						</td>
+					</tr>
 					<tr>
 						<td class="left">작성자</td>
 						<td>${popupview.m_id }</td>
@@ -54,7 +78,9 @@
 					</tr>
 					<tr>
 						<td class="left">파일첨부</td>
-						<td><input type="file" name="r_filesrc" /></td>
+						<td>
+							파일<!-- <input type="file" name="r_filesrc" /> -->
+						</td>
 					</tr>
 					<tr>
 						<td colspan="2">

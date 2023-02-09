@@ -27,10 +27,10 @@
 		//location.href="starpoint?point="+target.value;
 		//document.getElementById("data").innerHTML=tmpvalue;
 	} 
-	</script>
+</script>
 	
 </head>
-<body">
+<body>
 <h3>reviewWriteview</h3>
 <h1>리뷰 작성하기</h1>
 
@@ -50,7 +50,7 @@
 					<td class="star">
 						★★★★★
 						<span class="star2">★★★★★</span>
-						<input type="range" onclick="redeptlist(this);" oninput="drawStar(this)" value="1" step="1" min="0" max="10"/>
+						<input type="range" onclick="redeptlist(this);" oninput="drawStar(this)" value="1" step="1" min="0" max="5"/>
 					</td>
 				</tr>
 				<tr>
