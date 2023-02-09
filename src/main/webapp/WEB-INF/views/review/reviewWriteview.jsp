@@ -72,11 +72,15 @@
 				</tr>
 				<tr>
 					<td class="left">내용</td>
-					<td colspan="2"><textarea name="r_content" rows="10"></textarea></td>
+					<td colspan="2">
+						<textarea name="r_content" rows="10"></textarea>
+					</td>
 				</tr>
 				<tr>
 					<td class="left">파일첨부</td>
-					<td colspan="2"><input type="file" name="r_filesrc" /></td>
+					<td colspan="2">
+						<input type="file" name="r_filesrc" />
+					</td>
 				</tr>
 				<tr>
 					<td colspan="3">
