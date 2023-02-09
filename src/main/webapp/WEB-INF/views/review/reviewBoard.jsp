@@ -1,9 +1,3 @@
-<%@page import="java.sql.DriverManager"%>
-<%@page import="micky.sports.shop.dto.ReviewDto"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="micky.sports.shop.db.DBCon"%>
-<%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -26,10 +20,10 @@
 		});
 		
 		/* 답글버튼 눌렀을 때 작동하도록 */
-		$(".atag_reply").click(function () {
-			/* alert("하이") */
-			/* $(this).hide(".reply_box"); */
-		})
+		/* $(".atag_reply").click(function () {
+			alert("하이")
+			$(this).hide(".reply_box");
+		}) */
 	});
 	
 </script>
@@ -127,7 +121,7 @@
 						</div>
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 답변창 만들기 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 						<div class="reply_box">
-							<p>답변창</p>
+							왜 안되는거야
 						</div>
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 						
