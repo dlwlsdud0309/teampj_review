@@ -7,14 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import micky.sports.shop.service.MickyServiceInter;
 import micky.sports.shop.service.review.ReviewDeleteService;
 import micky.sports.shop.service.review.ReviewMylistviewService;
 import micky.sports.shop.service.review.ReviewPopupcontentmodifyService;
-import micky.sports.shop.service.review.ReviewPopupcontentupdateService;
 import micky.sports.shop.service.review.ReviewPopupcontentviewService;
+import micky.sports.shop.service.review.ReviewReplyService;
 import micky.sports.shop.service.review.ReviewReplyviewService;
 import micky.sports.shop.service.review.ReviewService;
 import micky.sports.shop.service.review.ReviewWriteService;
@@ -30,8 +29,8 @@ public class ReviewController {
 	
 	
 //	임시 메인페이지
-//	@RequestMapping(method = RequestMethod.POST, value = "/reviewBoard")
 	@RequestMapping("/reviewBoard")
+//	@RequestMapping(method = RequestMethod.POST, value = "/reviewBoard")
 	public String reviewBoard(HttpServletRequest request,
 			SearchVO searchVO,Model model) {
 		System.out.println("=====reviewBoard====");
@@ -135,6 +134,18 @@ public class ReviewController {
 		mickyServiceInter.execute(model);
 		
 		return "review/reviewPopupReplycontentview";
+	}
+	
+//	답글달기
+	@RequestMapping("/reviewPopupreply")
+	public String reviewPopupreply(HttpServletRequest request, Model model) {
+		System.out.println("=====reviewPopupreply====");
+		
+		model.addAttribute("request", request);
+		mickyServiceInter=new ReviewReplyService(sqlSession);
+		mickyServiceInter.execute(model);
+		
+		return "redirect:reviewBoard";
 	}
 	
 }

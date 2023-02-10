@@ -9,20 +9,24 @@
 <script src="../resources/js/jquery-3.6.1.min.js"></script>
 <script src="../resources/js/jquery.bpopup.min.js"></script>
 
+
 </head>
 <body>
 <h3>reviewPopupReplycontentview</h3>
-<h1>리뷰 수정하기</h1>
+<h1>리뷰 답글달기</h1>
 <input type="button" value="리뷰작성" onclick="rWrite();" />
 
 
 <div id="styleID_ReviewWriteview" class="styleClassReviewWriteview">
 	<div id="title_content">
 		<!-- <form action="reviewPopupcontentupdate" method="post" enctype="multipart/form-data"> -->
-
 		<form action="reviewPopupreply" method="post">
 			<input type="hidden" name="r_no" value="${replyview.r_no }" />
-			<h3 class="popup_review_title">상품리뷰쓰기</h3>
+			<input type="hidden" name="r_group" value="${replyview.r_group }" />
+			<input type="hidden" name="r_step" value="${replyview.r_step }" />
+			<input type="hidden" name="r_indent" value="${replyview.r_indent }" />
+			<input type="hidden" name="r_score" value="${replyview.r_score }" />
+			<h3 class="popup_review_title">답글쓰기</h3>
 			<div>
 				<strong>리뷰 리워드 혜택 제공</strong> <br />
 				텍스트 리뷰 : 500M | 사진 첨부 리뷰 : 1,000M 적립
@@ -34,6 +38,10 @@
 						<td class="left">작성자</td>
 						<td>${replyview.m_id }</td>
 					</tr>
+					<tr>
+						<td class="left">관리자</td>
+						<td><input type="text" name="r_id" /></td>
+					</tr>
 					<!-- <tr>
 						reviewdao.xml에서 'TEMP'로 사용 중
 					
@@ -43,18 +51,15 @@
 					</tr> -->
 					<tr>
 						<td class="left">제목</td>
-						<td><input type="text" name="r_title" value="${replyview.r_title }" />
+						<td>
+							<input type="text" name="r_retitle" value="${replyview.r_title }" />
 						</td>
 					</tr>
 					<tr>
 						<td class="left">내용</td>
 						<td>
-							<textarea name="r_content" rows="10">${replyview.r_content }</textarea>
+							<textarea name="r_recontent" rows="10">${replyview.r_content }</textarea>
 						</td>
-					</tr>
-					<tr>
-						<td class="left">파일첨부</td>
-						<td><input type="file" name="r_filesrc" /></td>
 					</tr>
 					<tr>
 						<td colspan="2">

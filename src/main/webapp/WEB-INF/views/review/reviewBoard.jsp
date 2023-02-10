@@ -1,9 +1,3 @@
-<%@page import="java.sql.DriverManager"%>
-<%@page import="micky.sports.shop.dto.ReviewDto"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="micky.sports.shop.db.DBCon"%>
-<%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -24,6 +18,12 @@
 			$(this).toggleClass("u_content").toggleClass("u_contentGray");
 			
 		});
+		
+		/* 답글버튼 눌렀을 때 작동하도록 */
+		/* $(".atag_reply").click(function () {
+			alert("하이")
+			$(this).hide(".reply_box");
+		}) */
 	});
 	
 </script>
@@ -74,8 +74,8 @@
 		<div class="cell col1">
 		<!-- 검색기능 추가 -->
 			<select name="selectType" >
-						<option ${param.selectType=="r_recently"?"selected":"" } value="r_recently">최신순</option>
-						<option ${param.selectType=="r_score"?"selected":"" } value="r_score">별점순</option>
+				<option ${param.selectType=="r_recently"?"selected":"" } value="r_recently">최신순</option>
+				<option ${param.selectType=="r_score"?"selected":"" } value="r_score">별점순</option>
 			</select>
 		</div>
 		<div class="cell col2">
@@ -113,13 +113,19 @@
 							</div>
 						</div>
 						
-						
 						<div class="product_option">
 							<strong>구매옵션</strong>&nbsp;<span>색상</span>&nbsp;<span>사이즈</span>
 						</div>
 						<div class="user_content" onclick="user_content()"> <!-- commend -->
 							<p class="u_content">${list.r_content }</p> 
 						</div>
+<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 답변창 만들기 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+						<div class="reply_box">
+							왜 안되는거야
+						</div>
+<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+						
+						
 					</div>
 				</div>
 			</div>
@@ -137,7 +143,11 @@
 				<!-- 수정/삭제 -->
 				<a class="atag" href="reviewPopupcontentview?r_no=${list.r_no }">수정</a>
 				<a class="atag" href="reviewDelete?r_no=${list.r_no }">삭제</a>
-				<a class="atag" href="reviewPopupReplycontentview?r_no=${list.r_no }">답글</a>
+				
+				
+				<!-- function 사용한 답글창 열기 -->
+				<%-- <a class="atag" href="reviewPopupReplycontentview?r_no=${list.r_no }">답글</a> --%>
+				<a class="atag" id="atag_reply" href="#">답글</a>
 
 			</div>
 		</div>

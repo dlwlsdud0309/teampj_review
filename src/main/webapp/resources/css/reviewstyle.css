@@ -68,6 +68,9 @@ div{
 .paging>a:hover{
 	text-decoration: none;
 }
+/* .reply_box{
+	display: hidden;
+} */
 
 /* =============== 별점 =============== */
 .star {
