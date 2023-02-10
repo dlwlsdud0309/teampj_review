@@ -47,6 +47,9 @@
 <a href="reviewMylistview?account=${sessionScope.loginid }">${sessionScope.loginid } 님</a>
 </c:if>
 
+<br />
+로그인한 아이디 : <%=session.getAttribute("loginid") %>
+
 <br /> 
 
 <a href="reviewMylistview" >마이페이지</a>
@@ -155,12 +158,17 @@
 			</div>
 			<div>
 <%
-if(session.getAttribute("loginid")!=null){
+//if(session.getAttribute("loginid")!=null){
+if(loginid.equals("micky")){
 %>
 				<!-- 수정/삭제 -->
 				<a class="atag" href="reviewPopupcontentview?r_no=${list.r_no }">수정</a>
 				<a class="atag" href="reviewDelete?r_no=${list.r_no }">삭제</a>
 <%
+}else{
+%>
+어떻게해야할까
+<%	
 }
 %>
 				
