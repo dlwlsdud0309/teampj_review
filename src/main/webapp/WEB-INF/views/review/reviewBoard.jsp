@@ -20,12 +20,21 @@
 			
 		});
 		
+		$(".atag_reviewwrite").click(function(){
+			var userid='<%=(String)session.getAttribute("loginid")%>';
+			if(userid=='null'){
+				alert("로그인이 필요합니다.");
+				return false;
+			}
+		});
 		/* 답글버튼 눌렀을 때 작동하도록 */
 		/* $(".atag_reply").click(function () {
 			alert("하이")
 			$(this).hide(".reply_box");
 		}) */
 	});
+	
+	
 	
 </script>
 </head>
@@ -49,6 +58,9 @@
 
 <br />
 로그인한 아이디 : <%=session.getAttribute("loginid") %>
+<br />
+<%String id=(String)session.getAttribute("loginid"); %>
+<%=id %>
 
 <br /> 
 
@@ -126,7 +138,7 @@
 							</span>
 							</div>
 							<div class="tablerow">
-								<span>&nbsp;&nbsp;&nbsp;&nbsp;${list.m_id }</span>
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;${list.memberDto.m_id }</span>
 							</div>
 						</div>
 						
@@ -157,25 +169,19 @@
 				<img src="../resources/reviewupload/${list.r_filesrc }" width="100" alt="" />
 			</div>
 			<div>
-<%
-//if(session.getAttribute("loginid")!=null){
-if(loginid.equals("micky")){
-%>
 				<!-- 수정/삭제 -->
-				<a class="atag" href="reviewPopupcontentview?r_no=${list.r_no }">수정</a>
+<c:if test="${sessionScope.loginid eq list.memberDto.m_id }">
+				<a class="atag" id="practice" href="reviewPopupcontentview?r_no=${list.r_no }">수정</a>
 				<a class="atag" href="reviewDelete?r_no=${list.r_no }">삭제</a>
-<%
-}else{
-%>
-어떻게해야할까
-<%	
-}
-%>
+
+</c:if>
 				
 				<!-- function 사용한 답글창 열기 -->
 				<%-- <a class="atag" href="reviewPopupReplycontentview?r_no=${list.r_no }">답글</a> --%>
+<c:if test="${sessionScope.loginid eq 'admintest' }">
+				<a class="atag" href="reviewDelete?r_no=${list.r_no }">삭제</a>
 				<a class="atag" id="atag_reply" href="#">답글</a>
-
+</c:if>
 			</div>
 		</div>
 	</div>

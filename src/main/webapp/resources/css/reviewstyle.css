@@ -68,6 +68,9 @@ div{
 .paging>a:hover{
 	text-decoration: none;
 }
+.atag{
+	visibility: hidden;
+}
 /* .reply_box{
 	display: hidden;
 } */
