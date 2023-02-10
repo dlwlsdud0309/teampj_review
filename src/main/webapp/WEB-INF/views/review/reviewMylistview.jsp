@@ -51,7 +51,7 @@
 			<div class="row">
 				<div class="cell col11">
 					<div class="reviewListview_img_box">
-						<a href="reviewBoard"><img src="../resources/img/NT7UN10J_NT7UN10J_primary.jpg" width="200" /></a>
+						<a href="reviewBoard"><img src="../resources/img/productimg/NJ1DN81K_NJ1DN81K_primary.jpg" width="200" /></a>
 					</div>
 					<div>
 						<button type="button" onclick="location.href='reviewPopupcontentview?r_no=${mylist.r_no }'">수정</button>

@@ -17,4 +17,8 @@ public interface Member {
 			int m_age, String m_gender, int m_cash, String m_filesrc);
 	public void memberdelete(String m_id);
 	public ArrayList<Qna_MemberDto> getqnalist(String m_id);
+	public void qnawrite(String q_mtitle,String q_mcontent,String q_mid);
+	public Qna_MemberDto qnadetail(int q_mno);
+	public int joinnicknamecheck(String m_name2);
+	public MemberDto getimg(String m_id);
 }

@@ -15,7 +15,7 @@ function checkid(){
 		alert("중복검사할아이디를입력하세요");
 		jf.m_id.focus();
 	}else {
-		window.location.href="/micky_SportsWear/joinidcheck?overlapcheck_id=" + overlapcheck_id;
+		window.location.href="/micky_SportsWear/member/joinidcheck?overlapcheck_id=" + overlapcheck_id;
 	}
 }
 function checkinfo(){

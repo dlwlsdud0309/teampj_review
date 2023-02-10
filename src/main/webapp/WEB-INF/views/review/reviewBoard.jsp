@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%String loginid = (String)session.getAttribute("loginid"); %> <!-- 로그인된아이디 스트링으로가져오기 --> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,6 +36,19 @@
 <%-- <a href="reviewMylistview?account=${review_mylist.m_id }" >마이페이지</a> --%>
 <!-- <a href="reviewListview">TEMP님</a> -->
 <!-- 임시로 지정 -->
+<c:if test="${empty sessionScope.loginid }">
+   <a href="../member/loginform">login</a> 
+   |  <a href="">join</a>
+
+</c:if>
+<c:if test="${not empty sessionScope.loginid }">
+   <a href="../member/logout">logout</a> 
+<br />
+<a href="reviewMylistview?account=${sessionScope.loginid }">${sessionScope.loginid } 님</a>
+</c:if>
+
+<br /> 
+
 <a href="reviewMylistview" >마이페이지</a>
 	
 <div class="review_table">
@@ -140,10 +154,15 @@
 				<img src="../resources/reviewupload/${list.r_filesrc }" width="100" alt="" />
 			</div>
 			<div>
+<%
+if(session.getAttribute("loginid")!=null){
+%>
 				<!-- 수정/삭제 -->
 				<a class="atag" href="reviewPopupcontentview?r_no=${list.r_no }">수정</a>
 				<a class="atag" href="reviewDelete?r_no=${list.r_no }">삭제</a>
-				
+<%
+}
+%>
 				
 				<!-- function 사용한 답글창 열기 -->
 				<%-- <a class="atag" href="reviewPopupReplycontentview?r_no=${list.r_no }">답글</a> --%>

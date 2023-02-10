@@ -8,24 +8,35 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>조인은 아직...</h2>
+<c:if test="${empty sessionScope.loginid }">
+   <a href="../member/loginform">login</a> 
+   |  <a href="../member/joinform">join</a>
+</c:if>
+ <c:if test="${not empty sessionScope.loginid }">
+    <a href="../member/logout">logout</a> 
+ <br />
+ ${sessionScope.loginid } 님, 로그인상태입니다 ദ്ദി*ˊᗜˋ*)
+ </c:if>
+ 
 <h3>상품리스트</h3>
-<table width="500" border="1">
-	<tr>
-		<td>상품</td>
-		<td>이름</td>
-	</tr>
+<div class="productNormalPackage">
+	<ul class="productList">
 	<c:forEach items="${productlsit }" var="plist">
-		<tr>
-			<td>
-			<img src="../resources/img/productimg/${plist.p_filesrc }.jpg" width="50" alt="" />
-			</td>
-			<td>
-			<a href="productDetail?pname=${plist.p_name }">
-			${plist.p_name }</a>
-			</td>
-		</tr>
+	<li>
+		<div class="pdtthumbnail" >
+			<a href="productDetail?pname=${plist.p_name }&pfilesrc=${plist.p_filesrc }">
+			<img src="../resources/img/productimg/${plist.p_filesrc }.jpg" alt="" />
+			</a>
+		</div>
+		<div class="pdtname">
+			<a href="productDetail?pname=${plist.p_name }&pfilesrc=${plist.p_filesrc }">
+			${plist.p_name }
+			</a>
+		</div>
+	</li>	
 	</c:forEach>
-</table>
+	</ul>
+</div>
+
 </body>
 </html>

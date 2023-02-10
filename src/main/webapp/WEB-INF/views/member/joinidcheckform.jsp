@@ -15,7 +15,7 @@ function checkid(){
 		alert("아이디를입력하세요");
 		jf.m_id.focus();
 	}else{
-		window.open("/micky_SportsWear/joinidcheck?checkid=" + userid,"","width=500, height=300");
+		window.open("/micky_SportsWear/member/joinidcheck?checkid=" + userid,"","width=500, height=300");
 		window.close();
 	}
 	

@@ -12,6 +12,8 @@
 <h1>문의게시판</h1>
 현재로그인된아이디 확인용 : <%=session.getAttribute("loginid") %> <br />
 문의내역 확인하고싶은 아이디 확인용 : <%=session.getAttribute("loginid") %>
+<input type="button" value="문의하기" onclick="location.href='qnawriteform'" />
+<input type="button" value="마이페이지" onclick="location.href='mypageform'" />
 <table width="500" border="1">
 	<tr>
 		<td>문의번호</td>
@@ -28,7 +30,7 @@
 <c:forEach items="${qnalist }" var="dto">  
 	<tr>
 		<td>${dto.q_mno }</td>
-		<td>${dto.q_mtitle }</td>
+		<td><a href="qnadetail?q_mno=${dto.q_mno }">${dto.q_mtitle }</a></td> <!-- 문의제목 클릭하면 해당글의 고유번호값 MemberCotnroller / qnadetail()로 보내기 -->
 		<td>${dto.q_mcontent }</td>
 		<td>${dto.q_mreply }</td>
 		<td>${dto.q_mid }</td>

@@ -9,9 +9,10 @@
 <body>
 <h3>mypageform.jsp</h3>
 <h1>마이페이지</h1>
-현재로그인된아이디 확인용 표현1 : ${sessionScope.loginid} <br />
-현재로그인된아이디 확인용 표현2 : <%=session.getAttribute("loginid") %> <br />
+
+현재로그인된아이디 확인용: <%=session.getAttribute("loginid") %> <br /> <!-- 로그인아이디 확인용 -->
 <input type="button" value="문의페이지" onclick="location.href='qnalist'" />
 <input type="button" value="메인페이지" onclick="location.href='main'" />
+<input type="button" value="내정보수정" onclick="location.href='infoupdateform'" />
 </body>
 </html>
