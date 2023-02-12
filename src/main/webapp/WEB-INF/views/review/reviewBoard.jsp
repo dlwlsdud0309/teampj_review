@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%String loginid = (String)session.getAttribute("loginid"); %> <!-- 로그인된아이디 스트링으로가져오기 --> 
+<%String loginid = (String)session.getAttribute("loginid"); %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,6 +20,13 @@
 			
 		});
 		
+		$('.atag_reviewwrite').click(function(){
+			var userid='<%=(String)session.getAttribute("loginid")%>';
+			if(userid=='null'){
+				alert("로그인이 필요합니다.");
+				return false;
+			}
+		
 		<%-- $(".atag_reviewwrite").click(function(){
 			var userid='<%=(String)session.getAttribute("loginid")%>';
 			if(userid=='null'){
@@ -33,7 +40,21 @@
 			$(this).hide(".reply_box");
 		}) */
 	});
-	
+		
+		function redeptlist(target) {
+			alert("target : "+target.value);
+
+			//var pointvalue=document.getElementById("point").value;
+			//$('input#starInput[name=r_score]').attr('value',target.value);	
+			$('#starInput[name=r_score]').attr('value',target.value);	
+		}
+		
+		function getvalue(target) {
+			alert(target.value);
+			//컨트롤러에 전달해서 session에 보관해보자
+			//location.href="starpoint?point="+target.value;
+			//document.getElementById("data").innerHTML=tmpvalue;
+		} 
 	
 	
 </script>
@@ -48,40 +69,120 @@
 <c:if test="${empty sessionScope.loginid }">
    <a href="../member/loginform">login</a> 
    |  <a href="">join</a>
+   
 
 </c:if>
 <c:if test="${not empty sessionScope.loginid }">
-   <a href="../member/logout">logout</a> 
+	<a href="../member/logout">logout</a> 
+	<a href="reviewMylistview?account=${sessionScope.loginid }">${sessionScope.loginid } 님</a>
+	
 <br />
-<a href="reviewMylistview?account=${sessionScope.loginid }">${sessionScope.loginid } 님</a>
 </c:if>
 
 <br />
-로그인한 아이디 : <%=session.getAttribute("loginid") %>
+<%-- 로그인한 아이디 : <%=session.getAttribute("loginid") %>
 <br />
 <%String id=(String)session.getAttribute("loginid"); %>
-<%=id %>
+<%=id %> --%>
+<!-- <a href="reviewMylistview" >마이페이지</a> -->
 
 <br /> 
 
-<a href="reviewMylistview" >마이페이지</a>
 	
 <div class="review_table">
 		<div class="selectandsearch_box">
 			<div class="select_box">
 				<h3>리뷰</h3>
 			</div>
-			<div><a class="atag_reviewwrite" href="reviewWriteview">리뷰작성</a></div>
+			<div>
+				<!-- <a class="atag_reviewwrite" href="reviewWriteview">리뷰작성</a> -->
+				<!-- a태그가 아니라 form이 필요해보임 -->
+				
+				
+				
+				<div class="clear"></div>
+				<input type="button" value="리뷰작성" onclick="rWrite();" />
+
+<div id="styleID_ReviewWriteview" class="styleClassReviewWriteview">
+	<div id="title_content">
+		<form action="reviewWrite" method="post" enctype="multipart/form-data">
+		<h3 class="popup_review_title">상품리뷰쓰기</h3>
+		<div>
+			<strong>리뷰 리워드 혜택 제공</strong> <br />
+			텍스트 리뷰 : 500M | 사진 첨부 리뷰 : 1,000M 적립
+		</div>
+			<table>
+				<tr id="data">
+					<td class="star">
+						★★★★★
+						<span class="star2">★★★★★</span>
+						<input type="range" onclick="redeptlist(this);" oninput="drawStar(this)" value="1" step="1" min="0" max="5"/>
+					</td>
+				</tr>
+				<tr>
+					<!-- <td class="left">작성자</td> -->
+					<td colspan="3">
+						<input id="userid" type="hidden" name="m_id" value="${sessionScope.loginid }" />
+					</td>
+				</tr>
+				<!-- <tr>
+					reviewdao.xml에서 'TEMP'로 사용 중
+				
+					작성자는 session으로 받아올 것, 이후 작성자란은 삭제
+					<td class="left">작성자</td>
+					<td><input type="text" name="m_id" /></td>
+				</tr> -->
+				<tr>
+				</tr>
+				<tr>
+					<td class="left">제목</td>
+					<td colspan="2"><input type="text" name="r_title" /></td>
+				</tr>
+				<tr>
+					<td class="left">내용</td>
+					<td colspan="2">
+						<textarea name="r_content" rows="10"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td class="left">파일첨부</td>
+					<td colspan="2">
+						<input type="file" name="r_filesrc" />
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3">
+						<input id="starInput" type="hidden" name="r_score" value="" size="10" />
+						<input type="submit" value="작성하기" />
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>
+<script>
+	function rWrite(){
+		$(".styleClassReviewWriteview").bPopup();
+	}
+</script>
+				<div class="clear"></div>
+				
+				
+				
+				
+				
+				
+			</div>
 			<br />
 			<div class="avg_star">
 				<div class="tablerow">
 					<div class="tablecell">
-					<span class="user_date">
-						<span class="star">
-							★★★★★
-							<span id="star2" style="width:${avgScore*20}%">★★★★★</span>
+						<span class="user_date">
+							<span class="reviewBoard_star">
+								★★★★★
+								<span id="star2" style="width:${avgScore*20}%">★★★★★</span>
+							</span>
 						</span>
-					</span>
 					</div>
 					<div class="tablerow">
 						<b>&nbsp;&nbsp;&nbsp;&nbsp;총점</b>
@@ -171,7 +272,6 @@
 				<img src="../resources/reviewupload/${list.r_filesrc }" width="100" alt="" />
 			</div>
 			<div>
-				
 				<!-- 수정/삭제 -->
 <c:if test="${sessionScope.loginid eq list.memberDto.m_id }">
 				<a id="practice" href="reviewPopupcontentview?r_no=${list.r_no }">수정</a>
