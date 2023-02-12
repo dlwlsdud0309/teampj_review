@@ -125,7 +125,9 @@
 				<div class="review_box">
 					<div class="review_label">
 						<input type="hidden" value="${list.r_no }" />
-						<p>${list.memberDto.m_id }</p>
+						<p>
+							${list.memberDto.m_id }
+						</p>
 						<p>${list.r_title }</p>
 						<div class="tablerow">
 							<div class="tablecell">
