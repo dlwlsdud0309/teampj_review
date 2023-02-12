@@ -57,7 +57,7 @@ div{
 	cursor: pointer;
 }
 .atag{
-	display: hidden;
+	/* display: hidden; */
 	/* visibility: hidden; */
 }
 .paging>a{

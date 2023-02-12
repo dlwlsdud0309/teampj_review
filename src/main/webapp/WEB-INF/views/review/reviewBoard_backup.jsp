@@ -19,42 +19,68 @@
 			$(this).toggleClass("u_content").toggleClass("u_contentGray");
 			
 		});
-		
-		<%-- $(".atag_reviewwrite").click(function(){
-			var userid='<%=(String)session.getAttribute("loginid")%>';
-			if(userid=='null'){
-				alert("로그인이 필요합니다.");
-				return false;
+			
+		/* member/loginfoem.jsp */
+		function checkValue(){
+			//inputForm = eval("document.logininfo");
+			inputId = document.getElementById("m_id").value; //input id값
+			inputPw = document.getElementById("m_pw").value; //input password값
+			if(!inputId){ //id를 입력하지않으면
+				alert("아이디입력없음");
+				return false; //flase리턴, submit작동안함
 			}
-		}); --%>
-		/* 답글버튼 눌렀을 때 작동하도록 */
-		/* $(".atag_reply").click(function () {
-			alert("하이")
-			$(this).hide(".reply_box");
-		}) */
+			if(!inputPw){ //pw를 입력하지않으면
+				alert("비밀번호입력없음");
+				return false; //flase리턴, submit작동안함
+			}
+		}
+	
+		
 	});
 	
 	
 	
 </script>
+
+<c:if test="${sessionScope.loginid eq null }">
+	<script>
+	function loginClick(){
+		<%-- var loginid='<%=(String)session.getAttribute("loginid") %>'; --%>
+		alert('로그인이 필요합니다.');
+		history.go(0);
+		
+	}
+	</script>
+</c:if>
+
+<!-- 로그인이 필요합니다 alert창 띄우기 ----- 구현됨 -->
+<!-- 페이지 이동이 되지 않음, login창을 띄워야하나  ----- 구현진행중 -->
+<%-- <c:if test="${sessionScope.loginid eq null }">
+
+</c:if> --%>
+<%-- <c:if test="${empty sessionScope.loginid }">
+	<script>
+	
+	
+	
+	</script>
+</c:if> --%>
 </head>
 
 <body>
 <h3>Reviewboard</h3>
 <!-- 오류 -->
 <%-- <a href="reviewMylistview?account=${review_mylist.m_id }" >마이페이지</a> --%>
-<!-- <a href="reviewListview">TEMP님</a> -->
-<!-- 임시로 지정 -->
 <c:if test="${empty sessionScope.loginid }">
    <a href="../member/loginform">login</a> 
    |  <a href="">join</a>
 
 </c:if>
 <c:if test="${not empty sessionScope.loginid }">
-   <a href="../member/logout">logout</a> 
-<br />
-<a href="reviewMylistview?account=${sessionScope.loginid }">${sessionScope.loginid } 님</a>
+	<a href="../member/logout">logout</a> <br />
+	<a href="reviewMylistview?account=${sessionScope.loginid }">${sessionScope.loginid } 님</a>
 </c:if>
+
 
 <br />
 로그인한 아이디 : <%=session.getAttribute("loginid") %>
@@ -65,13 +91,28 @@
 <br /> 
 
 <a href="reviewMylistview" >마이페이지</a>
+
+
+<!-- 리뷰작성 시 로그인이 안되어 있다면 ../member/login -->
+<div id="styleID_ReviewBoard_loginform" class="styleClassReviewBoard_loginform">
+	<form action="../member/login" method="post" name="logininfo" onsubmit="return checkValue()"> <!-- submit 실행 전에 먼저실행됨 -->
+		아이디 : <input type="text" name="m_id" id="m_id" /> <br />
+		비밀번호 : <input type="password" name="m_pw" id="m_pw" autocomplete="current-password"/> <br />
+		<input type="submit" value="로그인" /> <!-- 입력한 id,pw를 MemberContorller/login()으로 보내기 -->
+		<input type="button" value="회원가입" onclick="location.href='../member/joinform'" /> <br />
+		<input type="button" value="메인화면" onclick="location.href='../member/main'" />
+	</form>
+</div>
+
 	
 <div class="review_table">
 		<div class="selectandsearch_box">
 			<div class="select_box">
 				<h3>리뷰</h3>
 			</div>
-			<div><a class="atag_reviewwrite" href="reviewWriteview">리뷰작성</a></div>
+			<div>
+				<a id="atag_reviewwrite" href="reviewWriteview" onclick="loginClick();">리뷰작성</a>
+			</div>
 			<br />
 			<div class="avg_star">
 				<div class="tablerow">
@@ -125,7 +166,10 @@
 				<div class="review_box">
 					<div class="review_label">
 						<input type="hidden" value="${list.r_no }" />
-						<p>${list.memberDto.m_id }</p>
+						<p>
+							${list.memberDto.m_id }
+							<input id="userid" type="hidden" value="${list.memberDto.m_id }" />
+						</p>
 						<p>${list.r_title }</p>
 						<div class="tablerow">
 							<div class="tablecell">
@@ -169,19 +213,18 @@
 				<img src="../resources/reviewupload/${list.r_filesrc }" width="100" alt="" />
 			</div>
 			<div>
-				
 				<!-- 수정/삭제 -->
 <c:if test="${sessionScope.loginid eq list.memberDto.m_id }">
-				<a id="practice" href="reviewPopupcontentview?r_no=${list.r_no }">수정</a>
-				<a href="reviewDelete?r_no=${list.r_no }">삭제</a>
+				<a class="atag" id="practice" href="reviewPopupcontentview?r_no=${list.r_no }">수정</a>
+				<a class="atag" href="reviewDelete?r_no=${list.r_no }">삭제</a>
 
 </c:if>
 				
 				<!-- function 사용한 답글창 열기 -->
 				<%-- <a class="atag" href="reviewPopupReplycontentview?r_no=${list.r_no }">답글</a> --%>
 <c:if test="${sessionScope.loginid eq 'admintest' }">
-				<a href="reviewDelete?r_no=${list.r_no }">삭제</a>
-				<a id="atag_reply" href="#">답글</a>
+				<a class="atag" href="reviewDelete?r_no=${list.r_no }">삭제</a>
+				<a class="atag" id="atag_reply" href="#">답글</a>
 </c:if>
 			</div>
 		</div>
@@ -224,5 +267,6 @@ avgStar : <c:out value="${avgStar+(totalStar/list_r_score.length) }"/>
 <br />
 <br />
 <br />
+
 </body>
 </html>
