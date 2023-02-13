@@ -42,6 +42,7 @@
 
 <body>
 <h3>Reviewboard</h3>
+<a href="../member/main">메인</a> <br />
 <c:if test="${empty sessionScope.loginid }">
 	<a href="../member/loginform">login</a> 
 	<a href="">join</a>
@@ -59,6 +60,22 @@
 <%String id=(String)session.getAttribute("loginid"); %>
 <%=id %> --%>
 <!-- <a href="reviewMylistview" >마이페이지</a> -->
+<%
+String pname=request.getParameter("pname");
+String pfilesrc=request.getParameter("pfilesrc");
+%>
+상품명 : <%=pname %>
+상품이미지 : <%=pfilesrc %>
+<br />
+<%String pname2=(String)session.getAttribute("pname"); %>
+상품명2 : <%=pname2 %>
+<br />
+<c:forEach items="${productDetail_data }" var="p">
+</c:forEach>
+p : <c:out value="${p }"/>
+
+
+
 <br /> 
 
 	
