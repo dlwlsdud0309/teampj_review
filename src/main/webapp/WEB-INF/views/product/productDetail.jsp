@@ -154,6 +154,7 @@ $('#order_form').click(function(){
 <br />
 <br />
 <%-- <%@ include file="../review/reviewBoard.jsp" %> --%>
-<jsp:include page="../review/reviewBoard.jsp" flush="false"></jsp:include>
+<jsp:include page="../review/reviewBoard.jsp" flush="true"></jsp:include>
+<%-- <jsp:include file="reviewBoard"></jsp:include> --%>
 </body>
 </html>
