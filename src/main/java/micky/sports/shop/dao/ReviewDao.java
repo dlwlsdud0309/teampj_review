@@ -13,7 +13,8 @@ public interface ReviewDao {
 	public void write(String m_id,String r_title,String r_content,String r_filesrc,String r_point);
 	public void delete(String r_no);
 	
-	public ArrayList<ReviewDto> mylistview();
+//	public ArrayList<ReviewDto> mylistview();
+	public ArrayList<ReviewDto> mylistview(String account);
 	
 //	public ArrayList<ReviewDto> popupview(String r_no);
 	public ReviewDto popupview(String r_no);

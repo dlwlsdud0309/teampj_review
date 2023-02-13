@@ -48,7 +48,7 @@
 </c:if>
 <c:if test="${not empty sessionScope.loginid }">
 	<a href="../member/logout">logout</a> 
-	<a href="reviewMylistview?account=${sessionScope.loginid }">${sessionScope.loginid } 님</a>
+	<a href="reviewMylistview?account=${sessionScope.loginid }">${sessionScope.loginid }님</a>
 	
 <br />
 </c:if>
