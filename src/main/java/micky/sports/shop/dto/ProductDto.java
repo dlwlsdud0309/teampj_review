@@ -14,6 +14,7 @@ public class ProductDto {
 	private String p_color; //색상
 	private String p_size; //사이즈
 	private String p_filesrc; //첨부파일
+	private String p_date;
 	
 	private OrderMemberDto orderMemberDto; //join
 

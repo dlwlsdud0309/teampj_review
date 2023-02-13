@@ -25,6 +25,7 @@
 		<result column="r_filesrc" property="r_filesrc" />
 		<result column="r_score" property="r_score"/>
 		<collection property="memberDto" resultMap="MemberDto" />
+		<collection property="productDto" resultMap="ProductDto" />
 	</resultMap>
 	
 	<!-- 2.join위해 사용한 MemberDto -->
@@ -42,7 +43,17 @@
 		<result column="m_filesrc" property="m_filesrc" />
 	</resultMap>
 	
-	<!-- 2.join위해 사용한 MemberDto -->
+	<!-- 3.join위해 사용한 ProductDto -->
+	<resultMap type="micky.sports.shop.dto.ProductDto" id="ProductDto">
+		<result column="p_no" property="p_no"/>
+		<result column="p_name" property="p_name"/>
+		<result column="p_price" property="p_price"/>
+		<result column="p_cnt" property="p_cnt"/>
+		<result column="p_color" property="p_color"/>
+		<result column="p_size" property="p_size"/>
+		<result column="p_filesrc" property="p_filesrc"/>
+		<result column="p_date" property="p_date"/>
+	</resultMap>
 	
 	<sql id="includeReviewBoard">
 		<choose>
