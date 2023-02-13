@@ -106,6 +106,7 @@ public class ReviewService implements MickyServiceInter{
 		searchVO.setPage(page);
 
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
+				
 
 //		총 글의 개수 구하기
 		int total=0;
@@ -133,6 +134,7 @@ public class ReviewService implements MickyServiceInter{
 		}else if (r_recently.equals("") && r_score.equals("")) {
 			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"4"));
 		}
+		
 		model.addAttribute("totRowcnt", total);
 		model.addAttribute("searchVO", searchVO);
 	}
