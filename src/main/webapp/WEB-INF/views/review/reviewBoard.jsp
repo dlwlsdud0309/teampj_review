@@ -60,7 +60,7 @@
 	<a href="../member/loginform">login</a> 
 	<a href="">join</a>
 	<script>
-		
+		function 
 	</script>
 </c:if>
 <c:if test="${not empty sessionScope.loginid }">
@@ -87,12 +87,30 @@
 			<div>
 				<!-- <a class="atag_reviewwrite" href="reviewWriteview">리뷰작성</a> -->
 				<!-- a태그가 아니라 form이 필요해보임 -->
-				
+				<script>
+					function fn_01(vn_name){
+						//alert('로그인이 필요합니다.');
+						if(fn_02(vn_name)==false){
+							alert('로그인이 필요합니다.');
+							//location.href('https://www.naver.com');
+							$(location).attr('href','../member/loginform');
+						}else{
+							alert('로그인 성공');
+						}
+					}
+					function fn_02(vn_name){
+						if(vn_name=='' || vn_name==null){
+							return false;
+						}else{
+							return true;
+						}
+					}
+				</script>
 				
 				
 				<div class="clear"></div>
-				<input type="button" value="리뷰작성" onclick="rWrite();" />
-
+				<!-- <input type="button" value="리뷰작성" onclick="rWrite();" /> -->
+				<input type="button" value="리뷰작성" onclick="fn_01('${sessionScope.loginid }');" />
 <div id="styleID_ReviewWriteview" class="styleClassReviewWriteview">
 	<div id="title_content">
 		<form action="reviewWrite" method="post" enctype="multipart/form-data">
