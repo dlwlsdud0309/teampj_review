@@ -19,21 +19,7 @@
 			$(this).toggleClass("u_content").toggleClass("u_contentGray");
 			
 		});
-		
-		$('.atag_reviewwrite').click(function(){
-			var userid='<%=(String)session.getAttribute("loginid")%>';
-			if(userid=='null'){
-				alert("로그인이 필요합니다.");
-				return false;
-			}
-		
-		<%-- $(".atag_reviewwrite").click(function(){
-			var userid='<%=(String)session.getAttribute("loginid")%>';
-			if(userid=='null'){
-				alert("로그인이 필요합니다.");
-				return false;
-			}
-		}); --%>
+				
 		/* 답글버튼 눌렀을 때 작동하도록 */
 		/* $(".atag_reply").click(function () {
 			alert("하이")
@@ -59,9 +45,6 @@
 <c:if test="${empty sessionScope.loginid }">
 	<a href="../member/loginform">login</a> 
 	<a href="">join</a>
-	<script>
-		function 
-	</script>
 </c:if>
 <c:if test="${not empty sessionScope.loginid }">
 	<a href="../member/logout">logout</a> 
@@ -86,7 +69,6 @@
 			</div>
 			<div>
 				<!-- <a class="atag_reviewwrite" href="reviewWriteview">리뷰작성</a> -->
-				<!-- a태그가 아니라 form이 필요해보임 -->
 				<script>
 					function fn_01(vn_name){
 						//alert('로그인이 필요합니다.');
@@ -95,7 +77,7 @@
 							//location.href('https://www.naver.com');
 							$(location).attr('href','../member/loginform');
 						}else{
-							alert('로그인 성공');
+							$(".styleClassReviewWriteview").bPopup();
 						}
 					}
 					function fn_02(vn_name){
@@ -106,11 +88,9 @@
 						}
 					}
 				</script>
-				
-				
-				<div class="clear"></div>
-				<!-- <input type="button" value="리뷰작성" onclick="rWrite();" /> -->
 				<input type="button" value="리뷰작성" onclick="fn_01('${sessionScope.loginid }');" />
+				
+<!-- ======================== 작성하기 폼 ========================= -->
 <div id="styleID_ReviewWriteview" class="styleClassReviewWriteview">
 	<div id="title_content">
 		<form action="reviewWrite" method="post" enctype="multipart/form-data">
@@ -132,15 +112,6 @@
 					<td colspan="3">
 						<input id="userid" type="hidden" name="m_id" value="${sessionScope.loginid }" />
 					</td>
-				</tr>
-				<!-- <tr>
-					reviewdao.xml에서 'TEMP'로 사용 중
-				
-					작성자는 session으로 받아올 것, 이후 작성자란은 삭제
-					<td class="left">작성자</td>
-					<td><input type="text" name="m_id" /></td>
-				</tr> -->
-				<tr>
 				</tr>
 				<tr>
 					<td class="left">제목</td>
@@ -168,19 +139,9 @@
 		</form>
 	</div>
 </div>
-<script>
-	function rWrite(){
-		$(".styleClassReviewWriteview").bPopup();
-	}
-</script>
-				<div class="clear"></div>
-				
-				
-				
-				
-				
-				
 			</div>
+<div class="clear" ></div>
+<!-- ======================== 작성하기 폼 ========================= -->				
 			<br />
 			<div class="avg_star">
 				<div class="tablerow">
@@ -203,7 +164,7 @@
 			<br />
 		</div>
 	
-	<hr />	
+<hr />	
 </div>
 <div class="clear" ></div>
 <div class="review_table">
@@ -286,7 +247,6 @@
 				<a href="reviewDelete?r_no=${list.r_no }">삭제</a>
 
 </c:if>
-				
 				<!-- function 사용한 답글창 열기 -->
 				<%-- <a class="atag" href="reviewPopupReplycontentview?r_no=${list.r_no }">답글</a> --%>
 <c:if test="${sessionScope.loginid eq 'admintest' }">
