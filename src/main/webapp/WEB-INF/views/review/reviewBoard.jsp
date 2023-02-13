@@ -43,17 +43,11 @@
 		
 		function redeptlist(target) {
 			alert("target : "+target.value);
-
-			//var pointvalue=document.getElementById("point").value;
-			//$('input#starInput[name=r_score]').attr('value',target.value);	
 			$('#starInput[name=r_score]').attr('value',target.value);	
 		}
 		
 		function getvalue(target) {
 			alert(target.value);
-			//컨트롤러에 전달해서 session에 보관해보자
-			//location.href="starpoint?point="+target.value;
-			//document.getElementById("data").innerHTML=tmpvalue;
 		} 
 	
 	
@@ -62,15 +56,12 @@
 
 <body>
 <h3>Reviewboard</h3>
-<!-- 오류 -->
-<%-- <a href="reviewMylistview?account=${review_mylist.m_id }" >마이페이지</a> --%>
-<!-- <a href="reviewListview">TEMP님</a> -->
-<!-- 임시로 지정 -->
 <c:if test="${empty sessionScope.loginid }">
-   <a href="../member/loginform">login</a> 
-   |  <a href="">join</a>
-   
-
+	<a href="../member/loginform">login</a> 
+	<a href="">join</a>
+	<script>
+		
+	</script>
 </c:if>
 <c:if test="${not empty sessionScope.loginid }">
 	<a href="../member/logout">logout</a> 
@@ -85,7 +76,6 @@
 <%String id=(String)session.getAttribute("loginid"); %>
 <%=id %> --%>
 <!-- <a href="reviewMylistview" >마이페이지</a> -->
-
 <br /> 
 
 	
