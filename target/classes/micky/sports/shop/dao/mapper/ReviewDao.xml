@@ -42,6 +42,8 @@
 		<result column="m_filesrc" property="m_filesrc" />
 	</resultMap>
 	
+	<!-- 2.join위해 사용한 MemberDto -->
+	
 	<sql id="includeReviewBoard">
 		<choose>
 			<when test="param4==1">
