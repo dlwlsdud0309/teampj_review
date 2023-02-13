@@ -148,6 +148,12 @@ $('#order_form').click(function(){
 <!-- reviewBoard는 productDetail의 하단에 있어야함 -->
 <br />
 <a href="../review/reviewBoard">reviewBoard</a>
-
+<br />
+<br />
+<br />
+<br />
+<br />
+<%-- <%@ include file="../review/reviewBoard.jsp" %> --%>
+<jsp:include page="../review/reviewBoard.jsp" flush="false"></jsp:include>
 </body>
 </html>
