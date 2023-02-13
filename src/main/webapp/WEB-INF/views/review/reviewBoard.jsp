@@ -290,6 +290,10 @@ avgStar : <c:out value="${avgStar+(totalStar/list_r_score.length) }"/>
 	</div>
 </form>
 	</div>
+	
+	
+	
+	
 <br />
 <br />
 <br />
