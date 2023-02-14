@@ -53,6 +53,7 @@
 		<result column="p_filesrc" property="p_filesrc"/>
 		<result column="p_date" property="p_date"/>
 		<result column="p_category" property="p_category"/>
+		<result column="p_info" property="p_info"/>
 	</resultMap>
 	
 	<sql id="includeReviewBoard">

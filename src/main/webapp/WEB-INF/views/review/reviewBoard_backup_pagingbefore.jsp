@@ -287,7 +287,7 @@ avgStar : <c:out value="${avgStar+(totalStar/list_r_score.length) }"/>
 <br />
 
 <!-- 페이징 처리 -->
-<%-- 총 게시글 : ${totRowcnt }건 <br />
+총 게시글 : ${totRowcnt }건 <br />
 현재페이지/전체페이지 : ${searchVO.page }/${searchVO.totPage } <br />
 <hr />
 <form action="reviewBoard" method="post">
@@ -312,7 +312,7 @@ avgStar : <c:out value="${avgStar+(totalStar/list_r_score.length) }"/>
 			<a href="reviewBoard?page=${searchVO.totPage }">&nbsp;&nbsp;&nbsp;&nbsp;>></a>
 		</c:if>
 	</div>
-</form> --%>
+</form>
 	</div>
 <br />
 <br />

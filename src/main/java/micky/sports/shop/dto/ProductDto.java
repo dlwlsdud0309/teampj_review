@@ -19,6 +19,7 @@ public class ProductDto {
 	
 	private Date p_date;
 	private String p_category;
+	private String p_info;
 	
 	private OrderMemberDto orderMemberDto; //join
 
