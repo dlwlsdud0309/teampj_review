@@ -56,43 +56,6 @@
 		<result column="p_info" property="p_info"/>
 	</resultMap>
 	
-	<!-- <sql id="includeReviewBoard">
-		<choose>
-			<when test="param4==1">
-				
-				============================Product와 join 이전 쿼리===============================
-					WHERE R_CONTENT LIKE '%'||#{param3}||'%'
-				============================Product와 join 이전 쿼리===============================
-				
-				WHERE ROWNO BETWEEN #{param1} AND #{param2}
-			</when>
-			<when test="param4==2">
-				R.R_SCORE DESC,
-				============================Product와 join 이전 쿼리===============================
-			        WHERE R_CONTENT LIKE '%'||#{param3}||'%'
-			        ORDER BY R_SCORE DESC
-		        ============================Product와 join 이전 쿼리===============================
-		        
-				WHERE R_CONTENT LIKE '%'||#{param3}||'%'
-				AND ROWNO BETWEEN #{param1} AND #{param2}
-				ORDER BY R_GROUP DESC
-			</when>
-			<when test="param4==3">
-				R.R_SCORE DESC,
-				============================Product와 join 이전 쿼리===============================
-					WHERE R_CONTENT LIKE '%'||#{param3}||'%'
-					ORDER BY R_SCORE DESC,R_GROUP DESC
-				============================Product와 join 이전 쿼리===============================
-				
-				WHERE R_CONTENT LIKE '%'||#{param3}||'%'
-				AND ROWNO BETWEEN #{param1} AND #{param2}
-				ORDER BY R_SCORE DESC, R_GROUP DESC
-			</when>
-			<otherwise>
-				
-			</otherwise>
-		</choose>
-	</sql> -->
 
 	<select id="reviewboard" parameterType="micky.sports.shop.dto.ReviewDto" resultMap="ReviewDto">
 		SELECT ROWNUM, R.*
@@ -104,7 +67,6 @@
 		AND R.P_NO=P.P_NO
 		
 		ORDER BY
-		<!-- <include refid="includeReviewBoard"/> -->
 		
 		R.R_GROUP DESC, R.R_STEP ASC) R
 		<!-- ============================Product와 join 이전 쿼리=============================== -->		
@@ -220,20 +182,4 @@
 		ORDER BY R_GROUP DESC, R_STEP ASC
 	</select>
 	
-	
-	<select id="selectReviewboardTotCount1" resultType="Integer">
-		SELECT COUNT(*) FROM REVIEW WHERE R_CONTENT LIKE '%'||#{param1}||'%'
-	</select>
-	
-	<select id="selectReviewboardTotCount2" resultType="Integer">
-		SELECT COUNT(*) FROM REVIEW WHERE R_CONTENT LIKE '%'||#{param1}||'%'
-	</select>
-	
-	<select id="selectReviewboardTotCount3" resultType="Integer">
-		SELECT COUNT(*) FROM REVIEW WHERE R_CONTENT LIKE '%'||#{param1}||'%'
-	</select>
-	
-	<select id="selectReviewboardTotCount4" resultType="Integer">
-		SELECT COUNT(*) FROM REVIEW
-	</select>
 </mapper>

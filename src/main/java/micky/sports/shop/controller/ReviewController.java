@@ -39,20 +39,7 @@ public class ReviewController {
 		mickyServiceInter.execute(model);
 		
 		return "review/reviewBoard";
-	}
-//	@RequestMapping("/reviewBoard")
-//	public String reviewBoard(HttpServletRequest request,
-//			SearchVO searchVO,Model model) {
-//		System.out.println("=====reviewBoard====");
-//		
-//		model.addAttribute("searchVO", searchVO);
-//		model.addAttribute("request", request);
-//		mickyServiceInter=new ReviewService(sqlSession);
-//		mickyServiceInter.execute(model);
-//		
-//		return "review/reviewBoard";
-//	}
-	
+	}	
 	
 //	마이페이지-카테고리 리뷰로 접근
 	@RequestMapping("/reviewMylistview")

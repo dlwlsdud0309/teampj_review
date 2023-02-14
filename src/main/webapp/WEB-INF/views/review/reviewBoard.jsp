@@ -287,33 +287,6 @@ totalStar : <c:out value="${totalStar }"/>
 avgStar : <c:out value="${avgStar+(totalStar/list_r_score.length) }"/>
 <br />
 
-<!-- 페이징 처리 -->
-<%-- 총 게시글 : ${totRowcnt }건 <br />
-현재페이지/전체페이지 : ${searchVO.page }/${searchVO.totPage } <br />
-<hr />
-<form action="reviewBoard" method="post">
-	<div class="paging">
-		<c:if test="${searchVO.page>1 }">
-			<a href="reviewBoard?page=1">&lt;&lt;</a>
-			<a href="reviewBoard?page=${searchVO.page-1 }">&nbsp;&nbsp;&lt;&nbsp;&nbsp;</a>
-		</c:if>
-		
-		<c:forEach begin="${searchVO.pageStart }" end="${searchVO.pageEnd }" var="i">
-			<c:choose>
-				<c:when test="${i eq searchVO.page }">
-					<span style="color:red; font-weight: bold;">${i }&nbsp;&nbsp;</span>
-				</c:when>
-				<c:otherwise>
-					<a href="reviewBoard?page=${i }&rb_recently=${r_recently}&rb_score=${r_score}&searchKeyword=${resk}" style="text-decoration: none">${i }&nbsp;&nbsp;</a>
-				</c:otherwise>
-			</c:choose>
-		</c:forEach>
-		<c:if test="${searchVO.page<searchVO.totPage }">
-			<a href="reviewBoard?page=${searchVO.page+1 }">></a>
-			<a href="reviewBoard?page=${searchVO.totPage }">&nbsp;&nbsp;&nbsp;&nbsp;>></a>
-		</c:if>
-	</div>
-</form> --%>
 	</div>
 <br />
 <br />
