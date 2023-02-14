@@ -29,8 +29,8 @@ public class ReviewController {
 	
 	
 //	임시 메인페이지
-	@RequestMapping("/reviewBoard")
 //	@RequestMapping(method = RequestMethod.POST, value = "/reviewBoard")
+	@RequestMapping("/reviewBoard")
 	public String reviewBoard(HttpServletRequest request,
 			SearchVO searchVO,Model model) {
 		System.out.println("=====reviewBoard====");
@@ -42,6 +42,18 @@ public class ReviewController {
 		
 		return "review/reviewBoard";
 	}
+//	@RequestMapping("/reviewBoard")
+//	public String reviewBoard(HttpServletRequest request,
+//			SearchVO searchVO,Model model) {
+//		System.out.println("=====reviewBoard====");
+//		
+//		model.addAttribute("searchVO", searchVO);
+//		model.addAttribute("request", request);
+//		mickyServiceInter=new ReviewService(sqlSession);
+//		mickyServiceInter.execute(model);
+//		
+//		return "review/reviewBoard";
+//	}
 	
 	
 //	마이페이지-카테고리 리뷰로 접근

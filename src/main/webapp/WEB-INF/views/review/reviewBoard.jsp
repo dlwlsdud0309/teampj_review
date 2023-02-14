@@ -188,8 +188,9 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 <hr />	
 </div>
 <div class="clear" ></div>
+
 <div class="review_table">
-		<form action="reviewBoard" method="post">
+		<%-- <form action="reviewBoard" method="post">
 	<div class="row">
 		<div class="cell col1">
 		<!-- 검색기능 추가 -->
@@ -205,7 +206,7 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 			</div>
 		</div>
 	</div>
-		</form>
+		</form> --%>
 		
 <c:set var="totalStar" value="0" />
 <c:set var="avgStar" value="0" />
