@@ -37,11 +37,6 @@ public class ReviewMylistviewService implements MickyServiceInter{
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
 		ArrayList<ReviewDto> review_mylist=rdao.mylistview(account);
 		
-		/*
-		 * for (ReviewDto reviewDto : review_mylist) {
-		 * System.out.println(reviewDto.getR_date());
-		 * System.out.println(reviewDto.getMemberDto().getM_id()); }
-		 */
 		
 		model.addAttribute("review_mylist", review_mylist);
 	}
