@@ -73,6 +73,8 @@ String pfilesrc=request.getParameter("pfilesrc");
 <c:forEach items="${productDetail_data }" var="p">
 </c:forEach>
 p : <c:out value="${p }"/>
+<%String pnameGetReviewBoard=request.getParameter("pname"); %>
+pnameGetReviewBoard : <%=pnameGetReviewBoard %>
 
 
 
@@ -215,6 +217,7 @@ p : <c:out value="${p }"/>
 						<p>
 							${list.memberDto.m_id }
 						</p>
+						<p>${list.productDto.p_name }</p>
 						<p>${list.r_title }</p>
 						<div class="tablerow">
 							<div class="tablecell">

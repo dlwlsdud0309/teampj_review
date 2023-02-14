@@ -147,6 +147,7 @@ $('#order_form').click(function(){
 
 <!-- reviewBoard는 productDetail의 하단에 있어야함 -->
 <br />
+<%String pnameGetReviewBoard=request.getParameter("pname"); %>
 <a href="../review/reviewBoard">reviewBoard</a>
 <br />
 <br />
@@ -154,9 +155,9 @@ $('#order_form').click(function(){
 <br />
 <br />
 <%-- <%@ include file="../review/reviewBoard.jsp" %> --%>
-<jsp:include page="../review/reviewBoard.jsp" flush="true">
-	<jsp:param value="${product }" name="productDetail_data"/>
-</jsp:include>
+<jsp:include page="../review/reviewBoard.jsp" flush="true" />
+	<%-- <jsp:param value="${product }" name="productDetail_data"/>--%>
+	<%-- <jsp:param value="<%=pnameGetReviewBoard %>" name="pnameGetReviewBoard"/> --%>
 <%-- <jsp:include file="reviewBoard"></jsp:include> --%>
 </body>
 </html>
