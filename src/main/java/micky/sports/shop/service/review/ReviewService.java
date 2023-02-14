@@ -30,8 +30,8 @@ public class ReviewService implements MickyServiceInter{
 				(HttpServletRequest) map.get("request");
 		
 		String r_no=request.getParameter("r_no");
-		String pname=request.getParameter("pname");
-		System.out.println("pname : "+pname);
+//		String pname=request.getParameter("pname");
+//		System.out.println("pname : "+pname);
 		
 		
 //selectType@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -102,6 +102,7 @@ public class ReviewService implements MickyServiceInter{
 
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
 		ArrayList<ReviewDto> review_list=rdao.reviewboard();
+//		ArrayList<ReviewDto> review_list=rdao.reviewboard(searchKeyword);
 
 
 		

@@ -9,13 +9,13 @@ public interface ReviewDao {
 	
 	
 	public ArrayList<ReviewDto> reviewboard();
+//	public ArrayList<ReviewDto> reviewboard(String searchKeyword);
 	
 	public void write(String m_id,String r_title,String r_content,String r_filesrc,String r_point);
 	public void delete(String r_no);
 	
 	public ArrayList<ReviewDto> mylistview(String account);
 	
-//	public ArrayList<ReviewDto> popupview(String r_no);
 	public ReviewDto popupview(String r_no);
 	
 //	public ReviewDto popupupdate(String r_no);
