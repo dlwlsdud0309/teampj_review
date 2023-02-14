@@ -65,25 +65,9 @@
 		FROM MEMBER M, REVIEW R, PRODUCT P
 		WHERE M.M_ID=R.M_ID
 		AND R.P_NO=P.P_NO
-		AND R_CONTENT like '%||#{param2}||%'
+		AND R.R_CONTENT like '%'||#{param2}||'%'
+		ORDER BY #{param1} DESC) R
 		
-		ORDER BY
-		
-		${param1} DESC
-		
-		) R
-		
-		<!-- SELECT ROWNUM, R.*
-		FROM (SELECT R.R_NO,M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
-		R.R_RECONTENT,R.R_YNN,R.R_DATE,R.R_GROUP,R.R_STEP,R.R_INDENT,R.R_FILESRC,R.R_SCORE,
-		P.P_NO,P.P_NAME,P.P_COLOR,P.P_SIZE,P.P_CATEGORY
-		FROM MEMBER M, REVIEW R, PRODUCT P
-		WHERE M.M_ID=R.M_ID
-		AND R.P_NO=P.P_NO
-		
-		ORDER BY
-		
-		R.R_GROUP DESC, R.R_STEP ASC) R -->
 		
 		
 		<!-- ============================Product와 join 이전 쿼리=============================== -->		
@@ -186,4 +170,19 @@
 		ORDER BY R_GROUP DESC, R_STEP ASC
 	</select>
 	
+	<!-- <select id="totalCount" resultType="Integer">
+		SELECT COUNT(*) FROM REVIEW
+	</select> -->
+	
+	<!-- <select id="totalCount1" resultType="Integer">
+		SELECT COUNT(*) FROM REVIEW WHERE R_CONTENT LIKE '%||#{param1}||%'
+	</select>
+	
+	<select id="totalCount2" resultType="Integer">
+		SELECT COUNT(*) FROM REVIEW WHERE R_CONTENT LIKE '%||#{param1}||%'
+	</select>
+	
+	<select id="totalCount3" resultType="Integer">
+		SELECT COUNT(*) FROM REVIEW WHERE R_CONTENT LIKE '%||#{param1}||%'
+	</select> -->
 </mapper>

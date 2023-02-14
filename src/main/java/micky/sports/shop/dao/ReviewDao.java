@@ -6,7 +6,7 @@ import micky.sports.shop.dto.ReviewDto;
 
 public interface ReviewDao {
 //	public ArrayList<ReviewDto> reviewboard();
-	public ArrayList<ReviewDto> reviewboard(String selectType,String searchKeyword);
+	public ArrayList<ReviewDto> reviewboard(String selectType, String searchKeyword);
 	
 	public void write(String m_id,String r_title,String r_content,String r_filesrc,String r_point);
 	public void delete(String r_no);
@@ -23,4 +23,9 @@ public interface ReviewDao {
 	public ReviewDto reply(String r_no, String r_id, String r_retitle, String r_recontent);
 	
 	public ReviewDto getReview(String r_no);
+	
+	public int totalCount();
+//	public int totalCount1(String searchKeyword);
+//	public int totalCount2(String searchKeyword);
+//	public int totalCount3(String searchKeyword);
 }
