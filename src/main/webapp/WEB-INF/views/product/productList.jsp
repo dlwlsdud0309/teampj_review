@@ -38,5 +38,25 @@
 	</ul>
 </div>
 
+<!-- application 사용 -->
+<%-- <div class="productNormalPackage">
+	<ul class="productList">
+	<c:forEach items="${getproductlist }" var="plist">
+	<li>
+		<div class="pdtthumbnail" >
+			<a href="productDetail?pname=${plist.p_name }&pfilesrc=${plist.p_filesrc }">
+			<img src="../resources/img/productimg/${plist.p_filesrc }.jpg" alt="" />
+			</a>
+		</div>
+		<div class="pdtname">
+			<a href="productDetail?pname=${plist.p_name }&pfilesrc=${plist.p_filesrc }">
+			${plist.p_name }
+			</a>
+		</div>
+	</li>	
+	</c:forEach>
+	</ul>
+</div> --%>
+
 </body>
 </html>

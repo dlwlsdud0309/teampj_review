@@ -2,6 +2,7 @@ package micky.sports.shop.service.product;
 
 import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -9,7 +10,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
 import micky.sports.shop.dao.ProductDao;
-import micky.sports.shop.dao.ReviewDao;
 import micky.sports.shop.service.MickyServiceInter;
 
 public class ProductListService implements MickyServiceInter{
@@ -34,6 +34,14 @@ public class ProductListService implements MickyServiceInter{
 		//System.out.println("*********~~~~~~~~~~~~~~~~~"+loginId);
 		
 		ProductDao Pdao=sqlSession.getMapper(ProductDao.class);
+		
+		
+//================================================
+		ServletContext application=request.getSession().getServletContext();
+		application.setAttribute("getproductlist",Pdao.productlist());
+		//참조 : https://okky.kr/articles/264391
+//================================================
+		
 		
 		model.addAttribute("productlsit",Pdao.productlist());
 		

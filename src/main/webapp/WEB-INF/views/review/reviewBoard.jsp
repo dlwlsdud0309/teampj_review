@@ -61,10 +61,10 @@
 <%=id %> --%>
 <!-- <a href="reviewMylistview" >마이페이지</a> -->
 <%
-String pname=request.getParameter("pname");
-String pfilesrc=request.getParameter("pfilesrc");
+String pname2=request.getParameter("pname2");
+String pfilesrc2=request.getParameter("pfilesrc2");
 %>
-상품명 : <%=pname %>
+<%-- 상품명 : <%=pname %>
 상품이미지 : <%=pfilesrc %>
 <br />
 <%String pname2=(String)session.getAttribute("pname"); %>
@@ -74,14 +74,16 @@ String pfilesrc=request.getParameter("pfilesrc");
 </c:forEach>
 p : <c:out value="${p }"/>
 <%String pnameGetReviewBoard=request.getParameter("pname"); %>
-pnameGetReviewBoard : <%=pnameGetReviewBoard %>
+pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 
 
 
+<%-- <c:forEach items="${getproductlist }" var="plist2">
+		<div>${plist2.p_name }</div>
+</c:forEach>
+<br /> --%> 
 
-
-<br /> 
-
+<input type="hidden" name="pname" value="${plist2.p_name }" />
 	
 <div class="review_table">
 

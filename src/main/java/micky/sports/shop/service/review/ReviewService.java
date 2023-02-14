@@ -30,6 +30,8 @@ public class ReviewService implements MickyServiceInter{
 				(SearchVO) map.get("searchVO");
 		
 		String r_no=request.getParameter("r_no");
+		String pname=request.getParameter("pname");
+		System.out.println("pname : "+pname);
 		
 		
 //selectType@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
