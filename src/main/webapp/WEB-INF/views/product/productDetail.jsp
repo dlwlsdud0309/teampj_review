@@ -155,8 +155,8 @@ $('#order_form').click(function(){
 <br />
 <br />
 <%-- <%@ include file="../review/reviewBoard.jsp" %> --%>
-<jsp:include page="../review/reviewBoard.jsp" flush="true" />
-	<%-- <jsp:param value="${product }" name="productDetail_data"/>--%>
+<jsp:include page="/WEB-INF/views/review/reviewBoard.jsp" />
+	<%-- <jsp:param value="${product }" name="productDetail_data"/> --%>
 	<%-- <jsp:param value="<%=pnameGetReviewBoard %>" name="pnameGetReviewBoard"/> --%>
 <%-- <jsp:include file="reviewBoard"></jsp:include> --%>
 </body>

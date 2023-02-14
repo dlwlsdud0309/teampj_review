@@ -13,6 +13,7 @@ import micky.sports.shop.dao.ProductDao;
 import micky.sports.shop.service.MickyServiceInter;
 import micky.sports.shop.service.product.ProductDetailService;
 import micky.sports.shop.service.product.ProductListService;
+import micky.sports.shop.service.review.ReviewService;
 
 @Controller
 @RequestMapping("/product")

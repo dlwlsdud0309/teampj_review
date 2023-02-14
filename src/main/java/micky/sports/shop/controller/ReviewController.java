@@ -34,7 +34,7 @@ public class ReviewController {
 	public String reviewBoard(HttpServletRequest request,
 			SearchVO searchVO,Model model) {
 		System.out.println("=====reviewBoard====");
-		
+				
 		model.addAttribute("searchVO", searchVO);
 		model.addAttribute("request", request);
 		mickyServiceInter=new ReviewService(sqlSession);

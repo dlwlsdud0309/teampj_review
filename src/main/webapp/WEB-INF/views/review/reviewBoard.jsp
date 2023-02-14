@@ -78,10 +78,14 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %>
 
 
 
+
+
 <br /> 
 
 	
 <div class="review_table">
+
+
 		<div class="selectandsearch_box">
 			<div class="select_box">
 				<h3>리뷰</h3>
@@ -207,6 +211,7 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %>
 		
 <c:set var="totalStar" value="0" />
 <c:set var="avgStar" value="0" />
+
 <c:forEach items="${review_list }" var="list">
 	<div class="row">
 		<div class="cell col1">
@@ -246,7 +251,8 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %>
 						</div>
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 						
-						
+						<div>
+						</div>
 					</div>
 				</div>
 			</div>

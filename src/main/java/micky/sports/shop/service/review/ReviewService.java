@@ -31,6 +31,7 @@ public class ReviewService implements MickyServiceInter{
 		
 		String r_no=request.getParameter("r_no");
 		
+		
 //selectType@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 		String[] selectType=request.getParameterValues("selectType");
 		

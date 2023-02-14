@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
 import micky.sports.shop.dao.ProductDao;
+import micky.sports.shop.dao.ReviewDao;
 import micky.sports.shop.service.MickyServiceInter;
 
 public class ProductListService implements MickyServiceInter{
@@ -33,6 +34,7 @@ public class ProductListService implements MickyServiceInter{
 		//System.out.println("*********~~~~~~~~~~~~~~~~~"+loginId);
 		
 		ProductDao Pdao=sqlSession.getMapper(ProductDao.class);
+		
 		model.addAttribute("productlsit",Pdao.productlist());
 		
 	}
