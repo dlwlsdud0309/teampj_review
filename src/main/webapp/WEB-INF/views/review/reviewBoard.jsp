@@ -188,13 +188,16 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 <div class="clear" ></div>
 
 <div class="review_table">
-		<form action="reviewBoard" method="post">
+		<form action="reviewBoard" method="get">
 	<div class="row">
 		<div class="cell col1">
 		<!-- 검색기능 추가 -->
 			<select name="selectType" >
-				<option ${param.selectType=="r_recently"?"selected":"" } value="r_recently">최신순</option>
-				<option ${param.selectType=="r_score"?"selected":"" } value="r_score">별점순</option>
+				<%-- <option ${param.selectType=="r_recently"?"selected":"" } value="r_recently">최신순</option> --%>
+				<%-- <option ${param.selectType=="r_recently"?"selected":"" } value="r_group">최신순</option>
+				<option ${param.selectType=="r_score"?"selected":"" } value="r_score">별점순</option> --%>
+				<option value="r_group">최신순</option>
+				<option value="r_score">별점순</option>
 			</select>
 		</div>
 		<div class="cell col2">

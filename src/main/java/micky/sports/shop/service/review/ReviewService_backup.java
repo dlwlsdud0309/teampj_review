@@ -101,12 +101,12 @@ public class ReviewService_backup implements MickyServiceInter{
 
 
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
-		ArrayList<ReviewDto> review_list=rdao.reviewboard();
+//		ArrayList<ReviewDto> review_list=rdao.reviewboard();
 //		ArrayList<ReviewDto> review_list=rdao.reviewboard(searchKeyword);
 
 
 		
-		model.addAttribute("review_list", review_list);
+//		model.addAttribute("review_list", review_list);
 	}
 
 }

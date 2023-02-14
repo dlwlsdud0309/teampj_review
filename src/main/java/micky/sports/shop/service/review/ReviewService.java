@@ -36,17 +36,23 @@ public class ReviewService implements MickyServiceInter{
 		
 //		검색기능
 		String selectType=request.getParameter("selectType");
+		
+		String r_group="";
+		String r_score="";
+		
+		if (selectType==null||selectType.equals("")) {
+			selectType="r_group";
+		}
 		System.out.println("selectType : "+selectType);
 		
 //		searchKeyword 가져오기
 		String searchKeyword=request.getParameter("searchKeyword");
-		if (searchKeyword==null) {
+		if (searchKeyword==null||searchKeyword.equals("")) {
 			searchKeyword="";
 		}
 		System.out.println("sk : "+searchKeyword);
 		
-//		검색어 유지기능
-		model.addAttribute("resk",searchKeyword);
+
 		
 
 
@@ -57,6 +63,8 @@ public class ReviewService implements MickyServiceInter{
 
 		
 		model.addAttribute("review_list", review_list);
+//		검색어 유지기능
+		model.addAttribute("resk",searchKeyword);
 	}
 
 }
