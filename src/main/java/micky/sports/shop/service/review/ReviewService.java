@@ -1,5 +1,6 @@
 package micky.sports.shop.service.review;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
 import micky.sports.shop.dao.ReviewDao;
+import micky.sports.shop.dto.ReviewDto;
 import micky.sports.shop.service.MickyServiceInter;
 import micky.sports.shop.vopage.SearchVO;
 
@@ -26,8 +28,6 @@ public class ReviewService implements MickyServiceInter{
 		Map<String, Object> map=model.asMap();
 		HttpServletRequest request=
 				(HttpServletRequest) map.get("request");
-		SearchVO searchVO=
-				(SearchVO) map.get("searchVO");
 		
 		String r_no=request.getParameter("r_no");
 		String pname=request.getParameter("pname");
@@ -98,48 +98,14 @@ public class ReviewService implements MickyServiceInter{
 //		검색어 유지기능
 		model.addAttribute("resk",searchKeyword);
 		
-//		페이지 가져오기
-		String strPage=request.getParameter("page");
-		if (strPage==null) {
-			strPage="1";
-		}		
-		
-//		setPage 통해 보내기
-		int page=Integer.parseInt(strPage);
-		searchVO.setPage(page);
+
 
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
-				
+		ArrayList<ReviewDto> review_list=rdao.reviewboard();
 
-//		총 글의 개수 구하기
-		int total=0;
-		if (r_recently.equals("r_recently") && r_score.equals("")) {
-			total=rdao.selectReviewboardTotCount1(searchKeyword);
-		}else if (r_recently.equals("") && r_score.equals("r_score")) {
-			total=rdao.selectReviewboardTotCount2(searchKeyword);
-		}else if (r_recently.equals("r_recently") && r_score.equals("r_score")) {
-			total=rdao.selectReviewboardTotCount3(searchKeyword);
-		}else if (r_recently.equals("") && r_score.equals("")) {
-			total=rdao.selectReviewboardTotCount4(searchKeyword);
-		}
+
 		
-		searchVO.pageCalculate(total);
-		
-		int rowStart=searchVO.getRowStart();
-		int rowEnd=searchVO.getRowEnd();
-		
-		if (r_recently.equals("r_recently") && r_score.equals("")) {
-			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"1"));
-		}else if (r_recently.equals("") && r_score.equals("r_score")) {
-			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"2"));
-		}else if (r_recently.equals("r_recently") && r_score.equals("r_score")) {
-			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"3"));
-		}else if (r_recently.equals("") && r_score.equals("")) {
-			model.addAttribute("review_list", rdao.reviewboard(rowStart,rowEnd,searchKeyword,"4"));
-		}
-		
-		model.addAttribute("totRowcnt", total);
-		model.addAttribute("searchVO", searchVO);
+		model.addAttribute("review_list", review_list);
 	}
 
 }

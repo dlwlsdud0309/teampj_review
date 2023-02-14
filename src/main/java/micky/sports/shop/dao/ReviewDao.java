@@ -8,7 +8,7 @@ public interface ReviewDao {
 //	public ArrayList<ReviewDto> ReviewDto();
 	
 	
-	public ArrayList<ReviewDto> reviewboard(int start, int end, String searchKeyword, String selNum);
+	public ArrayList<ReviewDto> reviewboard();
 	
 	public void write(String m_id,String r_title,String r_content,String r_filesrc,String r_point);
 	public void delete(String r_no);
@@ -27,8 +27,8 @@ public interface ReviewDao {
 	
 	public ReviewDto getReview(String r_no);
 
-	public int selectReviewboardTotCount1(String searchKeyword);
-	public int selectReviewboardTotCount2(String searchKeyword);
-	public int selectReviewboardTotCount3(String searchKeyword);
-	public int selectReviewboardTotCount4(String searchKeyword);
+//	public int selectReviewboardTotCount1(String searchKeyword);
+//	public int selectReviewboardTotCount2(String searchKeyword);
+//	public int selectReviewboardTotCount3(String searchKeyword);
+//	public int selectReviewboardTotCount4(String searchKeyword);
 }
