@@ -42,7 +42,7 @@ public class ReviewService implements MickyServiceInter{
 		String r_score="";
 		
 		if (selectType==null||selectType.equals("")) {
-			selectType="";
+			selectType="r_group";
 		}
 		
 //		searchKeyword 가져오기
