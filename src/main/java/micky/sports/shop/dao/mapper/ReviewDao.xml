@@ -66,9 +66,12 @@
 		WHERE M.M_ID=R.M_ID
 		AND R.P_NO=P.P_NO
 		AND R.R_CONTENT like '%'||#{param2}||'%'
-		ORDER BY #{param1} DESC) R
-		
-		
+		ORDER BY
+		<choose>
+			<when test="param1 eq 'r_group'">r_group</when>
+			<otherwise>r_score</otherwise>
+		</choose>
+		DESC) R
 		
 		<!-- ============================Product와 join 이전 쿼리=============================== -->		
 	        <!-- SELECT ROWNUM,R_NO,M_ID,R_TITLE,R_CONTENT,R_ID,R_RETITLE,
@@ -158,7 +161,6 @@
 	
 	<update id="modify">
 		UPDATE REVIEW SET R_TITLE=#{param2},
-		<!-- R_CONTENT=#{param3} -->
 		R_CONTENT=#{param3}, R_SCORE=#{param4}, R_FILESRC=#{param5}
 		WHERE R_NO=#{param1}
 	</update>
@@ -174,15 +176,15 @@
 		SELECT COUNT(*) FROM REVIEW
 	</select> -->
 	
-	<!-- <select id="totalCount1" resultType="Integer">
-		SELECT COUNT(*) FROM REVIEW WHERE R_CONTENT LIKE '%||#{param1}||%'
+	<select id="totalCount1" resultType="Integer">
+		SELECT COUNT(*) FROM REVIEW WHERE R_CONTENT LIKE '%'||#{param1}||'%'
 	</select>
 	
 	<select id="totalCount2" resultType="Integer">
-		SELECT COUNT(*) FROM REVIEW WHERE R_CONTENT LIKE '%||#{param1}||%'
+		SELECT COUNT(*) FROM REVIEW WHERE R_CONTENT LIKE '%'||#{param1}||'%'
 	</select>
 	
 	<select id="totalCount3" resultType="Integer">
-		SELECT COUNT(*) FROM REVIEW WHERE R_CONTENT LIKE '%||#{param1}||%'
-	</select> -->
+		SELECT COUNT(*) FROM REVIEW WHERE R_CONTENT LIKE '%'||#{param1}||'%'
+	</select>
 </mapper>
