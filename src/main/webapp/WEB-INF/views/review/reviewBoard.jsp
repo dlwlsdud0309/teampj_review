@@ -92,10 +92,8 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 				<!-- <a class="atag_reviewwrite" href="reviewWriteview">리뷰작성</a> -->
 				<script>
 					function fn_01(checked_id){
-						//alert('로그인이 필요합니다.');
 						if(fn_02(checked_id)==false){
 							alert('로그인이 필요합니다.');
-							//location.href('https://www.naver.com');
 							$(location).attr('href','../member/loginform');
 						}else{
 							$(".styleClassReviewWriteview").bPopup();
