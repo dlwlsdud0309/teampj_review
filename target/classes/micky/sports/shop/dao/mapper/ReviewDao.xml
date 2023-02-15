@@ -206,10 +206,8 @@
 	</select> -->
 	
 	<update id="replyUpdate">
-	
 		UPDATE REVIEW SET R_ID=#{param2},
 		R_RETITLE=#{param3}, R_RECONTENT=#{param4},
 		R_YNN='y' WHERE R_NO=#{param1}
-		
 	</update>
 </mapper>

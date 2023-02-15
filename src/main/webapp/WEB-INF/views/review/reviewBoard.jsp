@@ -20,18 +20,39 @@
 		});
 	});
 	
+	/* 별점 */		
+	function redeptlist(target) {
+		alert("target : "+target.value);
+		$('#starInput[name=r_score]').attr('value',target.value);	
+	}
 	
-		
-		function redeptlist(target) {
-			alert("target : "+target.value);
-			$('#starInput[name=r_score]').attr('value',target.value);	
+	function getvalue(target) {
+		alert(target.value);
+	} 
+
+	/* 리뷰작성 로그인 확인 */
+	function fn_01(checked_id){
+		if(fn_02(checked_id)==false){
+			alert('로그인이 필요합니다.');
+			$(location).attr('href','../member/loginform');
+		}else{
+			$(".styleClassReviewWriteview").bPopup();
 		}
-		
-		function getvalue(target) {
-			alert(target.value);
-		} 
+	}
+	function fn_02(checked_id){
+		if(checked_id=='' || checked_id==null){
+			return false;
+		}else{
+			return true;
+		}
+	}
 	
-	
+	/* admin-답글 */
+	$(document).ready(function(){
+		  $('#reply_menu > div > a').off().on("click",function(){
+		    $(this).next($('.snd_menu')).slideToggle();
+		  });
+		});
 </script>
 </head>
 
@@ -78,30 +99,11 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 	
 <div class="review_table">
 
-
 		<div class="selectandsearch_box">
 			<div class="select_box">
 				<h3>리뷰</h3>
 			</div>
 			<div>
-				<!-- <a class="atag_reviewwrite" href="reviewWriteview">리뷰작성</a> -->
-				<script>
-					function fn_01(checked_id){
-						if(fn_02(checked_id)==false){
-							alert('로그인이 필요합니다.');
-							$(location).attr('href','../member/loginform');
-						}else{
-							$(".styleClassReviewWriteview").bPopup();
-						}
-					}
-					function fn_02(checked_id){
-						if(checked_id=='' || checked_id==null){
-							return false;
-						}else{
-							return true;
-						}
-					}
-				</script>
 				<input type="button" value="리뷰작성" onclick="fn_01('${sessionScope.loginid }');" />
 				
 <!-- ======================== 작성하기 폼 ========================= -->
@@ -188,7 +190,6 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 		<div class="cell col1">
 		<!-- 검색기능 추가 -->
 			<select name="selectType" >
-				<%-- <option ${param.selectType=="r_recently"?"selected":"" } value="r_recently">최신순</option> --%>
 				<option ${param.selectType=="r_recently"?"selected":"" } value="r_group">최신순</option>
 				<option ${param.selectType=="r_score"?"selected":"" } value="r_score">별점순</option>
 			</select>
@@ -240,40 +241,29 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 							<p class="u_content">${list.r_content }</p> 
 						</div>
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 답변창 만들기 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-						<style>
+						<style> /* css로 옮기면 적용되지 않음 */
 							ul { padding: 0; }
 							li {
 							  list-style: none;
 							  line-height: 34px;
 							}
-							.sub_menu { display: none; } /* 서브메뉴들 숨김 */
+							.sub_menu { display: none; }
 						</style>
-						<script>
-							$(document).ready(function(){
-								  $('#reply_menu > div > a').off().on("click",function(){
-								    $(this).next($('.snd_menu')).slideToggle();
-								  });
-								});
-						</script>
-								<div id="reply_menu">
-									<div>
-										<a class="${list.r_no }" href="#" onclick="return false">댓글()</a>
-										<div class="snd_menu sub_menu">
-											<div>${list.r_retitle }</div>
-											<div>${list.r_recontent }</div>
-										</div>
-									</div>
+						<div id="reply_menu">
+							<div>
+								<a class="${list.r_no }" href="#" onclick="return false">댓글()</a>
+								<div class="snd_menu sub_menu">
+									<div>${list.r_retitle }</div>
+									<div>${list.r_recontent }</div>
 								</div>
+							</div>
+						</div>
 <c:if test="${sessionScope.loginid eq 'admintest' }">
 						        <div id="reply_menu">
 						          <div><a class="${list.r_no }" href="#" onclick="return false">댓글달기</a>
 						            <div class="snd_menu sub_menu">
 						            	<form action="reviewPopupreply">
-						            		<input type="hidden" name="r_no" value="${list.r_no }" />
-											<input type="hidden" name="r_group" value="${list.r_group }" />
-											<input type="hidden" name="r_step" value="${list.r_step }" />
-											<input type="hidden" name="r_indent" value="${list.r_indent }" />
-											
+						            	
 						            		<div><input type="hidden" name="r_id" value="${sessionScope.loginid }" />관리자</div>
 						            		<div><input type="text" name="r_retitle" size="25" value="믹키 스포츠웨어 온라인 스토어" /></div>
 							            	<div><textarea name="r_recontent" cols="100%" rows="3" placeholder="댓글을 입력하세요"></textarea></div>
@@ -283,9 +273,6 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 						          </div>
 								</div>
 </c:if>
-						
-<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-						
 						<div>
 						</div>
 					</div>

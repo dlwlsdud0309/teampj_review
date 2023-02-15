@@ -71,9 +71,9 @@ div{
 .atag{
 	visibility: hidden;
 }
-/* .reply_box{
-	display: hidden;
-} */
+
+/* =============== admin-답글 =============== */
+
 
 /* =============== 별점 =============== */
 .star {
@@ -171,7 +171,6 @@ input#replyToggle:checked+div#reply_box{
 	top: 50px;
 	position: absolute;
 }
-
 
 
 
