@@ -185,11 +185,11 @@
 		ORDER BY R_GROUP DESC, R_STEP ASC
 	</select>
 	
-	<!-- <select id="totalCount" resultType="Integer">
+	<select id="totalCount" resultType="Integer">
 		SELECT COUNT(*) FROM REVIEW
-	</select> -->
+	</select>
 	
-	<select id="totalCount1" resultType="Integer">
+	<!-- <select id="totalCount1" resultType="Integer">
 		SELECT COUNT(*) FROM REVIEW WHERE R_CONTENT LIKE '%'||#{param1}||'%'
 	</select>
 	
@@ -199,5 +199,5 @@
 	
 	<select id="totalCount3" resultType="Integer">
 		SELECT COUNT(*) FROM REVIEW WHERE R_CONTENT LIKE '%'||#{param1}||'%'
-	</select>
+	</select> -->
 </mapper>

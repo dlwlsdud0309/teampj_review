@@ -17,14 +17,7 @@
 		$(".u_content").click(function(){
 			/* $(this).addClass("u_content"); */
 			$(this).toggleClass("u_content").toggleClass("u_contentGray");
-			
 		});
-				
-		/* 답글버튼 눌렀을 때 작동하도록 */
-		/* $(".atag_reply").click(function () {
-			alert("하이")
-			$(this).hide(".reply_box");
-		}) */
 	});
 		
 		function redeptlist(target) {
@@ -244,8 +237,18 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 							<p class="u_content">${list.r_content }</p> 
 						</div>
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 답변창 만들기 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+						<script>
+							$(function(){
+								$("#menu1").click(function(){
+									alert("신호")
+								});
+							});
+						</script>
 						<div class="reply_box">
-							답글창
+							<ul>
+								<li>관리자</li>
+								<li>답글 내용 : ${list.r_recontent }</li>
+							</ul>
 						</div>
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 						
@@ -275,7 +278,10 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 				<%-- <a class="atag" href="reviewPopupReplycontentview?r_no=${list.r_no }">답글</a> --%>
 <c:if test="${sessionScope.loginid eq 'admintest' }">
 				<a href="reviewDelete?r_no=${list.r_no }">삭제</a>
-				<a id="atag_reply" href="#">답글</a>
+				<div>
+					<a id="menu1" href="#">답글</a>
+					<span id="message1"></span>
+				</div>
 </c:if>
 			</div>
 		</div>

@@ -55,18 +55,18 @@ public class ReviewService implements MickyServiceInter{
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
 		
 //		총게시글
-//		int totalCount=rdao.totalCount();
+		int totalCount=rdao.totalCount();
 //		System.out.println(totalCount);
 		
 //		전체글 수와 검색했을 때 나온 글 수 구별
-		int totalCount=0;
-		if(r_group.equals("r_group") && r_score.equals("")) {
-			totalCount=rdao.totalCount1(searchKeyword);
-		}else if(r_group.equals("") && r_score.equals("r_score")) {
-			totalCount=rdao.totalCount2(searchKeyword);
-		}if(r_group.equals("") && r_score.equals("")) {
-			totalCount=rdao.totalCount3(searchKeyword);
-		}
+//		int totalCount=0;
+//		if(r_group.equals("r_group") && r_score.equals("")) {
+//			totalCount=rdao.totalCount1(searchKeyword);
+//		}else if(r_group.equals("") && r_score.equals("r_score")) {
+//			totalCount=rdao.totalCount2(searchKeyword);
+//		}if(r_group.equals("") && r_score.equals("")) {
+//			totalCount=rdao.totalCount3(searchKeyword);
+//		}
 		
 		ArrayList<ReviewDto> review_list=rdao.reviewboard(selectType,searchKeyword);
 		model.addAttribute("review_list", review_list);
