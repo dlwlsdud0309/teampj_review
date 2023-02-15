@@ -112,11 +112,6 @@ ${pfilesrc }
 </c:forEach>
 <br /> --%>
 
-
-
-
-
-
 <style>
   .js-load {
     display: none;
@@ -130,7 +125,7 @@ ${pfilesrc }
 .btn-wrap, .lists, .main {
     display: block;
 }
-/* .main {
+.main {
     max-width: 100%;
     margin: 0 auto;
 }
@@ -139,12 +134,12 @@ ${pfilesrc }
 }
 .lists__item {
     padding: 20px;
-    background: #EEE;
+    /* background: #EEE; */
 }
 .lists__item:nth-child(2n) {
-    background: #59b1eb;
-    color: #fff;
-} */
+    /* background: #59b1eb;
+    color: #fff; */
+}
 .btn-wrap {
     text-align: center;
 }
