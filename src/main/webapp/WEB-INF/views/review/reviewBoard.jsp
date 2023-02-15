@@ -239,73 +239,45 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 							<p class="u_content">${list.r_content }</p> 
 						</div>
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 답변창 만들기 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-						<script>
-						/* $(".main").click(function(){
-				            if($(this).find(".sub").is(":visible")){
-				                $(this).find(".sub").slideUp();
-				            }
-				            else{
-				                $(this).find(".sub").slideDown();
-				            }
-				        }); */
-				        
-				        $(document).ready(function(){
-				        	$(".toggle_reply").click(function(){
-								alert("ㅇㅇ");
-				        	});
-				        	//.slideToggle('fast')
-				        });
-				        
-				        /* $(document).ready(function(){
-				        	  
-				        	  $('#main_menu > li > a').click(function(){
-				        	    $(this).next($('.snd_menu')).slideToggle('fast');
-				        	  })
-				        	  $('.snd_menu > li > a').click(function(e){
-				        	    e.stopPropagation();
-				        	    $(this).next($('.trd_menu')).slideToggle('fast');
-				        	  }) */
-				        	  
-				        	  $(document).ready(function(){
-					        	  $(".toggle_reply").click(function(){
-					        		  e.stopPropagation();
-					        		  alert("ㅇㅇ");
-					        		  $(".menuuuuuu").slideToggle();
-					        	  });
-				        	  });  
-				        	  /* $(document).ready(function(){
-				                  $(".toggle_reply").click(function(){
-				                      alert("하이");
-				                  });
-				              }); */
-					        	  /* $('.snd_menu > li > a').click(function(e){
-					        	    e.stopPropagation();
-					        	    $(this).next($('.trd_menu')).slideToggle('fast');
-					        	  }) */
-				        
-				        
-						</script>
 						<style>
-							
+							   nav {
+  width: 150px;
+}
+ul { padding: 0; }
+li {
+  list-style: none;
+  line-height: 34px;
+}
+
+.snd_menu { background: #efefef; }
+.trd_menu { background: #ddd; }
+.sub_menu { display: none; } /* 서브메뉴들 숨김 */
+
 						</style>
-						
+						<script>
+							$(document).ready(function(){
+								  $('#main_menu > div > a').off().on("click",function(){
+								    $(this).next($('.snd_menu')).slideToggle();
+								  });
+								  //$('.snd_menu > li > a').on("click",function(e){
+								    //e.stopPropagation();
+								    //$(this).next($('.trd_menu')).slideToggle();
+								  //});
+								});
+						</script>
 						<div class="reply_box">
-							<nav>
-								<ul id="main_menu">
-									<li class="menuuuuuu">
-										<ul class="snd_menu sub_menu">
-											<li>${list.r_retitle }</li>
-											<li>${list.r_recontent }</li>
-										</ul>
-									</li>
-								</ul>
-							</nav>
+							<div>
+						        <div id="main_menu">
+						          <div><a class="${list.r_no }" href="#" onclick="return false">댓글</a>
+						            <div class="snd_menu sub_menu">
+						            	<div>${list.r_retitle }</div>
+						            	<div>${list.r_recontent }</div>
+						            </div>
+						          </div>
+						        </div>
+						      </div>
 						</div>
 						
-						<%-- <ul class="sub" style="display: none;">
-											<li>${list.r_retitle }</li>
-											<li>${list.r_recontent }</li>
-										</ul> --%>
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 						
 						<div>
@@ -324,8 +296,7 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 				<img src="../resources/reviewupload/${list.r_filesrc }" width="100" alt="" />
 			</div>
 			<div>
-				<!-- <a id="toc-toggle" onclick="openCloseToc()" href="#">댓글</a> -->
-				<a class="toggle_reply" onclick="return false" href="#">댓글댓글</a>
+				<a class="toggle_reply" onclick="return false" href="#">댓글보기</a>
 				<!-- 수정/삭제 -->
 <c:if test="${sessionScope.loginid eq list.memberDto.m_id }">
 				<a id="practice" href="reviewPopupcontentview?r_no=${list.r_no }">수정</a>
@@ -336,7 +307,7 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 				<%-- <a class="atag" href="reviewPopupReplycontentview?r_no=${list.r_no }">답글</a> --%>
 <c:if test="${sessionScope.loginid eq 'admintest' }">
 				<a href="reviewDelete?r_no=${list.r_no }">삭제</a>
-				<a class="" href="#">답글</a>
+				<a class="" onclick="return false;" href="#">답글폼</a>
 				
 </c:if>
 			</div>
