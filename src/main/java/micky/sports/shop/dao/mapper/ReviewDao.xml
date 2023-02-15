@@ -68,10 +68,10 @@
 		AND R.R_CONTENT like '%'||#{param2}||'%'
 		ORDER BY
 		<choose>
-			<when test="param1 eq 'r_group'">r_group</when>
-			<otherwise>r_score</otherwise>
+			<when test="param1 eq 'r_group'">R_GROUP DESC</when>
+			<otherwise>R_SCORE DESC, R_GROUP DESC</otherwise>
 		</choose>
-		DESC) R
+		) R
 		
 		<!-- ============================Product와 join 이전 쿼리=============================== -->		
 	        <!-- SELECT ROWNUM,R_NO,M_ID,R_TITLE,R_CONTENT,R_ID,R_RETITLE,
