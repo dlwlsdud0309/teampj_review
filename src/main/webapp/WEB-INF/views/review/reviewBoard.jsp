@@ -238,16 +238,23 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 						</div>
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 답변창 만들기 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 						<script>
-							$(function(){
-								$("#menu1").click(function(){
-									alert("신호")
+							/* $(function(){
+								$(".reply_box").click(function(){
+									//alert("신호")
+									$("#rr").slideUp();
+									return false;
+								});
+							}); */
+							$(document).ready(function(){
+								$("#slidedown").click(function(){
+									$(".reply_box ul li").slideDown(3000);
 								});
 							});
 						</script>
 						<div class="reply_box">
 							<ul>
-								<li>관리자</li>
-								<li>답글 내용 : ${list.r_recontent }</li>
+								<li>${list.r_retitle }</li>
+								<li>${list.r_recontent }</li>
 							</ul>
 						</div>
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
@@ -279,7 +286,7 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 <c:if test="${sessionScope.loginid eq 'admintest' }">
 				<a href="reviewDelete?r_no=${list.r_no }">삭제</a>
 				<div>
-					<a id="menu1" href="#">답글</a>
+					<a id="slidedown" href="#">답글</a>
 					<span id="message1"></span>
 				</div>
 </c:if>
