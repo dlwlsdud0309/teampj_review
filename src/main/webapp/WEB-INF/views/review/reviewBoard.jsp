@@ -54,8 +54,6 @@
 		  });
 		});
 	
-		
-	
 </script>
 </head>
 
@@ -105,16 +103,54 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 
 <input type="hidden" name="pname" value="${plist.p_name }" /> --%>
 
-
+pname : <%String pname=request.getParameter("pname"); %>
+pname : ${pname } <br />
+${pfilesrc }
 
 <%-- <c:forEach items="${getproductlist }" var="getData">
 	${getData.p_name }
 </c:forEach>
 <br /> --%>
 
-	
-<div class="review_table">
 
+
+
+
+
+<style>
+  .js-load {
+    display: none;
+}
+.js-load.active {
+    display: block;
+}
+.is_comp.js-load:after {
+    display: none;
+}
+.btn-wrap, .lists, .main {
+    display: block;
+}
+/* .main {
+    max-width: 100%;
+    margin: 0 auto;
+}
+.lists {
+    margin-bottom: 4rem;
+}
+.lists__item {
+    padding: 20px;
+    background: #EEE;
+}
+.lists__item:nth-child(2n) {
+    background: #59b1eb;
+    color: #fff;
+} */
+.btn-wrap {
+    text-align: center;
+}
+  </style>
+
+<div class="review_table">
 		<div class="selectandsearch_box">
 			<div class="select_box">
 				<h3>리뷰</h3>
@@ -186,7 +222,7 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 						</span>
 					</div>
 					<div class="tablerow">
-						<b>&nbsp;&nbsp;&nbsp;&nbsp;총점</b>
+						<b>&nbsp;&nbsp;&nbsp;&nbsp;${avgStar }  총점</b>
 					</div>
 				</div>
 				<div>
@@ -201,28 +237,36 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 <div class="clear" ></div>
 
 <div class="review_table">
+
+		<!-- select, option, 검색 -->
 		<form action="reviewBoard" method="get">
-	<div class="row">
-		<div class="cell col1">
-		<!-- 검색기능 추가 -->
-			<select name="selectType" >
-				<option ${param.selectType=="r_recently"?"selected":"" } value="r_group">최신순</option>
-				<option ${param.selectType=="r_score"?"selected":"" } value="r_score">별점순</option>
-			</select>
-		</div>
-		<div class="cell col2">
-			<div class="search_box">
-				<input type="text" name="searchKeyword" placeholder="리뷰 키워드 검색" size="10" value="${resk }"/>
-				<input type="submit" value="검색" />
+			<div class="row">
+				<div class="cell col1">
+				<!-- 검색기능 추가 -->
+					<select name="selectType" >
+						<option ${param.selectType=="r_recently"?"selected":"" } value="r_group">최신순</option>
+						<option ${param.selectType=="r_score"?"selected":"" } value="r_score">별점순</option>
+					</select>
+				</div>
+				
+				<!-- 키워드 검색 -->
+				<div class="cell col2">
+					<div class="search_box">
+						<input type="text" name="searchKeyword" placeholder="리뷰 키워드 검색" size="10" value="${resk }"/>
+						<input type="submit" value="검색" />
+					</div>
+				</div>
 			</div>
-		</div>
-	</div>
 		</form>
 		
 <c:set var="totalStar" value="0" />
 <c:set var="avgStar" value="0" />
 
+<div id="contents">
+	<div id="js-load" class="main">
+		<ul class="lists">
 <c:forEach items="${review_list }" var="list">
+			<li class="lists__item js-load">
 	<div class="row">
 		<div class="cell col1">
 			<div class="review_total">
@@ -321,10 +365,16 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 			</div>
 		</div>
 	</div>
+
 	
+			</li>
 </c:forEach>
+		</ul>
+	<div id="js-btn-wrap" class="btn-wrap"> <a href="javascript:;" class="button">더보기</a></div>
+</div>
 totalStar : <c:out value="${totalStar }"/>
-avgStar : <c:out value="${avgStar+(totalStar/list_r_score.length) }"/>
+
+avgStar : <c:out value="${avgStar+(totalStar div totalCount) }"/>
 <br />
 
 	</div>
@@ -334,4 +384,25 @@ avgStar : <c:out value="${avgStar+(totalStar/list_r_score.length) }"/>
 <br />
 
 </body>
+<script>
+  $(window).on('load', function () {
+    load('#js-load', '10');
+    $("#js-btn-wrap .button").on("click", function () {
+        load('#js-load', '10', '#js-btn-wrap');
+    })
+});
+ 
+function load(id, cnt, btn) {
+    var girls_list = id + " .js-load:not(.active)";
+    var girls_length = $(girls_list).length;
+    var girls_total_cnt;
+    if (cnt < girls_length) {
+        girls_total_cnt = cnt;
+    } else {
+        girls_total_cnt = girls_length;
+        $('.button').hide()
+    }
+    $(girls_list + ":lt(" + girls_total_cnt + ")").addClass("active");
+}
+</script>
 </html>

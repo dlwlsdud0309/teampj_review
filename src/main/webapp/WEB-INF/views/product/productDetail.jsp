@@ -169,6 +169,9 @@ pfilesrc : <%=pfilesrcGetReviewBoard %> <br />
 <c:out value="${param.pname }"/> <br />
 <c:out value="${param.pfilesrc }"/> <br /> --%>
 
+<c:set var="pname" value="${param.pname }" scope="application"/> <br />
+<c:set var="pfilesrc" value="${param.pfilesrc }" scope="application"/> <br />
+
 <!-- <script>
 	localStorage.setItem('test',1);
 </script> -->
