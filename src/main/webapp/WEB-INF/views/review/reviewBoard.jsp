@@ -246,16 +246,17 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 								});
 							}); */
 							$(document).ready(function(){
-								$("#slidedown").click(function(){
-									$(".reply_box ul li").slideDown(3000);
+								$(".atag_reply").click(function(){
+									//$(".reply_box").jsp("<div>${list.r_retitle }</div><div>${list.r_recontent }</div>");
+									//$(".reply_box").html("<div>ㅎㅎ</div><div>ㅁㄴㅇ</div>");
 								});
 							});
 						</script>
 						<div class="reply_box">
-							<ul>
+							<%-- <ul>
 								<li>${list.r_retitle }</li>
 								<li>${list.r_recontent }</li>
-							</ul>
+							</ul> --%>
 						</div>
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 						
@@ -275,6 +276,7 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 				<img src="../resources/reviewupload/${list.r_filesrc }" width="100" alt="" />
 			</div>
 			<div>
+				<a class="atag_reply" href="#">댓글</a>
 				<!-- 수정/삭제 -->
 <c:if test="${sessionScope.loginid eq list.memberDto.m_id }">
 				<a id="practice" href="reviewPopupcontentview?r_no=${list.r_no }">수정</a>
@@ -285,10 +287,8 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 				<%-- <a class="atag" href="reviewPopupReplycontentview?r_no=${list.r_no }">답글</a> --%>
 <c:if test="${sessionScope.loginid eq 'admintest' }">
 				<a href="reviewDelete?r_no=${list.r_no }">삭제</a>
-				<div>
-					<a id="slidedown" href="#">답글</a>
-					<span id="message1"></span>
-				</div>
+				<a class="" href="#">답글</a>
+				
 </c:if>
 			</div>
 		</div>
