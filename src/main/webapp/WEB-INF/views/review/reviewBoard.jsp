@@ -240,34 +240,21 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 						</div>
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 답변창 만들기 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 						<style>
-							   nav {
-  width: 150px;
-}
-ul { padding: 0; }
-li {
-  list-style: none;
-  line-height: 34px;
-}
-
-.snd_menu { background: #efefef; }
-.trd_menu { background: #ddd; }
-.sub_menu { display: none; } /* 서브메뉴들 숨김 */
-
+							ul { padding: 0; }
+							li {
+							  list-style: none;
+							  line-height: 34px;
+							}
+							.sub_menu { display: none; } /* 서브메뉴들 숨김 */
 						</style>
 						<script>
 							$(document).ready(function(){
-								  $('#main_menu > div > a').off().on("click",function(){
+								  $('#reply_menu > div > a').off().on("click",function(){
 								    $(this).next($('.snd_menu')).slideToggle();
 								  });
-								  //$('.snd_menu > li > a').on("click",function(e){
-								    //e.stopPropagation();
-								    //$(this).next($('.trd_menu')).slideToggle();
-								  //});
 								});
 						</script>
-						<div class="reply_box">
-							<div>
-						        <div id="main_menu">
+						        <div id="reply_menu">
 						          <div><a class="${list.r_no }" href="#" onclick="return false">댓글</a>
 						            <div class="snd_menu sub_menu">
 						            	<div>${list.r_retitle }</div>
@@ -275,8 +262,23 @@ li {
 						            </div>
 						          </div>
 						        </div>
-						      </div>
-						</div>
+						        <div id="reply_menu">
+						          <div><a class="${list.r_no }" href="#" onclick="return false">댓글달기</a>
+						            <div class="snd_menu sub_menu">
+						            	<form action="#">
+						            		<input type="hidden" name="r_no" value="${replyview.r_no }" />
+											<input type="hidden" name="r_group" value="${replyview.r_group }" />
+											<input type="hidden" name="r_step" value="${replyview.r_step }" />
+											<input type="hidden" name="r_indent" value="${replyview.r_indent }" />
+											<input type="hidden" name="r_score" value="${replyview.r_score }" />
+											
+						            		<div><input type="hidden" name="r_id" value="${sessionScope.loginid }" />관리자</div>
+							            	<div><textarea name="r_recontent" cols="100%" rows="3" placeholder="댓글을 입력하세요"></textarea></div>
+							            	<input type="submit" value="답글" />
+						            	</form>
+						            </div>
+						          </div>
+								</div>
 						
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 						
@@ -296,7 +298,6 @@ li {
 				<img src="../resources/reviewupload/${list.r_filesrc }" width="100" alt="" />
 			</div>
 			<div>
-				<a class="toggle_reply" onclick="return false" href="#">댓글보기</a>
 				<!-- 수정/삭제 -->
 <c:if test="${sessionScope.loginid eq list.memberDto.m_id }">
 				<a id="practice" href="reviewPopupcontentview?r_no=${list.r_no }">수정</a>
