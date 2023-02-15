@@ -8,7 +8,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
 import micky.sports.shop.dao.ReviewDao;
-import micky.sports.shop.dto.ReviewDto;
 import micky.sports.shop.service.MickyServiceInter;
 
 public class ReviewReplyService implements MickyServiceInter{
@@ -34,7 +33,9 @@ public class ReviewReplyService implements MickyServiceInter{
 		String r_recontent=request.getParameter("r_recontent");
 		
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
-		ReviewDto replyview=rdao.reply(r_no,r_id,r_retitle,r_recontent);
+//		ReviewDto replyview=rdao.reply(r_no,r_id,r_retitle,r_recontent);
+		rdao.replyUpdate(r_no,r_id,r_retitle,r_recontent);
+		
 	}
 
 }

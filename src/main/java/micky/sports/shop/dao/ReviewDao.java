@@ -20,11 +20,15 @@ public interface ReviewDao {
 	public void modify(String r_no, String r_title, String r_content, String r_score, String r_filesrc);
 	
 	public ReviewDto replyview(String r_no);
-	public ReviewDto reply(String r_no, String r_id, String r_retitle, String r_recontent);
+	
+//	update사용할 것
+//	public ReviewDto reply(String r_no, String r_id, String r_retitle, String r_recontent);
+	public void replyUpdate(String r_no, String r_id, String r_retitle, String r_recontent);
 	
 	public ReviewDto getReview(String r_no);
 	
 	public int totalCount();
+//	public int replyTotalCount(String r_no);
 //	public int totalCount1(String searchKeyword);
 //	public int totalCount2(String searchKeyword);
 //	public int totalCount3(String searchKeyword);

@@ -189,6 +189,10 @@
 		SELECT COUNT(*) FROM REVIEW
 	</select>
 	
+	<!-- <select id="replyTotalCount" resultType="Integer">
+		SELECT COUNT(R_RECONTENT) FROM REVIEW WHERE R_NO=#{param1}
+	</select> -->
+	
 	<!-- <select id="totalCount1" resultType="Integer">
 		SELECT COUNT(*) FROM REVIEW WHERE R_CONTENT LIKE '%'||#{param1}||'%'
 	</select>
@@ -200,4 +204,11 @@
 	<select id="totalCount3" resultType="Integer">
 		SELECT COUNT(*) FROM REVIEW WHERE R_CONTENT LIKE '%'||#{param1}||'%'
 	</select> -->
+	
+	<update id="replyUpdate">
+		UPDATE REVIEW SET R_ID='ADMINTEST',
+		R_RETITLE='믹키 스포츠웨어 온라인 스토어', R_RECONTENT='저희 쇼핑몰을 이용해주셔서 감사합니다.',
+		R_YNN='Y' WHERE R_NO=42;
+		
+	</update>
 </mapper>

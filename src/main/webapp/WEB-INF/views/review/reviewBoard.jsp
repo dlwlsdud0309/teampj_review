@@ -212,6 +212,7 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 				<div class="review_box">
 					<div class="review_label">
 						<input type="hidden" value="${list.r_no }" />
+						<span>${list.r_no }</span>
 						<p>
 							${list.memberDto.m_id }
 						</p>
@@ -254,31 +255,34 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 								  });
 								});
 						</script>
-						        <div id="reply_menu">
-						          <div><a class="${list.r_no }" href="#" onclick="return false">댓글</a>
-						            <div class="snd_menu sub_menu">
-						            	<div>${list.r_retitle }</div>
-						            	<div>${list.r_recontent }</div>
-						            </div>
-						          </div>
-						        </div>
+								<div id="reply_menu">
+									<div>
+										<a class="${list.r_no }" href="#" onclick="return false">댓글()</a>
+										<div class="snd_menu sub_menu">
+											<div>${list.r_retitle }</div>
+											<div>${list.r_recontent }</div>
+										</div>
+									</div>
+								</div>
+<c:if test="${sessionScope.loginid eq 'admintest' }">
 						        <div id="reply_menu">
 						          <div><a class="${list.r_no }" href="#" onclick="return false">댓글달기</a>
 						            <div class="snd_menu sub_menu">
-						            	<form action="#">
-						            		<input type="hidden" name="r_no" value="${replyview.r_no }" />
-											<input type="hidden" name="r_group" value="${replyview.r_group }" />
-											<input type="hidden" name="r_step" value="${replyview.r_step }" />
-											<input type="hidden" name="r_indent" value="${replyview.r_indent }" />
-											<input type="hidden" name="r_score" value="${replyview.r_score }" />
+						            	<form action="reviewPopupreply">
+						            		<input type="hidden" name="r_no" value="${list.r_no }" />
+											<input type="hidden" name="r_group" value="${list.r_group }" />
+											<input type="hidden" name="r_step" value="${list.r_step }" />
+											<input type="hidden" name="r_indent" value="${list.r_indent }" />
 											
 						            		<div><input type="hidden" name="r_id" value="${sessionScope.loginid }" />관리자</div>
+						            		<div><input type="text" name="r_retitle" size="25" value="믹키 스포츠웨어 온라인 스토어" /></div>
 							            	<div><textarea name="r_recontent" cols="100%" rows="3" placeholder="댓글을 입력하세요"></textarea></div>
 							            	<input type="submit" value="답글" />
 						            	</form>
 						            </div>
 						          </div>
 								</div>
+</c:if>
 						
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 						
