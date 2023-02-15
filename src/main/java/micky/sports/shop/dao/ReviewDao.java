@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import micky.sports.shop.dto.ReviewDto;
 
 public interface ReviewDao {
-//	public ArrayList<ReviewDto> reviewboard();
-	public ArrayList<ReviewDto> reviewboard(String selectType, String searchKeyword);
+//	public ArrayList<ReviewDto> reviewboard(String selectType, String searchKeyword);
+	public ArrayList<ReviewDto> reviewboard(String selectType, String searchKeyword, String temp_pname);
 	
 	public void write(String m_id,String r_title,String r_content,String r_filesrc,String r_point);
 	public void delete(String r_no);

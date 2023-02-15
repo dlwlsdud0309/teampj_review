@@ -34,15 +34,7 @@ public class ProductListService implements MickyServiceInter{
 		//System.out.println("*********~~~~~~~~~~~~~~~~~"+loginId);
 		
 		ProductDao Pdao=sqlSession.getMapper(ProductDao.class);
-		
-		
-//================================================
-		ServletContext application=request.getSession().getServletContext();
-		application.setAttribute("getproductlist",Pdao.productlist());
-		//참조 : https://okky.kr/articles/264391
-//================================================
-		
-		
+
 		model.addAttribute("productlsit",Pdao.productlist());
 		
 	}

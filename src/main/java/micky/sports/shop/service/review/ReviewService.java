@@ -70,7 +70,13 @@ public class ReviewService implements MickyServiceInter{
 //			totalCount=rdao.totalCount3(searchKeyword);
 //		}
 		
-		ArrayList<ReviewDto> review_list=rdao.reviewboard(selectType,searchKeyword);
+
+//		ArrayList<ReviewDto> review_list=rdao.reviewboard(selectType,searchKeyword);
+//		임시로 상품명 기입하여 출력
+		String temp_pname="W'S NUPTSE HYBRID DOWN BALL JACKET";
+		ArrayList<ReviewDto> review_list=rdao.reviewboard(selectType,searchKeyword,temp_pname);
+		
+		
 		model.addAttribute("review_list", review_list);
 //		검색어 유지기능
 		model.addAttribute("resk",searchKeyword);

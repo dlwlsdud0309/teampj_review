@@ -53,6 +53,9 @@
 		    $(this).next($('.snd_menu')).slideToggle();
 		  });
 		});
+	
+		
+	
 </script>
 </head>
 
@@ -89,13 +92,26 @@ p : <c:out value="${p }"/>
 pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 
 
+<%-- <%String pname=request.getParameter("pname"); %>
+<%=pname %> --%>
+<%-- <%pageContext.getAttribute("name","${param.pname }"); %>
+<%=asd %> --%>
+<%-- a: <c:out value="${param.pname }" />
+<%String hell=request.getParameter("hell"); %>
+<%=hell %> --%>
+<%-- <c:out value="name" />
+<c:set var="name" value="${applicationScope.pm.p_name}" scope="session"></c:set> --%>
+<%-- <c:out value="${param.pname }"></c:out>
 
-<%-- <c:forEach items="${getproductlist }" var="plist2">
-		<div>${plist2.p_name }</div>
+<input type="hidden" name="pname" value="${plist.p_name }" /> --%>
+
+
+
+<%-- <c:forEach items="${getproductlist }" var="getData">
+	${getData.p_name }
 </c:forEach>
-<br /> --%> 
+<br /> --%>
 
-<input type="hidden" name="pname" value="${plist.p_name }" />
 	
 <div class="review_table">
 
