@@ -207,9 +207,9 @@
 	
 	<update id="replyUpdate">
 	
-		UPDATE REVIEW SET R_ID='ADMINTEST',
-		R_RETITLE='믹키 스포츠웨어 온라인 스토어', R_RECONTENT='저희 쇼핑몰을 이용해주셔서 감사합니다.',
-		R_YNN='Y' WHERE R_NO=42;
+		UPDATE REVIEW SET R_ID=#{param2},
+		R_RETITLE=#{param3}, R_RECONTENT=#{param4},
+		R_YNN='y' WHERE R_NO=#{param1}
 		
 	</update>
 </mapper>
