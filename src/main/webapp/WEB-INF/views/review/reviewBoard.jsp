@@ -247,16 +247,22 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 							}); */
 							$(document).ready(function(){
 								$(".atag_reply").click(function(){
-									//$(".reply_box").jsp("<div>${list.r_retitle }</div><div>${list.r_recontent }</div>");
+									$(".reply_box").append("<div>${list.r_retitle }</div><div>${list.r_recontent }</div>");
+									//$(".reply_box").htmltxt("<div>${list.r_retitle }</div><div>${list.r_recontent }</div>");
 									//$(".reply_box").html("<div>ㅎㅎ</div><div>ㅁㄴㅇ</div>");
 								});
 							});
 						</script>
+						<style>
+						li{
+							list-style: none;
+						}
+						</style>
 						<div class="reply_box">
-							<%-- <ul>
+							<ul>
 								<li>${list.r_retitle }</li>
 								<li>${list.r_recontent }</li>
-							</ul> --%>
+							</ul>
 						</div>
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 						
