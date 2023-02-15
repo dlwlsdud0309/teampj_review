@@ -238,47 +238,28 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 						</div>
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 답변창 만들기 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 						<script>
-							/* $(function(){
-								$(".reply_box").click(function(){
-									//alert("신호")
-									$("#rr").slideUp();
-									return false;
-								});
-							}); */
-							/* $(document).ready(function(){
-								$(".toc-toggle").click(function(){
-									$(".reply_box").append("<div>${list.r_retitle }</div><div>${list.r_recontent }</div>");
-									//$(".reply_box").htmltxt("<div>${list.r_retitle }</div><div>${list.r_recontent }</div>");
-									//$(".reply_box").html("<div>ㅎㅎ</div><div>ㅁㄴㅇ</div>");
-								});
-							}); */
-							function openCloseToc() {
-							    if(document.getElementById('toc-content').style.display === 'block') {
-							      document.getElementById('toc-content').style.display = 'none';
-							      document.getElementById('toc-toggle').textContent = '보이기';
-							    } else {
-							      document.getElementById('toc-content').style.display = 'block';
-							      document.getElementById('toc-toggle').textContent = '숨기기';
-							    }
-							  }
+						$(".main").click(function(){
+				            if($(this).find(".sub").is(":visible")){
+				                $(this).find(".sub").slideUp();
+				            }
+				            else{
+				                $(this).find(".sub").slideDown();
+				            }
+				        })
+				        
+				        
 						</script>
-						<style>
-						  #toc-content {
-						    display: none;
-						  }
-						  #toc-toggle {
-						    cursor: pointer;
-						    color: #2962ff;
-						  }
-						  #toc-toggle:hover {
-						    text-decoration: underline;
-						  }
-						</style>
+						
 						<div class="reply_box">
-							<ul id="toc-content">
-								<li>${list.r_retitle }</li>
-								<li>${list.r_recontent }</li>
-							</ul>
+						<ul>
+							<li class="main">
+								<ul class="sub" style="display: none;">
+									<li>${list.r_retitle }</li>
+									<li>${list.r_recontent }</li>
+								</ul>
+							</li>
+						</ul>
+							
 						</div>
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 						
