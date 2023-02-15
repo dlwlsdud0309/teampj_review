@@ -19,6 +19,8 @@
 			$(this).toggleClass("u_content").toggleClass("u_contentGray");
 		});
 	});
+	
+	
 		
 		function redeptlist(target) {
 			alert("target : "+target.value);
@@ -238,29 +240,72 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 						</div>
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 답변창 만들기 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 						<script>
-						$(".main").click(function(){
+						/* $(".main").click(function(){
 				            if($(this).find(".sub").is(":visible")){
 				                $(this).find(".sub").slideUp();
 				            }
 				            else{
 				                $(this).find(".sub").slideDown();
 				            }
-				        })
+				        }); */
+				        
+				        $(document).ready(function(){
+				        	$(".toggle_reply").click(function(){
+								alert("ㅇㅇ");
+				        	});
+				        	//.slideToggle('fast')
+				        });
+				        
+				        /* $(document).ready(function(){
+				        	  
+				        	  $('#main_menu > li > a').click(function(){
+				        	    $(this).next($('.snd_menu')).slideToggle('fast');
+				        	  })
+				        	  $('.snd_menu > li > a').click(function(e){
+				        	    e.stopPropagation();
+				        	    $(this).next($('.trd_menu')).slideToggle('fast');
+				        	  }) */
+				        	  
+				        	  $(document).ready(function(){
+					        	  $(".toggle_reply").click(function(){
+					        		  e.stopPropagation();
+					        		  alert("ㅇㅇ");
+					        		  $(".menuuuuuu").slideToggle();
+					        	  });
+				        	  });  
+				        	  /* $(document).ready(function(){
+				                  $(".toggle_reply").click(function(){
+				                      alert("하이");
+				                  });
+				              }); */
+					        	  /* $('.snd_menu > li > a').click(function(e){
+					        	    e.stopPropagation();
+					        	    $(this).next($('.trd_menu')).slideToggle('fast');
+					        	  }) */
 				        
 				        
 						</script>
+						<style>
+							
+						</style>
 						
 						<div class="reply_box">
-						<ul>
-							<li class="main">
-								<ul class="sub" style="display: none;">
-									<li>${list.r_retitle }</li>
-									<li>${list.r_recontent }</li>
+							<nav>
+								<ul id="main_menu">
+									<li class="menuuuuuu">
+										<ul class="snd_menu sub_menu">
+											<li>${list.r_retitle }</li>
+											<li>${list.r_recontent }</li>
+										</ul>
+									</li>
 								</ul>
-							</li>
-						</ul>
-							
+							</nav>
 						</div>
+						
+						<%-- <ul class="sub" style="display: none;">
+											<li>${list.r_retitle }</li>
+											<li>${list.r_recontent }</li>
+										</ul> --%>
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 						
 						<div>
@@ -279,7 +324,8 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 				<img src="../resources/reviewupload/${list.r_filesrc }" width="100" alt="" />
 			</div>
 			<div>
-				<a id="toc-toggle" onclick="openCloseToc()" href="#">댓글</a>
+				<!-- <a id="toc-toggle" onclick="openCloseToc()" href="#">댓글</a> -->
+				<a class="toggle_reply" onclick="return false" href="#">댓글댓글</a>
 				<!-- 수정/삭제 -->
 <c:if test="${sessionScope.loginid eq list.memberDto.m_id }">
 				<a id="practice" href="reviewPopupcontentview?r_no=${list.r_no }">수정</a>
