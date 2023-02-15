@@ -245,21 +245,37 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 									return false;
 								});
 							}); */
-							$(document).ready(function(){
-								$(".atag_reply").click(function(){
+							/* $(document).ready(function(){
+								$(".toc-toggle").click(function(){
 									$(".reply_box").append("<div>${list.r_retitle }</div><div>${list.r_recontent }</div>");
 									//$(".reply_box").htmltxt("<div>${list.r_retitle }</div><div>${list.r_recontent }</div>");
 									//$(".reply_box").html("<div>ㅎㅎ</div><div>ㅁㄴㅇ</div>");
 								});
-							});
+							}); */
+							function openCloseToc() {
+							    if(document.getElementById('toc-content').style.display === 'block') {
+							      document.getElementById('toc-content').style.display = 'none';
+							      document.getElementById('toc-toggle').textContent = '보이기';
+							    } else {
+							      document.getElementById('toc-content').style.display = 'block';
+							      document.getElementById('toc-toggle').textContent = '숨기기';
+							    }
+							  }
 						</script>
 						<style>
-						li{
-							list-style: none;
-						}
+						  #toc-content {
+						    display: none;
+						  }
+						  #toc-toggle {
+						    cursor: pointer;
+						    color: #2962ff;
+						  }
+						  #toc-toggle:hover {
+						    text-decoration: underline;
+						  }
 						</style>
 						<div class="reply_box">
-							<ul>
+							<ul id="toc-content">
 								<li>${list.r_retitle }</li>
 								<li>${list.r_recontent }</li>
 							</ul>
@@ -282,7 +298,7 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 				<img src="../resources/reviewupload/${list.r_filesrc }" width="100" alt="" />
 			</div>
 			<div>
-				<a class="atag_reply" href="#">댓글</a>
+				<a id="toc-toggle" onclick="openCloseToc()" href="#">댓글</a>
 				<!-- 수정/삭제 -->
 <c:if test="${sessionScope.loginid eq list.memberDto.m_id }">
 				<a id="practice" href="reviewPopupcontentview?r_no=${list.r_no }">수정</a>
