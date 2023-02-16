@@ -190,9 +190,9 @@
 		SELECT COUNT(*) FROM REVIEW
 	</select>
 	
-	<!-- <select id="replyTotalCount" resultType="Integer">
-		SELECT COUNT(R_RECONTENT) FROM REVIEW WHERE R_NO=#{param1}
-	</select> -->
+	<select id="replyTotalCount" resultType="Integer">
+		SELECT COUNT(R_RECONTENT) FROM REVIEW WHERE R_NO=#{param1, jdbcType=INTEGER}
+	</select>
 	
 	<!-- <select id="totalCount1" resultType="Integer">
 		SELECT COUNT(*) FROM REVIEW WHERE R_CONTENT LIKE '%'||#{param1}||'%'

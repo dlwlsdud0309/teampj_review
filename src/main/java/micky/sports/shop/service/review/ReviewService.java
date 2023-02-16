@@ -3,6 +3,7 @@ package micky.sports.shop.service.review;
 import java.util.ArrayList;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
@@ -29,15 +30,17 @@ public class ReviewService implements MickyServiceInter{
 		HttpServletRequest request=
 				(HttpServletRequest) map.get("request");
 		
-		String r_no=request.getParameter("r_no");
-		System.out.println("r_no : "+r_no);
-//		String pname=request.getParameter("pname");
-//		System.out.println("pname : "+pname);
+		ServletContext application=request.getSession().getServletContext();
+		String p_name=(String)application.getAttribute("pname");
+		String p_filesrc=(String)application.getAttribute("pfilesrc");
 		
+		System.out.println("pname : "+p_name);
+		System.out.println("pfilesrc : "+p_filesrc);
+		
+		String r_no=request.getParameter("r_no");
 		
 //		검색기능
 		String selectType=request.getParameter("selectType");
-		System.out.println("selectType : "+selectType);
 		
 		String r_group="";
 		String r_score="";
@@ -57,7 +60,7 @@ public class ReviewService implements MickyServiceInter{
 		
 //		총게시글
 		int totalCount=rdao.totalCount();
-//		int replyTotalCount=rdao.replyTotalCount(r_no);
+		int replyTotalCount=rdao.replyTotalCount(r_no);
 //		System.out.println(totalCount);
 		
 //		전체글 수와 검색했을 때 나온 글 수 구별
@@ -71,10 +74,7 @@ public class ReviewService implements MickyServiceInter{
 //		}
 		
 
-//		ArrayList<ReviewDto> review_list=rdao.reviewboard(selectType,searchKeyword);
-//		임시로 상품명 기입하여 출력
-		String temp_pname="W'S NUPTSE HYBRID DOWN BALL JACKET";
-		ArrayList<ReviewDto> review_list=rdao.reviewboard(selectType,searchKeyword,temp_pname);
+		ArrayList<ReviewDto> review_list=rdao.reviewboard(selectType,searchKeyword,p_name);
 		
 		
 		model.addAttribute("review_list", review_list);
@@ -83,7 +83,7 @@ public class ReviewService implements MickyServiceInter{
 //		총게시글
 		model.addAttribute("totalCount", totalCount);
 //		게시글에 달린 답글 수
-//		model.addAttribute("replyTotalCount", replyTotalCount);
+		model.addAttribute("replyTotalCount", replyTotalCount);
 	}
 
 }

@@ -5,8 +5,7 @@ import java.util.ArrayList;
 import micky.sports.shop.dto.ReviewDto;
 
 public interface ReviewDao {
-//	public ArrayList<ReviewDto> reviewboard(String selectType, String searchKeyword);
-	public ArrayList<ReviewDto> reviewboard(String selectType, String searchKeyword, String temp_pname);
+	public ArrayList<ReviewDto> reviewboard(String selectType, String searchKeyword, String p_name);
 	
 	public void write(String m_id,String r_title,String r_content,String r_filesrc,String r_point);
 	public void delete(String r_no);
@@ -22,13 +21,12 @@ public interface ReviewDao {
 	public ReviewDto replyview(String r_no);
 	
 //	update사용할 것
-//	public ReviewDto reply(String r_no, String r_id, String r_retitle, String r_recontent);
 	public void replyUpdate(String r_no, String r_id, String r_retitle, String r_recontent);
 	
 	public ReviewDto getReview(String r_no);
 	
 	public int totalCount();
-//	public Integer replyTotalCount(String r_no);
+	public int replyTotalCount(String r_no);
 //	public int totalCount1(String searchKeyword);
 //	public int totalCount2(String searchKeyword);
 //	public int totalCount3(String searchKeyword);

@@ -17,7 +17,6 @@ import micky.sports.shop.service.review.ReviewReplyService;
 import micky.sports.shop.service.review.ReviewReplyviewService;
 import micky.sports.shop.service.review.ReviewService;
 import micky.sports.shop.service.review.ReviewWriteService;
-import micky.sports.shop.vopage.SearchVO;
 
 @Controller
 @RequestMapping("/review")
@@ -33,6 +32,7 @@ public class ReviewController {
 	@RequestMapping("/reviewBoard")
 	public String reviewBoard(HttpServletRequest request, Model model) {
 		System.out.println("=====reviewBoard====");
+		
 		
 		
 		model.addAttribute("request", request);

@@ -149,7 +149,14 @@ $('#order_form').click(function(){
 <br />
 <a href="../review/reviewBoard">reviewBoard</a>
 <br />
-<%
+<c:set var="pname" value="${param.pname }" scope="application"/> <br />
+<c:set var="pfilesrc" value="${param.pfilesrc }" scope="application"/> <br />
+<br />
+<br />
+<jsp:include page="/WEB-INF/views/review/reviewBoard.jsp" />
+
+
+<%-- <%
 String pnameGetReviewBoard=request.getParameter("pname");
 String pfilesrcGetReviewBoard=request.getParameter("pfilesrc");
 
@@ -158,7 +165,7 @@ String pfilesrcGetReviewBoard=request.getParameter("pfilesrc");
 
 %>
 pname : <%=pnameGetReviewBoard %> <br />
-pfilesrc : <%=pfilesrcGetReviewBoard %> <br />
+pfilesrc : <%=pfilesrcGetReviewBoard %> <br /> --%>
 
 <%-- <c:redirect url="/review/reviewBoard.jsp">
 	<c:param name="pname" value="<%=pnameGetReviewBoard %>"></c:param>
@@ -169,8 +176,6 @@ pfilesrc : <%=pfilesrcGetReviewBoard %> <br />
 <c:out value="${param.pname }"/> <br />
 <c:out value="${param.pfilesrc }"/> <br /> --%>
 
-<c:set var="pname" value="${param.pname }" scope="application"/> <br />
-<c:set var="pfilesrc" value="${param.pfilesrc }" scope="application"/> <br />
 
 <!-- <script>
 	localStorage.setItem('test',1);
@@ -189,7 +194,6 @@ pfilesrc : <%=pfilesrcGetReviewBoard %> <br />
 <br />
 <br />
 <%-- <%@ include file="../review/reviewBoard.jsp" %> --%>
-<jsp:include page="/WEB-INF/views/review/reviewBoard.jsp" />
 	<%-- <jsp:param value="${product }" name="productDetail_data"/> --%>
 	<%-- <jsp:param value="<%=pnameGetReviewBoard %>" name="pnameGetReviewBoard"/> --%>
 <%-- <jsp:include file="reviewBoard"></jsp:include> --%>

@@ -58,6 +58,7 @@
 </head>
 
 <body>
+
 <h3>Reviewboard</h3>
 <a href="../member/main">메인</a> <br />
 <c:if test="${empty sessionScope.loginid }">
@@ -103,9 +104,11 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 
 <input type="hidden" name="pname" value="${plist.p_name }" /> --%>
 
-pname : <%String pname=request.getParameter("pname"); %>
 pname : ${pname } <br />
-${pfilesrc }
+pfilesrc : ${pfilesrc } <br />
+
+
+<%String pname=request.getParameter("pname"); %>
 
 <%-- <c:forEach items="${getproductlist }" var="getData">
 	${getData.p_name }
@@ -235,6 +238,8 @@ ${pfilesrc }
 
 		<!-- select, option, 검색 -->
 		<form action="reviewBoard" method="get">
+			<input type="hidden" name="pname" value="${pname }" />
+			<input type="hidden" name="pfilesrc" value="${pfilesrc }" />
 			<div class="row">
 				<div class="cell col1">
 				<!-- 검색기능 추가 -->
@@ -306,7 +311,7 @@ ${pfilesrc }
 						</style>
 						<div id="reply_menu">
 							<div>
-								<a class="${list.r_no }" href="#" onclick="return false">댓글()</a>
+								<a class="${list.r_no }" href="#" onclick="return false">댓글(${replyTotalCount })</a>
 								<div class="snd_menu sub_menu">
 									<div>${list.r_retitle }</div>
 									<div>${list.r_recontent }</div>
@@ -366,6 +371,7 @@ ${pfilesrc }
 </c:forEach>
 		</ul>
 	<div id="js-btn-wrap" class="btn-wrap"> <a href="javascript:;" class="button">더보기</a></div>
+</div>
 </div>
 totalStar : <c:out value="${totalStar }"/>
 
