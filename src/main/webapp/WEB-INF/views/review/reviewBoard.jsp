@@ -219,7 +219,14 @@ om_state : ${om_state } <br />
 <c:set var="avgStar" value="0" />
 <c:if test="${pname ne null}">
 	<c:forEach items="${review_list }" var="list">
-		<c:set var="totalStar" value="${totalStar+list.r_score }" />
+		<c:choose>
+			<c:when test="${not empty list.r_score }">
+				<c:set var="totalStar" value="${totalStar+list.r_score }" />
+			</c:when>
+			<c:when test="${empty list.r_score }">
+				<%System.out.println("안나와요"); %>
+			</c:when>
+		</c:choose>
 	</c:forEach>
 	<%-- <c:out value="${totalStar }"/> --%>
 <c:set var="avgStar" value="${totalStar div fn:length(review_list) }" />

@@ -27,6 +27,7 @@ public class ReviewController {
 	private SqlSession sqlSession;
 	
 	
+	
 //	임시 메인페이지
 //	@RequestMapping(method = RequestMethod.POST, value = "/reviewBoard")
 	@RequestMapping("/reviewBoard")
