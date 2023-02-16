@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <%String loginid = (String)session.getAttribute("loginid"); %> 
 <!DOCTYPE html>
 <html>
@@ -204,7 +205,14 @@ pfilesrc : ${pfilesrc } <br />
 </div>
 			</div>
 <div class="clear" ></div> --%>
-<!-- ======================== 작성하기 폼 ========================= -->				
+<!-- ======================== 작성하기 폼 ========================= -->	
+
+<br />
+<!-- 별구하기 -->
+<c:if test="${pname ne null}">
+	${fn:length(review_list) }
+</c:if>
+			
 			<br />
 			<div class="avg_star">
 				<div class="tablerow">
@@ -212,12 +220,12 @@ pfilesrc : ${pfilesrc } <br />
 						<span class="user_date">
 							<span class="reviewBoard_star">
 								★★★★★
-								<span id="star2" style="width:${avgScore*20}%">★★★★★</span>
+								<span id="star2" style="width:${avgStar*20}%">★★★★★</span>
 							</span>
 						</span>
 					</div>
 					<div class="tablerow">
-						<b>&nbsp;&nbsp;&nbsp;&nbsp;${avgStar }  총점</b>
+						<b>&nbsp;&nbsp;&nbsp;&nbsp; ${avgStar } 총점</b>
 					</div>
 				</div>
 				<div>
@@ -264,6 +272,13 @@ pfilesrc : ${pfilesrc } <br />
 	<div id="js-load" class="main">
 		<ul class="lists">
 <c:forEach items="${review_list }" var="list">
+
+
+			<!-- 별구하기 -->
+			<c:if test="${pname eq list.productDto.p_name}">
+				${fn:length(review_list) }
+			</c:if>
+
 			<li class="lists__item js-load">
 	<div class="row">
 		<div class="cell col1">
@@ -271,11 +286,11 @@ pfilesrc : ${pfilesrc } <br />
 				<div class="review_box">
 					<div class="review_label">
 						<input type="hidden" value="${list.r_no }" />
-						<span>${list.r_no }</span>
+						<%-- <span>${list.r_no }</span> --%>
 						<p>
 							${list.memberDto.m_id }
 						</p>
-						<p>${list.productDto.p_name }</p>
+						<%-- <p>${list.productDto.p_name }</p> --%>
 						<p>${list.r_title }</p>
 						<div class="tablerow">
 							<div class="tablecell">
@@ -379,10 +394,8 @@ pfilesrc : ${pfilesrc } <br />
 </div>
 </div>
 totalStar : <c:out value="${totalStar }"/>
-
 avgStar : <c:out value="${avgStar+(totalStar div totalCount) }"/>
 <br />
-
 	</div>
 <br />
 <br />
