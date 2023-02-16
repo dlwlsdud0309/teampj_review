@@ -209,7 +209,6 @@ pfilesrc : ${pfilesrc } <br />
 <div class="clear" ></div> --%>
 <!-- ======================== 작성하기 폼 ========================= -->				
 			<br />
-			</div>
 			<div class="avg_star">
 				<div class="tablerow">
 					<div class="tablecell">
@@ -232,6 +231,7 @@ pfilesrc : ${pfilesrc } <br />
 		</div>
 	
 <hr />	
+</div>
 </div>
 <div class="clear" ></div>
 
@@ -370,11 +370,12 @@ pfilesrc : ${pfilesrc } <br />
 		<a href="javascript:;" class="button">더보기</a>
 	</div>
 </div>
+</div>
 totalStar : <c:out value="${totalStar }"/>
 
 avgStar : <c:out value="${avgStar+(totalStar div totalCount) }"/>
 <br />
-</div>
+
 	</div>
 <br />
 <br />
