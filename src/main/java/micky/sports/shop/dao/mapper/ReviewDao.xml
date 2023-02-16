@@ -190,7 +190,8 @@
 		SELECT COUNT(*) FROM REVIEW
 	</select>
 	
-	<!-- <select id="replyTotalCount" resultType="Integer">
+	<!-- <select id="replyTotalCount" resultType="micky.sports.shop.dto.ReviewDto">
+		SELECT COUNT(R_RECONTENT) R_RECONTENT FROM REVIEW GROUP BY R_NO ORDER BY R_NO
 		SELECT COUNT(R_RECONTENT) FROM REVIEW WHERE R_NO=#{param1, jdbcType=INTEGER}
 	</select> -->
 	

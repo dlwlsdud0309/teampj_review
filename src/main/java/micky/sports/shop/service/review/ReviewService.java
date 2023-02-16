@@ -59,6 +59,9 @@ public class ReviewService implements MickyServiceInter{
 		
 //		총게시글
 		int totalCount=rdao.totalCount();
+//		답글의 개수
+//		String r_recontent="r_recontent";
+//		ArrayList<ReviewDto> replyTotalCount=rdao.replyTotalCount();
 //		int replyTotalCount=rdao.replyTotalCount(r_no);
 //		System.out.println(totalCount);
 		
@@ -71,6 +74,7 @@ public class ReviewService implements MickyServiceInter{
 //		}if(r_group.equals("") && r_score.equals("")) {
 //			totalCount=rdao.totalCount3(searchKeyword);
 //		}
+		
 		
 
 		ArrayList<ReviewDto> review_list=rdao.reviewboard(selectType,searchKeyword,p_name);

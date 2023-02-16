@@ -26,7 +26,7 @@ public interface ReviewDao {
 	public ReviewDto getReview(String r_no);
 	
 	public int totalCount();
-//	public int replyTotalCount(String r_no);
+//	public ArrayList<ReviewDto> replyTotalCount();
 //	public int totalCount1(String searchKeyword);
 //	public int totalCount2(String searchKeyword);
 //	public int totalCount3(String searchKeyword);

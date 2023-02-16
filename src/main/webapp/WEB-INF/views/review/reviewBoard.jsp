@@ -311,7 +311,17 @@ pfilesrc : ${pfilesrc } <br />
 						</style>
 						<div id="reply_menu">
 							<div>
-								<a class="${list.r_no }" href="#" onclick="return false">댓글</a>
+								<a class="${list.r_no }" href="#" onclick="return false;">
+									댓글
+									<c:choose>
+										<c:when test="${list.r_ynn eq 'y' }">
+											(1)
+										</c:when>
+										<c:otherwise>
+											(0)
+										</c:otherwise>					
+									</c:choose>
+								</a>
 								<div class="snd_menu sub_menu">
 									<div>${list.r_retitle }</div>
 									<div>${list.r_recontent }</div>
