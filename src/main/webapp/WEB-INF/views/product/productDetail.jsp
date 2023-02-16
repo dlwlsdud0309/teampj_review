@@ -137,7 +137,6 @@ $('#order_form').click(function(){
 		$('.print-message-no-opt').css('display','block');
 		return false;
 	}
-
 });
 </script>
 
@@ -151,7 +150,7 @@ $('#order_form').click(function(){
 <c:set var="pfilesrc" value="${param.pfilesrc }" scope="application"/> <br />
 <br />
 <br />
-<jsp:include page="/WEB-INF/views/review/reviewBoard.jsp" />
+<%-- <jsp:include page="/WEB-INF/views/review/reviewBoard.jsp" /> --%>
 
 </body>
 </html>

@@ -134,5 +134,9 @@
 <footer>
 <%@ include file="admin_footer.jsp"%>
 </footer>
+
+<a href="/shop_backup/review/reviewBoard">reviewBoard</a>
+<c:set var="p_no" value="${param.p_no }" scope="application"/> <br />
+<c:set var="om_cancle" value="${param.om_cancle }" scope="application"/> <br />
 </body>
 </html>

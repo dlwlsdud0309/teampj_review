@@ -104,8 +104,14 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 
 <input type="hidden" name="pname" value="${plist.p_name }" /> --%>
 
+PRODUCT <br />
 pname : ${pname } <br />
 pfilesrc : ${pfilesrc } <br />
+<br />
+ADMIN_OLIST <br />
+p_no : ${p_no }
+om_state : ${om_state } <br />
+
 
 
 <%-- <c:forEach items="${getproductlist }" var="getData">
@@ -209,8 +215,15 @@ pfilesrc : ${pfilesrc } <br />
 
 <br />
 <!-- 별구하기 -->
+<c:set var="totalStar" value="0" />
+<c:set var="avgStar" value="0" />
 <c:if test="${pname ne null}">
-	${fn:length(review_list) }
+	<c:forEach items="${review_list }" var="list">
+		<c:set var="totalStar" value="${totalStar+list.r_score }" />
+	</c:forEach>
+	<%-- <c:out value="${totalStar }"/> --%>
+<c:set var="avgStar" value="${totalStar div fn:length(review_list) }" />
+<fmt:formatNumber value="${avgStar+(totalStar div totalCount) }" pattern=".00" var="avgStar"/>
 </c:if>
 			
 			<br />
@@ -264,21 +277,11 @@ pfilesrc : ${pfilesrc } <br />
 				</div>
 			</div>
 		</form>
-		
-<c:set var="totalStar" value="0" />
-<c:set var="avgStar" value="0" />
 
 <div id="contents">
 	<div id="js-load" class="main">
 		<ul class="lists">
 <c:forEach items="${review_list }" var="list">
-
-
-			<!-- 별구하기 -->
-			<c:if test="${pname eq list.productDto.p_name}">
-				${fn:length(review_list) }
-			</c:if>
-
 			<li class="lists__item js-load">
 	<div class="row">
 		<div class="cell col1">
@@ -393,8 +396,6 @@ pfilesrc : ${pfilesrc } <br />
 	</div>
 </div>
 </div>
-totalStar : <c:out value="${totalStar }"/>
-avgStar : <c:out value="${avgStar+(totalStar div totalCount) }"/>
 <br />
 	</div>
 <br />
