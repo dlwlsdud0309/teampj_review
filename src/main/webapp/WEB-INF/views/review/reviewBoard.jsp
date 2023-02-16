@@ -105,11 +105,10 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 
 <input type="hidden" name="pname" value="${plist.p_name }" /> --%>
 
-<%-- pname : ${pname } <br />
+pname : ${pname } <br />
 pfilesrc : ${pfilesrc } <br />
 
 
-<%String pname=request.getParameter("pname"); %> --%>
 
 <%-- <c:forEach items="${getproductlist }" var="getData">
 	${getData.p_name }
@@ -313,7 +312,7 @@ pfilesrc : ${pfilesrc } <br />
 						</style>
 						<div id="reply_menu">
 							<div>
-								<a class="${list.r_no }" href="#" onclick="return false">댓글()</a>
+								<a class="${list.r_no }" href="#" onclick="return false">댓글</a>
 								<div class="snd_menu sub_menu">
 									<div>${list.r_retitle }</div>
 									<div>${list.r_recontent }</div>

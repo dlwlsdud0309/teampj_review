@@ -36,6 +36,7 @@ public class ReviewReplyService implements MickyServiceInter{
 //		int replyTotalCount=rdao.replyTotalCount(r_no);
 		
 		rdao.replyUpdate(r_no,r_id,r_retitle,r_recontent);
+//		model.addAttribute("replyTotalCount", replyTotalCount);
 	}
 
 }
