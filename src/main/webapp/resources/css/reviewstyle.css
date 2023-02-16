@@ -24,7 +24,7 @@ div{
 .cell{	display: table-cell; /* td */ padding: 3px; border-bottom: 1px solid #ddd;
 }
 .col1{
-	width: 80%;
+	width: 100%;
 	vertical-align: top;
 }
 .col2{
