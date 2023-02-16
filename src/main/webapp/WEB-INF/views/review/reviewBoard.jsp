@@ -36,7 +36,8 @@
 			alert('로그인이 필요합니다.');
 			$(location).attr('href','../member/loginform');
 		}else{
-			$(".styleClassReviewWriteview").bPopup();
+			$(location).attr('href','reviewWriteview')
+			/* $(".styleClassReviewWriteview").bPopup(); */
 		}
 	}
 	function fn_02(checked_id){
@@ -157,7 +158,7 @@ pfilesrc : ${pfilesrc } <br />
 				<input type="button" value="리뷰작성" onclick="fn_01('${sessionScope.loginid }');" />
 				
 <!-- ======================== 작성하기 폼 ========================= -->
-<div id="styleID_ReviewWriteview" class="styleClassReviewWriteview">
+<%-- <div id="styleID_ReviewWriteview" class="styleClassReviewWriteview">
 	<div id="title_content">
 		<form action="reviewWrite" method="post" enctype="multipart/form-data">
 		<h3 class="popup_review_title">상품리뷰쓰기</h3>
@@ -206,7 +207,7 @@ pfilesrc : ${pfilesrc } <br />
 	</div>
 </div>
 			</div>
-<div class="clear" ></div>
+<div class="clear" ></div> --%>
 <!-- ======================== 작성하기 폼 ========================= -->				
 			<br />
 			<div class="avg_star">
@@ -371,7 +372,6 @@ pfilesrc : ${pfilesrc } <br />
 </c:forEach>
 		</ul>
 	<div id="js-btn-wrap" class="btn-wrap"> <a href="javascript:;" class="button">더보기</a></div>
-</div>
 </div>
 totalStar : <c:out value="${totalStar }"/>
 
