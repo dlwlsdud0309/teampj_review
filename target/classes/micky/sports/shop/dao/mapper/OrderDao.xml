@@ -1,0 +1,85 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="micky.sports.shop.dao.OrderDao">
+	<select id="orderSelect" resultType="micky.sports.shop.dto.ProductDto">
+		SELECT P_NAME,P_NO,P_PRICE,P_COLOR,P_SIZE,P_FILESRC FROM PRODUCT WHERE P_NO=#{param1}
+    </select>
+	<insert id="payment" >
+		INSERT INTO ORDER_MEMBER(OM_CNTNUM,OM_NUM,P_NO,U_CNT,M_ID,OM_DATE,OM_PAY,P_PRICE,OM_STATE,OM_CANCLE,OM_CDATE,C_REASON) 
+		VALUES(ORDER_SEQ.NEXTVAL,TO_CHAR(SYSDATE, 'YYYYMMDD')||#{param1},#{param2},#{param3},#{param1},SYSDATE,'포인트',
+		(SELECT P_PRICE FROM PRODUCT WHERE P_NO=#{param2})*#{param3},'결제완료','N',NULL,NULL)
+    </insert>
+    
+    <!-- 나의 주문 내역 보기 join -->
+    <resultMap type="micky.sports.shop.dto.OrderMemberDto" id="OrderMemberDto">
+    	<result column="om_cntnum" property="om_cntnum" />
+    	<result column="om_num" property="om_num" />
+    	<result column="p_no" property="p_no" />
+    	<result column="u_cnt" property="u_cnt" />
+    	<result column="m_id" property="m_id" />
+    	<result column="om_date" property="om_date" />
+    	<result column="om_pay" property="om_pay" />
+    	<result column="p_price" property="p_price" />
+    	<result column="om_state" property="om_state" />
+    	<result column="om_cancle" property="om_cancle" />
+    	<result column="om_cdate" property="om_cdate" />
+    	<result column="c_reason" property="c_reason" />
+		<collection property="productDto" resultMap="ProductDto"></collection>
+    </resultMap>
+    <resultMap type="micky.sports.shop.dto.ProductDto" id="ProductDto">
+    	<result column="p_no" property="p_no"/>
+    	<result column="p_name" property="p_name"/>
+    	<result column="p_price" property="p_price"/>
+    	<result column="p_cnt" property="p_cnt"/>
+    	<result column="p_color" property="p_color"/>
+    	<result column="p_size" property="p_size"/>
+    	<result column="p_filesrc" property="p_filesrc"/>
+    	<result column="p_date" property="p_date"/>    	
+    </resultMap>
+    <select id="mtOrderList" parameterType="micky.sports.shop.dto.OrderMemberDto" resultMap="OrderMemberDto">
+    	SELECT OM_CNTNUM,OM_NUM,P_NO,U_CNT,M_ID,OM_DATE,OM_PAY,P_PRICE,OM_STATE,OM_CANCLE,OM_CDATE,C_REASON,P_NAME,P_COLOR,P_SIZE,P_FILESRC
+		FROM (SELECT ROWNUM NUM, PAGEOM.* 
+		FROM (SELECT OM_CNTNUM,OM_NUM,P_NO,U_CNT,M_ID,OM_DATE,OM_PAY,P_PRICE,OM_STATE,OM_CANCLE,OM_CDATE,C_REASON,P_NAME,P_COLOR,P_SIZE,P_FILESRC
+		FROM (SELECT OM.OM_CNTNUM,OM.OM_NUM,OM.P_NO,OM.U_CNT,OM.M_ID,OM.OM_DATE,OM.OM_PAY,OM.P_PRICE,OM.OM_STATE,OM.OM_CANCLE,OM.OM_CDATE,OM.C_REASON,
+		P.P_NAME,P.P_COLOR,P.P_SIZE,P.P_FILESRC
+		FROM ORDER_MEMBER OM INNER JOIN PRODUCT P ON OM.P_NO=P.P_NO) WHERE M_ID=#{param1} ORDER BY OM_DATE DESC) PAGEOM)
+		WHERE NUM BETWEEN #{param2} AND #{param3}
+    </select>
+    
+	<!-- 주문페이지에서 회원정보확인하기 -->
+    <select id="ordersMember" resultType="micky.sports.shop.dto.MemberDto">
+		SELECT M_ID,M_PW,M_NAME,M_TEL,M_NAME2,M_EMAIL,M_GRADE,M_AGE,M_GENDER,M_CASH,M_FILESRC
+		FROM MEMBER WHERE M_ID=#{param1}
+    </select>
+    
+    <!-- 주문시 회원캐시 차감 -->
+	<update id="delcash">
+		UPDATE MEMBER SET M_CASH=M_CASH-#{param2} WHERE M_ID=#{param1}
+	</update>
+	
+	
+	<!-- 주문성공시 주문번호 -->
+    <select id="checkOmnum" resultType="String" >
+		SELECT MAX(OM_NUM) FROM ORDER_MEMBER WHERE M_ID=#{param1}
+    </select>
+	
+	<!-- 나의주문내역보기 페이징 -->
+	<select id="selectBoardTotCount" resultType="Integer">
+		SELECT COUNT(*) FROM ORDER_MEMBER WHERE M_ID=#{param1}
+	</select>
+	
+	<!-- 나의주문내역에서 취소요청 클릭시 화면전환 -->
+	<select id="myOrderCancelOffer" parameterType="micky.sports.shop.dto.OrderMemberDto" resultMap="OrderMemberDto">
+   		SELECT OM_CNTNUM,OM_DATE,P_NO,OM_NUM,M_ID,P_COLOR,P_SIZE,U_CNT,P_PRICE,OM_STATE,P_NAME,P_FILESRC
+		FROM (SELECT OM.OM_CNTNUM,OM.OM_DATE,OM.P_NO,OM.OM_NUM,OM.M_ID,OM.U_CNT,OM.P_PRICE,OM.OM_STATE,P.P_COLOR,P.P_SIZE,P.P_NAME,P.P_FILESRC
+		FROM ORDER_MEMBER OM INNER JOIN PRODUCT P ON OM.P_NO=P.P_NO)
+		WHERE OM_CNTNUM=#{param1}
+    </select>
+
+	<!-- 취소사유 적은후 취소요청하기  -->
+	<update id="myOCancelOffersubmit">
+		UPDATE ORDER_MEMBER SET OM_CANCLE='Y', C_REASON=#{param2}, OM_CDATE=SYSDATE WHERE OM_CNTNUM=#{param1}
+	</update>
+
+</mapper>

@@ -59,7 +59,6 @@
 </head>
 
 <body>
-
 <h3>Reviewboard</h3>
 <a href="../member/main">메인</a> <br />
 <c:if test="${empty sessionScope.loginid }">

@@ -5,7 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> -->
+<script src="../resources/js/jquery-3.6.1.min.js"></script>
 </head>
 <body>
 <script>
@@ -19,13 +20,13 @@ function check_id_pw(){
 	}else{
 		$.ajax({
 			type:'GET',
-			url:'/shop/member/login?loginform_input_id=' + loginform_input_id + '&loginform_input_pw=' + loginform_input_pw,
+			url:'../member/login?loginform_input_id=' + loginform_input_id + '&loginform_input_pw=' + loginform_input_pw,
 			success:function(result){
 				if(result==0){
 					alert("아이디비밀번호를확인하세요")
 				}else if(result==1){
 					alert("로그인성공")
-					window.location.href="/shop/member/main" //로그인성공시 메인페이지로이동
+					window.location.href="../member/main" //로그인성공시 메인페이지로이동
 				}
 			}
 		})
