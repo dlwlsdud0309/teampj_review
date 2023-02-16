@@ -12,7 +12,7 @@
 <body>
 <c:if test="${empty sessionScope.loginid }">
    <a href="../member/loginform">login</a> 
-   |  <a href="">join</a>
+   |  <a href="../member/joinform">join</a>
 
 </c:if>
  <c:if test="${not empty sessionScope.loginid }">
@@ -34,6 +34,7 @@
 			<input type="hidden" name="pcolor" value="${pm.p_color }" />
 		</div>
 	</c:forEach>
+
 </div>
 	
 
@@ -142,9 +143,6 @@ $('#order_form').click(function(){
 
 장바구니
 
-
-
-<!-- reviewBoard는 productDetail의 하단에 있어야함 -->
 <br />
 <br />
 <a href="../review/reviewBoard">reviewBoard</a>
@@ -155,47 +153,5 @@ $('#order_form').click(function(){
 <br />
 <jsp:include page="/WEB-INF/views/review/reviewBoard.jsp" />
 
-
-<%-- <%
-String pnameGetReviewBoard=request.getParameter("pname");
-String pfilesrcGetReviewBoard=request.getParameter("pfilesrc");
-
-//application.setAttribute("pname", pnameGetReviewBoard);
-//application.setAttribute("pfilesrc", pfilesrcGetReviewBoard);
-
-%>
-pname : <%=pnameGetReviewBoard %> <br />
-pfilesrc : <%=pfilesrcGetReviewBoard %> <br /> --%>
-
-<%-- <c:redirect url="/review/reviewBoard.jsp">
-	<c:param name="pname" value="<%=pnameGetReviewBoard %>"></c:param>
-</c:redirect> --%>
-
-<%-- <c:set value="${param.pname }"/> <br />
-<c:set value="${param.pfilesrc }"/> <br />
-<c:out value="${param.pname }"/> <br />
-<c:out value="${param.pfilesrc }"/> <br /> --%>
-
-
-<!-- <script>
-	localStorage.setItem('test',1);
-</script> -->
-
-<%-- <c:import url="../review/reviewBoard.jsp">
-	<c:param name="pname" value="${param.pname }"></c:param>
-	<c:param name="pfilesrc" value="${param.pfilesrc }"></c:param>
-</c:import> --%>
-
-<%-- <c:out value="${applicationScope.pm.p_name}" /> --%>
-
-<br />
-<br />
-<br />
-<br />
-<br />
-<%-- <%@ include file="../review/reviewBoard.jsp" %> --%>
-	<%-- <jsp:param value="${product }" name="productDetail_data"/> --%>
-	<%-- <jsp:param value="<%=pnameGetReviewBoard %>" name="pnameGetReviewBoard"/> --%>
-<%-- <jsp:include file="reviewBoard"></jsp:include> --%>
 </body>
 </html>

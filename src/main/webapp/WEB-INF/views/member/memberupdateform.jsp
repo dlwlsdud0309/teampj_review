@@ -56,6 +56,7 @@
 	<tr>
 		<td class = "left">프로필사진</td>
 		<td><input type="text" name="m_filesrc" value="${memberupdate_id.m_filesrc }" /></td>
+		
 	</tr>
 	<tr>
 		<td colspan = "2">

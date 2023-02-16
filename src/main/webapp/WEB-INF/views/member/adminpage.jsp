@@ -12,5 +12,6 @@
 <a href="main">메인페이지로</a>
 <input type="button" value="회원목록" onclick="location.href='memberlist'" />
 <input type="button" value="회원주문목록" onclick="location.href='../admin_olist'" />
+<input type="button" value="큐앤에이게시판" onclick="location.href='adminqnalist'" />
 </body>
 </html>

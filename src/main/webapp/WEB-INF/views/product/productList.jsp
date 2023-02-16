@@ -16,6 +16,11 @@
     <a href="../member/logout">logout</a> 
  <br />
  ${sessionScope.loginid } 님, 로그인상태입니다 ദ്ദി*ˊᗜˋ*)
+ 	 <div>
+		<p class="go-myOrderList" style="color: #336666;">
+		<a href="../order/myOrderList">나의 주문내역보기</a>
+		</p>
+	</div>
  </c:if>
  
 <h3>상품리스트</h3>
@@ -37,26 +42,6 @@
 	</c:forEach>
 	</ul>
 </div>
-
-<!-- application 사용 -->
-<%-- <div class="productNormalPackage">
-	<ul class="productList">
-	<c:forEach items="${getproductlist }" var="plist">
-	<li>
-		<div class="pdtthumbnail" >
-			<a href="productDetail?pname=${plist.p_name }&pfilesrc=${plist.p_filesrc }">
-			<img src="../resources/img/productimg/${plist.p_filesrc }.jpg" alt="" />
-			</a>
-		</div>
-		<div class="pdtname">
-			<a href="productDetail?pname=${plist.p_name }&pfilesrc=${plist.p_filesrc }">
-			${plist.p_name }
-			</a>
-		</div>
-	</li>	
-	</c:forEach>
-	</ul>
-</div> --%>
 
 </body>
 </html>

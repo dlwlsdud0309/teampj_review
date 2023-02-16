@@ -23,7 +23,7 @@
 		<td>나이</td>
 		<td>성별</td>
 		<td>현금</td>
-		<td>프로필사진</td>
+		<!-- <td>프로필사진</td> -->
 	</tr>
 <c:forEach items="${member }" var="dto">  
 	<tr>
@@ -37,7 +37,7 @@
 		<td>${dto.m_age }</td>
 		<td>${dto.m_gender }</td>
 		<td>${dto.m_cash }</td>
-		<td>${dto.m_filesrc }</td>
+		<%-- <td>${dto.m_filesrc }</td> --%>
 	</tr>
 </c:forEach>	
 </table>
