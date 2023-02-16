@@ -135,8 +135,10 @@
 <%@ include file="admin_footer.jsp"%>
 </footer>
 
-<a href="/shop_backup/review/reviewBoard">reviewBoard</a>
-<c:set var="p_no" value="${param.p_no }" scope="application"/> <br />
-<c:set var="om_cancle" value="${param.om_cancle }" scope="application"/> <br />
+<%-- <a href="/shop_backup/review/reviewBoard">reviewBoard</a>
+<c:set var="p_no" value="${p_no }" scope="application"/> <br />
+p_no : <c:out value="${p_no }"/> <br />
+om_cancle : <c:out value="${param.om_cancle }"/>
+<c:set var="om_cancle" value="${param.om_cancle }" scope="application"/> <br /> <br /> --%>
 </body>
 </html>

@@ -28,6 +28,21 @@ public class ACancleModifyService implements MickyServiceInter{
 		
 		String om_cntnum=request.getParameter("om_cntnum");
 		String om_state=request.getParameter("om_state");
+		
+//		=================================
+//		String p_no=request.getParameter("p_no");
+//		ServletContext application=request.getSession().getServletContext();
+//		application.setAttribute("p_no", p_no);
+////		String p_no=(String)application.getAttribute("p_no");
+////		String om_state=(String)application.getAttribute("om_state");
+//		
+//		System.out.println("p_no : "+p_no);
+//		System.out.println("om_state : "+om_state);
+//		=================================
+
+		
+		
+		
 		//sms 기능
 		
 		Admin dao=sqlSession.getMapper(Admin.class);

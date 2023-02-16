@@ -230,7 +230,7 @@ om_state : ${om_state } <br />
 	</c:forEach>
 	<%-- <c:out value="${totalStar }"/> --%>
 <c:set var="avgStar" value="${totalStar div fn:length(review_list) }" />
-<fmt:formatNumber value="${avgStar+(totalStar div totalCount) }" pattern=".00" var="avgStar"/>
+<fmt:formatNumber value="${avgStar+(totalStar div totalCount) }" pattern=".0" var="avgStar"/>
 </c:if>
 			
 			<br />
@@ -385,8 +385,12 @@ om_state : ${om_state } <br />
 				<!-- 수정/삭제 -->
 <c:if test="${sessionScope.loginid eq list.memberDto.m_id }">
 				<a id="practice" href="reviewPopupcontentview?r_no=${list.r_no }">수정</a>
-				<a href="reviewDelete?r_no=${list.r_no }">삭제</a>
-
+				<!-- 답글이 달리면 삭제할 수 없도록 '삭제'버튼을 제거 -->
+				<c:choose>
+					<c:when test="${list.r_ynn eq 'n' }">
+						<a href="reviewDelete?r_no=${list.r_no }">삭제</a>
+					</c:when>
+				</c:choose>
 </c:if>
 <c:if test="${sessionScope.loginid eq 'admintest' }">
 				<a href="reviewDelete?r_no=${list.r_no }">삭제</a>
