@@ -2,7 +2,6 @@ package micky.sports.shop.service.product;
 
 import java.util.Map;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -36,8 +35,6 @@ public class ProductDetailService implements MickyServiceInter{
 		System.out.println("====**"+pfilesrc+pname);
 		
 		ProductDao Pdao=sqlSession.getMapper(ProductDao.class);
-		
-		
 		model.addAttribute("productMain",Pdao.productMain(pname));
 		model.addAttribute("product",Pdao.product(pname,pfilesrc));
 		

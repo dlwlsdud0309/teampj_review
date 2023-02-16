@@ -24,7 +24,7 @@ public class InfoUpdateFormService implements MickyServiceInter{
 	
 	@Override
 	public void execute(Model model) {
-		System.out.println("MemberUpdateFormService");
+		System.out.println("InfoUpdateFormService");
 		
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
