@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
@@ -17,10 +18,18 @@ import micky.sports.shop.vopage.SearchVO;
 //관리자 주문관리 현황 리스트
 @Service
 public class AOrderListService implements MickyServiceInter{
+//	private SqlSession sqlSession;
+//	
+//	public AOrderListService(SqlSession sqlSession) {
+//		this.sqlSession=sqlSession;
+//	}
+	
 	private SqlSession sqlSession;
+	private HttpSession httpsession;
 	
 	public AOrderListService(SqlSession sqlSession) {
 		this.sqlSession=sqlSession;
+		this.httpsession = httpsession;
 	}
 	
 	@Override
