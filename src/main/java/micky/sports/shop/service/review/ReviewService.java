@@ -58,7 +58,8 @@ public class ReviewService implements MickyServiceInter{
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
 		
 //		총게시글
-		int totalCount=rdao.totalCount();
+//		int totalCount=rdao.totalCount();
+		int totalCount=rdao.totalCount(p_name);
 //		답글의 개수
 //		String r_recontent="r_recontent";
 //		ArrayList<ReviewDto> replyTotalCount=rdao.replyTotalCount();

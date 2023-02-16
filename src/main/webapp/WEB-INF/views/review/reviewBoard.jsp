@@ -68,7 +68,6 @@
 <c:if test="${not empty sessionScope.loginid }">
 	<a href="../member/logout">logout</a> 
 	<a href="reviewMylistview?account=${sessionScope.loginid }">${sessionScope.loginid }님</a>
-	
 <br />
 </c:if>
 
@@ -106,7 +105,6 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 
 pname : ${pname } <br />
 pfilesrc : ${pfilesrc } <br />
-
 
 
 <%-- <c:forEach items="${getproductlist }" var="getData">
@@ -315,10 +313,10 @@ pfilesrc : ${pfilesrc } <br />
 									댓글
 									<c:choose>
 										<c:when test="${list.r_ynn eq 'y' }">
-											(1)
+											1
 										</c:when>
 										<c:otherwise>
-											(0)
+											0
 										</c:otherwise>					
 									</c:choose>
 								</a>

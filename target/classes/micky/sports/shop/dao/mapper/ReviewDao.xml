@@ -187,7 +187,13 @@
 	</select>
 	
 	<select id="totalCount" resultType="Integer">
-		SELECT COUNT(*) FROM REVIEW
+		SELECT COUNT(*)
+		FROM MEMBER M, REVIEW R, PRODUCT P
+		WHERE M.M_ID=R.M_ID
+		AND R.P_NO=P.P_NO
+		AND P_NAME=#{param1}
+	
+		<!-- SELECT COUNT(*) FROM REVIEW -->
 	</select>
 	
 	<!-- <select id="replyTotalCount" resultType="micky.sports.shop.dto.ReviewDto">
