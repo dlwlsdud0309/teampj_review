@@ -190,9 +190,9 @@
 		SELECT COUNT(*) FROM REVIEW
 	</select>
 	
-	<select id="replyTotalCount" resultType="Integer">
+	<!-- <select id="replyTotalCount" resultType="Integer">
 		SELECT COUNT(R_RECONTENT) FROM REVIEW WHERE R_NO=#{param1, jdbcType=INTEGER}
-	</select>
+	</select> -->
 	
 	<!-- <select id="totalCount1" resultType="Integer">
 		SELECT COUNT(*) FROM REVIEW WHERE R_CONTENT LIKE '%'||#{param1}||'%'
@@ -208,7 +208,7 @@
 	
 	<update id="replyUpdate">
 		UPDATE REVIEW SET R_ID=#{param2},
-		R_RETITLE=#{param3}, R_RECONTENT=#{param4},
+		R_RETITLE=#{param3}, R_RECONTENT=#{param4, jdbcType=VARCHAR},
 		R_YNN='y' WHERE R_NO=#{param1}
 	</update>
 </mapper>

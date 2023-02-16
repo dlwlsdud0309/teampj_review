@@ -105,11 +105,11 @@ pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
 
 <input type="hidden" name="pname" value="${plist.p_name }" /> --%>
 
-pname : ${pname } <br />
+<%-- pname : ${pname } <br />
 pfilesrc : ${pfilesrc } <br />
 
 
-<%String pname=request.getParameter("pname"); %>
+<%String pname=request.getParameter("pname"); %> --%>
 
 <%-- <c:forEach items="${getproductlist }" var="getData">
 	${getData.p_name }
@@ -210,6 +210,7 @@ pfilesrc : ${pfilesrc } <br />
 <div class="clear" ></div> --%>
 <!-- ======================== 작성하기 폼 ========================= -->				
 			<br />
+			</div>
 			<div class="avg_star">
 				<div class="tablerow">
 					<div class="tablecell">
@@ -312,7 +313,7 @@ pfilesrc : ${pfilesrc } <br />
 						</style>
 						<div id="reply_menu">
 							<div>
-								<a class="${list.r_no }" href="#" onclick="return false">댓글(${replyTotalCount })</a>
+								<a class="${list.r_no }" href="#" onclick="return false">댓글()</a>
 								<div class="snd_menu sub_menu">
 									<div>${list.r_retitle }</div>
 									<div>${list.r_recontent }</div>
@@ -321,10 +322,10 @@ pfilesrc : ${pfilesrc } <br />
 						</div>
 <c:if test="${sessionScope.loginid eq 'admintest' }">
 						        <div id="reply_menu">
-						          <div><a class="${list.r_no }" href="#" onclick="return false">댓글달기</a>
+						          <div><a class="${list.r_no }" href="#" onclick="return false;">댓글달기</a>
 						            <div class="snd_menu sub_menu">
 						            	<form action="reviewPopupreply">
-						            	
+						            		<input type="hidden" name="r_no" value="${list.r_no }" />
 						            		<div><input type="hidden" name="r_id" value="${sessionScope.loginid }" />관리자</div>
 						            		<div><input type="text" name="r_retitle" size="25" value="믹키 스포츠웨어 온라인 스토어" /></div>
 							            	<div><textarea name="r_recontent" cols="100%" rows="3" placeholder="댓글을 입력하세요"></textarea></div>
@@ -356,28 +357,25 @@ pfilesrc : ${pfilesrc } <br />
 				<a href="reviewDelete?r_no=${list.r_no }">삭제</a>
 
 </c:if>
-				<!-- function 사용한 답글창 열기 -->
-				<%-- <a class="atag" href="reviewPopupReplycontentview?r_no=${list.r_no }">답글</a> --%>
 <c:if test="${sessionScope.loginid eq 'admintest' }">
 				<a href="reviewDelete?r_no=${list.r_no }">삭제</a>
 				<a class="" onclick="return false;" href="#">답글폼</a>
-				
 </c:if>
 			</div>
 		</div>
 	</div>
-
-	
 			</li>
 </c:forEach>
 		</ul>
-	<div id="js-btn-wrap" class="btn-wrap"> <a href="javascript:;" class="button">더보기</a></div>
+	<div id="js-btn-wrap" class="btn-wrap">
+		<a href="javascript:;" class="button">더보기</a>
+	</div>
 </div>
 totalStar : <c:out value="${totalStar }"/>
 
 avgStar : <c:out value="${avgStar+(totalStar div totalCount) }"/>
 <br />
-
+</div>
 	</div>
 <br />
 <br />

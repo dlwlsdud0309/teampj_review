@@ -60,7 +60,7 @@ public class ReviewService implements MickyServiceInter{
 		
 //		총게시글
 		int totalCount=rdao.totalCount();
-		int replyTotalCount=rdao.replyTotalCount(r_no);
+//		int replyTotalCount=rdao.replyTotalCount(r_no);
 //		System.out.println(totalCount);
 		
 //		전체글 수와 검색했을 때 나온 글 수 구별
@@ -83,7 +83,7 @@ public class ReviewService implements MickyServiceInter{
 //		총게시글
 		model.addAttribute("totalCount", totalCount);
 //		게시글에 달린 답글 수
-		model.addAttribute("replyTotalCount", replyTotalCount);
+//		model.addAttribute("replyTotalCount", replyTotalCount);
 	}
 
 }
