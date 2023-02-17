@@ -230,7 +230,7 @@ om_state : ${om_state } <br />
 	</c:forEach>
 	<%-- <c:out value="${totalStar }"/> --%>
 <c:set var="avgStar" value="${totalStar div fn:length(review_list) }" />
-<fmt:formatNumber value="${avgStar+(totalStar div totalCount) }" pattern=".0" var="avgStar"/>
+<fmt:formatNumber value="${totalStar / totalCount }" pattern=".0" var="avgStar"/>
 </c:if>
 			
 			<br />
@@ -351,20 +351,52 @@ om_state : ${om_state } <br />
 								</div>
 							</div>
 						</div>
+						<%-- <div>
+			            	
+			            	<form action="reviewreplymodify">
+			            		<input type="hidden" name="r_no" value="${list.r_no }" />
+			            		<div><input type="hidden" name="r_id" value="${sessionScope.loginid }" />관리자</div>
+			            		<div><input type="text" name="r_retitle" size="25" value="믹키 스포츠웨어 온라인 스토어" /></div>
+				            	<div><textarea name="r_recontent" cols="100%" rows="3" placeholder="댓글을 입력하세요"></textarea></div>
+				            	<input type="submit" value="수정" />
+			            	</form>
+						</div> --%>
 <c:if test="${sessionScope.loginid eq 'admintest' }">
-						        <div id="reply_menu">
-						          <div><a class="${list.r_no }" href="#" onclick="return false;">댓글달기</a>
-						            <div class="snd_menu sub_menu">
-						            	<form action="reviewPopupreply">
-						            		<input type="hidden" name="r_no" value="${list.r_no }" />
-						            		<div><input type="hidden" name="r_id" value="${sessionScope.loginid }" />관리자</div>
-						            		<div><input type="text" name="r_retitle" size="25" value="믹키 스포츠웨어 온라인 스토어" /></div>
-							            	<div><textarea name="r_recontent" cols="100%" rows="3" placeholder="댓글을 입력하세요"></textarea></div>
-							            	<input type="submit" value="답글" />
-						            	</form>
-						            </div>
-						          </div>
-								</div>
+	<c:choose>
+		<c:when test="${list.r_ynn eq 'y' }">
+			<!-- <a href="#" onclick="return false;">수정하기</a> -->
+			<div id="reply_menu">
+	          <div><a class="${list.r_no }" href="#" onclick="return false;">수정하기</a>
+	            <div class="snd_menu sub_menu">
+	            	<form action="reviewPopupreply">
+	            		<input type="hidden" name="r_no" value="${list.r_no }" />
+	            		<div><input type="hidden" name="r_id" value="${sessionScope.loginid }" />관리자</div>
+	            		<div><input type="text" name="r_retitle" size="25" value="${list.r_retitle }" /></div>
+		            	<div><textarea name="r_recontent" cols="100%" rows="3" placeholder="댓글을 입력하세요">${list.r_recontent }</textarea></div>
+		            	<input type="submit" value="수정" />
+	            	</form>
+	            	<a href="reviewReplydelete" onclick="return false;">삭제</a>
+	            </div>
+	          </div>
+			</div>
+		</c:when>
+		<c:otherwise>
+			<div id="reply_menu">
+	          <div><a class="${list.r_no }" href="#" onclick="return false;">댓글달기</a>
+	            <div class="snd_menu sub_menu">
+	            	<form action="reviewPopupreply">
+	            		<input type="hidden" name="r_no" value="${list.r_no }" />
+	            		<div><input type="hidden" name="r_id" value="${sessionScope.loginid }" />관리자</div>
+	            		<div><input type="text" name="r_retitle" size="25" value="믹키 스포츠웨어 온라인 스토어" /></div>
+		            	<div><textarea name="r_recontent" cols="100%" rows="3" placeholder="댓글을 입력하세요"></textarea></div>
+		            	<input type="submit" value="답글" />
+	            	</form>
+	            </div>
+	          </div>
+			</div>
+		</c:otherwise>					
+	</c:choose>
+						        
 </c:if>
 						<div>
 						</div>

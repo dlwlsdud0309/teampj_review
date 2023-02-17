@@ -14,6 +14,7 @@ import micky.sports.shop.service.review.ReviewMylistviewService;
 import micky.sports.shop.service.review.ReviewPopupcontentmodifyService;
 import micky.sports.shop.service.review.ReviewPopupcontentviewService;
 import micky.sports.shop.service.review.ReviewReplyService;
+import micky.sports.shop.service.review.ReviewReplymodifyService;
 import micky.sports.shop.service.review.ReviewReplyviewService;
 import micky.sports.shop.service.review.ReviewService;
 import micky.sports.shop.service.review.ReviewWriteService;
@@ -25,7 +26,6 @@ public class ReviewController {
 	
 	@Autowired
 	private SqlSession sqlSession;
-	
 	
 	
 //	임시 메인페이지
@@ -142,6 +142,18 @@ public class ReviewController {
 		
 		model.addAttribute("request", request);
 		mickyServiceInter=new ReviewReplyService(sqlSession);
+		mickyServiceInter.execute(model);
+		
+		return "redirect:reviewBoard";
+	}
+
+//	관리자 답글 수정폼
+	@RequestMapping("/reviewreplymodify")
+	public String reviewreplymodify(HttpServletRequest request, Model model) {
+		System.out.println("=====reviewPopupreply====");
+		
+		model.addAttribute("request", request);
+		mickyServiceInter=new ReviewReplymodifyService(sqlSession);
 		mickyServiceInter.execute(model);
 		
 		return "redirect:reviewBoard";
