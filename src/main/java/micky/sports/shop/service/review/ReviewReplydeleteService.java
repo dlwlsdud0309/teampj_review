@@ -30,7 +30,7 @@ public class ReviewReplydeleteService implements MickyServiceInter{
 		String r_no=request.getParameter("r_no");
 		
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
-	//	rdao.replydelete(r_no);
+		rdao.replydelete(r_no);
 	}
 
 }

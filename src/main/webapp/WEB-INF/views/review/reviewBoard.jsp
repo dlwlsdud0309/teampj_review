@@ -374,7 +374,7 @@ om_state : ${om_state } <br />
 	            		<div><input type="text" name="r_retitle" size="25" value="${list.r_retitle }" /></div>
 		            	<div><textarea name="r_recontent" cols="100%" rows="3" placeholder="댓글을 입력하세요">${list.r_recontent }</textarea></div>
 		            	<input type="submit" value="수정" />
-		            	<%-- <a href="reviewReplydelete?=${list.r_no }">삭제</a> --%>
+		            	<a href="reviewReplydelete?=${list.r_no }">삭제</a>
 	            	</form>
 	            </div>
 	          </div>
