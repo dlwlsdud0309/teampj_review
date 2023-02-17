@@ -382,7 +382,7 @@ om_state : ${om_state } <br />
 				<img src="../resources/reviewupload/${list.r_filesrc }" width="100" alt="" />
 			</div>
 			<div>
-				<!-- 수정/삭제 -->
+<!-- 수정/삭제 -->
 <c:if test="${sessionScope.loginid eq list.memberDto.m_id }">
 				<a id="practice" href="reviewPopupcontentview?r_no=${list.r_no }">수정</a>
 				<!-- 답글이 달리면 삭제할 수 없도록 '삭제'버튼을 제거 -->
