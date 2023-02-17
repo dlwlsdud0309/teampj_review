@@ -217,21 +217,19 @@ om_state : ${om_state } <br />
 <!-- 별구하기 -->
 <c:set var="totalStar" value="0" />
 <c:set var="avgStar" value="0" />
-<c:if test="${pname ne null}">
 	<c:forEach items="${review_list }" var="list">
-		<c:choose>
-			<c:when test="${not empty list.r_score }">
+		<%-- <c:choose>
+			<c:when test="${not empty list.r_score }"> --%>
 				<c:set var="totalStar" value="${totalStar+list.r_score }" />
-			</c:when>
+			<%-- </c:when>
 			<c:when test="${empty list.r_score }">
-				<%System.out.println("안나와요"); %>
+				<p>안나와요</p>
 			</c:when>
-		</c:choose>
+		</c:choose> --%>
 	</c:forEach>
 	<%-- <c:out value="${totalStar }"/> --%>
 <c:set var="avgStar" value="${totalStar div fn:length(review_list) }" />
 <fmt:formatNumber value="${totalStar / totalCount }" pattern=".0" var="avgStar"/>
-</c:if>
 			
 			<br />
 			<div class="avg_star">
