@@ -35,8 +35,14 @@
 
 </head>
 
-<body>
+<body onload="alerttest();">
 
+<script>
+function alerttest(){
+	var test = document.getElementById('${dto.p_no }').value;
+	alert(test);
+}
+</script>
 <%-- <aside>
 <%@include file="admin_sidebar.jsp" %>
 </aside> --%>
@@ -89,7 +95,7 @@
 <!-- 상품주문번호 -->       <td><a href="admin_contentview?om_cntnum=${dto.om_cntnum}" class="om_cntnum">
 									${dto.om_cntnum }</a></td> 
 <!-- 주문번호 -->		    <td>${dto.om_num }</td>
-<!-- 상품번호 -->			<td>${dto.p_no }</td>
+<!-- 상품번호 -->			<td id="${dto.p_no }" onclick="alerttest();">${dto.p_no }</td>
 <!-- 주문수량 -->			<td>${dto.u_cnt }</td>			
 <!-- 아이디 -->			<td>${dto.m_id }</td>
 <!-- 주문일자 -->			<td><fmt:formatDate value="${dto.om_date }" pattern="yyyy-MM-dd"/></td>

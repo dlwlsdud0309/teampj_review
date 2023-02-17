@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="resources/css/admin_contentviewstyle.css" />
 </head>
 
-<body>
+<body onload="alerttest();">
 <div class="jumbotron text-center">
 	<h1 class="content_h1" align="center">관리자 주문내역 상세</h1>
 	<h3 class="content_h3" align="center">관리자 주문/결제 수정</h3>
@@ -22,6 +22,15 @@ var selectValue = document.getElementById('select').value = '1';
 document.querySelector('select').onchange();
 alert(selectValue);
 </script>
+
+
+<script>
+function alerttest(){
+	var test = document.getElementById('${acontent_view.p_no }').value;
+	alert(test);
+}
+</script>
+
 
 
 <form action="modify" method="post">
@@ -57,7 +66,7 @@ alert(selectValue);
 		 </tr>	 
 		 <tr>
 		     <td>${acontent_view.om_cntnum }</td>
-		     <td>${acontent_view.p_no }</td>
+		     <td id="${acontent_view.p_no }" onclick="alerttest();">${acontent_view.p_no }</td>
 		     <td><fmt:formatNumber type="currency" value="${acontent_view.p_price }" /></td>
 		     <td>
 		     <label>결제완료</label>
