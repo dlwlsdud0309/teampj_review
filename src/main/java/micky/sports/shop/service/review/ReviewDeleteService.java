@@ -3,6 +3,7 @@ package micky.sports.shop.service.review;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
@@ -13,9 +14,11 @@ import micky.sports.shop.service.MickyServiceInter;
 public class ReviewDeleteService implements MickyServiceInter{
 
 	private SqlSession sqlSession;
+	private HttpSession session;
 	
-	public ReviewDeleteService(SqlSession sqlSession) {
+	public ReviewDeleteService(SqlSession sqlSession,HttpSession session) {
 		this.sqlSession=sqlSession;
+		this.session = session;
 	}
 	
 	@Override

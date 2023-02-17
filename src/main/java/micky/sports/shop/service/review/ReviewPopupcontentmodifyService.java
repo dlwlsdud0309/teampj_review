@@ -12,7 +12,6 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import micky.sports.shop.dao.ReviewDao;
-import micky.sports.shop.dto.ReviewDto;
 import micky.sports.shop.service.MickyServiceInter;
 
 public class ReviewPopupcontentmodifyService implements MickyServiceInter{

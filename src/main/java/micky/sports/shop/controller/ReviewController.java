@@ -1,6 +1,7 @@
 package micky.sports.shop.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,8 @@ public class ReviewController {
 	
 	@Autowired
 	private SqlSession sqlSession;
+	@Autowired
+	private HttpSession httpSession;
 	
 	
 //	임시 메인페이지
@@ -37,7 +40,7 @@ public class ReviewController {
 		
 		
 		model.addAttribute("request", request);
-		mickyServiceInter=new ReviewService(sqlSession);
+		mickyServiceInter=new ReviewService(sqlSession,httpSession);
 		mickyServiceInter.execute(model);
 		
 		return "review/reviewBoard";
@@ -49,7 +52,7 @@ public class ReviewController {
 		System.out.println("=====reviewMylistview====");
 		
 		model.addAttribute("request", request);
-		mickyServiceInter=new ReviewMylistviewService(sqlSession);
+		mickyServiceInter=new ReviewMylistviewService(sqlSession,httpSession);
 		mickyServiceInter.execute(model);
 		
 		return "review/reviewMylistview";
@@ -69,7 +72,7 @@ public class ReviewController {
 		System.out.println("=====reviewWrite====");
 		
 		model.addAttribute("request", request);
-		mickyServiceInter=new ReviewWriteService(sqlSession);
+		mickyServiceInter=new ReviewWriteService(sqlSession,httpSession);
 		mickyServiceInter.execute(model);
 		
 		return "redirect:reviewBoard";
@@ -81,7 +84,7 @@ public class ReviewController {
 		System.out.println("=====reviewDelete====");
 		
 		model.addAttribute("request", request);
-		mickyServiceInter=new ReviewDeleteService(sqlSession);
+		mickyServiceInter=new ReviewDeleteService(sqlSession,httpSession);
 		mickyServiceInter.execute(model);
 		
 		return "redirect:reviewBoard";
@@ -93,7 +96,7 @@ public class ReviewController {
 		System.out.println("=====reviewPopupview====");
 		
 		model.addAttribute("request", request);
-		mickyServiceInter=new ReviewPopupcontentviewService(sqlSession);
+		mickyServiceInter=new ReviewPopupcontentviewService(sqlSession,httpSession);
 		mickyServiceInter.execute(model);
 		
 		return "review/reviewPopupcontentview";
@@ -105,7 +108,7 @@ public class ReviewController {
 //		System.out.println("=====reviewPopupcontentupdate====");
 //		
 //		model.addAttribute("request", request);
-//		mickyServiceInter=new ReviewPopupcontentupdateService(sqlSession);
+//		mickyServiceInter=new ReviewPopupcontentupdateService(sqlSession,session);
 //		mickyServiceInter.execute(model);
 //		
 //		return "review/reviewPopupcontentupdate";
@@ -117,7 +120,7 @@ public class ReviewController {
 		System.out.println("=====reviewPopupcontentmodify====");
 		
 		model.addAttribute("request", request);
-		mickyServiceInter=new ReviewPopupcontentmodifyService(sqlSession);
+		mickyServiceInter=new ReviewPopupcontentmodifyService(sqlSession,httpSession);
 		mickyServiceInter.execute(model);
 		
 		return "redirect:reviewBoard";
@@ -129,7 +132,7 @@ public class ReviewController {
 		System.out.println("=====reviewReplyview====");
 		
 		model.addAttribute("request", request);
-		mickyServiceInter=new ReviewReplyviewService(sqlSession);
+		mickyServiceInter=new ReviewReplyviewService(sqlSession,httpSession);
 		mickyServiceInter.execute(model);
 		
 		return "review/reviewPopupReplycontentview";
@@ -141,7 +144,7 @@ public class ReviewController {
 		System.out.println("=====reviewReply====");
 		
 		model.addAttribute("request", request);
-		mickyServiceInter=new ReviewReplyService(sqlSession);
+		mickyServiceInter=new ReviewReplyService(sqlSession,httpSession);
 		mickyServiceInter.execute(model);
 		
 		return "redirect:reviewBoard";
@@ -156,7 +159,7 @@ public class ReviewController {
 		System.out.println("r_no : "+r_no);
 		
 		model.addAttribute("request", request);
-		mickyServiceInter=new ReviewReplydeleteService(sqlSession);
+		mickyServiceInter=new ReviewReplydeleteService(sqlSession,httpSession);
 		mickyServiceInter.execute(model);
 		
 		return "redirect:reviewBoard";

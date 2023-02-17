@@ -18,9 +18,11 @@ import micky.sports.shop.service.MickyServiceInter;
 public class ReviewWriteService implements MickyServiceInter{
 
 	private SqlSession sqlSession;
+	private HttpSession httpsession;
 	
-	public ReviewWriteService(SqlSession sqlSession) {
+	public ReviewWriteService(SqlSession sqlSession,HttpSession httpsession) {
 		this.sqlSession=sqlSession;
+		this.httpsession = httpsession;
 	}
 	
 	@Override
@@ -33,6 +35,8 @@ public class ReviewWriteService implements MickyServiceInter{
 				(HttpServletRequest) map.get("request");
 		
 
+		httpsession = request.getSession();
+		String loginId = (String)httpsession.getAttribute("loginid");
 		
 		
 //		reviewupload code=================
