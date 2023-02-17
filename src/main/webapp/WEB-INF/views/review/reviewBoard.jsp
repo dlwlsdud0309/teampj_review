@@ -261,7 +261,6 @@ om_state : ${om_state } <br />
 <div class="clear" ></div>
 
 <div class="review_table">
-
 		<!-- select, option, 검색 -->
 		<form action="reviewBoard" method="get">
 			<input type="hidden" name="pname" value="${pname }" />
@@ -346,25 +345,14 @@ om_state : ${om_state } <br />
 									</c:choose>
 								</a>
 								<div class="snd_menu sub_menu">
-									<div>${list.r_retitle }</div>
+									<div><strong>${list.r_retitle }</strong></div>
 									<div>${list.r_recontent }</div>
 								</div>
 							</div>
 						</div>
-						<%-- <div>
-			            	
-			            	<form action="reviewreplymodify">
-			            		<input type="hidden" name="r_no" value="${list.r_no }" />
-			            		<div><input type="hidden" name="r_id" value="${sessionScope.loginid }" />관리자</div>
-			            		<div><input type="text" name="r_retitle" size="25" value="믹키 스포츠웨어 온라인 스토어" /></div>
-				            	<div><textarea name="r_recontent" cols="100%" rows="3" placeholder="댓글을 입력하세요"></textarea></div>
-				            	<input type="submit" value="수정" />
-			            	</form>
-						</div> --%>
 <c:if test="${sessionScope.loginid eq 'admintest' }">
 	<c:choose>
 		<c:when test="${list.r_ynn eq 'y' }">
-			<!-- <a href="#" onclick="return false;">수정하기</a> -->
 			<div id="reply_menu">
 	          <div><a class="${list.r_no }" href="#" onclick="return false;">수정하기</a>
 	            <div class="snd_menu sub_menu">
