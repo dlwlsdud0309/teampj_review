@@ -218,4 +218,10 @@
 		R_RETITLE=#{param3}, R_RECONTENT=#{param4, jdbcType=VARCHAR},
 		R_YNN='y' WHERE R_NO=#{param1}
 	</update>
+	
+	<!-- <update id="replydelete">
+		UPDATE REVIEW SET R_ID='',
+		R_RETITLE='', R_RECONTENT='',
+		R_YNN='n' WHERE R_NO=#{param1}
+	</update> -->
 </mapper>

@@ -15,4 +15,5 @@ public interface ReviewDao {
 	public void replyUpdate(String r_no, String r_id, String r_retitle, String r_recontent);
 	public ReviewDto getReview(String r_no);
 	public int totalCount(String p_name);
+//	public void replydelete(String r_no);
 }

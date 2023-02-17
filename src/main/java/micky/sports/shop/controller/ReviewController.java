@@ -14,6 +14,7 @@ import micky.sports.shop.service.review.ReviewMylistviewService;
 import micky.sports.shop.service.review.ReviewPopupcontentmodifyService;
 import micky.sports.shop.service.review.ReviewPopupcontentviewService;
 import micky.sports.shop.service.review.ReviewReplyService;
+import micky.sports.shop.service.review.ReviewReplydeleteService;
 import micky.sports.shop.service.review.ReviewReplymodifyService;
 import micky.sports.shop.service.review.ReviewReplyviewService;
 import micky.sports.shop.service.review.ReviewService;
@@ -148,12 +149,27 @@ public class ReviewController {
 	}
 
 //	관리자 답글 수정폼
-	@RequestMapping("/reviewreplymodify")
-	public String reviewreplymodify(HttpServletRequest request, Model model) {
-		System.out.println("=====reviewPopupreply====");
+//	@RequestMapping("/reviewreplymodify")
+//	public String reviewreplymodify(HttpServletRequest request, Model model) {
+//		System.out.println("=====reviewPopupreply====");
+//		
+//		model.addAttribute("request", request);
+//		mickyServiceInter=new ReviewReplymodifyService(sqlSession);
+//		mickyServiceInter.execute(model);
+//		
+//		return "redirect:reviewBoard";
+//	}
+	
+//	관리자 답글 삭제
+	@RequestMapping("/reviewReplydelete")
+	public String reviewReplydelete(HttpServletRequest request, Model model) {
+		System.out.println("=====reviewReplydelete====");
+		
+		String r_no=request.getParameter("r_no");
+		System.out.println("r_no : "+r_no);
 		
 		model.addAttribute("request", request);
-		mickyServiceInter=new ReviewReplymodifyService(sqlSession);
+		mickyServiceInter=new ReviewReplydeleteService(sqlSession);
 		mickyServiceInter.execute(model);
 		
 		return "redirect:reviewBoard";
