@@ -61,7 +61,7 @@
 			<td>
 				<c:if test="${mlist.om_cancle eq 'N' }">
 					<button type="button" onclick="myOrderCancel('${mlist.om_cntnum }')">결제취소</button>
-					<button type="button" onclick="location.href='../review/reviewMylistview?account=${sessionScope.loginid}'">리뷰쓰기</button>
+					<button type="button" onclick="location.href='../review/reviewMylistview'">리뷰쓰기</button>
 				</c:if>
 				<c:if test="${mlist.om_cancle eq 'Y' }">
 					취소요청 사유 <br />

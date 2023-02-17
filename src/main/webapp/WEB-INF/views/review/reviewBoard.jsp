@@ -68,7 +68,7 @@
 </c:if>
 <c:if test="${not empty sessionScope.loginid }">
 	<a href="../member/logout">logout</a> 
-	<a href="reviewMylistview?account=${sessionScope.loginid }">${sessionScope.loginid }님</a>
+	<a href="reviewMylistview">${sessionScope.loginid }님</a>
 <br />
 </c:if>
 
@@ -159,59 +159,6 @@ om_state : ${om_state } <br />
 			</div>
 			<div>
 				<input type="button" value="리뷰작성" onclick="fn_01('${sessionScope.loginid }');" />
-				
-<!-- ======================== 작성하기 폼 ========================= -->
-<%-- <div id="styleID_ReviewWriteview" class="styleClassReviewWriteview">
-	<div id="title_content">
-		<form action="reviewWrite" method="post" enctype="multipart/form-data">
-		<h3 class="popup_review_title">상품리뷰쓰기</h3>
-		<div>
-			<strong>리뷰 리워드 혜택 제공</strong> <br />
-			텍스트 리뷰 : 500M | 사진 첨부 리뷰 : 1,000M 적립
-		</div>
-			<table>
-				<tr id="data">
-					<td class="star">
-						★★★★★
-						<span class="star2">★★★★★</span>
-						<input type="range" onclick="redeptlist(this);" oninput="drawStar(this)" value="1" step="1" min="0" max="5"/>
-					</td>
-				</tr>
-				<tr>
-					<!-- <td class="left">작성자</td> -->
-					<td colspan="3">
-						<input id="userid" type="hidden" name="m_id" value="${sessionScope.loginid }" />
-					</td>
-				</tr>
-				<tr>
-					<td class="left">제목</td>
-					<td colspan="2"><input type="text" name="r_title" /></td>
-				</tr>
-				<tr>
-					<td class="left">내용</td>
-					<td colspan="2">
-						<textarea name="r_content" rows="10"></textarea>
-					</td>
-				</tr>
-				<tr>
-					<td class="left">파일첨부</td>
-					<td colspan="2">
-						<input type="file" name="r_filesrc" />
-					</td>
-				</tr>
-				<tr>
-					<td colspan="3">
-						<input id="starInput" type="hidden" name="r_score" value="" size="10" />
-						<input type="submit" value="작성하기" />
-					</td>
-				</tr>
-			</table>
-		</form>
-	</div>
-</div>
-			</div>
-<div class="clear" ></div> --%>
-<!-- ======================== 작성하기 폼 ========================= -->	
 
 <br />
 <!-- Controller에서 작업 후 model로 보내기 -->
