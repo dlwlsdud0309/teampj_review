@@ -230,7 +230,6 @@ om_state : ${om_state } <br />
 	<%-- <c:out value="${totalStar }"/> --%>
 <c:set var="avgStar" value="${totalStar div fn:length(review_list) }" />
 <fmt:formatNumber value="${totalStar / totalCount }" pattern=".0" var="avgStar"/>
-			
 			<br />
 			<div class="avg_star">
 				<div class="tablerow">
