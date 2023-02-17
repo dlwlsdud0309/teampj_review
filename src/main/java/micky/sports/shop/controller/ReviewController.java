@@ -15,7 +15,6 @@ import micky.sports.shop.service.review.ReviewPopupcontentmodifyService;
 import micky.sports.shop.service.review.ReviewPopupcontentviewService;
 import micky.sports.shop.service.review.ReviewReplyService;
 import micky.sports.shop.service.review.ReviewReplydeleteService;
-import micky.sports.shop.service.review.ReviewReplymodifyService;
 import micky.sports.shop.service.review.ReviewReplyviewService;
 import micky.sports.shop.service.review.ReviewService;
 import micky.sports.shop.service.review.ReviewWriteService;
@@ -136,10 +135,10 @@ public class ReviewController {
 		return "review/reviewPopupReplycontentview";
 	}
 	
-//	답글달기
-	@RequestMapping("/reviewPopupreply")
+//	관리자 답글달기, 수정하기
+	@RequestMapping("/reviewReply")
 	public String reviewPopupreply(HttpServletRequest request, Model model) {
-		System.out.println("=====reviewPopupreply====");
+		System.out.println("=====reviewReply====");
 		
 		model.addAttribute("request", request);
 		mickyServiceInter=new ReviewReplyService(sqlSession);
@@ -147,18 +146,6 @@ public class ReviewController {
 		
 		return "redirect:reviewBoard";
 	}
-
-//	관리자 답글 수정폼
-//	@RequestMapping("/reviewreplymodify")
-//	public String reviewreplymodify(HttpServletRequest request, Model model) {
-//		System.out.println("=====reviewPopupreply====");
-//		
-//		model.addAttribute("request", request);
-//		mickyServiceInter=new ReviewReplymodifyService(sqlSession);
-//		mickyServiceInter.execute(model);
-//		
-//		return "redirect:reviewBoard";
-//	}
 	
 //	관리자 답글 삭제
 	@RequestMapping("/reviewReplydelete")

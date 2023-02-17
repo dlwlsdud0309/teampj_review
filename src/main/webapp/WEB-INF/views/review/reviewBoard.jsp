@@ -368,7 +368,7 @@ om_state : ${om_state } <br />
 			<div id="reply_menu">
 	          <div><a class="${list.r_no }" href="#" onclick="return false;">수정하기</a>
 	            <div class="snd_menu sub_menu">
-	            	<form action="reviewPopupreply">
+	            	<form action="reviewReply">
 	            		<input type="hidden" name="r_no" value="${list.r_no }" />
 	            		<div><input type="hidden" name="r_id" value="${sessionScope.loginid }" />관리자</div>
 	            		<div><input type="text" name="r_retitle" size="25" value="${list.r_retitle }" /></div>
@@ -383,7 +383,7 @@ om_state : ${om_state } <br />
 			<div id="reply_menu">
 	          <div><a class="${list.r_no }" href="#" onclick="return false;">댓글달기</a>
 	            <div class="snd_menu sub_menu">
-	            	<form action="reviewPopupreply">
+	            	<form action="reviewReply">
 	            		<input type="hidden" name="r_no" value="${list.r_no }" />
 	            		<div><input type="hidden" name="r_id" value="${sessionScope.loginid }" />관리자</div>
 	            		<div><input type="text" name="r_retitle" size="25" value="믹키 스포츠웨어 온라인 스토어" /></div>
