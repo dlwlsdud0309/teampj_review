@@ -214,22 +214,24 @@ om_state : ${om_state } <br />
 <!-- ======================== 작성하기 폼 ========================= -->	
 
 <br />
+<!-- Controller에서 작업 후 model로 보내기 -->
 <!-- 별구하기 -->
-<c:set var="totalStar" value="0" />
+<%-- <c:set var="totalStar" value="0" />
 <c:set var="avgStar" value="0" />
 	<c:forEach items="${review_list }" var="list">
-		<%-- <c:choose>
-			<c:when test="${not empty list.r_score }"> --%>
+		<c:choose>
+			<c:when test="${not empty list.r_score }">
 				<c:set var="totalStar" value="${totalStar+list.r_score }" />
-			<%-- </c:when>
+			</c:when>
 			<c:when test="${empty list.r_score }">
 				<p>안나와요</p>
 			</c:when>
-		</c:choose> --%>
+		</c:choose>
 	</c:forEach>
-	<%-- <c:out value="${totalStar }"/> --%>
-<c:set var="avgStar" value="${totalStar div fn:length(review_list) }" />
-<fmt:formatNumber value="${totalStar / totalCount }" pattern=".0" var="avgStar"/>
+	총점 : <c:out value="${totalStar }"/>
+<c:set var="avgStar" value="${totalStar div fn:length(review_list) }" /> --%>
+<%-- <fmt:formatNumber value="${totalStar / totalCount }" pattern=".0" var="avgStar"/> --%>
+
 			<br />
 			<div class="avg_star">
 				<div class="tablerow">
