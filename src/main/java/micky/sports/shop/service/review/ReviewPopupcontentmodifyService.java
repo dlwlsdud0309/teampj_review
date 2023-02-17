@@ -17,11 +17,11 @@ import micky.sports.shop.service.MickyServiceInter;
 public class ReviewPopupcontentmodifyService implements MickyServiceInter{
 
 	private SqlSession sqlSession;
-	private HttpSession httpsession;
+	private HttpSession httpSession;
 	
 	public ReviewPopupcontentmodifyService(SqlSession sqlSession,HttpSession httpsession) {
 		this.sqlSession=sqlSession;
-		this.httpsession = httpsession;
+		this.httpSession = httpsession;
 	}
 	
 	@Override
@@ -34,8 +34,8 @@ public class ReviewPopupcontentmodifyService implements MickyServiceInter{
 		HttpServletRequest request=
 				(HttpServletRequest) map.get("request");
 		
-		httpsession = request.getSession();
-		String loginId = (String)httpsession.getAttribute("loginid");
+		httpSession = request.getSession();
+		String loginId = (String)httpSession.getAttribute("loginid");
 		
 		
 //		modifyupload code=================
