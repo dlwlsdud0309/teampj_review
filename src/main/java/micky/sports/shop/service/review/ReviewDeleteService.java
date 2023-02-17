@@ -14,11 +14,11 @@ import micky.sports.shop.service.MickyServiceInter;
 public class ReviewDeleteService implements MickyServiceInter{
 
 	private SqlSession sqlSession;
-	private HttpSession session;
+	private HttpSession httpsession;
 	
-	public ReviewDeleteService(SqlSession sqlSession,HttpSession session) {
+	public ReviewDeleteService(SqlSession sqlSession,HttpSession httpsession) {
 		this.sqlSession=sqlSession;
-		this.session = session;
+		this.httpsession = httpsession;
 	}
 	
 	@Override
@@ -29,6 +29,9 @@ public class ReviewDeleteService implements MickyServiceInter{
 		Map<String, Object> map=model.asMap(); //model을 Map으로 변환
 		HttpServletRequest request=
 				(HttpServletRequest) map.get("request");
+		
+		httpsession = request.getSession();
+		String loginId = (String)httpsession.getAttribute("loginid");
 		
 		String r_no=request.getParameter("r_no");
 		

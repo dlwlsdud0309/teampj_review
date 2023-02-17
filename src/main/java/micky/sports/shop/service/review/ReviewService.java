@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
@@ -16,9 +17,11 @@ import micky.sports.shop.service.MickyServiceInter;
 public class ReviewService implements MickyServiceInter{
 
 	private SqlSession sqlSession;
+	private HttpSession httpsession;
 	
-	public ReviewService(SqlSession sqlSession) {
+	public ReviewService(SqlSession sqlSession,HttpSession httpsession) {
 		this.sqlSession=sqlSession;
+		this.httpsession = httpsession;
 	}
 	
 	@Override
@@ -28,6 +31,10 @@ public class ReviewService implements MickyServiceInter{
 		Map<String, Object> map=model.asMap();
 		HttpServletRequest request=
 				(HttpServletRequest) map.get("request");
+		
+		httpsession = request.getSession();
+		String loginId = (String)httpsession.getAttribute("loginid");
+		
 		
 		ServletContext application=request.getSession().getServletContext();
 		String p_name=(String)application.getAttribute("pname");

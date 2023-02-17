@@ -16,10 +16,12 @@ import micky.sports.shop.service.MickyServiceInter;
 
 public class ReviewPopupcontentmodifyService implements MickyServiceInter{
 
-	SqlSession sqlSession;
+	private SqlSession sqlSession;
+	private HttpSession httpsession;
 	
-	public ReviewPopupcontentmodifyService(SqlSession sqlSession) {
+	public ReviewPopupcontentmodifyService(SqlSession sqlSession,HttpSession httpsession) {
 		this.sqlSession=sqlSession;
+		this.httpsession = httpsession;
 	}
 	
 	@Override
@@ -31,6 +33,9 @@ public class ReviewPopupcontentmodifyService implements MickyServiceInter{
 		Map<String, Object> map=model.asMap(); //model을 Map으로 변환
 		HttpServletRequest request=
 				(HttpServletRequest) map.get("request");
+		
+		httpsession = request.getSession();
+		String loginId = (String)httpsession.getAttribute("loginid");
 		
 		
 //		modifyupload code=================

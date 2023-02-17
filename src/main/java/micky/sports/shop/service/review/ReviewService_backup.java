@@ -1,6 +1,5 @@
 package micky.sports.shop.service.review;
 
-import java.util.ArrayList;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,9 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
 import micky.sports.shop.dao.ReviewDao;
-import micky.sports.shop.dto.ReviewDto;
 import micky.sports.shop.service.MickyServiceInter;
-import micky.sports.shop.vopage.SearchVO;
 
 public class ReviewService_backup implements MickyServiceInter{
 

@@ -3,6 +3,7 @@ package micky.sports.shop.service.review;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
@@ -13,9 +14,11 @@ import micky.sports.shop.service.MickyServiceInter;
 
 public class ReviewReplyviewService implements MickyServiceInter{
 	private SqlSession sqlSession;
+	private HttpSession httpsession;
 	
-	public ReviewReplyviewService(SqlSession sqlSession) {
+	public ReviewReplyviewService(SqlSession sqlSession,HttpSession httpsession) {
 		this.sqlSession=sqlSession;
+		this.httpsession = httpsession;
 	}
 	
 	@Override
@@ -26,6 +29,9 @@ public class ReviewReplyviewService implements MickyServiceInter{
 		Map<String, Object> map=model.asMap(); //model을 Map으로 변환
 		HttpServletRequest request=
 				(HttpServletRequest) map.get("request");
+		
+		httpsession = request.getSession();
+		String loginId = (String)httpsession.getAttribute("loginid");
 		
 		String r_no=request.getParameter("r_no");
 		
