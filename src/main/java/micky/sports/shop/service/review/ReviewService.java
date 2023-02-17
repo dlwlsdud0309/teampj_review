@@ -64,10 +64,19 @@ public class ReviewService implements MickyServiceInter{
 
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
 		
-//		총게시글
 		int totalCount=rdao.totalCount(p_name);
+		int totalStarscore=rdao.totalStarscore(p_name);
+		double avgStarscore=rdao.avgStarscore(p_name);
+		System.out.println("avgStarscore : "+avgStarscore);
+		
+//		double tmp = parseStringToDouble(Double.toString(avgStarscore));
 
 		ArrayList<ReviewDto> review_list=rdao.reviewboard(selectType,searchKeyword,p_name);
+		
+//		for (ReviewDto val : review_list) {
+//			System.out.println(val.getR_score());
+//		}
+		
 		
 		
 		model.addAttribute("review_list", review_list);
@@ -75,6 +84,13 @@ public class ReviewService implements MickyServiceInter{
 		model.addAttribute("resk",searchKeyword);
 //		총게시글
 		model.addAttribute("totalCount", totalCount);
+//		별점평균
+		model.addAttribute("avgStarscore", avgStarscore);
+//		model.addAttribute("avgStarscore", tmp);
 	}
+	
+//	private double parseStringToDouble(String value) {
+//	    return value == null || value.isEmpty() ? Double.NaN : Double.parseDouble(value);
+//	}
 
 }

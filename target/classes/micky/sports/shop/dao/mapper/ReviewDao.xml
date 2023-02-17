@@ -196,6 +196,35 @@
 		<!-- SELECT COUNT(*) FROM REVIEW -->
 	</select>
 	
+	<update id="replyUpdate">
+		UPDATE REVIEW SET R_ID=#{param2},
+		R_RETITLE=#{param3}, R_RECONTENT=#{param4, jdbcType=VARCHAR},
+		R_YNN='y' WHERE R_NO=#{param1}
+	</update>
+	
+	<update id="replydelete">
+		UPDATE REVIEW SET R_ID='',
+		R_RETITLE='', R_RECONTENT='',
+		R_YNN='n' WHERE R_NO=#{param1}
+	</update>
+	
+	<select id="totalStarscore" resultType="Integer">
+		SELECT SUM(R.R_SCORE)
+		FROM MEMBER M, REVIEW R, PRODUCT P
+		WHERE M.M_ID=R.M_ID
+		AND R.P_NO=P.P_NO
+		AND P.P_NAME=#{param1}
+	</select>
+
+	<select id="avgStarscore" resultType="double">
+		SELECT ROUND(AVG(R.R_SCORE),1)
+		FROM MEMBER M, REVIEW R, PRODUCT P
+		WHERE M.M_ID=R.M_ID
+		AND R.P_NO=P.P_NO
+		AND P.P_NAME=#{param1}
+	</select>
+	
+	
 	<!-- <select id="replyTotalCount" resultType="micky.sports.shop.dto.ReviewDto">
 		SELECT COUNT(R_RECONTENT) R_RECONTENT FROM REVIEW GROUP BY R_NO ORDER BY R_NO
 		SELECT COUNT(R_RECONTENT) FROM REVIEW WHERE R_NO=#{param1, jdbcType=INTEGER}
@@ -213,15 +242,5 @@
 		SELECT COUNT(*) FROM REVIEW WHERE R_CONTENT LIKE '%'||#{param1}||'%'
 	</select> -->
 	
-	<update id="replyUpdate">
-		UPDATE REVIEW SET R_ID=#{param2},
-		R_RETITLE=#{param3}, R_RECONTENT=#{param4, jdbcType=VARCHAR},
-		R_YNN='y' WHERE R_NO=#{param1}
-	</update>
 	
-	<update id="replydelete">
-		UPDATE REVIEW SET R_ID='',
-		R_RETITLE='', R_RECONTENT='',
-		R_YNN='n' WHERE R_NO=#{param1}
-	</update>
 </mapper>
