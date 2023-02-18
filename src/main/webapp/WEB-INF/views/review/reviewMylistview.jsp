@@ -41,6 +41,9 @@
 <h1>리뷰 작성하기</h1>
 <div>
 	<p>
+		<a href="reviewWriteview">작성하기</a> <br />
+		${review_mylist.ordermemberDto.p_no }
+		
 		현재 상품평을 작성할 수 있는 상품이 없습니다.
 		<br />
 		구매하신 상품이 있다면 상품에 대한 이야기를 들려주세요

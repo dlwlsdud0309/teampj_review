@@ -171,7 +171,7 @@
 	<insert id="write">
 		INSERT INTO REVIEW VALUES(REVIEW_SEQ.NEXTVAL,#{param1},
 		#{param2},#{param3},'','','','n',SYSDATE,
-		REVIEW_SEQ.CURRVAL,0,0,#{param4},#{param5},'')
+		REVIEW_SEQ.CURRVAL,0,0,#{param4},#{param5},#{param6})
 	</insert>
 	
 	<!-- 글삭제 -->
@@ -182,21 +182,26 @@
 	<!-- 마이페이지-후기탭에서 보이는 리뷰 -->
 	<!-- 로그인 한 id가 작성한 리뷰글 전부 출력 -->
 	<select id="mylistview" parameterType="micky.sports.shop.dto.ReviewDto" resultMap="ReviewDto">
-		SELECT R.R_NO,M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
+		SELECT R.R_NO,
+		O.OM_CNTNUM,O.P_NO,O.OM_STATE,
+		M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
+		R.R_RECONTENT,R.R_YNN,R.R_DATE,R.R_GROUP,R.R_STEP,R.R_INDENT,R.R_FILESRC,R.R_SCORE,
+		P.P_NAME,P.P_COLOR,P.P_SIZE,P.P_FILESRC
+		FROM MEMBER M, REVIEW R, PRODUCT P, ORDER_MEMBER O
+		WHERE M.M_ID=R.M_ID
+		AND R.P_NO=P.P_NO
+		AND M.M_ID=#{param1}
+		AND OM_STATE='결제완료'
+		ORDER BY R.R_GROUP DESC
+		
+		<!-- SELECT R.R_NO,M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
 		R.R_RECONTENT,R.R_YNN,R.R_DATE,R.R_GROUP,R.R_STEP,R.R_INDENT,R.R_FILESRC,R.R_SCORE,
 		P.P_NO,P.P_NAME,P.P_COLOR,P.P_SIZE,P.P_FILESRC
 		FROM MEMBER M, REVIEW R, PRODUCT P
 		WHERE M.M_ID=R.M_ID
         AND R.P_NO=P.P_NO
 		AND M.M_ID=#{param1}
-		ORDER BY R.R_GROUP DESC, R.R_STEP ASC
-		
-		<!-- SELECT R.R_NO,M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
-		R.R_RECONTENT,R.R_YNN,R.R_DATE,R.R_GROUP,R.R_STEP,R.R_INDENT,R.R_FILESRC,R.R_SCORE,R.P_NO
-		FROM MEMBER M, REVIEW R
-		WHERE M.M_ID=R.M_ID
-		AND M.M_ID=#{param1}
-		ORDER BY R.R_GROUP DESC, R.R_STEP ASC -->
+		ORDER BY R.R_GROUP DESC, R.R_STEP ASC -->		
 	</select>
 	
 	<select id="popupview" resultType="micky.sports.shop.dto.ReviewDto">

@@ -6,9 +6,11 @@ import micky.sports.shop.dto.ReviewDto;
 
 public interface ReviewDao {
 	public ArrayList<ReviewDto> reviewboard(String selectType, String searchKeyword, String p_name);
-	public void write(String m_id,String r_title,String r_content,String r_filesrc,String r_point);
+//	public void write(String m_id,String r_title,String r_content,String r_filesrc,String r_score);
+	public void write(String m_id,String r_title,String r_content,String r_filesrc,String r_score,String p_no);
 	public void delete(String r_no);
-	public ArrayList<ReviewDto> mylistview(String loginid);
+//	public ArrayList<ReviewDto> mylistview(String loginid);
+	public ArrayList<ReviewDto> mylistview(String loginid,String om_cntnum);
 	public ReviewDto popupview(String r_no);
 	public void modify(String r_no, String r_title, String r_content, String r_score, String r_filesrc);
 	public ReviewDto replyview(String r_no);

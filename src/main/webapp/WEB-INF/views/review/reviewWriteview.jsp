@@ -58,6 +58,8 @@
 				<tr>
 					<!-- <td class="left">작성자</td> -->
 					<td colspan="3">
+						<%-- <input type="text" name="p_no" value="${review_mylist.ordermemberDto.p_no }" /> --%>
+						${review_mylist.ordermemberDto.p_no }
 						<input id="userid" type="hidden" name="m_id" value="${sessionScope.loginid }" />
 					</td>
 				</tr>

@@ -58,6 +58,10 @@ public class ReviewWriteService implements MickyServiceInter{
 		
 		String m_id=req.getParameter("m_id");
 		
+		String om_cntnum=request.getParameter("om_cntnum");
+		String p_no=request.getParameter("p_no");
+		String om_state=request.getParameter("om_state");
+		
 		String r_title=req.getParameter("r_title");
 		String r_content=req.getParameter("r_content");
 		String r_filesrc=req.getFilesystemName("r_filesrc");
@@ -72,7 +76,9 @@ public class ReviewWriteService implements MickyServiceInter{
 		
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
 		
-		rdao.write(m_id,r_title,r_content,r_filesrc,r_score);
+//		rdao.write(m_id,r_title,r_content,r_filesrc,r_score);
+		rdao.write(m_id,r_title,r_content,r_filesrc,r_score,p_no);
+		
 		
 	}
 
