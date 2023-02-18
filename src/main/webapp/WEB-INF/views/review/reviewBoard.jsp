@@ -112,6 +112,10 @@ ADMIN_OLIST <br />
 p_no : ${p_no }
 om_state : ${om_state } <br />
 
+<%-- <c:if test="${avgStarscore == 'NaN' }">
+	<fmt:formatNumber value="${avgStarscore }" type="number"/>
+	${avgStarscore }
+</c:if> --%>
 
 
 <%-- <c:forEach items="${getproductlist }" var="getData">

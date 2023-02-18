@@ -69,15 +69,20 @@ public class ReviewService implements MickyServiceInter{
 		double avgStarscore=rdao.avgStarscore(p_name);
 		System.out.println("avgStarscore : "+avgStarscore);
 		
-//		double tmp = parseStringToDouble(Double.toString(avgStarscore));
-
+//		if(Double.valueOf(avgStarscore) instanceof Double) {
+//			System.out.println("avgStarscore : "+avgStarscore);
+//			model.addAttribute("avgStarscore", avgStarscore=rdao.avgStarscore(p_name));
+//		}else if(avgStarscore==0.0){
+//			int avgIntStarscore=(int) rdao.avgStarscore(p_name);
+//			System.out.println("int로 형변환 avgIntStarscore :"+avgIntStarscore);
+//			model.addAttribute("avgStarscore", avgIntStarscore);
+//		}
+		
 		ArrayList<ReviewDto> review_list=rdao.reviewboard(selectType,searchKeyword,p_name);
 		
 //		for (ReviewDto val : review_list) {
 //			System.out.println(val.getR_score());
 //		}
-		
-		
 		
 		model.addAttribute("review_list", review_list);
 //		검색어 유지기능
@@ -89,8 +94,8 @@ public class ReviewService implements MickyServiceInter{
 //		model.addAttribute("avgStarscore", tmp);
 	}
 	
-//	private double parseStringToDouble(String value) {
-//	    return value == null || value.isEmpty() ? Double.NaN : Double.parseDouble(value);
+//	private int parseStringToDouble(double value) {
+//	    return value == Double.NaN ? Integer.parseInt(value) : Double.parseDouble(value);
 //	}
-
+	
 }

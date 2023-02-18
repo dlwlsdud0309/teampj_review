@@ -34,12 +34,18 @@ public class ReviewMylistviewService implements MickyServiceInter{
 		
 		httpSession = request.getSession();
 		String loginId = (String)httpSession.getAttribute("loginid");
+
+		String om_num=request.getParameter("om_num");
+		String p_no=request.getParameter("p_no");
+		String om_state=request.getParameter("om_state");
 		
+		System.out.println("om_num : "+om_num);
+		System.out.println("p_no : "+p_no);
+		System.out.println("om_state : "+om_state);
 		
 //		String account=request.getParameter("account");
 //		System.out.println("account : "+account);
 		
-		/* String r_no=request.getParameter("r_no"); */
 		
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
 		ArrayList<ReviewDto> review_mylist=rdao.mylistview(loginId);
