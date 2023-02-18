@@ -75,7 +75,29 @@
 	
 	<!-- productDetail 하단부에 표시될 리뷰 -->
 	<select id="reviewboard" parameterType="micky.sports.shop.dto.ReviewDto" resultMap="ReviewDto">
-		SELECT ROWNUM, R.*
+		SELECT R.*
+		FROM (SELECT
+		R.R_NO,
+		O.OM_CNTNUM,O.P_NO,O.OM_STATE,
+		M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
+		R.R_RECONTENT,R.R_YNN,R.R_DATE,R.R_GROUP,R.R_STEP,R.R_INDENT,R.R_FILESRC,R.R_SCORE,
+		P.P_NAME,P.P_COLOR,P.P_SIZE
+		FROM MEMBER M, REVIEW R, PRODUCT P, ORDER_MEMBER O
+		WHERE R.M_ID=M.M_ID
+		AND R.P_NO=P.P_NO
+		AND R.M_ID=O.M_ID
+		AND P_NAME=#{param3}
+		AND R.R_CONTENT like '%'||#{param2}||'%'
+		AND OM_STATE='결제완료'
+		ORDER BY
+		<choose>
+			<when test="param1 eq 'r_group'">R_GROUP DESC</when>
+			<otherwise>R_SCORE DESC, R_GROUP DESC</otherwise>
+		</choose>
+		) R
+		
+		<!-- 페이징 삭제하고 더보기 기능 이용한 쿼리 -->	
+		<!-- SELECT ROWNUM, R.*
 		FROM (SELECT R.R_NO,M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
 		R.R_RECONTENT,R.R_YNN,R.R_DATE,R.R_GROUP,R.R_STEP,R.R_INDENT,R.R_FILESRC,R.R_SCORE,
 		P.P_NO,P.P_NAME,P.P_COLOR,P.P_SIZE
@@ -89,7 +111,7 @@
 			<when test="param1 eq 'r_group'">R_GROUP DESC</when>
 			<otherwise>R_SCORE DESC, R_GROUP DESC</otherwise>
 		</choose>
-		) R
+		) R -->
 		
 		<!-- ============================Product와 join 이전 쿼리=============================== -->		
 	        <!-- SELECT ROWNUM,R_NO,M_ID,R_TITLE,R_CONTENT,R_ID,R_RETITLE,
