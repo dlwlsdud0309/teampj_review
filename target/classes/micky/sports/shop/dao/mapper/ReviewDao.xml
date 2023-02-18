@@ -25,6 +25,7 @@
 		<result column="r_score" property="r_score"/>
 		<collection property="memberDto" resultMap="MemberDto" />
 		<collection property="productDto" resultMap="ProductDto" />
+		<collection property="ordermemberDto" resultMap="OrderMemberDto" />
 	</resultMap>
 	
 	<!-- 2.join위해 사용한 MemberDto -->
@@ -54,6 +55,22 @@
 		<result column="p_date" property="p_date"/>
 		<result column="p_category" property="p_category"/>
 		<result column="p_info" property="p_info"/>
+	</resultMap>
+	
+	<!-- 4.join위해 사용한 OrderMemberDto -->
+	<resultMap type="micky.sports.shop.dto.OrderMemberDto" id="OrderMemberDto">
+		<result column="om_cntnum" property="om_cntnum" />
+    	<result column="om_num" property="om_num" />
+    	<result column="p_no" property="p_no" />
+    	<result column="u_cnt" property="u_cnt" />
+    	<result column="m_id" property="m_id" />
+    	<result column="om_date" property="om_date" />
+    	<result column="om_pay" property="om_pay" />
+    	<result column="p_price" property="p_price" />
+    	<result column="om_state" property="om_state" />
+    	<result column="om_cancle" property="om_cancle" />
+    	<result column="om_cdate" property="om_cdate" />
+    	<result column="c_reason" property="c_reason" />
 	</resultMap>
 	
 	<!-- productDetail 하단부에 표시될 리뷰 -->
