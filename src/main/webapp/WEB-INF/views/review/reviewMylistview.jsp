@@ -22,7 +22,6 @@
 </head>
 <body>
 <h3>reviewMylistview</h3>
-<%-- <input type="hidden" value="${review_mylist.m_id }" /> --%>
 <h1>상품리뷰</h1>
 <p>리뷰 작성 시 적립 가능한 최대 마일리지</p>
 <div>
@@ -42,7 +41,6 @@
 <div>
 	<p>
 		<a href="reviewWriteview">작성하기</a> <br />
-		p_no: ${p_no }
 		
 		현재 상품평을 작성할 수 있는 상품이 없습니다.
 		<br />

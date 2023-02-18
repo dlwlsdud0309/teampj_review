@@ -36,13 +36,13 @@ public class ReviewMylistviewService implements MickyServiceInter{
 		String loginId = (String)httpSession.getAttribute("loginid");
 
 //		myOrderList.jsp에서 a태그 주소로 가져온 값
-		String om_cntnum=request.getParameter("om_cntnum");
-		String p_no=request.getParameter("p_no");
-		String om_state=request.getParameter("om_state");
-		
-		System.out.println("om_num : "+om_cntnum);
-		System.out.println("p_no : "+p_no);
-		System.out.println("om_state : "+om_state);
+//		String om_cntnum=request.getParameter("om_cntnum");
+//		String p_no=request.getParameter("p_no");
+//		String om_state=request.getParameter("om_state");
+//		
+//		System.out.println("om_num : "+om_cntnum);
+//		System.out.println("p_no : "+p_no);
+//		System.out.println("om_state : "+om_state);
 				
 		
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);

@@ -35,7 +35,10 @@
 <body>
 <h3>reviewWriteview</h3>
 <h1>리뷰 작성하기</h1>
-
+<%
+String om_cntnum=request.getParameter("om_cntnum");
+String p_no=request.getParameter("p_no");
+%>
 
 <input type="button" value="리뷰작성" onclick="rWrite();" />
 
@@ -59,6 +62,8 @@
 					<!-- <td class="left">작성자</td> -->
 					<td colspan="3">
 						<input id="userid" type="hidden" name="m_id" value="${sessionScope.loginid }" />
+						<input type="hidden" name="om_cntnum" value="${om_cntnum }" />
+						<input type="hidden" name="p_no" value="${p_no }" />
 					</td>
 				</tr>
 				<tr>
