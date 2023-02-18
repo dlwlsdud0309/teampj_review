@@ -42,7 +42,7 @@
 <div>
 	<p>
 		<a href="reviewWriteview">작성하기</a> <br />
-		${review_mylist.ordermemberDto.p_no }
+		p_no: ${p_no }
 		
 		현재 상품평을 작성할 수 있는 상품이 없습니다.
 		<br />
