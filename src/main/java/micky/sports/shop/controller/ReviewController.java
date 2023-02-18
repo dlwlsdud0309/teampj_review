@@ -66,9 +66,9 @@ public class ReviewController {
 //		String om_cntnum=request.getParameter("om_cntnum");
 //		String p_no=request.getParameter("p_no");
 //		String om_state=request.getParameter("om_state");
-//		System.out.println("om_num : "+om_cntnum);
-//		System.out.println("p_no : "+p_no);
-//		System.out.println("om_state : "+om_state);
+//		System.out.println("reviewWriteview@@om_num : "+om_cntnum);
+//		System.out.println("reviewWriteview@@p_no : "+p_no);
+//		System.out.println("reviewWriteview@@om_state : "+om_state);
 		
 //		model.addAttribute("request", request);
 		
@@ -84,7 +84,7 @@ public class ReviewController {
 		mickyServiceInter=new ReviewWriteService(sqlSession,httpSession);
 		mickyServiceInter.execute(model);
 		
-		return "redirect:reviewBoard";
+		return "redirect:reviewMylistview";
 	}
 	
 //	삭제
