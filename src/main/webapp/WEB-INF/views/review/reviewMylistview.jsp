@@ -123,6 +123,18 @@ String p_no=request.getParameter("p_no");
 	</p>
 </div>
 <hr />
+	<div>
+		<c:forEach items="${review_orderlist }" var="myorderlist">
+			<tr>
+				<td>주문번호</td>
+				<td>상품명</td>
+			</tr>
+			<tr>
+				<td>${myorderlist.ordermemberDto.om_num }</td>
+				<td>${myorderlist.productDto.p_name }</td>
+			</tr>
+		</c:forEach>
+	</div>
 	<div class="reviewListview_total">
 		<div class="reviewListview_label">
 		<c:forEach items="${review_orderlist }" var="myorderlist">
