@@ -96,7 +96,7 @@ public class ReviewController {
 		mickyServiceInter=new ReviewDeleteService(sqlSession,httpSession);
 		mickyServiceInter.execute(model);
 		
-		return "redirect:reviewBoard";
+		return "redirect:reviewMylistview";
 	}
 	
 //	Popup 수정폼

@@ -14,20 +14,13 @@
 <script src="../resources/js/scriptjsp.js"></script>
 
 <script>
-  
 	function redeptlist(target) {
 		alert("target : "+target.value);
-
-		//var pointvalue=document.getElementById("point").value;
-		//$('input#starInput[name=r_score]').attr('value',target.value);	
 		$('#starInput[name=r_score]').attr('value',target.value);	
 	}
 	
 	function getvalue(target) {
 		alert(target.value);
-		//컨트롤러에 전달해서 session에 보관해보자
-		//location.href="starpoint?point="+target.value;
-		//document.getElementById("data").innerHTML=tmpvalue;
 	} 
 </script>
 	
