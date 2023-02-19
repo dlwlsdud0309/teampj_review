@@ -24,6 +24,7 @@ public class ReviewDto {
 	
 	private int r_score; //별점
 	private String p_no; //join 사용
+	private String om_cntnum; //join 사용
 	
 	private MemberDto memberDto; //join 사용
 	private ProductDto productDto; //join 사용
