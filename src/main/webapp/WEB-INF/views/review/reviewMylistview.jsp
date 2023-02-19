@@ -123,24 +123,12 @@ String p_no=request.getParameter("p_no");
 	</p>
 </div>
 <hr />
-	<div>
-		<c:forEach items="${review_orderlist }" var="myorderlist">
-			<tr>
-				<td>주문번호</td>
-				<td>상품명</td>
-			</tr>
-			<tr>
-				<td>${myorderlist.ordermemberDto.om_num }</td>
-				<td>${myorderlist.productDto.p_name }</td>
-			</tr>
-		</c:forEach>
-	</div>
 	<div class="reviewListview_total">
 		<div class="reviewListview_label">
 		<c:forEach items="${review_orderlist }" var="myorderlist">
 			<div class="row">
 				<div class="cell col11">
-					<div>주문번호 : ${myorderlist.ordermemberDto.om_num }</div>
+					<div>주문번호 : ${myorderlist.om_num }</div>
 					<div class="reviewListview_img_box">
 						<a href="../product/productDetail?pname=${myorderlist.productDto.p_name }&pfilesrc=${myorderlist.productDto.p_filesrc }"><img src="../resources/img/productimg/${myorderlist.productDto.p_filesrc }.jpg" width="200" /></a>
 					</div>

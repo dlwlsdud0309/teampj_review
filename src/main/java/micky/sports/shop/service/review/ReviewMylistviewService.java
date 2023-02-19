@@ -9,7 +9,9 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
+import lombok.experimental.var;
 import micky.sports.shop.dao.ReviewDao;
+import micky.sports.shop.dto.OrderMemberDto;
 import micky.sports.shop.dto.ReviewDto;
 import micky.sports.shop.service.MickyServiceInter;
 
@@ -47,10 +49,10 @@ public class ReviewMylistviewService implements MickyServiceInter{
 		
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
 //		null값 포함하여 구매내역에서 리뷰작성이 가능한 목록
-		ArrayList<ReviewDto> review_orderlist=rdao.reviewOrderlist(loginId);
+		ArrayList<OrderMemberDto> review_orderlist=rdao.reviewOrderlist(loginId);
 		
-		for (ReviewDto val : review_orderlist) {
-			System.out.println("val : "+val.getOrdermemberDto().getOm_cntnum());
+		for (OrderMemberDto val : review_orderlist) {
+			System.out.println("val : "+val.getOm_cntnum());
 		}//값이 하나만 들어온다
 		
 //		null값 제외, 리뷰작성된 목록
