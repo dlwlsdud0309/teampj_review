@@ -78,8 +78,6 @@ public class ReviewWriteService implements MickyServiceInter{
 		session.removeAttribute("r_score");
 		
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
-		
-//		rdao.write(m_id,r_title,r_content,r_filesrc,r_score);
 		rdao.write(m_id,r_title,r_content,r_filesrc,r_score,p_no,om_cntnum);
 		
 		

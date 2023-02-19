@@ -16,7 +16,6 @@
 <script>
 	$(document).ready(function(){
 		$(".u_content").click(function(){
-			/* $(this).addClass("u_content"); */
 			$(this).toggleClass("u_content").toggleClass("u_contentGray");
 		});
 	});
@@ -37,7 +36,7 @@
 			alert('로그인이 필요합니다.');
 			$(location).attr('href','../member/loginform');
 		}else{
-			$(location).attr('href','reviewWriteview')
+			$(location).attr('href','reviewMylistview')
 			/* $(".styleClassReviewWriteview").bPopup(); */
 		}
 	}
@@ -163,10 +162,8 @@ om_state : ${om_state } <br />
 			</div>
 			<div>
 				<input type="button" value="리뷰작성" onclick="fn_01('${sessionScope.loginid }');" />
-
 <br />
-
-			<br />
+<br />
 			<div class="avg_star">
 				<div class="tablerow">
 					<div class="tablecell">
@@ -192,7 +189,6 @@ om_state : ${om_state } <br />
 </div>
 </div>
 <div class="clear" ></div>
-
 <div class="review_table">
 		<!-- select, option, 검색 -->
 		<form action="reviewBoard" method="get">
@@ -248,22 +244,21 @@ om_state : ${om_state } <br />
 								<span>&nbsp;&nbsp;&nbsp;&nbsp;${list.memberDto.m_id }</span>
 							</div>
 						</div>
-						
 						<div class="product_option">
 							<strong>구매옵션</strong>&nbsp;<span>${list.productDto.p_color }</span>&nbsp;<span>${list.productDto.p_size }</span>
 						</div>
-						<div class="user_content" onclick="user_content()"> <!-- commend -->
+						<div class="user_content" onclick="user_content()">
 							<p class="u_content">${list.r_content }</p> 
 						</div>
+<style> /* css로 옮기면 적용되지 않음 */
+	ul { padding: 0; }
+	li {
+	  list-style: none;
+	  line-height: 34px;
+	}
+	.sub_menu { display: none; }
+</style>
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 답변창 만들기 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-						<style> /* css로 옮기면 적용되지 않음 */
-							ul { padding: 0; }
-							li {
-							  list-style: none;
-							  line-height: 34px;
-							}
-							.sub_menu { display: none; }
-						</style>
 						<div id="reply_menu">
 							<div>
 								<a class="${list.r_no }" href="#" onclick="return false;">
@@ -320,8 +315,6 @@ om_state : ${om_state } <br />
 		<div><a href="reviewReplydelete?r_no=${list.r_no }">삭제</a></div>
 	</div>
 </c:if>
-						<div>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -369,8 +362,9 @@ om_state : ${om_state } <br />
 <br />
 
 </body>
+<!-- 더보기 -->
 <script>
-  $(window).on('load', function () {
+$(window).on('load', function () {
     load('#js-load', '10');
     $("#js-btn-wrap .button").on("click", function () {
         load('#js-load', '10', '#js-btn-wrap');

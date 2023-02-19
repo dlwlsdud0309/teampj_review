@@ -13,20 +13,13 @@
 <script src="../resources/js/scriptjsp.js"></script>
 
 <script>
-  
 	function redeptlist(target) {
 		alert("target : "+target.value);
-
-		//var pointvalue=document.getElementById("point").value;
-		//$('input#starInput[name=r_score]').attr('value',target.value);	
 		$('#starInput[name=r_score]').attr('value',target.value);	
 	}
 	
 	function getvalue(target) {
 		alert(target.value);
-		//컨트롤러에 전달해서 session에 보관해보자
-		//location.href="starpoint?point="+target.value;
-		//document.getElementById("data").innerHTML=tmpvalue;
 	} 
 </script>
 
@@ -35,12 +28,8 @@
 <h3>reviewPopupcontentview</h3>
 <h1>리뷰 수정하기</h1>
 <input type="button" value="리뷰작성" onclick="rWrite();" />
-
-
 <div id="styleID_ReviewWriteview" class="styleClassReviewWriteview">
 	<div id="title_content">
-		<!-- <form action="reviewPopupcontentupdate" method="post" enctype="multipart/form-data"> -->
-
 		<form action="reviewPopupcontentmodify" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="r_no" value="${popupview.r_no }" />
 			<h3 class="popup_review_title">상품리뷰쓰기</h3>
@@ -56,16 +45,6 @@
 							<input type="range" onclick="redeptlist(this);" oninput="drawStar(this)" value="1" step="1" min="0" max="5"/>
 						</td>
 					</tr>
-					<%-- <tr>
-						<!-- <td class="left">작성자</td> -->
-						<td colspan="3">
-							<input id="userid" type="hidden" name="m_id" value="${sessionScope.loginid }" />
-						</td>
-					</tr> --%>
-					<%-- <tr>
-						<td class="left">작성자</td>
-						<td colspan="2">${popupview.m_id }</td>
-					</tr> --%>
 					<tr>
 						<td class="left">제목</td>
 						<td colspan="2"><input type="text" name="r_title" value="${popupview.r_title }" />
