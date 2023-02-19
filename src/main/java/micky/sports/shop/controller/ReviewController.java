@@ -31,13 +31,11 @@ public class ReviewController {
 	private HttpSession httpSession;
 	
 	
-//	임시 메인페이지
+//	메인 페이지
 //	@RequestMapping(method = RequestMethod.POST, value = "/reviewBoard")
 	@RequestMapping("/reviewBoard")
 	public String reviewBoard(HttpServletRequest request, Model model) {
 		System.out.println("=====reviewBoard====");
-		
-		
 		
 		model.addAttribute("request", request);
 		mickyServiceInter=new ReviewService(sqlSession,httpSession);
@@ -75,7 +73,7 @@ public class ReviewController {
 		return "review/reviewWriteview";
 	}
 	
-//	작성
+//	리뷰 작성
 	@RequestMapping("/reviewWrite")
 	public String reviewWrite(HttpServletRequest request, Model model) {
 		System.out.println("=====reviewWrite====");
@@ -87,7 +85,7 @@ public class ReviewController {
 		return "redirect:reviewMylistview";
 	}
 	
-//	삭제
+//	리뷰 삭제
 	@RequestMapping("/reviewDelete")
 	public String reviewDelete(HttpServletRequest request, Model model) {
 		System.out.println("=====reviewDelete====");
