@@ -58,7 +58,7 @@ String p_no=request.getParameter("p_no");
 	</ul>
 </div>
 <h1>리뷰 작성하기</h1>
-<div>
+	<<%-- div>
 		<input type="button" value="리뷰작성" onclick="rWrite();" /> <br />
 		<div id="styleID_ReviewWriteview" class="styleClassReviewWriteview">
 			<div id="title_content">
@@ -81,6 +81,8 @@ String p_no=request.getParameter("p_no");
 								<input id="userid" type="hidden" name="m_id" value="${sessionScope.loginid }" />
 								<input type="hidden" name="om_cntnum" value="<%=om_cntnum %>" />
 								<input type="hidden" name="p_no" value="<%=p_no %>" />
+								<input type="hidden" name="om_cntnum" value="${myorderlist.om_cntnum }" />
+								<input type="hidden" name="p_no" value="${myorderlist.productDto.p_no }" />
 							</td>
 						</tr>
 						<tr>
@@ -109,11 +111,8 @@ String p_no=request.getParameter("p_no");
 				</form>
 			</div>
 		</div>
-<script>
-	function rWrite(){
-		$(".styleClassReviewWriteview").bPopup();
-	}
-</script>
+	</div> --%>
+<c:if test="${empty review_orderlist }">
 	<p>
 		현재 상품평을 작성할 수 있는 상품이 없습니다.
 		<br />
@@ -121,8 +120,9 @@ String p_no=request.getParameter("p_no");
 		<br />
 		<a href="../order/myOrderList">주문내역보러가기</a>
 	</p>
-</div>
+</c:if>
 <hr />
+<c:if test="${not empty review_orderlist }">
 	<div class="reviewListview_total">
 		<div class="reviewListview_label">
 		<c:forEach items="${review_orderlist }" var="myorderlist">
@@ -134,12 +134,14 @@ String p_no=request.getParameter("p_no");
 					</div>
 					<div>${myorderlist.productDto.p_name }</div>
 					<div>${myorderlist.productDto.p_price }</div>
+					<!-- <input type="button" value="리뷰작성" onclick="rWrite();" /> -->
 				</div>
 			</div>
 		</c:forEach>
 		</div>
 	</div>
 <hr />
+</c:if>
 <h1>작성한 리뷰보기</h1>
 	<ul>
 		<li>리워드가 적립된 리뷰는 삭제가 불가하며, 삭제버튼이 노출되지 않습니다.</li>
@@ -147,7 +149,17 @@ String p_no=request.getParameter("p_no");
 	</ul>
 	<div class="clear" ></div>
 	<hr />
-	
+<c:if test="${empty review_mylist }">
+	<br />
+	<br />
+	<br />
+	<strong>작성한 리뷰가 없습니다.</strong>
+	<br />
+	<br />
+	<br />
+	<br />
+</c:if>
+<c:if test="${not empty review_mylist }">
 	<div class="reviewListview_total">
 		<div class="reviewListview_label">
 		<c:forEach items="${review_mylist }" var="mylist">
@@ -184,6 +196,11 @@ String p_no=request.getParameter("p_no");
 		</c:forEach>
 		</div>
 	</div>
-	
+</c:if>
 </body>
+<!-- <script>
+	function rWrite(){
+		$(".styleClassReviewWriteview").bPopup();
+	}
+</script> -->
 </html>
