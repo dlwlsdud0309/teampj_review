@@ -182,7 +182,20 @@
 	<!-- 마이페이지-후기탭에서 보이는 리뷰 -->
 	<!-- 로그인 한 id가 작성할 수 있는 구매내역 출력, null값 포함됨 -->
 	<select id="reviewOrderlist" parameterType="micky.sports.shop.dto.ReviewDto" resultMap="ReviewDto">
-		SELECT O.OM_CNTNUM,O.OM_NUM,O.P_NO,O.U_CNT,O.M_ID,O.OM_DATE,O.P_PRICE,O.OM_STATE,
+		<!-- left outer join 사용 -->
+		SELECT *
+		FROM ORDER_MEMBER
+		LEFT JOIN REVIEW
+		ON REVIEW.OM_CNTNUM=ORDER_MEMBER.OM_CNTNUM
+		LEFT JOIN PRODUCT
+		ON PRODUCT.P_NO=ORDER_MEMBER.P_NO
+		WHERE ORDER_MEMBER.M_ID=#{param1}
+		AND ORDER_MEMBER.OM_STATE='결제완료'
+		AND REVIEW.R_CONTENT IS NULL
+		ORDER BY ORDER_MEMBER.OM_DATE DESC
+		
+		
+		<!-- SELECT O.OM_CNTNUM,O.OM_NUM,O.P_NO,O.U_CNT,O.M_ID,O.OM_DATE,O.P_PRICE,O.OM_STATE,
 		R.R_TITLE,R.R_CONTENT,
 		P.P_NAME,P.P_SIZE,P.P_COLOR,P.P_FILESRC
 		FROM ORDER_MEMBER O, PRODUCT P, REVIEW R
@@ -192,7 +205,7 @@
 		AND O.OM_STATE='결제완료'
 		AND R.R_TITLE IS NULL
 		AND R.R_CONTENT IS NULL
-		ORDER BY O.OM_DATE DESC
+		ORDER BY O.OM_DATE DESC -->
 	</select>
 	
 	<!-- 로그인 한 id가 작성한 리뷰글 전부 출력 -->
