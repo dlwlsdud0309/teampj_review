@@ -46,9 +46,14 @@ public class ReviewMylistviewService implements MickyServiceInter{
 				
 		
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
+//		null값 포함하여 구매내역에서 리뷰작성이 가능한 목록
+		ArrayList<ReviewDto> review_orderlist=rdao.reviewOrderlist(loginId);
+//		null값 제외, 리뷰작성된 목록
 		ArrayList<ReviewDto> review_mylist=rdao.mylistview(loginId);
 		
 		
+		
+		model.addAttribute("review_orderlist", review_orderlist);
 		model.addAttribute("review_mylist", review_mylist);
 	}
 

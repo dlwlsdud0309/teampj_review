@@ -9,7 +9,7 @@ public interface ReviewDao {
 //	public void write(String m_id,String r_title,String r_content,String r_filesrc,String r_score);
 	public void write(String m_id,String r_title,String r_content,String r_filesrc,String r_score,String p_no,String om_cntnum);
 	public void delete(String r_no);
-//	public ArrayList<ReviewDto> mylistview(String loginid);
+	public ArrayList<ReviewDto> reviewOrderlist(String loginid);
 	public ArrayList<ReviewDto> mylistview(String loginid);
 	public ReviewDto popupview(String r_no);
 	public void modify(String r_no, String r_title, String r_content, String r_score, String r_filesrc);

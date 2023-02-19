@@ -122,6 +122,23 @@ String p_no=request.getParameter("p_no");
 		<a href="../order/myOrderList">주문내역보러가기</a>
 	</p>
 </div>
+<hr />
+	<div class="reviewListview_total">
+		<div class="reviewListview_label">
+		<c:forEach items="${review_orderlist }" var="myorderlist">
+			<div class="row">
+				<div class="cell col11">
+					<div class="reviewListview_img_box">
+						<a href="../product/productDetail?pname=${myorderlist.productDto.p_name }&pfilesrc=${myorderlist.productDto.p_filesrc }"><img src="../resources/img/productimg/${myorderlist.productDto.p_filesrc }.jpg" width="200" /></a>
+					</div>
+					<div>${myorderlist.productDto.p_name }</div>
+					<div>${myorderlist.productDto.p_price }</div>
+				</div>
+			</div>
+		</c:forEach>
+		</div>
+	</div>
+<hr />
 <h1>작성한 리뷰보기</h1>
 	<ul>
 		<li>리워드가 적립된 리뷰는 삭제가 불가하며, 삭제버튼이 노출되지 않습니다.</li>

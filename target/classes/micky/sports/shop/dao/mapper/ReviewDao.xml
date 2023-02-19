@@ -180,9 +180,37 @@
 	</delete>
 
 	<!-- 마이페이지-후기탭에서 보이는 리뷰 -->
+	<!-- 로그인 한 id가 작성할 수 있는 구매내역 출력, null값 포함됨 -->
+	<select id="reviewOrderlist" parameterType="micky.sports.shop.dto.ReviewDto" resultMap="ReviewDto">
+		SELECT O.OM_CNTNUM,O.OM_NUM,O.P_NO,O.U_CNT,O.M_ID,O.OM_DATE,O.P_PRICE,O.OM_STATE,
+		R.R_TITLE,R.R_CONTENT,
+		P.P_NAME,P.P_SIZE,P.P_COLOR,P.P_FILESRC
+		FROM ORDER_MEMBER O, PRODUCT P, REVIEW R
+		WHERE O.P_NO=P.P_NO
+		AND O.OM_CNTNUM=R.OM_CNTNUM(+)
+		AND O.M_ID=#{param1}
+		AND O.OM_STATE='결제완료'
+		AND R.R_TITLE IS NULL
+		AND R.R_CONTENT IS NULL
+		ORDER BY O.OM_DATE DESC
+	</select>
+	
 	<!-- 로그인 한 id가 작성한 리뷰글 전부 출력 -->
 	<select id="mylistview" parameterType="micky.sports.shop.dto.ReviewDto" resultMap="ReviewDto">
 		SELECT R.R_NO,
+		R.OM_CNTNUM,O.P_NO,O.OM_STATE,
+		M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
+		R.R_RECONTENT,R.R_YNN,R.R_DATE,R.R_GROUP,R.R_STEP,R.R_INDENT,R.R_FILESRC,R.R_SCORE,
+		P.P_NAME,P.P_COLOR,P.P_SIZE,P.P_FILESRC
+		FROM MEMBER M, REVIEW R, PRODUCT P, ORDER_MEMBER O
+		WHERE M.M_ID=R.M_ID
+		AND R.P_NO=P.P_NO
+		AND R.OM_CNTNUM=O.OM_CNTNUM
+		AND M.M_ID=#{param1}
+		AND O.OM_STATE='결제완료'
+		ORDER BY R.R_GROUP DESC
+	
+		<!-- SELECT R.R_NO,
 		O.OM_CNTNUM,O.P_NO,O.OM_STATE,
 		M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
 		R.R_RECONTENT,R.R_YNN,R.R_DATE,R.R_GROUP,R.R_STEP,R.R_INDENT,R.R_FILESRC,R.R_SCORE,
@@ -192,16 +220,7 @@
 		AND R.P_NO=P.P_NO
 		AND M.M_ID=#{param1}
 		AND O.OM_STATE='결제완료'
-		ORDER BY R.R_GROUP DESC
-		
-		<!-- SELECT R.R_NO,M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
-		R.R_RECONTENT,R.R_YNN,R.R_DATE,R.R_GROUP,R.R_STEP,R.R_INDENT,R.R_FILESRC,R.R_SCORE,
-		P.P_NO,P.P_NAME,P.P_COLOR,P.P_SIZE,P.P_FILESRC
-		FROM MEMBER M, REVIEW R, PRODUCT P
-		WHERE M.M_ID=R.M_ID
-        AND R.P_NO=P.P_NO
-		AND M.M_ID=#{param1}
-		ORDER BY R.R_GROUP DESC, R.R_STEP ASC -->		
+		ORDER BY R.R_GROUP DESC -->
 	</select>
 	
 	<select id="popupview" resultType="micky.sports.shop.dto.ReviewDto">
