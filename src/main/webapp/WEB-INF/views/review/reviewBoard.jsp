@@ -182,11 +182,12 @@ om_state : ${om_state } <br />
 					<b>${totalCount }개의 REVIEWS</b>
 				</div>
 			</div>
+			
 			<br />
 		</div>
+	</div>
 	
 <hr />	
-</div>
 </div>
 <div class="clear" ></div>
 <div class="review_table">
@@ -194,8 +195,8 @@ om_state : ${om_state } <br />
 		<form action="reviewBoard" method="get">
 			<input type="hidden" name="pname" value="${pname }" />
 			<input type="hidden" name="pfilesrc" value="${pfilesrc }" />
-			<div class="row">
-				<div class="cell col1">
+			<div class="selectType_searchbox">
+				<div class="div_selectType">
 				<!-- 검색기능 추가 -->
 					<select name="selectType" >
 						<option ${param.selectType=="r_recently"?"selected":"" } value="r_group">최신순</option>
@@ -204,11 +205,11 @@ om_state : ${om_state } <br />
 				</div>
 				
 				<!-- 키워드 검색 -->
-				<div class="cell col2">
-					<div class="search_box">
+				<div class="div_searchbox">
+					<span>
 						<input type="text" name="searchKeyword" placeholder="리뷰 키워드 검색" size="10" value="${resk }"/>
 						<input type="submit" value="검색" />
-					</div>
+					</span>
 				</div>
 			</div>
 		</form>

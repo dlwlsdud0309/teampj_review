@@ -13,11 +13,13 @@ div{
 .tablecell{
 	display: table-cell;
 }
+/* .div_selectType, .div_searchbox{
+	float: left;
+} */
 .review_table{  display: table; width: 70%; margin-left:auto; margin-right:auto; }
 .review_total{	cursor: pointer; }
 .selectandsearch_box{	display: table; }
-.select_box{	text-align: left; }
-.search_box{	text-align: right; }
+
 .row{
 	display: table-row; /* tr */
 }
