@@ -36,7 +36,6 @@
 <body>
 <h3>reviewMylistview</h3>
 
-
 <h1>상품리뷰</h1>
 <p>리뷰 작성 시 적립 가능한 최대 마일리지</p>
 <div>
@@ -52,6 +51,7 @@
 		<li>리뷰 작성으로 적립된 마일리지 유효기간은 2년입니다.</li>
 	</ul>
 </div>
+
 <h1>리뷰 작성하기</h1>
 <c:if test="${empty review_orderlist }">
 	<p>
@@ -64,78 +64,75 @@
 </c:if>
 <hr />
 <c:if test="${not empty review_orderlist }">
-	<div class="reviewListview_total">
-		<div class="reviewListview_label">
-		<c:forEach items="${review_orderlist }" var="myorderlist">
-			<div class="row">
-				<div class="cell col11">
-					<%-- <div>주문번호 : ${myorderlist.om_num }</div> --%>
-					<div class="reviewListview_img_box">
-						<a href="../product/productDetail?pname=${myorderlist.productDto.p_name }&pfilesrc=${myorderlist.productDto.p_filesrc }"><img src="../resources/img/productimg/${myorderlist.productDto.p_filesrc }.jpg" width="230" /></a>
-					</div>
-					<div style="font-size: small;">
-						<div style="font-weight: bold;">${myorderlist.productDto.p_name }</div>
-						<div style="font-weight: bolder;">${myorderlist.productDto.p_price } 원</div>
-					</div>
-					<input type="button" value="리뷰작성" onclick="rWrite();" />
-					
+	<div>
+		<div class="class_review_orderlist">
+			<c:forEach items="${review_orderlist }" var="myorderlist">
+				<div class="hello" style="padding: 10px;">
 					<div>
-						<div id="styleID_ReviewWriteview" class="styleClassReviewWriteview">
-							<div id="title_content">
-								<form action="reviewWrite" method="post" enctype="multipart/form-data">
-								<h3 class="popup_review_title">상품리뷰쓰기</h3>
-								<div>
-									<strong>리뷰 리워드 혜택 제공</strong> <br />
-									텍스트 리뷰 : 500M | 사진 첨부 리뷰 : 1,000M 적립
+						<%-- <div>주문번호 : ${myorderlist.om_num }</div> --%>
+						<div class="reviewListview_img_box">
+							<a href="../product/productDetail?pname=${myorderlist.productDto.p_name }&pfilesrc=${myorderlist.productDto.p_filesrc }"><img src="../resources/img/productimg/${myorderlist.productDto.p_filesrc }.jpg" width="230" /></a>
+						</div>
+						<div style="font-size: small;">
+							<div style="font-weight: bold; font-size: 0.8em;">${myorderlist.productDto.p_name }</div>
+							<div style="font-weight: bolder;">${myorderlist.productDto.p_price } 원</div>
+						</div>
+						<input type="button" value="리뷰작성" onclick="rWrite();" />
+						
+						<div>
+							<div id="styleID_ReviewWriteview" class="styleClassReviewWriteview">
+								<div id="title_content">
+									<form action="reviewWrite" method="post" enctype="multipart/form-data">
+									<h3 class="popup_review_title">상품리뷰쓰기</h3>
+									<div>
+										<strong>리뷰 리워드 혜택 제공</strong> <br />
+										텍스트 리뷰 : 500M | 사진 첨부 리뷰 : 1,000M 적립
+									</div>
+										<table>
+											<tr id="data">
+												<td class="star">
+													★★★★★
+													<span class="star2">★★★★★</span>
+													<input type="range" onclick="redeptlist(this);" oninput="drawStar(this)" value="1" step="1" min="0" max="5"/>
+												</td>
+											</tr>
+											<tr>
+												<td colspan="3">
+													<input id="userid" type="hidden" name="m_id" value="${sessionScope.loginid }" />
+													<input type="hidden" name="om_cntnum" value="${myorderlist.om_cntnum }" />
+													<input type="hidden" name="p_no" value="${myorderlist.productDto.p_no }" />
+												</td>
+											</tr>
+											<tr>
+												<td class="left">제목</td>
+												<td colspan="2"><input type="text" name="r_title" /></td>
+											</tr>
+											<tr>
+												<td class="left">내용</td>
+												<td colspan="2">
+													<textarea name="r_content" rows="10"></textarea>
+												</td>
+											</tr>
+											<tr>
+												<td class="left">파일첨부</td>
+												<td colspan="2">
+													<input type="file" name="r_filesrc" />
+												</td>
+											</tr>
+											<tr>
+												<td colspan="3">
+													<input id="starInput" type="hidden" name="r_score" value="" size="10" />
+													<input type="submit" value="작성하기" />
+												</td>
+											</tr>
+										</table>
+									</form>
 								</div>
-									<table>
-										<tr id="data">
-											<td class="star">
-												★★★★★
-												<span class="star2">★★★★★</span>
-												<input type="range" onclick="redeptlist(this);" oninput="drawStar(this)" value="1" step="1" min="0" max="5"/>
-											</td>
-										</tr>
-										<tr>
-											<td colspan="3">
-												<input id="userid" type="hidden" name="m_id" value="${sessionScope.loginid }" />
-												<input type="hidden" name="om_cntnum" value="${myorderlist.om_cntnum }" />
-												<input type="hidden" name="p_no" value="${myorderlist.productDto.p_no }" />
-											</td>
-										</tr>
-										<tr>
-											<td class="left">제목</td>
-											<td colspan="2"><input type="text" name="r_title" /></td>
-										</tr>
-										<tr>
-											<td class="left">내용</td>
-											<td colspan="2">
-												<textarea name="r_content" rows="10"></textarea>
-											</td>
-										</tr>
-										<tr>
-											<td class="left">파일첨부</td>
-											<td colspan="2">
-												<input type="file" name="r_filesrc" />
-											</td>
-										</tr>
-										<tr>
-											<td colspan="3">
-												<input id="starInput" type="hidden" name="r_score" value="" size="10" />
-												<input type="submit" value="작성하기" />
-											</td>
-										</tr>
-									</table>
-								</form>
 							</div>
 						</div>
 					</div>
-					
-					
-					
 				</div>
-			</div>
-		</c:forEach>
+			</c:forEach>
 		</div>
 	</div>
 	
@@ -152,7 +149,7 @@
 	<br />
 	<br />
 	<br />
-	<strong>작성한 리뷰가 없습니다.</strong>
+	<center><strong>작성한 리뷰가 없습니다.</strong></center>
 	<br />
 	<br />
 	<br />
@@ -183,17 +180,24 @@
 							<div>
 								<strong><a href="../product/productDetail?pname=${mylist.productDto.p_name }&pfilesrc=${mylist.productDto.p_filesrc }">${mylist.productDto.p_name }</a></strong>
 							</div>
-						</div>
-						<div class="cell">
 							<div>
-								<span>${mylist.m_id }</span>&nbsp;<span><fmt:formatDate value="${mylist.r_date }" pattern="yyyy.MM.dd"/></span>
+								<strong>구매옵션</strong>&nbsp;<span>${mylist.productDto.p_color },${mylist.productDto.p_size }</span>
 							</div>
+							<br />
+							<br />
 						</div>
-						<div>
-							<div>${mylist.r_title }</div>
+						<div style="padding: 5px;">
+							<br />
+							<div><strong>${mylist.r_title }</strong></div>
 							<div>${mylist.r_content }</div>
+							<br />
 							<div><img src="../resources/reviewupload/${mylist.r_filesrc }" width="200" alt="" /></div>
 						</div>
+					</div>
+				</div>
+				<div class="cell col33">
+					<div>
+						<span>${mylist.m_id }</span>&nbsp;<span><fmt:formatDate value="${mylist.r_date }" pattern="yyyy.MM.dd"/></span>
 					</div>
 				</div>
 			</div>
