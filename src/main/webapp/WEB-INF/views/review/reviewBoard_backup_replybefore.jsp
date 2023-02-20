@@ -37,6 +37,7 @@
 			$(location).attr('href','../member/loginform');
 		}else{
 			$(location).attr('href','reviewMylistview')
+			/* $(".styleClassReviewWriteview").bPopup(); */
 		}
 	}
 	function fn_02(checked_id){
@@ -71,10 +72,80 @@
 </c:if>
 
 <br />
+<%-- 로그인한 아이디 : <%=session.getAttribute("loginid") %>
+<br />
+<%String id=(String)session.getAttribute("loginid"); %>
+<%=id %> --%>
+<!-- <a href="reviewMylistview" >마이페이지</a> -->
+<%-- 상품명 : <%=pname %>
+상품이미지 : <%=pfilesrc %>
+<br />
+<%String pname2=(String)session.getAttribute("pname"); %>
+상품명2 : <%=pname2 %>
+<br />
+<c:forEach items="${productDetail_data }" var="p">
+</c:forEach>
+p : <c:out value="${p }"/>
+<%String pnameGetReviewBoard=request.getParameter("pname"); %>
+pnameGetReviewBoard : <%=pnameGetReviewBoard %> --%>
+
+
+<%-- <%String pname=request.getParameter("pname"); %>
+<%=pname %> --%>
+<%-- <%pageContext.getAttribute("name","${param.pname }"); %>
+<%=asd %> --%>
+<%-- a: <c:out value="${param.pname }" />
+<%String hell=request.getParameter("hell"); %>
+<%=hell %> --%>
+<%-- <c:out value="name" />
+<c:set var="name" value="${applicationScope.pm.p_name}" scope="session"></c:set> --%>
+<%-- <c:out value="${param.pname }"></c:out>
+
+<input type="hidden" name="pname" value="${plist.p_name }" /> --%>
+
 PRODUCT <br />
 pname : ${pname } <br />
 pfilesrc : ${pfilesrc } <br />
 <br />
+
+<%-- <c:choose>
+	<c:when test="${not empty avgStarscore}">
+		<fmt:formatNumber value="${avgStarscore }" pattern=".0" />
+	</c:when>
+	<c:otherwise>
+		<c:set var="avgStarscore" value="0" />
+	</c:otherwise>
+</c:choose> --%>
+
+
+<%-- <c:if test="${avgStarscore == 'NaN' }">
+	<fmt:formatNumber value="${avgStarscore }" type="number"/>
+	${avgStarscore }
+</c:if> --%>
+
+<%-- <c:forEach items="${getproductlist }" var="getData">
+	${getData.p_name }
+</c:forEach>
+<br /> --%>
+
+<%-- <c:choose>
+	<c:when test="${avgStarscore !NaN }">
+		<fmt:formatNumber value="${avgStarscore }" pattern=".0" />
+	</c:when>
+	<c:otherwise>
+		<strong>0</strong>
+	</c:otherwise>
+</c:choose> --%>
+<%-- <c:when test="${avgStarscore !=NaN }">
+	<fmt:formatNumber value="${avgStarscore }" pattern=".0" />
+</c:when> --%>
+<%-- <c:otherwise>
+	<c:set var="avgStarscore" value="0" />
+	<c:out value="${avgStarscore }" />
+</c:otherwise> --%>
+
+
+
 
 
 <style>
@@ -197,9 +268,11 @@ pfilesrc : ${pfilesrc } <br />
 				<div class="review_box">
 					<div class="review_label">
 						<input type="hidden" value="${list.r_no }" />
+						<%-- <span>${list.r_no }</span> --%>
 						<p>
 							${list.memberDto.m_id }
 						</p>
+						<%-- <p>${list.productDto.p_name }</p> --%>
 						<p>${list.r_title }</p>
 						<div class="tablerow">
 							<div class="tablecell">
@@ -282,6 +355,51 @@ pfilesrc : ${pfilesrc } <br />
 			</div>
 		</c:otherwise>					
 	</c:choose>
+	
+	<%-- <c:choose>
+		<c:when test="${list.r_ynn eq 'y' }">
+			<div id="reply_menu">
+	          <div><a class="${list.r_no }" href="#" onclick="return false;">수정하기</a>
+	            <div class="snd_menu sub_menu">
+	            	<form action="reviewReply">
+	            		<input type="hidden" name="r_no" value="${list.r_no }" />
+	            		<div><input type="hidden" name="r_id" value="${sessionScope.loginid }" />관리자</div>
+	            		<div><input type="text" name="r_retitle" size="25" value="${list.r_retitle }" /></div>
+		            	<div><textarea name="r_recontent" cols="100%" rows="3" placeholder="댓글을 입력하세요">${list.r_recontent }</textarea></div>
+		            	<input type="submit" value="수정" />
+	            	</form>
+	            </div>
+	          </div>
+			</div>
+		</c:when>
+		<c:otherwise>
+		
+		<script>
+			function submit_reviewReply(reviewReply){
+				reviewReply.action="reviewReply";
+				reviewReply.submit();
+			}
+		</script>
+		
+		
+			<div id="reply_menu">
+	          <div><a class="${list.r_no }" href="#" onclick="return false;">댓글달기</a>
+	            <div class="snd_menu sub_menu">
+	            	<form action="reviewReply">
+	            		<input type="hidden" name="r_no" value="${list.r_no }" />
+	            		<div><input type="hidden" name="r_id" value="${sessionScope.loginid }" />관리자</div>
+	            		<div><input type="text" name="r_retitle" size="25" value="믹키 스포츠웨어 온라인 스토어" /></div>
+		            	<div><textarea name="r_recontent" cols="100%" rows="3" placeholder="댓글을 입력하세요">${list.r_recontent }</textarea></div>
+		            	<input type="submit" value="답글" />
+		            	<input type="button" value="답글수정" onclick="return submit_reviewReply(this.form);"/>
+	            	</form>
+	            </div>
+	          </div>
+			</div>
+		</c:otherwise>					
+	</c:choose> --%>
+	
+	
 	
 	<div id="reply_menu">
 		<div><a href="reviewReplydelete?r_no=${list.r_no }">댓글삭제</a></div>
