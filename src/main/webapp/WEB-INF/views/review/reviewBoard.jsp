@@ -107,9 +107,7 @@ PRODUCT <br />
 pname : ${pname } <br />
 pfilesrc : ${pfilesrc } <br />
 <br />
-ADMIN_OLIST <br />
-p_no : ${p_no }
-om_state : ${om_state } <br />
+
 
 <%-- <c:if test="${avgStarscore == 'NaN' }">
 	<fmt:formatNumber value="${avgStarscore }" type="number"/>
