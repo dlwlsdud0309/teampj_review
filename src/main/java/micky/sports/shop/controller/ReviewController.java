@@ -82,7 +82,7 @@ public class ReviewController {
 		mickyServiceInter=new ReviewWriteService(sqlSession,httpSession);
 		mickyServiceInter.execute(model);
 		
-		return "redirect:reviewMylistview";
+		return "redirect:reviewBoard";
 	}
 	
 //	리뷰 삭제

@@ -311,7 +311,7 @@ pfilesrc : ${pfilesrc } <br />
 		</c:otherwise>					
 	</c:choose>
 	<div id="reply_menu">
-		<div><a href="reviewReplydelete?r_no=${list.r_no }">삭제</a></div>
+		<div><a href="reviewReplydelete?r_no=${list.r_no }">댓글삭제</a></div>
 	</div>
 </c:if>
 					</div>
@@ -340,7 +340,6 @@ pfilesrc : ${pfilesrc } <br />
 </c:if>
 <c:if test="${sessionScope.loginid eq 'admintest' }">
 				<a href="reviewDelete?r_no=${list.r_no }">삭제</a>
-				<a class="" onclick="return false;" href="#">답글폼</a>
 </c:if>
 			</div>
 		</div>
