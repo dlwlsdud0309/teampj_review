@@ -65,7 +65,7 @@ public class ReviewService implements MickyServiceInter{
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
 		
 		int totalCount=rdao.totalCount(p_name);
-		int totalStarscore=rdao.totalStarscore(p_name);
+//		int totalStarscore=rdao.totalStarscore(p_name);
 		double avgStarscore=rdao.avgStarscore(p_name);
 		System.out.println("avgStarscore : "+avgStarscore);
 		

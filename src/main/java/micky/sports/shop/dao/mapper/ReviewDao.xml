@@ -288,13 +288,13 @@
 		R_YNN='n' WHERE R_NO=#{param1}
 	</update>
 	
-	<select id="totalStarscore" resultType="Integer">
+	<!-- <select id="totalStarscore" resultType="Integer">
 		SELECT SUM(R.R_SCORE)
 		FROM MEMBER M, REVIEW R, PRODUCT P
 		WHERE M.M_ID=R.M_ID
 		AND R.P_NO=P.P_NO
 		AND P.P_NAME=#{param1}
-	</select>
+	</select> -->
 
 	<select id="avgStarscore" resultType="double">
 		SELECT ROUND(AVG(R.R_SCORE),1)

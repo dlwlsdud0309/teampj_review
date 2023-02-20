@@ -175,7 +175,7 @@ om_state : ${om_state } <br />
 						</span>
 					</div>
 					<div class="tablerow">
-						<b>&nbsp;&nbsp;&nbsp;&nbsp; ${avgStarscore } 총점</b>
+						<b>&nbsp;&nbsp;&nbsp;&nbsp; <fmt:formatNumber value="${avgStarscore }" pattern=".0" /> 총점</b>
 					</div>
 				</div>
 				<div>

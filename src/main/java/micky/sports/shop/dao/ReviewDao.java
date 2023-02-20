@@ -19,6 +19,6 @@ public interface ReviewDao {
 	public ReviewDto getReview(String r_no);
 	public int totalCount(String p_name);
 	public void replydelete(String r_no);
-	public int totalStarscore(String p_name);
+//	public int totalStarscore(String p_name);
 	public double avgStarscore(String p_name);
 }

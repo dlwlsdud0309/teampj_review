@@ -205,7 +205,11 @@ String p_no=request.getParameter("p_no");
 </body>
 <script>
 	function rWrite(){
-		$(".styleClassReviewWriteview").bPopup();
+		$(".styleClassReviewWriteview").bPopup({
+			position: ['auto',0],
+			positionStyle: 'fixed'
+		});
+		
 	}
 </script>
 </html>

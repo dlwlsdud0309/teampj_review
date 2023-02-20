@@ -171,7 +171,7 @@ input#replyToggle:checked+div#reply_box{
 #title_content{
 	padding: 10px;
 	top: 50px;
-	position: absolute;
+	/* position: absolute; */
 }
 
 
