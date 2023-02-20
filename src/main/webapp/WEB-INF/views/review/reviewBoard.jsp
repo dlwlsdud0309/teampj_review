@@ -223,37 +223,39 @@ pfilesrc : ${pfilesrc } <br />
 		<form action="reviewBoard" method="get">
 			<input type="hidden" name="pname" value="${pname }" />
 			<input type="hidden" name="pfilesrc" value="${pfilesrc }" />
-			<div class="selectType_searchbox">
-				<div class="div_selectType">
+			<div class="selectType_searchbox" style="text-align: right;">
+				<span class="div_selectType">
 				<!-- 검색기능 추가 -->
 					<select name="selectType" >
 						<option ${param.selectType=="r_recently"?"selected":"" } value="r_group">최신순</option>
 						<option ${param.selectType=="r_score"?"selected":"" } value="r_score">별점순</option>
 					</select>
-				</div>
+				</span>
 				
 				<!-- 키워드 검색 -->
-				<div class="div_searchbox">
+				<span class="div_searchbox">
 					<span>
-						<input type="text" name="searchKeyword" placeholder="리뷰 키워드 검색" size="10" value="${resk }"/>
+						<input type="text" name="searchKeyword" placeholder="리뷰 키워드 검색" size="30" value="${resk }"/>
 						<input type="submit" value="검색" />
 					</span>
-				</div>
+				</span>
 			</div>
 		</form>
 
 <div id="contents">
 	<div id="js-load" class="main">
 	
+							<!-- avgStarscore가 0일 때 -->
 							<c:if test="${avgStarscore<1 }">
-								<!-- avgStarscore가 0일 때 -->
-								<div class="when_avgStarscore_is_null" style="text-align: center;">
+								<div style="text-align: center;">
+									<br />
+									<br />
 									<h4 style="font-weight: bold; color: #C0C0C0">리뷰가 없습니다.</h4>
 									<h3 style="font-weight: bolder; color: #696969">리뷰를 작성해보세요!</h3> <br />
+									<br />
+									<br />
 								</div>
 							</c:if>
-		
-			
 			
 		<!-- avgStarscore가 0이 아닐 때 -->
 		<ul class="lists">
