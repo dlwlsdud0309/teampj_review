@@ -60,7 +60,6 @@ public class ReviewMylistviewService implements MickyServiceInter{
 		ArrayList<ReviewDto> review_mylist=rdao.mylistview(loginId);
 		
 		
-		
 		model.addAttribute("review_orderlist", review_orderlist);
 		model.addAttribute("review_mylist", review_mylist);
 	}

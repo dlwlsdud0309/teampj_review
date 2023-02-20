@@ -133,7 +133,7 @@ public class ReviewController {
 		return "redirect:reviewBoard";
 	}
 	
-//	답글달기 폼
+//	관리자 답글달기 폼
 	@RequestMapping("/reviewPopupReplycontentview")
 	public String reviewReplyview(HttpServletRequest request, Model model) {
 		System.out.println("=====reviewReplyview====");
