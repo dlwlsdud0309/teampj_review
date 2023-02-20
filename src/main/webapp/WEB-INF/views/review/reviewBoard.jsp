@@ -203,6 +203,22 @@ pfilesrc : ${pfilesrc } <br />
 					<div class="tablerow">
 						<b>&nbsp;&nbsp;&nbsp;&nbsp;
 							${avgStarscore } 총점
+							
+							<c:if test="${avgStarscore<1 }">
+								<p>랄ㄹㄹㄹ</p>
+							</c:if>
+							<%-- <c:choose>
+								<c:when test="${avgStarscore<1 }">
+									
+									<script>
+										
+									</script>
+									<p>랄</p>
+								</c:when>
+								<c:otherwise>
+									
+								</c:otherwise>
+							</c:choose> --%>
 						</b>
 					</div>
 				</div>
@@ -244,9 +260,14 @@ pfilesrc : ${pfilesrc } <br />
 
 <div id="contents">
 	<div id="js-load" class="main">
+			<div class="when_avgStarscore_is_null" style="text-align: center;">
+				<h4 style="font-weight: bold; color: #C0C0C0">리뷰가 없습니다.</h4>
+				<h3 style="font-weight: bolder; color: #696969">리뷰를 작성해보세요!</h3> <br />
+			</div>
 		<ul class="lists">
 <c:forEach items="${review_list }" var="list">
 			<li class="lists__item js-load">
+			
 	<div class="row">
 		<div class="cell col1">
 			<div class="review_total">
