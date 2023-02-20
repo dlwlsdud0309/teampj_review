@@ -75,7 +75,10 @@
 </body>
 <script>
 	function rWrite(){
-		$(".styleClassReviewWriteview").bPopup();
+		$(".styleClassReviewWriteview").bPopup({
+			position: ['auto',0],
+			positionStyle: 'fixed'
+		});
 	}
 </script>
 </html>

@@ -80,10 +80,6 @@ public class ReviewService implements MickyServiceInter{
 		
 		ArrayList<ReviewDto> review_list=rdao.reviewboard(selectType,searchKeyword,p_name);
 		
-//		for (ReviewDto val : review_list) {
-//			System.out.println(val.getR_score());
-//		}
-		
 		model.addAttribute("review_list", review_list);
 //		검색어 유지기능
 		model.addAttribute("resk",searchKeyword);

@@ -202,7 +202,6 @@
 			position: ['auto',0],
 			positionStyle: 'fixed'
 		});
-		
 	}
 </script>
 </html>
