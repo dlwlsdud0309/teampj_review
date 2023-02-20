@@ -69,14 +69,12 @@
 		<c:forEach items="${review_orderlist }" var="myorderlist">
 			<div class="row">
 				<div class="cell col11">
-					<%-- <div>주문번호 : ${myorderlist.om_num }</div> --%>
+					<div>주문번호 : ${myorderlist.om_num }</div>
 					<div class="reviewListview_img_box">
-						<a href="../product/productDetail?pname=${myorderlist.productDto.p_name }&pfilesrc=${myorderlist.productDto.p_filesrc }"><img src="../resources/img/productimg/${myorderlist.productDto.p_filesrc }.jpg" width="230" /></a>
+						<a href="../product/productDetail?pname=${myorderlist.productDto.p_name }&pfilesrc=${myorderlist.productDto.p_filesrc }"><img src="../resources/img/productimg/${myorderlist.productDto.p_filesrc }.jpg" width="200" /></a>
 					</div>
-					<div style="font-size: small;">
-						<div style="font-weight: bold;">${myorderlist.productDto.p_name }</div>
-						<div style="font-weight: bolder;">${myorderlist.productDto.p_price } 원</div>
-					</div>
+					<div>${myorderlist.productDto.p_name }</div>
+					<div>${myorderlist.productDto.p_price }</div>
 					<input type="button" value="리뷰작성" onclick="rWrite();" />
 					
 					<div>
@@ -99,6 +97,8 @@
 										<tr>
 											<td colspan="3">
 												<input id="userid" type="hidden" name="m_id" value="${sessionScope.loginid }" />
+												<%-- <input type="hidden" name="om_cntnum" value="<%=om_cntnum %>" />
+												<input type="hidden" name="p_no" value="<%=p_no %>" /> --%>
 												<input type="hidden" name="om_cntnum" value="${myorderlist.om_cntnum }" />
 												<input type="hidden" name="p_no" value="${myorderlist.productDto.p_no }" />
 											</td>
@@ -169,12 +169,7 @@
 					</div>
 					<div>
 						<button type="button" onclick="location.href='reviewPopupcontentview?r_no=${mylist.r_no }'">수정</button>
-						<!-- 답글이 달리면 삭제할 수 없도록 '삭제'버튼을 제거 -->
-						<c:choose>
-							<c:when test="${mylist.r_ynn eq 'n' }">
-								<button type="button" onclick="location.href='reviewDelete?r_no=${mylist.r_no }'">삭제</button>
-							</c:when>
-						</c:choose><!-- 답글이 달리면 삭제할 수 없도록 '삭제'버튼을 제거 -->
+						<button type="button" onclick="location.href='reviewDelete?r_no=${mylist.r_no }'">삭제</button>
 					</div>
 				</div>
 				<div class="cell col22">
