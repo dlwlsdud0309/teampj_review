@@ -99,76 +99,6 @@
 			<otherwise>R_SCORE DESC, R_GROUP DESC</otherwise>
 		</choose>
 		) R
-		
-		<!-- 페이징 삭제하고 더보기 기능 이용한 쿼리 -->	
-		<!-- SELECT ROWNUM, R.*
-		FROM (SELECT R.R_NO,M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
-		R.R_RECONTENT,R.R_YNN,R.R_DATE,R.R_GROUP,R.R_STEP,R.R_INDENT,R.R_FILESRC,R.R_SCORE,
-		P.P_NO,P.P_NAME,P.P_COLOR,P.P_SIZE
-		FROM MEMBER M, REVIEW R, PRODUCT P
-		WHERE M.M_ID=R.M_ID
-		AND R.P_NO=P.P_NO
-		AND P_NAME=#{param3}
-		AND R.R_CONTENT like '%'||#{param2}||'%'
-		ORDER BY
-		<choose>
-			<when test="param1 eq 'r_group'">R_GROUP DESC</when>
-			<otherwise>R_SCORE DESC, R_GROUP DESC</otherwise>
-		</choose>
-		) R -->
-		
-		<!-- ============================Product와 join 이전 쿼리=============================== -->		
-	        <!-- SELECT ROWNUM,R_NO,M_ID,R_TITLE,R_CONTENT,R_ID,R_RETITLE,
-			R_RECONTENT,R_YNN,R_DATE,R_GROUP,R_STEP,R_INDENT,R_FILESRC,R_SCORE
-			FROM (SELECT ROWNUM ROWNO,R.* FROM
-			(SELECT R.R_NO,M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
-			R.R_RECONTENT,R.R_YNN,R.R_DATE,R.R_GROUP,R.R_STEP,R.R_INDENT,R.R_FILESRC,R.R_SCORE
-			FROM MEMBER M, REVIEW R
-			WHERE M.M_ID=R.M_ID
-			ORDER BY R.R_GROUP DESC, R.R_STEP ASC) R
-			
-	        <include refid="includeReviewBoard"/>
-	        )
-	        WHERE ROWNO BETWEEN #{param1} AND #{param2} -->
-		<!-- ============================Product와 join 이전 쿼리=============================== -->
-		
-		<!-- 검색어 넣고2 -->
-		<!-- SELECT ROWNUM,R_NO,M_ID,R_TITLE,R_CONTENT,R_ID,R_RETITLE,
-		R_RECONTENT,R_YNN,R_DATE,R_GROUP,R_STEP,R_INDENT,R_FILESRC,R_SCORE
-		FROM (SELECT ROWNUM ROWNO,R.* FROM
-		(SELECT R.R_NO,M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
-		R.R_RECONTENT,R.R_YNN,R.R_DATE,R.R_GROUP,R.R_STEP,R.R_INDENT,R.R_FILESRC,R.R_SCORE
-		FROM MEMBER M, REVIEW R
-		WHERE M.M_ID=R.M_ID
-		ORDER BY R.R_GROUP DESC, R.R_STEP ASC) R)
-		<include refid="includeReviewBoard"/> -->
-		
-		
-		<!-- 오라클 join -->
-		<!-- SELECT R.R_NO,M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
-		R.R_RECONTENT,R.R_YNN,R.R_DATE,R.R_GROUP,R.R_STEP,R.R_INDENT,R.R_FILESRC,R.R_SCORE
-		FROM MEMBER M, REVIEW R
-		WHERE M.M_ID=R.M_ID
-		ORDER BY R.R_GROUP DESC, R.R_STEP ASC -->
-		
-		<!-- ansi join -->
-		<!-- SELECT R.R_NO,M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
-		R.R_RECONTENT,R.R_YNN,R.R_DATE,R.R_GROUP,R.R_STEP,R.R_INDENT,R.R_FILESRC,R.R_SCORE
-		FROM MEMBER M INNER JOIN REVIEW R
-		ON M.M_ID=R.M_ID
-		ORDER BY R.R_GROUP DESC, R.R_STEP ASC -->
-		
-		<!-- rownum과 join 함께 사용 -->
-		<!-- SELECT ROWNUM, R_NO,M_ID,R_TITLE,R_CONTENT,R_ID,R_RETITLE,
-		R_RECONTENT,R_YNN,R_DATE,R_GROUP,R_STEP,R_INDENT,R_FILESRC,R_SCORE
-		FROM (SELECT ROWNUM ROWNO,R.* FROM
-		(SELECT R.R_NO,M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
-		R.R_RECONTENT,R.R_YNN,R.R_DATE,R.R_GROUP,R.R_STEP,R.R_INDENT,R.R_FILESRC,R.R_SCORE
-		FROM MEMBER M, REVIEW R
-		WHERE M.M_ID=R.M_ID
-		ORDER BY R.R_GROUP DESC, R.R_STEP ASC) R)
-		WHERE ROWNO BETWEEN #{param1} AND #{param2} -->
-		
 	</select>
 	
 	<!-- 글작성 -->
@@ -282,24 +212,4 @@
 		AND R.P_NO=P.P_NO
 		AND P.P_NAME=#{param1}
 	</select>
-	
-	
-	<!-- <select id="replyTotalCount" resultType="micky.sports.shop.dto.ReviewDto">
-		SELECT COUNT(R_RECONTENT) R_RECONTENT FROM REVIEW GROUP BY R_NO ORDER BY R_NO
-		SELECT COUNT(R_RECONTENT) FROM REVIEW WHERE R_NO=#{param1, jdbcType=INTEGER}
-	</select> -->
-	
-	<!-- <select id="totalCount1" resultType="Integer">
-		SELECT COUNT(*) FROM REVIEW WHERE R_CONTENT LIKE '%'||#{param1}||'%'
-	</select>
-	
-	<select id="totalCount2" resultType="Integer">
-		SELECT COUNT(*) FROM REVIEW WHERE R_CONTENT LIKE '%'||#{param1}||'%'
-	</select>
-	
-	<select id="totalCount3" resultType="Integer">
-		SELECT COUNT(*) FROM REVIEW WHERE R_CONTENT LIKE '%'||#{param1}||'%'
-	</select> -->
-	
-	
 </mapper>
