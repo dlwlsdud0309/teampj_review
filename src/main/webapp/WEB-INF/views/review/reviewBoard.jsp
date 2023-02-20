@@ -71,14 +71,16 @@
 </c:if>
 
 <br />
-PRODUCT <br />
+PRODUCT 값 확인 <br />
 pname : ${pname } <br />
 pfilesrc : ${pfilesrc } <br />
+<br />
+<br />
 <br />
 
 
 <style>
-  .js-load {
+.js-load {
     display: none;
 }
 .js-load.active {
@@ -108,17 +110,13 @@ pfilesrc : ${pfilesrc } <br />
 .btn-wrap {
     text-align: center;
 }
-  </style>
+</style>
 
 <div class="review_table">
-		<div class="selectandsearch_box">
-			<div class="select_box">
-				<h3>리뷰</h3>
-			</div>
-			<div>
-				<input type="button" value="리뷰작성" onclick="fn_01('${sessionScope.loginid }');" />
-<br />
-<br />
+		<span style="font-size: 1.5em; font-weight: bolder;">리뷰</span>
+		<span><input style="float: right;" type="button" value="리뷰작성" onclick="fn_01('${sessionScope.loginid }');" /></span>
+		<hr />
+		<div>
 			<div class="avg_star">
 				<div class="tablerow">
 					<div class="tablecell">
@@ -130,19 +128,13 @@ pfilesrc : ${pfilesrc } <br />
 						</span>
 					</div>
 					<div class="tablerow">
-						<b>&nbsp;&nbsp;&nbsp;&nbsp;
-							${avgStarscore } 총점
-						</b>
+						<b>&nbsp;&nbsp;&nbsp; ${avgStarscore } 총점</b>
 					</div>
 				</div>
-				<div>
-					<b>${totalCount }개의 REVIEWS</b>
-				</div>
+				<div><b>${totalCount }개의 REVIEWS</b></div>
 			</div>
-			
-			<br />
+		<br />
 		</div>
-	</div>
 	
 <hr />	
 </div>
@@ -159,21 +151,18 @@ pfilesrc : ${pfilesrc } <br />
 						<option ${param.selectType=="r_recently"?"selected":"" } value="r_group">최신순</option>
 						<option ${param.selectType=="r_score"?"selected":"" } value="r_score">별점순</option>
 					</select>
-				</span>
-				
+				</span><!-- 검색기능 추가 -->
 				<!-- 키워드 검색 -->
 				<span class="div_searchbox">
 					<span>
 						<input type="text" name="searchKeyword" placeholder="리뷰 키워드 검색" size="30" value="${resk }"/>
 						<input type="submit" value="검색" />
 					</span>
-				</span>
+				</span><!-- 키워드 검색 -->
 			</div>
-		</form>
-
+		</form><!-- select, option, 검색 -->
 <div id="contents">
 	<div id="js-load" class="main">
-	
 							<!-- avgStarscore가 0일 때 -->
 							<c:if test="${avgStarscore<1 }">
 								<div style="text-align: center;">
@@ -185,12 +174,10 @@ pfilesrc : ${pfilesrc } <br />
 									<br />
 								</div>
 							</c:if>
-			
 		<!-- avgStarscore가 0이 아닐 때 -->
 		<ul class="lists">
 <c:forEach items="${review_list }" var="list">
 			<li class="lists__item js-load">
-			
 	<div class="row">
 		<div class="cell col1">
 			<div class="review_total">
@@ -229,18 +216,14 @@ pfilesrc : ${pfilesrc } <br />
 	}
 	.sub_menu { display: none; }
 </style>
-<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 답변창 만들기 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+						<!--  답변창 만들기  -->
 						<div id="reply_menu">
 							<div>
 								<a class="${list.r_no }" href="#" onclick="return false;">
 									댓글
 									<c:choose>
-										<c:when test="${list.r_ynn eq 'y' }">
-											1
-										</c:when>
-										<c:otherwise>
-											0
-										</c:otherwise>					
+										<c:when test="${list.r_ynn eq 'y' }">1</c:when>
+										<c:otherwise>0</c:otherwise>					
 									</c:choose>
 								</a>
 								<div class="snd_menu sub_menu">
@@ -293,15 +276,13 @@ pfilesrc : ${pfilesrc } <br />
 		</div>
 		<div class="cell col2">
 			<div>
-				<span>
-					<fmt:formatDate value="${list.r_date }" pattern="yyyy.MM.dd"/>
-				</span>
+				<span><fmt:formatDate value="${list.r_date }" pattern="yyyy.MM.dd"/></span>
 			</div>
 			<div class="img_box">
 				<img src="../resources/reviewupload/${list.r_filesrc }" width="100" alt="" />
 			</div>
 			<div>
-<!-- 수정/삭제 -->
+<!-- 리뷰 수정/삭제 -->
 <c:if test="${sessionScope.loginid eq list.memberDto.m_id }">
 				<a id="practice" href="reviewPopupcontentview?r_no=${list.r_no }">수정</a>
 				<!-- 답글이 달리면 삭제할 수 없도록 '삭제'버튼을 제거 -->
@@ -316,7 +297,7 @@ pfilesrc : ${pfilesrc } <br />
 </c:if>
 			</div>
 		</div>
-	</div>
+	</div><!-- /row -->
 			</li>
 </c:forEach>
 		</ul>

@@ -18,7 +18,6 @@ div{
 } */
 .review_table{  display: table; width: 70%; margin-left:auto; margin-right:auto; }
 .review_total{	cursor: pointer; }
-.selectandsearch_box{	display: table; }
 
 .row{
 	display: table-row; /* tr */
@@ -73,9 +72,6 @@ div{
 .atag{
 	visibility: hidden;
 }
-
-/* =============== admin-답글 =============== */
-
 
 /* =============== 별점 =============== */
 .star {
