@@ -34,13 +34,6 @@
 </script>
 </head>
 <body>
-<%
-String om_cntnum=request.getParameter("om_cntnum");
-String p_no=request.getParameter("p_no");
-%>
-<%=om_cntnum %>
-<%=p_no %>
-
 <h3>reviewMylistview</h3>
 
 
