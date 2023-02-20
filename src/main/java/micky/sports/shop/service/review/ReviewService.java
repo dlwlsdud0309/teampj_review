@@ -64,9 +64,31 @@ public class ReviewService implements MickyServiceInter{
 
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
 		
-		int totalCount=rdao.totalCount(p_name);
+		int totalCount=0;
+		totalCount=rdao.totalCount(p_name);
 //		int totalStarscore=rdao.totalStarscore(p_name);
-		double avgStarscore=rdao.avgStarscore(p_name);
+		double avgStarscore=0;
+		avgStarscore=rdao.avgStarscore(p_name);
+
+		
+//		if(avgStarscore!=Double.NaN) {
+//			avgStarscore=rdao.avgStarscore(p_name);
+//			System.out.println("avgStarscore : "+avgStarscore);
+//		}else {
+//			int a=(int)avgStarscore;
+//			a=(int)rdao.avgStarscore(p_name);
+//			System.out.println("a : "+a);
+//		}
+		
+		
+//		if (avgStarscore!=Double.NaN) {
+//			avgStarscore=rdao.avgStarscore(p_name);
+//			System.out.println("확인! avgStarscore"+avgStarscore);
+//		}else {
+//			String ass=String.valueOf(avgStarscore);
+//			System.out.println("ass : "+ass);
+//		}
+		
 		System.out.println("avgStarscore : "+avgStarscore);
 		
 //		if(Double.valueOf(avgStarscore) instanceof Double) {
@@ -90,7 +112,7 @@ public class ReviewService implements MickyServiceInter{
 //		model.addAttribute("avgStarscore", tmp);
 	}
 	
-//	private int parseStringToDouble(double value) {
+//	private int parseStringToDouble(String value) {
 //	    return value == Double.NaN ? Integer.parseInt(value) : Double.parseDouble(value);
 //	}
 	

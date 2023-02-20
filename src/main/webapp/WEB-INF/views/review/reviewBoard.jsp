@@ -108,17 +108,45 @@ pname : ${pname } <br />
 pfilesrc : ${pfilesrc } <br />
 <br />
 
+<%-- <c:choose>
+	<c:when test="${not empty avgStarscore}">
+		<fmt:formatNumber value="${avgStarscore }" pattern=".0" />
+	</c:when>
+	<c:otherwise>
+		<c:set var="avgStarscore" value="0" />
+	</c:otherwise>
+</c:choose> --%>
+
 
 <%-- <c:if test="${avgStarscore == 'NaN' }">
 	<fmt:formatNumber value="${avgStarscore }" type="number"/>
 	${avgStarscore }
 </c:if> --%>
 
-
 <%-- <c:forEach items="${getproductlist }" var="getData">
 	${getData.p_name }
 </c:forEach>
 <br /> --%>
+
+<%-- <c:choose>
+	<c:when test="${avgStarscore !NaN }">
+		<fmt:formatNumber value="${avgStarscore }" pattern=".0" />
+	</c:when>
+	<c:otherwise>
+		<strong>0</strong>
+	</c:otherwise>
+</c:choose> --%>
+<%-- <c:when test="${avgStarscore !=NaN }">
+	<fmt:formatNumber value="${avgStarscore }" pattern=".0" />
+</c:when> --%>
+<%-- <c:otherwise>
+	<c:set var="avgStarscore" value="0" />
+	<c:out value="${avgStarscore }" />
+</c:otherwise> --%>
+
+
+
+
 
 <style>
   .js-load {
@@ -173,7 +201,9 @@ pfilesrc : ${pfilesrc } <br />
 						</span>
 					</div>
 					<div class="tablerow">
-						<b>&nbsp;&nbsp;&nbsp;&nbsp; <fmt:formatNumber value="${avgStarscore }" pattern=".0" /> 총점</b>
+						<b>&nbsp;&nbsp;&nbsp;&nbsp;
+							${avgStarscore } 총점
+						</b>
 					</div>
 				</div>
 				<div>

@@ -206,10 +206,11 @@
 	</select> -->
 
 	<select id="avgStarscore" resultType="double">
-		SELECT ROUND(AVG(R.R_SCORE),1)
+		SELECT NVL(ROUND(AVG(R.R_SCORE),1),0)
 		FROM MEMBER M, REVIEW R, PRODUCT P
 		WHERE M.M_ID=R.M_ID
 		AND R.P_NO=P.P_NO
 		AND P.P_NAME=#{param1}
 	</select>
+
 </mapper>

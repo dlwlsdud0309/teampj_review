@@ -162,8 +162,8 @@ public class ReviewController {
 	public String reviewReplydelete(HttpServletRequest request, Model model) {
 		System.out.println("=====reviewReplydelete====");
 		
-		String r_no=request.getParameter("r_no");
-		System.out.println("r_no : "+r_no);
+//		String r_no=request.getParameter("r_no");
+//		System.out.println("r_no : "+r_no);
 		
 		model.addAttribute("request", request);
 		mickyServiceInter=new ReviewReplydeleteService(sqlSession,httpSession);
