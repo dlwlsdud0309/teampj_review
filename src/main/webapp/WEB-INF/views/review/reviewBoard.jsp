@@ -185,7 +185,7 @@ pfilesrc : ${pfilesrc } <br />
 				<div class="review_box">
 					<div class="review_label">
 						<input type="hidden" value="${list.r_no }" />
-						<div>${list.r_title }</div>
+						<div><strong>${list.r_title }</strong></div>
 						<div class="tablerow">
 							<div class="tablecell">
 							<span class="user_date">
