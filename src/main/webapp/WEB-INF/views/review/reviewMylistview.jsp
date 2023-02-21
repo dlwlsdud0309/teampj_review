@@ -225,6 +225,13 @@
 </c:if>
 </body>
 <script>
+function rWrite(){
+	$(".styleClassReviewWriteview").bPopup({
+		position: ['auto',0],
+		positionStyle: 'fixed'
+	});
+}
+
 
 /* function setThumbnail(event) {
     for (var image of event.target.files) {
@@ -241,12 +248,6 @@
     }
   }; */
   
-	function rWrite(){
-		$(".styleClassReviewWriteview").bPopup({
-			position: ['auto',0],
-			positionStyle: 'fixed'
-		});
-	}
 	
 	/* function readURL(input) {
 		  if (input.files && input.files[0]) {
