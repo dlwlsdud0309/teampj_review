@@ -140,11 +140,13 @@
 	
 <hr />
 </c:if>
+<br />
 <h1>작성한 리뷰보기</h1>
 	<ul>
 		<li>리워드가 적립된 리뷰는 삭제가 불가하며, 삭제버튼이 노출되지 않습니다.</li>
 		<li>리워드가 적립된 리뷰에 대한 삭제 요청은 고객센터로 문의해주세요.</li>
 	</ul>
+	<br />
 	<div class="clear" ></div>
 	<hr />
 <c:if test="${empty review_mylist }">

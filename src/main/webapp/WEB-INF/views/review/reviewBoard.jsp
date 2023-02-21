@@ -118,6 +118,8 @@ pfilesrc : ${pfilesrc } <br />
 		<span><input style="float: right;" type="button" value="리뷰작성" onclick="fn_01('${sessionScope.loginid }');" /></span>
 		<hr />
 		<div>
+		<br />
+		<br />
 			<div class="avg_star">
 				<div class="tablerow">
 					<div class="tablecell">
@@ -134,6 +136,8 @@ pfilesrc : ${pfilesrc } <br />
 				</div>
 				<div><b>${totalCount }개의 REVIEWS</b></div>
 			</div>
+		<br />
+		<br />
 		<br />
 		</div>
 	
