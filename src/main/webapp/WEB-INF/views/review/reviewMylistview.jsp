@@ -226,7 +226,7 @@
 </body>
 <script>
 
-function setThumbnail(event) {
+/* function setThumbnail(event) {
     for (var image of event.target.files) {
       var reader = new FileReader();
 
@@ -239,7 +239,7 @@ function setThumbnail(event) {
       console.log(image);
       reader.readAsDataURL(image);
     }
-  };
+  }; */
   
 	function rWrite(){
 		$(".styleClassReviewWriteview").bPopup({
