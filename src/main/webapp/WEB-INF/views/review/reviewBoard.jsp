@@ -201,7 +201,10 @@ pfilesrc : ${pfilesrc } <br />
 							</span>
 							</div>
 							<div class="tablerow">
-								<span>&nbsp;&nbsp;&nbsp;&nbsp;${list.memberDto.m_id }</span>
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;
+								<%-- ${list.memberDto.m_id } --%>
+								<c:out value="${fn:substring(list.memberDto.m_id,0,fn:length(list.memberDto.m_id)-2)}" />**
+								</span>
 							</div>
 						</div>
 						<div class="product_option">
@@ -297,6 +300,21 @@ pfilesrc : ${pfilesrc } <br />
 <c:if test="${sessionScope.loginid eq 'admintest' }">
 				<a href="reviewDelete?r_no=${list.r_no }">삭제</a>
 </c:if>
+<%-- <c:choose>
+	<c:when test="${sessionScope.loginid eq 'admintest' }">
+					<a href="reviewDelete?r_no=${list.r_no }">삭제</a>
+	</c:when>
+	<c:otherwise>
+		<a id="practice" href="reviewPopupcontentview?r_no=${list.r_no }">수정</a>
+				<!-- 답글이 달리면 삭제할 수 없도록 '삭제'버튼을 제거 -->
+				<c:choose>
+					<c:when test="${list.r_ynn eq 'n' }">
+						<a href="reviewDelete?r_no=${list.r_no }">삭제</a>
+					</c:when>
+				</c:choose>
+	</c:otherwise>
+</c:choose> --%>
+
 			</div>
 		</div>
 	</div><!-- /row -->

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.support.ReplaceOverride;
 import org.springframework.ui.Model;
 
 import micky.sports.shop.dao.ReviewDao;
@@ -64,16 +65,33 @@ public class ReviewService implements MickyServiceInter{
 
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
 		
+//		총게시글 수
 		int totalCount=0;
 		totalCount=rdao.totalCount(p_name);
-
+//		별점평균
 		double avgStarscore=0;
 		avgStarscore=rdao.avgStarscore(p_name);
 
 		
 		System.out.println("avgStarscore : "+avgStarscore);
 		
+
 		ArrayList<ReviewDto> review_list=rdao.reviewboard(selectType,searchKeyword,p_name);
+//		for (ReviewDto reviewDto : review_list) {
+//			System.out.println("reviewDto : "+reviewDto.getM_id());
+//			System.out.println("getMemberDto_m_id : "+reviewDto.getMemberDto().getM_id());
+//			String midcheck=reviewDto.getMemberDto().getM_id().replace(reviewDto.getMemberDto().getM_id(), "M_idcheck");
+//			String midcheck=reviewDto.getMemberDto().getM_id().replace(reviewDto.getMemberDto().getM_id(), "M_idcheck");
+//			String subStrM_id=midcheck.substring(0, midcheck.length()-2)+"**";
+//			System.out.println("substr_mid : "+subStrM_id);
+//			model.addAttribute("subStrM_id", subStrM_id);
+			
+//			String sub_mid=reviewDto.getMemberDto().getM_id();
+//			String subStrM_id=sub_mid.substring(0, sub_mid.length()-2)+"**";
+//			System.out.println("substr_mid : "+subStrM_id);
+//			model.addAttribute("subStrM_id", subStrM_id);
+//		}
+		
 		
 		model.addAttribute("review_list", review_list);
 //		검색어 유지기능
