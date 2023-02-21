@@ -136,10 +136,20 @@
 													<!-- <img id="loadImg" src="" width="200"/> -->
 													<style>
 														div.writeBox{
-														width: 300px;
+															width: 100px;
+															/* height: 100px; */
+														}
+														div.writeBox>img {
+															position: inherit;
+															width: 100%;
+															/* top: 50%;
+															left: 50%;
+															transform: translateX(10%);
+															height: 100%; */
 														}
 													</style>
 													<div class="writeBox" id="image_container">
+														<img />
 													</div>
 												</td>
 											</tr>
