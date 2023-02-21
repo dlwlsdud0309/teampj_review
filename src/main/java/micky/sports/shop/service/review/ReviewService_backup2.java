@@ -14,12 +14,12 @@ import micky.sports.shop.dao.ReviewDao;
 import micky.sports.shop.dto.ReviewDto;
 import micky.sports.shop.service.MickyServiceInter;
 
-public class ReviewService implements MickyServiceInter{
+public class ReviewService_backup2 implements MickyServiceInter{
 
 	private SqlSession sqlSession;
 	private HttpSession httpSession;
 	
-	public ReviewService(SqlSession sqlSession,HttpSession httpsession) {
+	public ReviewService_backup2(SqlSession sqlSession,HttpSession httpsession) {
 		this.sqlSession=sqlSession;
 		this.httpSession = httpsession;
 	}
@@ -66,12 +66,39 @@ public class ReviewService implements MickyServiceInter{
 		
 		int totalCount=0;
 		totalCount=rdao.totalCount(p_name);
-
+//		int totalStarscore=rdao.totalStarscore(p_name);
 		double avgStarscore=0;
 		avgStarscore=rdao.avgStarscore(p_name);
 
 		
+//		if(avgStarscore!=Double.NaN) {
+//			avgStarscore=rdao.avgStarscore(p_name);
+//			System.out.println("avgStarscore : "+avgStarscore);
+//		}else {
+//			int a=(int)avgStarscore;
+//			a=(int)rdao.avgStarscore(p_name);
+//			System.out.println("a : "+a);
+//		}
+		
+		
+//		if (avgStarscore!=Double.NaN) {
+//			avgStarscore=rdao.avgStarscore(p_name);
+//			System.out.println("확인! avgStarscore"+avgStarscore);
+//		}else {
+//			String ass=String.valueOf(avgStarscore);
+//			System.out.println("ass : "+ass);
+//		}
+		
 		System.out.println("avgStarscore : "+avgStarscore);
+		
+//		if(Double.valueOf(avgStarscore) instanceof Double) {
+//			System.out.println("avgStarscore : "+avgStarscore);
+//			model.addAttribute("avgStarscore", avgStarscore=rdao.avgStarscore(p_name));
+//		}else if(avgStarscore==0.0){
+//			int avgIntStarscore=(int) rdao.avgStarscore(p_name);
+//			System.out.println("int로 형변환 avgIntStarscore :"+avgIntStarscore);
+//			model.addAttribute("avgStarscore", avgIntStarscore);
+//		}
 		
 		ArrayList<ReviewDto> review_list=rdao.reviewboard(selectType,searchKeyword,p_name);
 		
@@ -82,6 +109,11 @@ public class ReviewService implements MickyServiceInter{
 		model.addAttribute("totalCount", totalCount);
 //		별점평균
 		model.addAttribute("avgStarscore", avgStarscore);
+//		model.addAttribute("avgStarscore", tmp);
 	}
+	
+//	private int parseStringToDouble(String value) {
+//	    return value == Double.NaN ? Integer.parseInt(value) : Double.parseDouble(value);
+//	}
 	
 }

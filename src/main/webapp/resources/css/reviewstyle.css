@@ -22,8 +22,7 @@ div{
 .row{
 	display: table-row; /* tr */
 }
-.cell{	display: table-cell; /* td */ padding: 5px; border-bottom: 1px solid #ddd;
-}
+.cell{	display: table-cell; /* td */ padding: 5px; }
 .col1{
 	width: 100%;
 	vertical-align: top;
@@ -172,7 +171,7 @@ input#replyToggle:checked+div#reply_box{
 
 
 
-/* =============== reviewListview=============== */
+/* =============== reviewMylistview=============== */
 .class_review_orderlist{
 	display: flex;
 	flex-flow: row wrap;
@@ -180,10 +179,18 @@ input#replyToggle:checked+div#reply_box{
 	padding: 10px;
 	margin: 20px;
 }
+.small_gray{
+	font-size: small;
+	color: #808080;
+	font-weight: bolder;
+}
 
 .reviewListview_total{
 	display: table;
 	width: 80%;
+	margin: 15px;
+}
+.reviewListview_label{
 	margin: 20px;
 }
 .col11{

@@ -15,12 +15,12 @@ import micky.sports.shop.dto.OrderMemberDto;
 import micky.sports.shop.dto.ReviewDto;
 import micky.sports.shop.service.MickyServiceInter;
 
-public class ReviewMylistviewService implements MickyServiceInter{
+public class ReviewMylistviewService_backup implements MickyServiceInter{
 
 	private SqlSession sqlSession;
 	private HttpSession httpSession;
 	
-	public ReviewMylistviewService(SqlSession sqlSession,HttpSession httpsession) {
+	public ReviewMylistviewService_backup(SqlSession sqlSession,HttpSession httpsession) {
 		this.sqlSession=sqlSession;
 		this.httpSession = httpsession;
 	}
@@ -36,6 +36,15 @@ public class ReviewMylistviewService implements MickyServiceInter{
 		
 		httpSession = request.getSession();
 		String loginId = (String)httpSession.getAttribute("loginid");
+
+//		myOrderList.jsp에서 a태그 주소로 가져온 값
+//		String om_cntnum=request.getParameter("om_cntnum");
+//		String p_no=request.getParameter("p_no");
+//		String om_state=request.getParameter("om_state");
+//		
+//		System.out.println("om_num : "+om_cntnum);
+//		System.out.println("p_no : "+p_no);
+//		System.out.println("om_state : "+om_state);
 				
 		
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);

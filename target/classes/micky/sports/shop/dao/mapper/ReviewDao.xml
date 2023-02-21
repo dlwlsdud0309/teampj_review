@@ -156,12 +156,6 @@
 		ORDER BY R_GROUP DESC, R_STEP ASC
 	</select>
 	
-	<!-- <select id="popupupdate" resultType="micky.sports.shop.dto.ReviewDto">
-		SELECT R_NO,M_ID,R_TITLE,R_CONTENT,R_RETITLE,
-		R_RECONTENT,R_YNN,R_DATE,R_GROUP,R_STEP,R_INDENT,R_FILESRC FROM REVIEW
-		WHERE R_NO=#{param1}
-	</select> -->
-	
 	<update id="modify">
 		UPDATE REVIEW SET R_TITLE=#{param2},
 		R_CONTENT=#{param3}, R_SCORE=#{param4}, R_FILESRC=#{param5}
@@ -181,8 +175,6 @@
 		WHERE M.M_ID=R.M_ID
 		AND R.P_NO=P.P_NO
 		AND P_NAME=#{param1}
-	
-		<!-- SELECT COUNT(*) FROM REVIEW -->
 	</select>
 	
 	<update id="replyUpdate">
@@ -196,14 +188,6 @@
 		R_RETITLE='', R_RECONTENT='',
 		R_YNN='n' WHERE R_NO=#{param1}
 	</update>
-	
-	<!-- <select id="totalStarscore" resultType="Integer">
-		SELECT SUM(R.R_SCORE)
-		FROM MEMBER M, REVIEW R, PRODUCT P
-		WHERE M.M_ID=R.M_ID
-		AND R.P_NO=P.P_NO
-		AND P.P_NAME=#{param1}
-	</select> -->
 
 	<select id="avgStarscore" resultType="double">
 		SELECT NVL(ROUND(AVG(R.R_SCORE),1),0)

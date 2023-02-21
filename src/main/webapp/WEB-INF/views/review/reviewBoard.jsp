@@ -85,6 +85,7 @@ pfilesrc : ${pfilesrc } <br />
 }
 .js-load.active {
     display: block;
+    border-bottom: 1px solid #ddd;
 }
 .is_comp.js-load:after {
     display: none;
@@ -184,10 +185,7 @@ pfilesrc : ${pfilesrc } <br />
 				<div class="review_box">
 					<div class="review_label">
 						<input type="hidden" value="${list.r_no }" />
-						<p>
-							${list.memberDto.m_id }
-						</p>
-						<p>${list.r_title }</p>
+						<div>${list.r_title }</div>
 						<div class="tablerow">
 							<div class="tablecell">
 							<span class="user_date">

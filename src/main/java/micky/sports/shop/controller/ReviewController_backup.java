@@ -20,9 +20,9 @@ import micky.sports.shop.service.review.ReviewReplyviewService;
 import micky.sports.shop.service.review.ReviewService;
 import micky.sports.shop.service.review.ReviewWriteService;
 
-@Controller
+//@Controller
 @RequestMapping("/review")
-public class ReviewController {
+public class ReviewController_backup {
 	MickyServiceInter mickyServiceInter;
 	
 	@Autowired
@@ -120,7 +120,19 @@ public class ReviewController {
 		
 		return "review/reviewPopupcontentview";
 	}
-		
+	
+//	Popup 수정하기
+//	@RequestMapping("/reviewPopupcontentupdate")
+//	public String reviewPopupcontentupdate(HttpServletRequest request, Model model) {
+//		System.out.println("=====reviewPopupcontentupdate====");
+//		
+//		model.addAttribute("request", request);
+//		mickyServiceInter=new ReviewPopupcontentupdateService(sqlSession,session);
+//		mickyServiceInter.execute(model);
+//		
+//		return "review/reviewPopupcontentupdate";
+//	}
+	
 //	Popup 수정하기
 	@RequestMapping("/reviewPopupcontentmodify")
 	public String reviewPopupcontentmodify(HttpServletRequest request, Model model) {
@@ -161,6 +173,9 @@ public class ReviewController {
 	@RequestMapping("/reviewReplydelete")
 	public String reviewReplydelete(HttpServletRequest request, Model model) {
 		System.out.println("=====reviewReplydelete====");
+		
+//		String r_no=request.getParameter("r_no");
+//		System.out.println("r_no : "+r_no);
 		
 		model.addAttribute("request", request);
 		mickyServiceInter=new ReviewReplydeleteService(sqlSession,httpSession);

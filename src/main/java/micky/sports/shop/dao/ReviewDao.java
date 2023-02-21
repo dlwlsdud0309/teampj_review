@@ -7,7 +7,7 @@ import micky.sports.shop.dto.ReviewDto;
 
 public interface ReviewDao {
 	public ArrayList<ReviewDto> reviewboard(String selectType, String searchKeyword, String p_name);
-	public void write(String m_id,String r_title,String r_content,String r_filesrc,String r_score,String p_no,String om_cntnum);
+	public void write(String m_id, String r_title, String r_content, String r_filesrc, String r_score, String p_no, String om_cntnum);
 	public void delete(String r_no);
 	public ArrayList<OrderMemberDto> reviewOrderlist(String loginid);
 	public ArrayList<ReviewDto> mylistview(String loginid);
@@ -18,6 +18,5 @@ public interface ReviewDao {
 	public ReviewDto getReview(String r_no);
 	public int totalCount(String p_name);
 	public void replydelete(String r_no);
-//	public int totalStarscore(String p_name);
 	public double avgStarscore(String p_name);
 }

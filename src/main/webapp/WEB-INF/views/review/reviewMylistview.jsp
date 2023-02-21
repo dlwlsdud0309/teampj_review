@@ -167,14 +167,15 @@
 						<a href="../product/productDetail?pname=${mylist.productDto.p_name }&pfilesrc=${mylist.productDto.p_filesrc }"><img src="../resources/img/productimg/${mylist.productDto.p_filesrc }.jpg" width="200" /></a>
 					</div>
 					<div>
+						<!-- 수정, 삭제 -->
 						<button type="button" onclick="location.href='reviewPopupcontentview?r_no=${mylist.r_no }'">수정</button>
 						<!-- 답글이 달리면 삭제할 수 없도록 '삭제'버튼을 제거 -->
 						<c:choose>
 							<c:when test="${mylist.r_ynn eq 'n' }">
-								<button type="button" onclick="location.href='reviewDelete?r_no=${mylist.r_no }'">삭제</button>
+								<button type="button" onclick="location.href='reviewMylistDelete?r_no=${mylist.r_no }'">삭제</button>
 							</c:when>
 						</c:choose><!-- 답글이 달리면 삭제할 수 없도록 '삭제'버튼을 제거 -->
-					</div>
+					</div><!-- 수정, 삭제 -->
 				</div>
 				<div class="cell col22">
 					<div>
@@ -182,9 +183,9 @@
 							<div>
 								<strong><a href="../product/productDetail?pname=${mylist.productDto.p_name }&pfilesrc=${mylist.productDto.p_filesrc }">${mylist.productDto.p_name }</a></strong>
 							</div>
-							<div>${mylist.productDto.p_no }</div>
+							<div class="small_gray">${mylist.productDto.p_no }</div>
 							<div>
-								<strong>구매옵션</strong>&nbsp;<span>${mylist.productDto.p_color }, ${mylist.productDto.p_size }</span>
+								<strong>구매옵션</strong>&nbsp;<span class="small_gray">${mylist.productDto.p_color }, ${mylist.productDto.p_size }</span>
 							</div>
 							<br />
 						</div>
