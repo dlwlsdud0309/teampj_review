@@ -202,8 +202,7 @@ pfilesrc : ${pfilesrc } <br />
 							</div>
 							<div class="tablerow">
 								<span>&nbsp;&nbsp;&nbsp;&nbsp;
-								<%-- ${list.memberDto.m_id } --%>
-								<c:out value="${fn:substring(list.memberDto.m_id,0,fn:length(list.memberDto.m_id)-2)}" />**
+									<c:out value="${fn:substring(list.memberDto.m_id,0,fn:length(list.memberDto.m_id)-2)}" />**
 								</span>
 							</div>
 						</div>

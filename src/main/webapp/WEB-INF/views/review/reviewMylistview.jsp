@@ -117,8 +117,20 @@
 											</tr>
 											<tr>
 												<td class="left">파일첨부</td>
-												<td colspan="2">
+												<!-- <td colspan="2">
 													<input type="file" name="r_filesrc" />
+												</td> -->
+												<td colspan="2">
+													<!-- <input type="file" name="r_filesrc" onchange="readURL(this);" /> -->
+													<!-- <input type="file" id="file" name="r_filesrc" onchange="LoadImg(this);" multiple /> -->
+													<input type="file" id="image" name="r_filesrc" accept="image/*" onchange="setThumbnail(event);" multiple/>
+												</td>
+											</tr>
+											<tr>
+												<td colspan="3">
+													<!-- <img id="preview" src="" width="200"/> -->
+													<!-- <img id="loadImg" src="" width="200"/> -->
+													<div id="image_container"></div>
 												</td>
 											</tr>
 											<tr>
@@ -213,11 +225,50 @@
 </c:if>
 </body>
 <script>
+
+function setThumbnail(event) {
+    for (var image of event.target.files) {
+      var reader = new FileReader();
+
+      reader.onload = function(event) {
+        var img = document.createElement("img");
+        img.setAttribute("src", event.target.result);
+        document.querySelector("div#image_container").appendChild(img);
+      };
+
+      console.log(image);
+      reader.readAsDataURL(image);
+    }
+  };
+  
 	function rWrite(){
 		$(".styleClassReviewWriteview").bPopup({
 			position: ['auto',0],
 			positionStyle: 'fixed'
 		});
 	}
+	
+	/* function readURL(input) {
+		  if (input.files && input.files[0]) {
+		    var reader = new FileReader();
+		    reader.onload = function(e) {
+		      document.getElementById('preview').src = e.target.result;
+		    };
+		    reader.readAsDataURL(input.files[0]);
+		  } else {
+		    document.getElementById('preview').src = "";
+		  }
+		} */
+	/* function LoadImg(value){
+		if(value.files && value.files[0]){
+			var reader = new FileReader();
+			reader.onload = function(e){
+				$('#loadImg').attr('src', e.target.result);
+			}
+			reader.readAsDataURL(value.files[0]);
+			
+		}
+	} */
+	
 </script>
 </html>
