@@ -79,9 +79,11 @@
 							<!-- 개수 --><div style="font-size: 0.8em;">${myorderlist.u_cnt }개</div>
 							<!-- 가격 --><div style="font-weight: bolder;">${myorderlist.productDto.p_price } 원</div>
 						</div>
+	
+												
 						
-						<input type="button" value="리뷰작성" onclick="rWrite();" />
-						
+						<!-- <input type="button" value="리뷰작성" onclick="rWrite();" /> -->
+						<input type="button" id="write_button" value="리뷰작성" />
 						
 						<div>
 							<div id="styleID_ReviewWriteview" class="styleClassReviewWriteview">
@@ -134,16 +136,10 @@
 													<!-- <img id="loadImg" src="" width="200"/> -->
 													<style>
 														div.writeBox{
-														width: 100%; text-align: center
+														width: 300px;
 														}
-														img{
-  position: absolute; top:0; left: 0;
-  width: 100%;
-  height: 100%;
-}
 													</style>
 													<div class="writeBox" id="image_container">
-														<img src="" />
 													</div>
 												</td>
 											</tr>
@@ -239,12 +235,23 @@
 </c:if>
 </body>
 <script>
-function rWrite(){
+/* function rWrite(){
 	$(".styleClassReviewWriteview").bPopup({
 		position: ['auto',0],
 		positionStyle: 'fixed'
 	});
-};
+}; */
+
+$(document).ready(function(){
+	$("#write_button").off().on("click",function(event){
+		//alert('핳');
+		$(".styleClassReviewWriteview").bPopup({
+			position: ['auto',0],
+			positionStyle: 'fixed'
+		});
+	});
+			event.stopPropagation();
+});
 
 
 function setThumbnail(event) {
