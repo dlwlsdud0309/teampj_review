@@ -74,7 +74,6 @@
 							<a href="../product/productDetail?pname=${myorderlist.productDto.p_name }&pfilesrc=${myorderlist.productDto.p_filesrc }"><img src="../resources/img/productimg/${myorderlist.productDto.p_filesrc }.jpg" width="230" /></a>
 						</div>
 						<div style="font-size: small;">
-							<div>${myorderlist.p_no }</div>
 							<!-- 상품명 --><div style="font-weight: bold; font-size: 0.8em;">${myorderlist.productDto.p_name }</div>
 							<!-- 색상, 사이즈 --><div style="font-size: 0.8em;">${myorderlist.productDto.p_color }/${myorderlist.productDto.p_size }</div>
 							<!-- 개수 --><div style="font-size: 0.8em;">${myorderlist.u_cnt }개</div>
@@ -183,15 +182,16 @@
 							<div>
 								<strong><a href="../product/productDetail?pname=${mylist.productDto.p_name }&pfilesrc=${mylist.productDto.p_filesrc }">${mylist.productDto.p_name }</a></strong>
 							</div>
+							<div>${mylist.productDto.p_no }</div>
 							<div>
-								<strong>구매옵션</strong>&nbsp;<span>${mylist.productDto.p_color },${mylist.productDto.p_size }</span>
+								<strong>구매옵션</strong>&nbsp;<span>${mylist.productDto.p_color }, ${mylist.productDto.p_size }</span>
 							</div>
-							<br />
 							<br />
 						</div>
 						<div style="padding: 5px;">
 							<br />
 							<div><strong>${mylist.r_title }</strong></div>
+							<br />
 							<div>${mylist.r_content }</div>
 							<br />
 							<div><img src="../resources/reviewupload/${mylist.r_filesrc }" width="200" alt="" /></div>
