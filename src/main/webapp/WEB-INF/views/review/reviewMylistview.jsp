@@ -134,20 +134,20 @@
 												<td colspan="3">
 													<!-- <img id="preview" src="" width="200"/> -->
 													<!-- <img id="loadImg" src="" width="200"/> -->
-													<style>
-														div.writeBox{
-															width: 100px;
-															/* height: 100px; */
-														}
-														div.writeBox>img {
-															position: inherit;
-															width: 100%;
-															/* top: 50%;
-															left: 50%;
-															transform: translateX(10%);
-															height: 100%; */
-														}
-													</style>
+<style> /* css로 옮기면 적용되지 않음 */
+	div.writeBox{
+		width: 100px;
+		/* height: 100px; */
+	}
+	div.writeBox>img {
+		position: inherit;
+		width: 100%;
+		/* top: 50%;
+		left: 50%;
+		transform: translateX(10%);
+		height: 100%; */
+	}
+</style>
 													<div class="writeBox" id="image_container">
 														<img />
 													</div>
