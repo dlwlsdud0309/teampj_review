@@ -120,12 +120,15 @@
 		SELECT O.OM_CNTNUM,O.OM_NUM,P.P_NO,O.U_CNT,O.M_ID,
 		O.OM_DATE,O.P_PRICE,O.OM_STATE,
 		R.R_CONTENT,
-		P.P_NAME,P.P_PRICE,P.P_COLOR,P.P_SIZE,P.P_FILESRC
+		P.P_NAME,P.P_PRICE,P.P_COLOR,P.P_SIZE,P.P_FILESRC,
+		M.M_CASH
 		FROM ORDER_MEMBER O
 		LEFT JOIN REVIEW R
 		ON R.OM_CNTNUM=O.OM_CNTNUM
 		LEFT JOIN PRODUCT P
 		ON P.P_NO=O.P_NO
+		LEFT JOIN MEMBER M
+		ON O.M_ID= M.M_ID
 		WHERE O.M_ID=#{param1}
 		AND O.OM_STATE='결제완료'
 		AND O.OM_CANCLE='N'
@@ -198,4 +201,7 @@
 		AND P.P_NAME=#{param1}
 	</select>
 
+	<!-- <select id="review_mylist_cash" resultType="micky.sports.shop.dto.MemberDto">
+		SELECT M_CASH FROM MEMBER WHERE M_ID=#{param1}
+	</select> -->
 </mapper>

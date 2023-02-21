@@ -37,7 +37,9 @@
 <h3>reviewMylistview</h3>
 
 <h1>상품리뷰</h1>
-<p>리뷰 작성 시 적립 가능한 최대 마일리지</p>
+<div style="border: 1px solid bold;">
+	<span>리뷰 작성 시 적립 가능한 최대 마일리지</span><span>${myorderlist.memberDto.m_cash } CASH</span>
+</div>
 <div>
 	<p>
 		리뷰 리워드 혜택 안내
@@ -70,6 +72,7 @@
 				<div class="hello" style="padding: 10px;">
 					<div>
 						<%-- <div>주문번호 : ${myorderlist.om_num }</div> --%>
+						<div>캐시 : ${myorderlist.memberDto.m_cash }</div>
 						<div class="reviewListview_img_box">
 							<a href="../product/productDetail?pname=${myorderlist.productDto.p_name }&pfilesrc=${myorderlist.productDto.p_filesrc }"><img src="../resources/img/productimg/${myorderlist.productDto.p_filesrc }.jpg" width="230" /></a>
 						</div>
@@ -80,10 +83,8 @@
 							<!-- 가격 --><div style="font-weight: bolder;">${myorderlist.productDto.p_price } 원</div>
 						</div>
 	
-												
-						
-						<!-- <input type="button" value="리뷰작성" onclick="rWrite();" /> -->
-						<input type="button" id="write_button" value="리뷰작성" />
+						<input type="button" value="리뷰작성" onclick="rWrite(this);" />
+						<!-- <input type="button" id="write_button" value="리뷰작성" /> -->
 						
 						<div>
 							<div id="styleID_ReviewWriteview" class="styleClassReviewWriteview">
@@ -221,9 +222,9 @@
 							<div>
 								<strong>구매옵션</strong>&nbsp;<span class="small_gray">${mylist.productDto.p_color }, ${mylist.productDto.p_size }</span>
 							</div>
-							<br />
 						</div>
 						<div style="padding: 5px;">
+							<hr />
 							<br />
 							<div><strong>${mylist.r_title }</strong></div>
 							<br />
@@ -245,14 +246,14 @@
 </c:if>
 </body>
 <script>
-/* function rWrite(){
+function rWrite(){
 	$(".styleClassReviewWriteview").bPopup({
 		position: ['auto',0],
 		positionStyle: 'fixed'
 	});
-}; */
+};
 
-$(document).ready(function(){
+/* $(document).ready(function(){
 	$("#write_button").off().on("click",function(event){
 		//alert('핳');
 		$(".styleClassReviewWriteview").bPopup({
@@ -261,7 +262,7 @@ $(document).ready(function(){
 		});
 	});
 			event.stopPropagation();
-});
+}); */
 
 
 function setThumbnail(event) {
@@ -276,7 +277,7 @@ function setThumbnail(event) {
 
       console.log(image);
       reader.readAsDataURL(image);
-    }
+    };
   };
   
 	

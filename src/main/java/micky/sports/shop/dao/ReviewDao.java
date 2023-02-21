@@ -2,6 +2,7 @@ package micky.sports.shop.dao;
 
 import java.util.ArrayList;
 
+import micky.sports.shop.dto.MemberDto;
 import micky.sports.shop.dto.OrderMemberDto;
 import micky.sports.shop.dto.ReviewDto;
 
@@ -19,4 +20,5 @@ public interface ReviewDao {
 	public int totalCount(String p_name);
 	public void replydelete(String r_no);
 	public double avgStarscore(String p_name);
+	//public ArrayList<MemberDto> review_mylist_cash(String loginid);
 }
