@@ -79,7 +79,9 @@
 							<!-- 개수 --><div style="font-size: 0.8em;">${myorderlist.u_cnt }개</div>
 							<!-- 가격 --><div style="font-weight: bolder;">${myorderlist.productDto.p_price } 원</div>
 						</div>
+						
 						<input type="button" value="리뷰작성" onclick="rWrite();" />
+						
 						
 						<div>
 							<div id="styleID_ReviewWriteview" class="styleClassReviewWriteview">
@@ -130,7 +132,19 @@
 												<td colspan="3">
 													<!-- <img id="preview" src="" width="200"/> -->
 													<!-- <img id="loadImg" src="" width="200"/> -->
-													<div id="image_container"></div>
+													<style>
+														div.writeBox{
+														width: 100%; text-align: center
+														}
+														img{
+  position: absolute; top:0; left: 0;
+  width: 100%;
+  height: 100%;
+}
+													</style>
+													<div class="writeBox" id="image_container">
+														<img src="" />
+													</div>
 												</td>
 											</tr>
 											<tr>
@@ -230,10 +244,10 @@ function rWrite(){
 		position: ['auto',0],
 		positionStyle: 'fixed'
 	});
-}
+};
 
 
-/* function setThumbnail(event) {
+function setThumbnail(event) {
     for (var image of event.target.files) {
       var reader = new FileReader();
 
@@ -246,7 +260,7 @@ function rWrite(){
       console.log(image);
       reader.readAsDataURL(image);
     }
-  }; */
+  };
   
 	
 	/* function readURL(input) {
