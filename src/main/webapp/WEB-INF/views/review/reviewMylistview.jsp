@@ -74,8 +74,11 @@
 							<a href="../product/productDetail?pname=${myorderlist.productDto.p_name }&pfilesrc=${myorderlist.productDto.p_filesrc }"><img src="../resources/img/productimg/${myorderlist.productDto.p_filesrc }.jpg" width="230" /></a>
 						</div>
 						<div style="font-size: small;">
-							<div style="font-weight: bold; font-size: 0.8em;">${myorderlist.productDto.p_name }</div>
-							<div style="font-weight: bolder;">${myorderlist.productDto.p_price } 원</div>
+							<div>${myorderlist.p_no }</div>
+							<!-- 상품명 --><div style="font-weight: bold; font-size: 0.8em;">${myorderlist.productDto.p_name }</div>
+							<!-- 색상, 사이즈 --><div style="font-size: 0.8em;">${myorderlist.productDto.p_color }/${myorderlist.productDto.p_size }</div>
+							<!-- 개수 --><div style="font-size: 0.8em;">${myorderlist.u_cnt }개</div>
+							<!-- 가격 --><div style="font-weight: bolder;">${myorderlist.productDto.p_price } 원</div>
 						</div>
 						<input type="button" value="리뷰작성" onclick="rWrite();" />
 						
@@ -100,7 +103,7 @@
 												<td colspan="3">
 													<input id="userid" type="hidden" name="m_id" value="${sessionScope.loginid }" />
 													<input type="hidden" name="om_cntnum" value="${myorderlist.om_cntnum }" />
-													<input type="hidden" name="p_no" value="${myorderlist.productDto.p_no }" />
+													<input type="hidden" name="p_no" value="${myorderlist.p_no }" />
 												</td>
 											</tr>
 											<tr>
