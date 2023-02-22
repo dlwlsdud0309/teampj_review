@@ -57,21 +57,18 @@ public class ReviewController {
 	}
 	
 //	작성 폼(Popup)
-//	@RequestMapping("/reviewWriteview")
-//	public String reviewWriteview(HttpServletRequest request, Model model) {
-//		System.out.println("=====reviewWriteview====");
-//		
-////		String om_cntnum=request.getParameter("om_cntnum");
-////		String p_no=request.getParameter("p_no");
-////		String om_state=request.getParameter("om_state");
-////		System.out.println("reviewWriteview@@om_num : "+om_cntnum);
-////		System.out.println("reviewWriteview@@p_no : "+p_no);
-////		System.out.println("reviewWriteview@@om_state : "+om_state);
-//		
-////		model.addAttribute("request", request);
-//		
-//		return "review/reviewWriteview";
-//	}
+	@RequestMapping("/reviewWriteview")
+	public String reviewWriteview(HttpServletRequest request, Model model) {
+		System.out.println("=====reviewWriteview====");
+		
+		String om_cntnum=request.getParameter("om_cntnum");
+		String p_no=request.getParameter("p_no");
+		System.out.println("reviewWriteview@@om_num : "+om_cntnum);
+		System.out.println("reviewWriteview@@p_no : "+p_no);
+		model.addAttribute("request", request);
+
+		return "review/reviewWriteview";
+	}
 	
 //	리뷰 작성
 	@RequestMapping("/reviewWrite")
