@@ -19,6 +19,7 @@ import micky.sports.shop.service.review.ReviewReplydeleteService;
 import micky.sports.shop.service.review.ReviewReplyviewService;
 import micky.sports.shop.service.review.ReviewService;
 import micky.sports.shop.service.review.ReviewWriteService;
+import micky.sports.shop.service.review.ReviewWriteviewService;
 
 @Controller
 @RequestMapping("/review")
@@ -61,11 +62,9 @@ public class ReviewController {
 	public String reviewWriteview(HttpServletRequest request, Model model) {
 		System.out.println("=====reviewWriteview====");
 		
-		String om_cntnum=request.getParameter("om_cntnum");
-		String p_no=request.getParameter("p_no");
-		System.out.println("reviewWriteview@@om_num : "+om_cntnum);
-		System.out.println("reviewWriteview@@p_no : "+p_no);
 		model.addAttribute("request", request);
+		mickyServiceInter=new ReviewWriteviewService(sqlSession,httpSession);
+		mickyServiceInter.execute(model);
 
 		return "review/reviewWriteview";
 	}
@@ -74,6 +73,8 @@ public class ReviewController {
 	@RequestMapping("/reviewWrite")
 	public String reviewWrite(HttpServletRequest request, Model model) {
 		System.out.println("=====reviewWrite====");
+		
+		
 		
 		model.addAttribute("request", request);
 		mickyServiceInter=new ReviewWriteService(sqlSession,httpSession);

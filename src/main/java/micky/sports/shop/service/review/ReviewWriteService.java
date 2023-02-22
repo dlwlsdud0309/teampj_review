@@ -1,5 +1,6 @@
 package micky.sports.shop.service.review;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +13,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import micky.sports.shop.dao.ReviewDao;
+import micky.sports.shop.dto.OrderMemberDto;
 import micky.sports.shop.dto.ReviewDto;
 import micky.sports.shop.service.MickyServiceInter;
 
@@ -56,7 +58,7 @@ public class ReviewWriteService implements MickyServiceInter{
 			e.printStackTrace();
 		}
 		
-		String m_id=req.getParameter("m_id");
+//		String m_id=req.getParameter("m_id");
 		
 		String om_cntnum=req.getParameter("om_cntnum");
 		String p_no=req.getParameter("p_no");
@@ -78,9 +80,8 @@ public class ReviewWriteService implements MickyServiceInter{
 		session.removeAttribute("r_score");
 		
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
-		rdao.write(m_id,r_title,r_content,r_filesrc,r_score,p_no,om_cntnum);
 		
-		
+		rdao.write(loginId,r_title,r_content,r_filesrc,r_score,p_no,om_cntnum);
 	}
 
 }

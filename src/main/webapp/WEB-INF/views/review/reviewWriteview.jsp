@@ -21,7 +21,12 @@
 	
 	function getvalue(target) {
 		alert(target.value);
-	} 
+	}
+	
+	function writeviewClose(){
+		window.opener.top.location.href="reviewMylistview"
+		window.close()
+	}
 </script>
 	
 </head>
@@ -36,17 +41,17 @@
 </div>
 	<table>
 		<tr>
-            <td rowspan="4"><img src="../resources/img/productimg/${myorderlist.productDto.p_filesrc }.jpg" width="150" /></td>
-            <td>주문번호 : ${myorderlist.om_cntnum }</td>            
+            <td rowspan="4"><img src="../resources/img/productimg/${reviewWrite_orderlist.productDto.p_filesrc }.jpg" width="150" /></td>
+            <td>주문번호 : ${reviewWrite_orderlist.om_cntnum }</td>            
         </tr>
         <tr>
-            <td>${myorderlist.p_no }</td>            
+            <td>${reviewWrite_orderlist.p_no }</td>            
         </tr>
         <tr>
-            <td>${myorderlist.productDto.p_name }</td>            
+            <td>${reviewWrite_orderlist.productDto.p_name }</td>            
         </tr>
         <tr>
-            <td>${myorderlist.productDto.p_price } 원</td>            
+            <td>${reviewWrite_orderlist.productDto.p_price } 원</td>            
         </tr>
 		<tr id="data">
 			<td class="star">
@@ -58,8 +63,8 @@
 		<tr>
 			<td colspan="3">
 				<input id="userid" type="hidden" name="m_id" value="${sessionScope.loginid }" />
-				<input type="hidden" name="om_cntnum" value="${myorderlist.om_cntnum }" />
-				<input type="hidden" name="p_no" value="${myorderlist.p_no }" />
+				<input type="hidden" name="om_cntnum" value="${reviewWrite_orderlist.om_cntnum }" />
+				<input type="hidden" name="p_no" value="${reviewWrite_orderlist.p_no }" />
 			</td>
 		</tr>
 		<tr>
@@ -78,9 +83,6 @@
 		</tr>
 		<tr>
 			<td class="left">파일첨부</td>
-			<!-- <td colspan="2">
-				<input type="file" name="r_filesrc" />
-			</td> -->
 			<td colspan="2">
 				<!-- <input type="file" name="r_filesrc" onchange="readURL(this);" /> -->
 				<!-- <input type="file" id="file" name="r_filesrc" onchange="LoadImg(this);" multiple /> -->
@@ -97,9 +99,29 @@
 		<tr>
 			<td colspan="3">
 				<input id="starInput" type="hidden" name="r_score" value="" size="10" />
-				<input type="submit" value="작성하기" />
+				<input type="submit" value="작성하기" onclick="writeviewClose();"/>
+<%-- 				<input type="submit" value="작성하기" onclick="writeviewClose('${sessionScope.loginid }','${reviewWrite_orderlist.om_cntnum }',
+				'${reviewWrite_orderlist.p_no }',r_title,r_content,r_filesrc,r_score);"/> --%>
 			</td>
 		</tr>
 	</table>
 </form>
+<!-- <script>
+	function writeviewClose(loginId,om_cntnum,p_no,r_title,r_content,r_filesrc,r_score){
+		var form=document.createElement('form');
+		var obj;
+		
+		obj=document.createElement('input');
+		obj.setAttribute('type','hidden');
+		obj.setAttribute('name','loginId');
+		obj.setAttribute('value',loginId);
+		form.appendChild(obj);
+		form.setsetAttribute('method','post');
+		form.setsetAttribute('action','reviewMylistview');
+		document.body.appendChild(form);
+		form.submit();
+		
+		window.close();
+	}
+</script> -->
 </html>

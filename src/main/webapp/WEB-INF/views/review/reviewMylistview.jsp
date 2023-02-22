@@ -86,11 +86,7 @@
 						<!-- <input type="button" value="리뷰작성" onclick="rWrite();" /> -->
 						<%-- <input type="button" value="리뷰작성" onclick="rWrite(${myorderlist.om_cntnum});" /> --%>
 						<%-- <a href="reviewWriteview?om_cntnum=${myorderlist.om_cntnum }&p_no=${myorderlist.p_no }">리뷰작성</a> --%>
-						<button onclick="window.open('reviewWriteview?om_cntnum=${myorderlist.om_cntnum }&p_no=${myorderlist.p_no }','리뷰작성하기','width=200,heigth=500,location=no,status=no,scrollbars=no');">리뷰작성</button>						
-						
-						
-						
-						
+						<button onclick="window.open('reviewWriteview?om_cntnum=${myorderlist.om_cntnum }&p_no=${myorderlist.p_no }','리뷰작성하기','width=200,heigth=500,location=no,resizable=no,menubar=no,toolbar=no,status=no,scrollbars=no');">리뷰작성</button>						
 						
 					</div>
 				</div>

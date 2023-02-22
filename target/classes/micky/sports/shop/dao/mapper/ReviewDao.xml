@@ -149,6 +149,25 @@
 		ORDER BY R.R_GROUP DESC
 	</select>
 	
+	<select id="reviewWrite_orderlist" parameterType="micky.sports.shop.dto.OrderMemberDto" resultMap="OrderMemberDto">
+		<!-- id와 cntnum으로 구매내역 조회 -->
+		SELECT O.OM_CNTNUM,O.OM_NUM,P.P_NO,O.U_CNT,O.M_ID,
+		O.OM_DATE,O.P_PRICE,O.OM_STATE,
+		R.R_CONTENT,
+		P.P_NAME,P.P_PRICE,P.P_COLOR,P.P_SIZE,P.P_FILESRC
+		FROM ORDER_MEMBER O
+		LEFT JOIN REVIEW R
+		ON R.OM_CNTNUM=O.OM_CNTNUM
+		LEFT JOIN PRODUCT P
+		ON P.P_NO=O.P_NO
+		WHERE O.M_ID=#{param1}
+		AND O.OM_STATE='구매확정'
+		AND O.OM_CNTNUM=#{param2}
+		AND O.OM_CANCLE='N'
+		AND R.R_CONTENT IS NULL
+		ORDER BY O.OM_CNTNUM DESC
+	</select>
+	
 	<select id="popupview" resultType="micky.sports.shop.dto.ReviewDto">
 		SELECT R_NO,M_ID,R_TITLE,R_CONTENT,R_ID,R_RETITLE,
 		R_RECONTENT,R_YNN,R_DATE,R_GROUP,R_STEP,R_INDENT,R_FILESRC,R_SCORE,P_NO FROM REVIEW
