@@ -84,7 +84,7 @@
 						</div>
 	
 						<!-- 작성하기 버튼 -->
-						<button id="writeViewBtn" onclick="window.open('reviewWriteview?om_cntnum=${myorderlist.om_cntnum }&p_no=${myorderlist.p_no }','parentPage','width=200,heigth=800,location=no,resizable=no,menubar=no,toolbar=no,status=no,scrollbars=no');">리뷰작성</button>		
+						<button onclick="window.open('reviewWriteview?om_cntnum=${myorderlist.om_cntnum }&p_no=${myorderlist.p_no }','writeview','width=200,heigth=800,location=no,resizable=no,menubar=no,toolbar=no,status=no,scrollbars=no');">리뷰작성</button>		
 							
 					</div>
 				</div>
@@ -124,7 +124,9 @@
 					</div>
 					<div>
 						<!-- 수정, 삭제 -->
-						<button type="button" onclick="location.href='reviewModifyview?r_no=${mylist.r_no }'">수정</button>
+						<%-- <button type="button" onclick="location.href='reviewModifyview?r_no=${mylist.r_no }'">수정</button> --%>
+						<button onclick="window.open('reviewModifyview?r_no=${mylist.r_no }','modifyview','width=200,heigth=800,location=no,resizable=no,menubar=no,toolbar=no,status=no,scrollbars=no');">수정</button>
+						
 						<!-- 답글이 달리면 삭제할 수 없도록 '삭제'버튼을 제거 -->
 						<c:choose>
 							<c:when test="${mylist.r_ynn eq 'n' }">

@@ -24,7 +24,7 @@ public class ReviewModifyviewService implements MickyServiceInter{
 	
 	@Override
 	public void execute(Model model) {
-		System.out.println(">>>ReviewPopupviewService");
+		System.out.println(">>>ReviewModifyviewService");
 		
 //		model에서 request를 풀어내는 방법
 		Map<String, Object> map=model.asMap(); //model을 Map으로 변환

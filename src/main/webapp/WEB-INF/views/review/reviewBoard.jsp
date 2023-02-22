@@ -22,7 +22,6 @@
 	
 	/* 별점 */		
 	function redeptlist(target) {
-		alert("target : "+target.value);
 		$('#starInput[name=r_score]').attr('value',target.value);	
 	}
 	
@@ -242,6 +241,7 @@ pfilesrc : ${pfilesrc } <br />
 			<div id="reply_menu">
 	          <div><a class="${list.r_no }" href="#" onclick="return false;">수정하기</a>
 	            <div class="snd_menu sub_menu">
+	            	<!--@@@@ 답글수정 form @@@@-->
 	            	<form action="reviewReply">
 	            		<input type="hidden" name="r_no" value="${list.r_no }" />
 	            		<div><input type="hidden" name="r_id" value="${sessionScope.loginid }" />관리자</div>
@@ -257,6 +257,7 @@ pfilesrc : ${pfilesrc } <br />
 			<div id="reply_menu">
 	          <div><a class="${list.r_no }" href="#" onclick="return false;">댓글달기</a>
 	            <div class="snd_menu sub_menu">
+	           		<!--@@@@ 답글달기 form @@@@-->
 	            	<form action="reviewReply">
 	            		<input type="hidden" name="r_no" value="${list.r_no }" />
 	            		<div><input type="hidden" name="r_id" value="${sessionScope.loginid }" />관리자</div>
@@ -288,32 +289,17 @@ pfilesrc : ${pfilesrc } <br />
 			<div>
 <!-- 리뷰 수정/삭제 -->
 <c:if test="${sessionScope.loginid eq list.memberDto.m_id }">
-				<a id="practice" href="reviewPopupcontentview?r_no=${list.r_no }">수정</a>
+				<button onclick="window.open('reviewModifyview?r_no=${list.r_no }','modifyview','width=200,heigth=800,location=no,resizable=no,menubar=no,toolbar=no,status=no,scrollbars=no');">수정</button>
 				<!-- 답글이 달리면 삭제할 수 없도록 '삭제'버튼을 제거 -->
 				<c:choose>
 					<c:when test="${list.r_ynn eq 'n' }">
-						<a href="reviewDelete?r_no=${list.r_no }">삭제</a>
+						<button type="button" onclick="location.href='reviewDelete?r_no=${list.r_no }'">삭제</button>
 					</c:when>
 				</c:choose>
 </c:if>
 <c:if test="${sessionScope.loginid eq 'admintest' }">
 				<a href="reviewDelete?r_no=${list.r_no }">삭제</a>
 </c:if>
-<%-- <c:choose>
-	<c:when test="${sessionScope.loginid eq 'admintest' }">
-					<a href="reviewDelete?r_no=${list.r_no }">삭제</a>
-	</c:when>
-	<c:otherwise>
-		<a id="practice" href="reviewPopupcontentview?r_no=${list.r_no }">수정</a>
-				<!-- 답글이 달리면 삭제할 수 없도록 '삭제'버튼을 제거 -->
-				<c:choose>
-					<c:when test="${list.r_ynn eq 'n' }">
-						<a href="reviewDelete?r_no=${list.r_no }">삭제</a>
-					</c:when>
-				</c:choose>
-	</c:otherwise>
-</c:choose> --%>
-
 			</div>
 		</div>
 	</div><!-- /row -->

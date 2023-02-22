@@ -20,7 +20,17 @@
 	
 	function getvalue(target) {
 		alert(target.value);
-	} 
+	}
+	
+	$(function writeviewClose(){
+		$("#modifyBtn").click(function(){
+			setTimeout(function(){
+				//opener.location.href="../review/reviewMylistview";
+				opener.location.reload();
+				window.close();
+			},100);
+		});	
+	});
 </script>
 
 </head>
@@ -67,7 +77,7 @@
 					<tr>
 						<td colspan="3">
 							<input id="starInput" type="hidden" name="r_score" value="" size="10" />
-							<input type="submit" value="작성하기" />
+							<input id="modifyBtn" type="submit" value="수정하기" onclick="modifyviewClose();"/>
 						</td>
 					</tr>
 				</table>

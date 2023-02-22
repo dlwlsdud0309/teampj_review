@@ -26,7 +26,8 @@
 	$(function writeviewClose(){
 		$("#writeBtn").click(function(){
 			setTimeout(function(){
-				opener.location.href="../review/reviewMylistview";
+				//opener.location.href="../review/reviewMylistview";
+				opener.location.reload();
 				window.close();
 			},100);
 		});	
