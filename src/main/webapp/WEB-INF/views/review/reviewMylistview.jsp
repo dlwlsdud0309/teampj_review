@@ -83,7 +83,7 @@
 							<!-- 가격 --><div style="font-weight: bolder;">${myorderlist.productDto.p_price } 원</div>
 						</div>
 	
-						<button onclick="window.open('reviewWriteview?om_cntnum=${myorderlist.om_cntnum }&p_no=${myorderlist.p_no }','리뷰작성하기','width=200,heigth=800,location=no,resizable=no,menubar=no,toolbar=no,status=no,scrollbars=no');">리뷰작성</button>						
+						<button id="writeViewBtn" onclick="window.open('reviewWriteview?om_cntnum=${myorderlist.om_cntnum }&p_no=${myorderlist.p_no }','parentPage','width=200,heigth=800,location=no,resizable=no,menubar=no,toolbar=no,status=no,scrollbars=no');">리뷰작성</button>						
 						
 						
 					</div>
