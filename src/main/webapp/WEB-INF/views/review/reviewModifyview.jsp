@@ -14,7 +14,6 @@
 
 <script>
 	function redeptlist(target) {
-		alert("target : "+target.value);
 		$('#starInput[name=r_score]').attr('value',target.value);	
 	}
 	
@@ -37,9 +36,8 @@
 <body>
 <h3>reviewPopupcontentview</h3>
 <h1>리뷰 수정하기</h1>
-<input type="button" value="리뷰작성" onclick="rWrite();" />
 	<div id="title_content">
-		<form action="reviewPopupcontentmodify" method="post" enctype="multipart/form-data">
+		<form action="reviewModify" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="r_no" value="${popupview.r_no }" />
 			<h3 class="popup_review_title">상품리뷰쓰기</h3>
 			<div>

@@ -14,19 +14,19 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import micky.sports.shop.dao.ReviewDao;
 import micky.sports.shop.service.MickyServiceInter;
 
-public class ReviewPopupcontentmodifyService implements MickyServiceInter{
+public class ReviewModifyService implements MickyServiceInter{
 
 	private SqlSession sqlSession;
 	private HttpSession httpSession;
 	
-	public ReviewPopupcontentmodifyService(SqlSession sqlSession,HttpSession httpsession) {
+	public ReviewModifyService(SqlSession sqlSession,HttpSession httpsession) {
 		this.sqlSession=sqlSession;
 		this.httpSession = httpsession;
 	}
 	
 	@Override
 	public void execute(Model model) {
-		System.out.println(">>>ReviewPopupcontentmodifyService");
+		System.out.println(">>>ReviewModifyService");
 		
 		
 //		model에서 request를 풀어내는 방법
@@ -55,9 +55,7 @@ public class ReviewPopupcontentmodifyService implements MickyServiceInter{
 			e.printStackTrace();
 		}
 
-		
 		String r_no=req.getParameter("r_no");
-//		String m_id=request.getParameter("m_id");
 		String r_title=req.getParameter("r_title");
 		String r_content=req.getParameter("r_content");
 		String r_score=req.getParameter("r_score");

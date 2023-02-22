@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import micky.sports.shop.service.MickyServiceInter;
 import micky.sports.shop.service.review.ReviewDeleteService;
 import micky.sports.shop.service.review.ReviewMylistviewService;
-import micky.sports.shop.service.review.ReviewPopupcontentmodifyService;
+import micky.sports.shop.service.review.ReviewModifyService;
 import micky.sports.shop.service.review.ReviewModifyviewService;
 import micky.sports.shop.service.review.ReviewReplyService;
 import micky.sports.shop.service.review.ReviewReplydeleteService;
@@ -105,7 +105,7 @@ public class ReviewController {
 		return "redirect:reviewBoard";
 	}
 	
-//	수정폼
+//	수정
 	@RequestMapping("/reviewModifyview")
 	public String reviewPopupcontentview(HttpServletRequest request, Model model) {
 		System.out.println("=====reviewModifyview====");
@@ -116,24 +116,14 @@ public class ReviewController {
 		
 		return "review/reviewModifyview";
 	}
-//	@RequestMapping("/reviewPopupcontentview")
-//	public String reviewPopupcontentview(HttpServletRequest request, Model model) {
-//		System.out.println("=====reviewPopupview====");
-//		
-//		model.addAttribute("request", request);
-//		mickyServiceInter=new ReviewPopupcontentviewService(sqlSession,httpSession);
-//		mickyServiceInter.execute(model);
-//		
-//		return "review/reviewPopupcontentview";
-//	}
 		
 //	Popup 수정하기
-	@RequestMapping("/reviewPopupcontentmodify")
+	@RequestMapping("/reviewModify")
 	public String reviewPopupcontentmodify(HttpServletRequest request, Model model) {
-		System.out.println("=====reviewPopupcontentmodify====");
+		System.out.println("=====reviewModify====");
 		
 		model.addAttribute("request", request);
-		mickyServiceInter=new ReviewPopupcontentmodifyService(sqlSession,httpSession);
+		mickyServiceInter=new ReviewModifyService(sqlSession,httpSession);
 		mickyServiceInter.execute(model);
 		
 		return "redirect:reviewBoard";
