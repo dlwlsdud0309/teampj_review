@@ -13,7 +13,7 @@ import micky.sports.shop.service.MickyServiceInter;
 import micky.sports.shop.service.review.ReviewDeleteService;
 import micky.sports.shop.service.review.ReviewMylistviewService;
 import micky.sports.shop.service.review.ReviewPopupcontentmodifyService;
-import micky.sports.shop.service.review.ReviewPopupcontentviewService;
+import micky.sports.shop.service.review.ReviewModifyviewService;
 import micky.sports.shop.service.review.ReviewReplyService;
 import micky.sports.shop.service.review.ReviewReplydeleteService;
 import micky.sports.shop.service.review.ReviewReplyviewService;
@@ -105,17 +105,27 @@ public class ReviewController {
 		return "redirect:reviewBoard";
 	}
 	
-//	Popup 수정폼
-	@RequestMapping("/reviewPopupcontentview")
+//	수정폼
+	@RequestMapping("/reviewModifyview")
 	public String reviewPopupcontentview(HttpServletRequest request, Model model) {
-		System.out.println("=====reviewPopupview====");
+		System.out.println("=====reviewModifyview====");
 		
 		model.addAttribute("request", request);
-		mickyServiceInter=new ReviewPopupcontentviewService(sqlSession,httpSession);
+		mickyServiceInter=new ReviewModifyviewService(sqlSession,httpSession);
 		mickyServiceInter.execute(model);
 		
-		return "review/reviewPopupcontentview";
+		return "review/reviewModifyview";
 	}
+//	@RequestMapping("/reviewPopupcontentview")
+//	public String reviewPopupcontentview(HttpServletRequest request, Model model) {
+//		System.out.println("=====reviewPopupview====");
+//		
+//		model.addAttribute("request", request);
+//		mickyServiceInter=new ReviewPopupcontentviewService(sqlSession,httpSession);
+//		mickyServiceInter.execute(model);
+//		
+//		return "review/reviewPopupcontentview";
+//	}
 		
 //	Popup 수정하기
 	@RequestMapping("/reviewPopupcontentmodify")

@@ -12,12 +12,12 @@ import micky.sports.shop.dao.ReviewDao;
 import micky.sports.shop.dto.ReviewDto;
 import micky.sports.shop.service.MickyServiceInter;
 
-public class ReviewPopupcontentviewService implements MickyServiceInter{
+public class ReviewModifyviewService implements MickyServiceInter{
 
 	private SqlSession sqlSession;
 	private HttpSession httpSession;
 	
-	public ReviewPopupcontentviewService(SqlSession sqlSession,HttpSession httpsession) {
+	public ReviewModifyviewService(SqlSession sqlSession,HttpSession httpsession) {
 		this.sqlSession=sqlSession;
 		this.httpSession = httpsession;
 	}

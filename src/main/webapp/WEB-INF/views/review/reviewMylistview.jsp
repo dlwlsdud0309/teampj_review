@@ -124,7 +124,7 @@
 					</div>
 					<div>
 						<!-- 수정, 삭제 -->
-						<button type="button" onclick="location.href='reviewPopupcontentview?r_no=${mylist.r_no }'">수정</button>
+						<button type="button" onclick="location.href='reviewModifyview?r_no=${mylist.r_no }'">수정</button>
 						<!-- 답글이 달리면 삭제할 수 없도록 '삭제'버튼을 제거 -->
 						<c:choose>
 							<c:when test="${mylist.r_ynn eq 'n' }">
