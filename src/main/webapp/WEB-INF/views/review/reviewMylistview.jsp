@@ -66,6 +66,15 @@
 	</p>
 </c:if>
 <hr />
+<!-- <script type="text/javascript">
+	function insertPopup(ths){
+		var cntnum=${myorderlist.om_cntnum };
+		var pno=${myorderlist.p_no };
+		window.name="parent";
+		window.open('/review/reviewWriteview','width=200,heigth=800,location=no,resizable=no,menubar=no,toolbar=no,status=no,scrollbars=no');
+		
+	}
+</script> -->
 <c:if test="${not empty review_orderlist }">
 	<div>
 		<div class="class_review_orderlist">
@@ -83,9 +92,13 @@
 							<!-- 가격 --><div style="font-weight: bolder;">${myorderlist.productDto.p_price } 원</div>
 						</div>
 	
-						<button id="writeViewBtn" onclick="window.open('reviewWriteview?om_cntnum=${myorderlist.om_cntnum }&p_no=${myorderlist.p_no }','parentPage','width=200,heigth=800,location=no,resizable=no,menubar=no,toolbar=no,status=no,scrollbars=no');">리뷰작성</button>						
-						
-						
+						<button id="writeViewBtn" onclick="window.open('reviewWriteview?om_cntnum=${myorderlist.om_cntnum }&p_no=${myorderlist.p_no }','parentPage','width=200,heigth=800,location=no,resizable=no,menubar=no,toolbar=no,status=no,scrollbars=no');">리뷰작성</button>		
+	
+						<!-- <a href="javascript:insertPopup(this);">작성하기</a>	 -->					
+						<%-- <input type="hidden" value="${myorderlist.om_cntnum }" name="om_cntnum" id="om_cntnum" />
+						<input type="hidden" value="${myorderlist.p_no }" name="p_no" id="p_no" />
+						<input type="button" value="리뷰작성" id="goWriteBtn" onclick="openWrite();" /> --%>
+							
 					</div>
 				</div>
 			</c:forEach>

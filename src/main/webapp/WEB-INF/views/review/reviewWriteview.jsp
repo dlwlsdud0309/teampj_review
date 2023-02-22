@@ -15,7 +15,7 @@
 
 <script>
 	function redeptlist(target) {
-		alert("target : "+target.value);
+		//alert("target : "+target.value);
 		$('#starInput[name=r_score]').attr('value',target.value);	
 	}
 	
@@ -23,10 +23,29 @@
 		alert(target.value);
 	}
 	
-	/* function writeviewClose(){
-		window.opener.top.location.href="reviewMylistview"
-		window.close()
-	} */
+	
+	
+		$(function writeviewClose(){
+			$("#writeBtn").click(function(){
+				setTimeout(function(){
+					opener.location.href="../review/reviewMylistview";
+					window.close();
+				},100);
+			});	
+		});
+	//function writeviewClose(){
+		/* if(window.opener && !window.opener.closed){
+			window.opener.location="../review/reviewMylistview";
+			self.close();
+		} */
+		 //document.form_chk.action='${pageContext.request.contextPath}';
+		//var f = document.forms.formReviewWriteview;
+		//f.submit();
+		//opener.location.href="../review/reviewMylistview";
+		//opener.document.location.reload();
+		//window.opener.location.reload();
+		//window.close();
+	//}
 	/* function reloadParent(){
 		window.opener.location.reload();
 		opener.parent.location="reviewMylistview";
@@ -64,14 +83,19 @@
 	
 </script>
 <script type="text/javascript">
-	opener.document.location.reload();
-	self.close();
+
+	/* self.close();
+	window.opener.location.reload(); */
+	//opener.document.location.reload();
+	//opener.document.location.href="reviewMylistview";
+	//self.close();
 </script>
+
 </head>
 <body>
 <h3>reviewWriteview</h3>
 <h1>리뷰 작성하기</h1>
-<form action="reviewWrite" name="formname_reviewWriteview" method="post" enctype="multipart/form-data">
+<form action="reviewWrite" name="formReviewWriteview" method="post" enctype="multipart/form-data">
 <h3 class="popup_review_title">상품리뷰쓰기</h3>
 <div>
 	<strong>리뷰 리워드 혜택 제공</strong> <br />
@@ -137,29 +161,11 @@
 		<tr>
 			<td colspan="3">
 				<input id="starInput" type="hidden" name="r_score" value="" size="10" />
-				<input onclick="goSubmit();" type="submit" value="작성하기"/>
+				<input id="writeBtn" type="submit" value="작성하기" onclick="writeviewClose();"/>
 <%-- 				<input type="submit" value="작성하기" onclick="writeviewClose('${sessionScope.loginid }','${reviewWrite_orderlist.om_cntnum }',
 				'${reviewWrite_orderlist.p_no }',r_title,r_content,r_filesrc,r_score);"/> --%>
 			</td>
 		</tr>
 	</table>
 </form>
-<!-- <script>
-	function writeviewClose(loginId,om_cntnum,p_no,r_title,r_content,r_filesrc,r_score){
-		var form=document.createElement('form');
-		var obj;
-		
-		obj=document.createElement('input');
-		obj.setAttribute('type','hidden');
-		obj.setAttribute('name','loginId');
-		obj.setAttribute('value',loginId);
-		form.appendChild(obj);
-		form.setsetAttribute('method','post');
-		form.setsetAttribute('action','reviewMylistview');
-		document.body.appendChild(form);
-		form.submit();
-		
-		window.close();
-	}
-</script> -->
 </html>
