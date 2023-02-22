@@ -37,7 +37,7 @@
 <h3>reviewMylistview</h3>
 
 <h1>상품리뷰</h1>
-<p>리뷰 작성 시 적립 가능한 최대 마일리지</p>
+<span>리뷰 작성 시 적립 가능한 최대 마일리지</span> <span>${checkMileage } 마일리지</span>
 <div>
 	<p>
 		리뷰 리워드 혜택 안내

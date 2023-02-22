@@ -130,7 +130,7 @@
 		AND O.OM_STATE='결제완료'
 		AND O.OM_CANCLE='N'
 		AND R.R_CONTENT IS NULL
-		ORDER BY O.OM_DATE DESC
+		ORDER BY O.OM_CNTNUM DESC
 	</select>
 	
 	<!-- 로그인 한 id가 작성한 리뷰글 전부 출력 -->
@@ -196,6 +196,22 @@
 		WHERE M.M_ID=R.M_ID
 		AND R.P_NO=P.P_NO
 		AND P.P_NAME=#{param1}
+	</select>
+
+	<select id="checkMileage" resultType="Integer">
+		SELECT COUNT(*) FROM (SELECT O.OM_CNTNUM,O.OM_NUM,P.P_NO,O.U_CNT,O.M_ID,
+		O.OM_DATE,O.P_PRICE,O.OM_STATE,
+		R.R_CONTENT,
+		P.P_NAME,P.P_PRICE,P.P_COLOR,P.P_SIZE,P.P_FILESRC
+		FROM ORDER_MEMBER O
+		LEFT JOIN REVIEW R
+		ON R.OM_CNTNUM=O.OM_CNTNUM
+		LEFT JOIN PRODUCT P
+		ON P.P_NO=O.P_NO
+		WHERE O.M_ID=#{param1}
+		AND O.OM_STATE='결제완료'
+		AND O.OM_CANCLE='N'
+		AND R.R_CONTENT IS NULL)
 	</select>
 
 </mapper>
