@@ -57,7 +57,7 @@ public class ReviewController {
 		return "review/reviewMylistview";
 	}
 	
-//	작성 폼(Popup)
+//	작성 폼
 	@RequestMapping("/reviewWriteview")
 	public String reviewWriteview(HttpServletRequest request, Model model) {
 		System.out.println("=====reviewWriteview====");
@@ -73,8 +73,6 @@ public class ReviewController {
 	@RequestMapping("/reviewWrite")
 	public String reviewWrite(HttpServletRequest request, Model model) {
 		System.out.println("=====reviewWrite====");
-		
-		
 		
 		model.addAttribute("request", request);
 		mickyServiceInter=new ReviewWriteService(sqlSession,httpSession);

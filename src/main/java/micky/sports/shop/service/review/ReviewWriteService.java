@@ -1,6 +1,5 @@
 package micky.sports.shop.service.review;
 
-import java.util.ArrayList;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,8 +12,6 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import micky.sports.shop.dao.ReviewDao;
-import micky.sports.shop.dto.OrderMemberDto;
-import micky.sports.shop.dto.ReviewDto;
 import micky.sports.shop.service.MickyServiceInter;
 
 public class ReviewWriteService implements MickyServiceInter{

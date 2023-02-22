@@ -23,9 +23,28 @@
 		alert(target.value);
 	}
 	
-	function writeviewClose(){
+	/* function writeviewClose(){
 		window.opener.top.location.href="reviewMylistview"
 		window.close()
+	} */
+	/* function reloadParent(){
+		window.opener.location.reload();
+		opener.parent.location="reviewMylistview";
+		window.close()
+	} */
+	
+	function writeSaveClose(){
+		$.ajax({
+			type:"post",
+			cashe: false,
+			url: "../review/reviewMylistview",
+			data: $('#writeview').serialize(),
+			success: function(){
+				addressList(listType);
+			}
+		});
+		window.opener.document.location.href = window.opener.document.URL;
+		self.close(); 
 	}
 </script>
 	
@@ -39,7 +58,7 @@
 	<strong>리뷰 리워드 혜택 제공</strong> <br />
 	<div>텍스트 리뷰 : 500M | 사진 첨부 리뷰 : 1,000M 적립</div>
 </div>
-	<table>
+	<table id="writeview">
 		<tr>
             <td rowspan="4"><img src="../resources/img/productimg/${reviewWrite_orderlist.productDto.p_filesrc }.jpg" width="150" /></td>
             <td>주문번호 : ${reviewWrite_orderlist.om_cntnum }</td>            
@@ -99,7 +118,7 @@
 		<tr>
 			<td colspan="3">
 				<input id="starInput" type="hidden" name="r_score" value="" size="10" />
-				<input type="submit" value="작성하기" onclick="writeviewClose();"/>
+				<input type="submit" value="작성하기" onclick="writeSaveClose();"/>
 <%-- 				<input type="submit" value="작성하기" onclick="writeviewClose('${sessionScope.loginid }','${reviewWrite_orderlist.om_cntnum }',
 				'${reviewWrite_orderlist.p_no }',r_title,r_content,r_filesrc,r_score);"/> --%>
 			</td>
