@@ -83,8 +83,9 @@
 							<!-- 가격 --><div style="font-weight: bolder;">${myorderlist.productDto.p_price } 원</div>
 						</div>
 						
-						<input type="button" value="리뷰작성" onclick="rWrite();" />
-						
+						<!-- <input type="button" value="리뷰작성" onclick="rWrite();" /> -->
+						<input type="button" value="리뷰작성" onclick="rWrite(${myorderlist.om_cntnum});" />
+						<!-- 팝업창 -->
 						<div>
 							<div id="styleID_ReviewWriteview" class="styleClassReviewWriteview">
 								<div id="title_content">
@@ -165,6 +166,7 @@
 								</div>
 							</div>
 						</div>
+						
 					</div>
 				</div>
 			</c:forEach>
@@ -247,8 +249,8 @@
 </body>
 <script>
 function rWrite(getcntnum){
-	//alert(getcntnum);
-	var form=document.createElement('form');
+	alert(getcntnum);
+	/* var form=document.createElement('form');
 	var obj;
 	
 	obj=document.createElement('input');
@@ -259,7 +261,7 @@ function rWrite(getcntnum){
 	form.setsetAttribute('method','post');
 	form.setsetAttribute('action','reviewMylistview');
 	document.body.appendChild(form);
-	form.submit();
+	form.submit(); */
 	
 	$(".styleClassReviewWriteview").bPopup({
 		position: ['auto',0],
