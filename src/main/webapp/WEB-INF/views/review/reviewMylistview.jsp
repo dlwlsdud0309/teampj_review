@@ -38,19 +38,19 @@
 
 <h1>상품리뷰</h1>
 <div class="mileage_box">
-		<span>리뷰 작성 시 적립 가능한 최대 마일리지</span><span class="mileage_span"><strong>${checkMileage }</strong> 마일리지</span>
+		<span>리뷰 작성 시 적립 가능한 최대 캐시</span><span class="mileage_span"><strong>${checkMileage }</strong> 캐시</span>
 </div>
 <div>
 	<p>
 		리뷰 리워드 혜택 안내
 		<br />
-		주문 상품 수령 후 30일 내 리뷰 작성시 10일 후 마일리지를 적립해드립니다.
+		주문 상품 수령 후 30일 내 리뷰 작성시 10일 후 캐시를 적립해드립니다.
 	</p>
 	<ul>
-		<li>일단 텍스트 리뷰 : 500M, 사진 첨부 리뷰 : 1,000M 적립</li>
+		<li>일단 텍스트 리뷰 : 500CASH, 사진 첨부 리뷰 : 1,000CASH 적립</li>
 		<li>리워드 적립 전 리뷰 삭제 시 적립 대상에서 제외됩니다.</li>
 		<li>반품 접수 시에는 리뷰 작성이 불가합니다.</li>
-		<li>리뷰 작성으로 적립된 마일리지 유효기간은 2년입니다.</li>
+		<li>리뷰 작성으로 적립된 캐시 유효기간은 2년입니다.</li>
 	</ul>
 </div>
 <br />
@@ -82,7 +82,8 @@
 							<!-- 개수 --><div style="font-size: 0.8em;">${myorderlist.u_cnt }개</div>
 							<!-- 가격 --><div style="font-weight: bolder;">${myorderlist.productDto.p_price } 원</div>
 						</div>
-						<input type="button" value="리뷰작성" onclick="rWrite('${myorderlist.om_cntnum }');" />
+						
+						<input type="button" value="리뷰작성" onclick="rWrite();" />
 						
 						<div>
 							<div id="styleID_ReviewWriteview" class="styleClassReviewWriteview">
@@ -245,8 +246,21 @@
 </c:if>
 </body>
 <script>
-function rWrite(cntnum){
-	document.getElementById()
+function rWrite(getcntnum){
+	//alert(getcntnum);
+	var form=document.createElement('form');
+	var obj;
+	
+	obj=document.createElement('input');
+	obj.setAttribute('type','hidden');
+	obj.setAttribute('name','getcntnum');
+	obj.setAttribute('value',getcntnum);
+	form.appendChild(obj);
+	form.setsetAttribute('method','post');
+	form.setsetAttribute('action','reviewMylistview');
+	document.body.appendChild(form);
+	form.submit();
+	
 	$(".styleClassReviewWriteview").bPopup({
 		position: ['auto',0],
 		positionStyle: 'fixed'

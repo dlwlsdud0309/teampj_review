@@ -51,7 +51,9 @@ public class ReviewMylistviewService implements MickyServiceInter{
 		
 		for (OrderMemberDto val : review_orderlist) {
 //			System.out.println("val : "+val.getOm_cntnum());
-			System.out.println("val : "+val.getProductDto().getP_no());
+//			System.out.println("val : "+val.getProductDto().getP_no());
+			System.out.println("val : "+val.getProductDto().getP_name());
+			System.out.println("val : "+val.getOm_cntnum());
 		}
 		
 		model.addAttribute("review_orderlist", review_orderlist);
