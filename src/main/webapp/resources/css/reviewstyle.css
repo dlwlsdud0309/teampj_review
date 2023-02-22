@@ -172,6 +172,18 @@ input#replyToggle:checked+div#reply_box{
 
 
 /* =============== reviewMylistview=============== */
+.mileage_box{
+	width: 80%;
+	border-top: 3px solid black;
+	border-bottom: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+	padding: 40px 25px;
+}
+.mileage_span{
+	display: inline-block;
+	float: right;
+}
 .class_review_orderlist{
 	display: flex;
 	flex-flow: row wrap;

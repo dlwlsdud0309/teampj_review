@@ -18,7 +18,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../resources/css/reviewstyle.css" />
+<link rel="stylesheet" href="../resources/css/reviewstyle.css?after" />
 <script src="../resources/js/jquery-3.6.1.min.js"></script>
 <script src="../resources/js/jquery.bpopup.min.js"></script>
 <script src="../resources/js/scriptjsp.js"></script>
@@ -37,7 +37,9 @@
 <h3>reviewMylistview</h3>
 
 <h1>상품리뷰</h1>
-<span>리뷰 작성 시 적립 가능한 최대 마일리지</span> <span>${checkMileage } 마일리지</span>
+<div class="mileage_box">
+		<span>리뷰 작성 시 적립 가능한 최대 마일리지</span><span class="mileage_span"><strong>${checkMileage }</strong> 마일리지</span>
+</div>
 <div>
 	<p>
 		리뷰 리워드 혜택 안내
@@ -51,7 +53,8 @@
 		<li>리뷰 작성으로 적립된 마일리지 유효기간은 2년입니다.</li>
 	</ul>
 </div>
-
+<br />
+<br />
 <h1>리뷰 작성하기</h1>
 <c:if test="${empty review_orderlist }">
 	<p>
