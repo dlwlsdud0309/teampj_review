@@ -131,7 +131,7 @@
 								<button type="button" onclick="location.href='reviewMylistDelete?r_no=${mylist.r_no }'">삭제</button>
 							</c:when>
 						</c:choose>
-					</div>>
+					</div>
 				</div>
 				
 				<div class="cell col22">

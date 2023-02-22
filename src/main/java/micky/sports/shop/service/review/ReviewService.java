@@ -72,12 +72,7 @@ public class ReviewService implements MickyServiceInter{
 		double avgStarscore=0;
 		avgStarscore=rdao.avgStarscore(p_name);
 
-		
-		System.out.println("avgStarscore : "+avgStarscore);
-		
-
 		ArrayList<ReviewDto> review_list=rdao.reviewboard(selectType,searchKeyword,p_name);
-		
 		
 		model.addAttribute("review_list", review_list);
 //		검색어 유지기능
