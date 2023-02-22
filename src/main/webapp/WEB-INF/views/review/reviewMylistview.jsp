@@ -88,7 +88,6 @@
 							<!-- 개수 --><div style="font-size: 0.8em;">${myorderlist.u_cnt }개</div>
 							<!-- 가격 --><div style="font-weight: bolder;">${myorderlist.productDto.p_price } 원</div>
 						</div>
-<<<<<<< HEAD
 	
 						<input type="button" value="리뷰작성" onclick="rWrite(this);" />
 						<!-- <input type="button" id="write_button" value="리뷰작성" /> -->
@@ -172,14 +171,12 @@
 								</div>
 							</div>
 						</div>
-=======
 						
 						<!-- <input type="button" value="리뷰작성" onclick="rWrite();" /> -->
 						<%-- <input type="button" value="리뷰작성" onclick="rWrite(${myorderlist.om_cntnum});" /> --%>
 						<%-- <a href="reviewWriteview?om_cntnum=${myorderlist.om_cntnum }&p_no=${myorderlist.p_no }">리뷰작성</a> --%>
 						<button onclick="window.open('reviewWriteview?om_cntnum=${myorderlist.om_cntnum }&p_no=${myorderlist.p_no }','리뷰작성하기','width=200,heigth=500,location=no,resizable=no,menubar=no,toolbar=no,status=no,scrollbars=no');">리뷰작성</button>						
 						
->>>>>>> db1e050b94d7f49aac422cc1c8fae81a95783e13
 					</div>
 				</div>
 			</c:forEach>
@@ -280,7 +277,6 @@
 		position: ['auto',0],
 		positionStyle: 'fixed'
 	});
-<<<<<<< HEAD
 };
 
 /* $(document).ready(function(){
@@ -292,17 +288,15 @@
 		});
 	});
 			event.stopPropagation();
-}); */
-=======
+});
 } */
->>>>>>> db1e050b94d7f49aac422cc1c8fae81a95783e13
 
 
 function setThumbnail(event) {
     for (var image of event.target.files) {
-      var reader = new FileReader();
+        var reader = new FileReader();
 
-      reader.onload = function(event) {
+        reader.onload = function(event) {
         var img = document.createElement("img");
         img.setAttribute("src", event.target.result);
         document.querySelector("div#image_container").appendChild(img);

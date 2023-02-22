@@ -219,11 +219,10 @@
 		AND P.P_NAME=#{param1}
 	</select>
 
-<<<<<<< HEAD
 	<!-- <select id="review_mylist_cash" resultType="micky.sports.shop.dto.MemberDto">
 		SELECT M_CASH FROM MEMBER WHERE M_ID=#{param1}
 	</select> -->
-=======
+
 	<select id="checkMileage" resultType="Integer">
 		SELECT COUNT(*) FROM (SELECT O.OM_CNTNUM,O.OM_NUM,P.P_NO,O.U_CNT,O.M_ID,
 		O.OM_DATE,O.P_PRICE,O.OM_STATE,
@@ -240,5 +239,4 @@
 		AND R.R_CONTENT IS NULL)
 	</select>
 
->>>>>>> db1e050b94d7f49aac422cc1c8fae81a95783e13
 </mapper>
