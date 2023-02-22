@@ -37,13 +37,8 @@
 <h3>reviewMylistview</h3>
 
 <h1>상품리뷰</h1>
-<<<<<<< HEAD
-<div style="border: 1px solid bold;">
-	<span>리뷰 작성 시 적립 가능한 최대 마일리지</span><span>${myorderlist.memberDto.m_cash } CASH</span>
-=======
 <div class="mileage_box">
 		<span>리뷰 작성 시 적립 가능한 최대 캐시</span><span class="mileage_span"><strong>${checkMileage }</strong> 캐시</span>
->>>>>>> db1e050b94d7f49aac422cc1c8fae81a95783e13
 </div>
 <div>
 	<p>
@@ -78,7 +73,6 @@
 				<div class="hello" style="padding: 10px;">
 					<div>
 						<%-- <div>주문번호 : ${myorderlist.om_num }</div> --%>
-						<div>캐시 : ${myorderlist.memberDto.m_cash }</div>
 						<div class="reviewListview_img_box">
 							<a href="../product/productDetail?pname=${myorderlist.productDto.p_name }&pfilesrc=${myorderlist.productDto.p_filesrc }"><img src="../resources/img/productimg/${myorderlist.productDto.p_filesrc }.jpg" width="230" /></a>
 						</div>
@@ -89,93 +83,8 @@
 							<!-- 가격 --><div style="font-weight: bolder;">${myorderlist.productDto.p_price } 원</div>
 						</div>
 	
-						<input type="button" value="리뷰작성" onclick="rWrite(this);" />
-						<!-- <input type="button" id="write_button" value="리뷰작성" /> -->
+						<button onclick="window.open('reviewWriteview?om_cntnum=${myorderlist.om_cntnum }&p_no=${myorderlist.p_no }','리뷰작성하기','width=200,heigth=800,location=no,resizable=no,menubar=no,toolbar=no,status=no,scrollbars=no');">리뷰작성</button>						
 						
-						<div>
-							<div id="styleID_ReviewWriteview" class="styleClassReviewWriteview">
-								<div id="title_content">
-									<form action="reviewWrite" method="post" enctype="multipart/form-data">
-									<h3 class="popup_review_title">상품리뷰쓰기</h3>
-									<div>
-										<strong>리뷰 리워드 혜택 제공</strong> <br />
-										텍스트 리뷰 : 500M | 사진 첨부 리뷰 : 1,000M 적립
-									</div>
-										<table>
-											<tr id="data">
-												<td class="star">
-													★★★★★
-													<span class="star2">★★★★★</span>
-													<input type="range" onclick="redeptlist(this);" oninput="drawStar(this)" value="1" step="1" min="0" max="5"/>
-												</td>
-											</tr>
-											<tr>
-												<td colspan="3">
-													<input id="userid" type="hidden" name="m_id" value="${sessionScope.loginid }" />
-													<input type="hidden" name="om_cntnum" value="${myorderlist.om_cntnum }" />
-													<input type="hidden" name="p_no" value="${myorderlist.p_no }" />
-												</td>
-											</tr>
-											<tr>
-												<td class="left">제목</td>
-												<td colspan="2"><input type="text" name="r_title" /></td>
-											</tr>
-											<tr>
-												<td class="left">내용</td>
-												<td colspan="2">
-													<textarea name="r_content" rows="10"></textarea>
-												</td>
-											</tr>
-											<tr>
-												<td class="left">파일첨부</td>
-												<!-- <td colspan="2">
-													<input type="file" name="r_filesrc" />
-												</td> -->
-												<td colspan="2">
-													<!-- <input type="file" name="r_filesrc" onchange="readURL(this);" /> -->
-													<!-- <input type="file" id="file" name="r_filesrc" onchange="LoadImg(this);" multiple /> -->
-													<input type="file" id="image" name="r_filesrc" accept="image/*" onchange="setThumbnail(event);" multiple/>
-												</td>
-											</tr>
-											<tr>
-												<td colspan="3">
-													<!-- <img id="preview" src="" width="200"/> -->
-													<!-- <img id="loadImg" src="" width="200"/> -->
-<style> /* css로 옮기면 적용되지 않음 */
-	div.writeBox{
-		width: 100px;
-		/* height: 100px; */
-	}
-	div.writeBox>img {
-		position: inherit;
-		width: 100%;
-		/* top: 50%;
-		left: 50%;
-		transform: translateX(10%);
-		height: 100%; */
-	}
-</style>
-													<div class="writeBox" id="image_container">
-														<img />
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td colspan="3">
-													<input id="starInput" type="hidden" name="r_score" value="" size="10" />
-													<input type="submit" value="작성하기" />
-												</td>
-											</tr>
-										</table>
-									</form>
-								</div>
-							</div>
-						</div>
-						
-						<!-- <input type="button" value="리뷰작성" onclick="rWrite();" /> -->
-						<%-- <input type="button" value="리뷰작성" onclick="rWrite(${myorderlist.om_cntnum});" /> --%>
-						<%-- <a href="reviewWriteview?om_cntnum=${myorderlist.om_cntnum }&p_no=${myorderlist.p_no }">리뷰작성</a> --%>
-						<button onclick="window.open('reviewWriteview?om_cntnum=${myorderlist.om_cntnum }&p_no=${myorderlist.p_no }','리뷰작성하기','width=200,heigth=500,location=no,resizable=no,menubar=no,toolbar=no,status=no,scrollbars=no');">리뷰작성</button>						
 						
 					</div>
 				</div>

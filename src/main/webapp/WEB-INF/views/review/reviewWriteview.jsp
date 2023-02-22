@@ -43,7 +43,9 @@
 				addressList(listType);
 			}
 		});
-		window.opener.document.location.href = window.opener.document.URL;
+		//window.opener.document.location.href = window.opener.document.URL;
+		//opener.parent.location="../review/reviewMylistview";
+		window.opener.location.reload("reviewMylist");
 		self.close(); 
 	}
 </script>
