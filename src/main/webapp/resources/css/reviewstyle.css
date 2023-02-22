@@ -184,9 +184,7 @@ input#replyToggle:checked+div#reply_box{
 	display: inline-block;
 	float: right;
 }
-#productImg{
-	background-color: gray;
-}
+
 .class_review_orderlist{
 	display: flex;
 	flex-flow: row wrap;
