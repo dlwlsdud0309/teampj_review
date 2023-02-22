@@ -46,14 +46,17 @@
 						</td>
 					</tr>
 					<tr>
-						<td class="left">제목</td>
-						<td colspan="2"><input type="text" name="r_title" value="${popupview.r_title }" />
-						</td>
+						<td colspan="3" class="left">제목</td>
 					</tr>
 					<tr>
-						<td class="left">내용</td>
-						<td colspan="2">
-							<textarea name="r_content" rows="10">${popupview.r_content }</textarea>
+						<td colspan="3"><input type="text" name="r_title" size="45" value="${popupview.r_title }"/></td>
+					</tr>
+					<tr>
+						<td colspan="3" class="left">내용</td>
+					</tr>
+					<tr>
+						<td colspan="3">
+							<textarea name="r_content" rows="10" cols="47">${popupview.r_content }</textarea>
 						</td>
 					</tr>
 					<tr>

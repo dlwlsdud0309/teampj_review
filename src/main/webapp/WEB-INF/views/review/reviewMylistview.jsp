@@ -18,7 +18,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../resources/css/reviewstyle.css" />
+<link rel="stylesheet" href="../resources/css/reviewstyle.css?after" />
 <script src="../resources/js/jquery-3.6.1.min.js"></script>
 <script src="../resources/js/jquery.bpopup.min.js"></script>
 <script src="../resources/js/scriptjsp.js"></script>
@@ -37,23 +37,29 @@
 <h3>reviewMylistview</h3>
 
 <h1>상품리뷰</h1>
+<<<<<<< HEAD
 <div style="border: 1px solid bold;">
 	<span>리뷰 작성 시 적립 가능한 최대 마일리지</span><span>${myorderlist.memberDto.m_cash } CASH</span>
+=======
+<div class="mileage_box">
+		<span>리뷰 작성 시 적립 가능한 최대 캐시</span><span class="mileage_span"><strong>${checkMileage }</strong> 캐시</span>
+>>>>>>> db1e050b94d7f49aac422cc1c8fae81a95783e13
 </div>
 <div>
 	<p>
 		리뷰 리워드 혜택 안내
 		<br />
-		주문 상품 수령 후 30일 내 리뷰 작성시 10일 후 마일리지를 적립해드립니다.
+		주문 상품 수령 후 30일 내 리뷰 작성시 10일 후 캐시를 적립해드립니다.
 	</p>
 	<ul>
-		<li>일단 텍스트 리뷰 : 500M, 사진 첨부 리뷰 : 1,000M 적립</li>
+		<li>일단 텍스트 리뷰 : 500CASH, 사진 첨부 리뷰 : 1,000CASH 적립</li>
 		<li>리워드 적립 전 리뷰 삭제 시 적립 대상에서 제외됩니다.</li>
 		<li>반품 접수 시에는 리뷰 작성이 불가합니다.</li>
-		<li>리뷰 작성으로 적립된 마일리지 유효기간은 2년입니다.</li>
+		<li>리뷰 작성으로 적립된 캐시 유효기간은 2년입니다.</li>
 	</ul>
 </div>
-
+<br />
+<br />
 <h1>리뷰 작성하기</h1>
 <c:if test="${empty review_orderlist }">
 	<p>
@@ -82,6 +88,7 @@
 							<!-- 개수 --><div style="font-size: 0.8em;">${myorderlist.u_cnt }개</div>
 							<!-- 가격 --><div style="font-weight: bolder;">${myorderlist.productDto.p_price } 원</div>
 						</div>
+<<<<<<< HEAD
 	
 						<input type="button" value="리뷰작성" onclick="rWrite(this);" />
 						<!-- <input type="button" id="write_button" value="리뷰작성" /> -->
@@ -165,6 +172,14 @@
 								</div>
 							</div>
 						</div>
+=======
+						
+						<!-- <input type="button" value="리뷰작성" onclick="rWrite();" /> -->
+						<%-- <input type="button" value="리뷰작성" onclick="rWrite(${myorderlist.om_cntnum});" /> --%>
+						<%-- <a href="reviewWriteview?om_cntnum=${myorderlist.om_cntnum }&p_no=${myorderlist.p_no }">리뷰작성</a> --%>
+						<button onclick="window.open('reviewWriteview?om_cntnum=${myorderlist.om_cntnum }&p_no=${myorderlist.p_no }','리뷰작성하기','width=200,heigth=500,location=no,resizable=no,menubar=no,toolbar=no,status=no,scrollbars=no');">리뷰작성</button>						
+						
+>>>>>>> db1e050b94d7f49aac422cc1c8fae81a95783e13
 					</div>
 				</div>
 			</c:forEach>
@@ -246,11 +261,26 @@
 </c:if>
 </body>
 <script>
-function rWrite(){
-	$(".styleClassReviewWriteview").bPopup({
+/* function rWrite(getcntnum){
+	alert(getcntnum); */
+	/* var form=document.createElement('form');
+	var obj;
+	
+	obj=document.createElement('input');
+	obj.setAttribute('type','hidden');
+	obj.setAttribute('name','getcntnum');
+	obj.setAttribute('value',getcntnum);
+	form.appendChild(obj);
+	form.setsetAttribute('method','post');
+	form.setsetAttribute('action','reviewMylistview');
+	document.body.appendChild(form);
+	form.submit(); */
+	
+	/* $(".styleClassReviewWriteview").bPopup({
 		position: ['auto',0],
 		positionStyle: 'fixed'
 	});
+<<<<<<< HEAD
 };
 
 /* $(document).ready(function(){
@@ -263,6 +293,9 @@ function rWrite(){
 	});
 			event.stopPropagation();
 }); */
+=======
+} */
+>>>>>>> db1e050b94d7f49aac422cc1c8fae81a95783e13
 
 
 function setThumbnail(event) {
