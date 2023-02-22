@@ -66,22 +66,13 @@
 	</p>
 </c:if>
 <hr />
-<!-- <script type="text/javascript">
-	function insertPopup(ths){
-		var cntnum=${myorderlist.om_cntnum };
-		var pno=${myorderlist.p_no };
-		window.name="parent";
-		window.open('/review/reviewWriteview','width=200,heigth=800,location=no,resizable=no,menubar=no,toolbar=no,status=no,scrollbars=no');
-		
-	}
-</script> -->
+
 <c:if test="${not empty review_orderlist }">
 	<div>
 		<div class="class_review_orderlist">
 			<c:forEach items="${review_orderlist }" var="myorderlist">
 				<div class="hello" style="padding: 10px;">
 					<div>
-						<%-- <div>주문번호 : ${myorderlist.om_num }</div> --%>
 						<div class="reviewListview_img_box">
 							<a href="../product/productDetail?pname=${myorderlist.productDto.p_name }&pfilesrc=${myorderlist.productDto.p_filesrc }"><img src="../resources/img/productimg/${myorderlist.productDto.p_filesrc }.jpg" width="230" /></a>
 						</div>
@@ -92,12 +83,8 @@
 							<!-- 가격 --><div style="font-weight: bolder;">${myorderlist.productDto.p_price } 원</div>
 						</div>
 	
+						<!-- 작성하기 버튼 -->
 						<button id="writeViewBtn" onclick="window.open('reviewWriteview?om_cntnum=${myorderlist.om_cntnum }&p_no=${myorderlist.p_no }','parentPage','width=200,heigth=800,location=no,resizable=no,menubar=no,toolbar=no,status=no,scrollbars=no');">리뷰작성</button>		
-	
-						<!-- <a href="javascript:insertPopup(this);">작성하기</a>	 -->					
-						<%-- <input type="hidden" value="${myorderlist.om_cntnum }" name="om_cntnum" id="om_cntnum" />
-						<input type="hidden" value="${myorderlist.p_no }" name="p_no" id="p_no" />
-						<input type="button" value="리뷰작성" id="goWriteBtn" onclick="openWrite();" /> --%>
 							
 					</div>
 				</div>
@@ -143,9 +130,10 @@
 							<c:when test="${mylist.r_ynn eq 'n' }">
 								<button type="button" onclick="location.href='reviewMylistDelete?r_no=${mylist.r_no }'">삭제</button>
 							</c:when>
-						</c:choose><!-- 답글이 달리면 삭제할 수 없도록 '삭제'버튼을 제거 -->
-					</div><!-- 수정, 삭제 -->
+						</c:choose>
+					</div>>
 				</div>
+				
 				<div class="cell col22">
 					<div>
 						<div class="cell">
@@ -180,39 +168,6 @@
 </c:if>
 </body>
 <script>
-/* function rWrite(getcntnum){
-	alert(getcntnum); */
-	/* var form=document.createElement('form');
-	var obj;
-	
-	obj=document.createElement('input');
-	obj.setAttribute('type','hidden');
-	obj.setAttribute('name','getcntnum');
-	obj.setAttribute('value',getcntnum);
-	form.appendChild(obj);
-	form.setsetAttribute('method','post');
-	form.setsetAttribute('action','reviewMylistview');
-	document.body.appendChild(form);
-	form.submit(); */
-	
-	/* $(".styleClassReviewWriteview").bPopup({
-		position: ['auto',0],
-		positionStyle: 'fixed'
-	});
-};
-
-/* $(document).ready(function(){
-	$("#write_button").off().on("click",function(event){
-		//alert('핳');
-		$(".styleClassReviewWriteview").bPopup({
-			position: ['auto',0],
-			positionStyle: 'fixed'
-		});
-	});
-			event.stopPropagation();
-});
-} */
-
 
 function setThumbnail(event) {
     for (var image of event.target.files) {

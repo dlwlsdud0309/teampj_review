@@ -77,20 +77,6 @@ public class ReviewService implements MickyServiceInter{
 		
 
 		ArrayList<ReviewDto> review_list=rdao.reviewboard(selectType,searchKeyword,p_name);
-//		for (ReviewDto reviewDto : review_list) {
-//			System.out.println("reviewDto : "+reviewDto.getM_id());
-//			System.out.println("getMemberDto_m_id : "+reviewDto.getMemberDto().getM_id());
-//			String midcheck=reviewDto.getMemberDto().getM_id().replace(reviewDto.getMemberDto().getM_id(), "M_idcheck");
-//			String midcheck=reviewDto.getMemberDto().getM_id().replace(reviewDto.getMemberDto().getM_id(), "M_idcheck");
-//			String subStrM_id=midcheck.substring(0, midcheck.length()-2)+"**";
-//			System.out.println("substr_mid : "+subStrM_id);
-//			model.addAttribute("subStrM_id", subStrM_id);
-			
-//			String sub_mid=reviewDto.getMemberDto().getM_id();
-//			String subStrM_id=sub_mid.substring(0, sub_mid.length()-2)+"**";
-//			System.out.println("substr_mid : "+subStrM_id);
-//			model.addAttribute("subStrM_id", subStrM_id);
-//		}
 		
 		
 		model.addAttribute("review_list", review_list);

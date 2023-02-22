@@ -23,74 +23,16 @@
 		alert(target.value);
 	}
 	
-	
-	
-		$(function writeviewClose(){
-			$("#writeBtn").click(function(){
-				setTimeout(function(){
-					opener.location.href="../review/reviewMylistview";
-					window.close();
-				},100);
-			});	
-		});
-	//function writeviewClose(){
-		/* if(window.opener && !window.opener.closed){
-			window.opener.location="../review/reviewMylistview";
-			self.close();
-		} */
-		 //document.form_chk.action='${pageContext.request.contextPath}';
-		//var f = document.forms.formReviewWriteview;
-		//f.submit();
-		//opener.location.href="../review/reviewMylistview";
-		//opener.document.location.reload();
-		//window.opener.location.reload();
-		//window.close();
-	//}
-	/* function reloadParent(){
-		window.opener.location.reload();
-		opener.parent.location="reviewMylistview";
-		window.close()
-	} */
-	
-	/* function writeSaveClose(){ */
-		/* $.ajax({
-			type:"post",
-			cashe: false,
-			url: "../review/reviewMylistview",
-			data: $('#writeview').serialize(),
-			success: function(){
-				addressList(listType);
-			}
-		}); */
-		//window.opener.document.location.href = window.opener.document.URL;
-		//opener.parent.location="../review/reviewMylistview";
-		//window.opener.location.reload();
-		
-		//document.formname_reviewWriteview.submit();
-		//window.close();
-		
-		/* opener.parent.location.reload();
-		window.close();
-	} */
-	
-	/* function goSubmit(){
-		window.opener.name="parentPage";
-		document.formname_reviewWriteview.target="parentPage";
-		document.formname_reviewWriteview.action="/review/reviewMylistview";
-		document.formname_reviewWriteview.submit();
-		self.close();
-	} */
+	$(function writeviewClose(){
+		$("#writeBtn").click(function(){
+			setTimeout(function(){
+				opener.location.href="../review/reviewMylistview";
+				window.close();
+			},100);
+		});	
+	});
 	
 </script>
-<script type="text/javascript">
-
-	/* self.close();
-	window.opener.location.reload(); */
-	//opener.document.location.reload();
-	//opener.document.location.href="reviewMylistview";
-	//self.close();
-</script>
-
 </head>
 <body>
 <h3>reviewWriteview</h3>
@@ -162,8 +104,6 @@
 			<td colspan="3">
 				<input id="starInput" type="hidden" name="r_score" value="" size="10" />
 				<input id="writeBtn" type="submit" value="작성하기" onclick="writeviewClose();"/>
-<%-- 				<input type="submit" value="작성하기" onclick="writeviewClose('${sessionScope.loginid }','${reviewWrite_orderlist.om_cntnum }',
-				'${reviewWrite_orderlist.p_no }',r_title,r_content,r_filesrc,r_score);"/> --%>
 			</td>
 		</tr>
 	</table>
