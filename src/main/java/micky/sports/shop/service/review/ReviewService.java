@@ -36,7 +36,6 @@ public class ReviewService implements MickyServiceInter{
 		httpSession = request.getSession();
 		String loginId = (String)httpSession.getAttribute("loginid");
 		
-		
 		ServletContext application=request.getSession().getServletContext();
 		String p_name=(String)application.getAttribute("pname");
 		String p_filesrc=(String)application.getAttribute("pfilesrc");
