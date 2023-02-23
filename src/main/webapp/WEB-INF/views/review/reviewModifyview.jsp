@@ -82,7 +82,7 @@ $(function writeviewClose(){
 			opener.location.reload();
 			window.close();
 			//window.open('','_self').close();
-		},100);
+		},10);
 	});	
 });
 </script>
