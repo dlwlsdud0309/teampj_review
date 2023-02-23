@@ -20,12 +20,10 @@
 	function getvalue(target) {
 		alert(target.value);
 	}
-	
 </script>
 
 </head>
 <body>
-<h3>reviewPopupcontentview</h3>
 <h1>리뷰 수정하기</h1>
 	<div id="title_content">
 		<form action="reviewModify" method="post" enctype="multipart/form-data">
@@ -77,11 +75,8 @@
 $(function writeviewClose(){
 	$("#modifyBtn").click(function(){
 		setTimeout(function(){
-			//opener.document.location.reload();
-			//opener.location.href="../review/reviewMylistview";
 			opener.location.reload();
 			window.close();
-			//window.open('','_self').close();
 		},10);
 	});	
 });

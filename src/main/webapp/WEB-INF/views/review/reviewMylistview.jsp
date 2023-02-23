@@ -34,8 +34,6 @@
 </script>
 </head>
 <body>
-<h3>reviewMylistview</h3>
-
 <h1>상품리뷰</h1>
 <div class="mileage_box">
 		<span>리뷰 작성 시 적립 가능한 최대 캐시</span><span class="mileage_span"><strong>${checkMileage }</strong> 캐시</span>

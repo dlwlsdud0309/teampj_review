@@ -15,31 +15,15 @@
 
 <script>
 	function redeptlist(target) {
-		//alert("target : "+target.value);
 		$('#starInput[name=r_score]').attr('value',target.value);	
 	}
 	
 	function getvalue(target) {
 		alert(target.value);
 	}
-	
-	$(function writeviewClose(){
-		$("#writeBtn").click(function(){
-			setTimeout(function(){
-				//opener.document.location.reload();
-				opener.location.reload();
-				window.close();
-				//window.open('','_self').close();
-				//opener.location.href="../review/reviewMylistview";
-			},10);
-		});	
-	});
-	
-	
 </script>
 </head>
 <body>
-<h3>reviewWriteview</h3>
 <h1>리뷰 작성하기</h1>
 <form action="reviewWrite" id="frm" method="post" enctype="multipart/form-data">
 <h3 class="popup_review_title">상품리뷰쓰기</h3>
@@ -113,4 +97,13 @@
 	</table>
 </form>
 </body>
+<script>
+$(function writeviewClose(){
+	$("#writeBtn").click(function(){
+		setTimeout(function(){
+			opener.location.reload();
+			window.close();
+		},10);
+	});	
+});</script>
 </html>
