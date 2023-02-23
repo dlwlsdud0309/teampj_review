@@ -26,19 +26,22 @@
 	$(function writeviewClose(){
 		$("#writeBtn").click(function(){
 			setTimeout(function(){
-				opener.location.href="../review/reviewMylistview";
-				//opener.location.reload();
+				//opener.document.location.reload();
+				opener.location.reload();
+				//window.open('','_self').close();
+				//opener.location.href="../review/reviewMylistview";
 				window.close();
-			},1000);
+			},100);
 		});	
 	});
+	
 	
 </script>
 </head>
 <body>
 <h3>reviewWriteview</h3>
 <h1>리뷰 작성하기</h1>
-<form action="reviewWrite" name="formReviewWriteview" method="post" enctype="multipart/form-data">
+<form action="reviewWrite" id="frm" method="post" enctype="multipart/form-data">
 <h3 class="popup_review_title">상품리뷰쓰기</h3>
 <div>
 	<strong>리뷰 리워드 혜택 제공</strong> <br />
@@ -76,14 +79,14 @@
 			<td colspan="3" class="left">제목</td>
 		</tr>
 		<tr>
-			<td colspan="3"><input type="text" name="r_title" size="45" /></td>
+			<td colspan="3"><input type="text" id="r_title" name="r_title" size="45" /></td>
 		</tr>
 		<tr>
 			<td colspan="3" class="left">내용</td>
 		</tr>
 		<tr>
 			<td colspan="3">
-				<textarea name="r_content" rows="10" cols="47"></textarea>
+				<textarea id="r_content" name="r_content" rows="10" cols="47"></textarea>
 			</td>
 		</tr>
 		<tr>
@@ -103,10 +106,11 @@
 		</tr>
 		<tr>
 			<td colspan="3">
-				<input id="starInput" type="hidden" name="r_score" value="" size="10" />
+				<input id="starInput" type="hidden" id="r_score" name="r_score" value="" size="10" />
 				<input id="writeBtn" type="submit" value="작성하기" onclick="writeviewClose();"/>
 			</td>
 		</tr>
 	</table>
 </form>
+</body>
 </html>

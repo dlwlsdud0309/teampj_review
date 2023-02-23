@@ -21,15 +21,6 @@
 		alert(target.value);
 	}
 	
-	$(function writeviewClose(){
-		$("#modifyBtn").click(function(){
-			setTimeout(function(){
-				opener.location.href="../review/reviewMylistview";
-				//opener.location.reload();
-				window.close();
-			},1000);
-		});	
-	});
 </script>
 
 </head>
@@ -82,4 +73,17 @@
 		</form>
 	</div>
 </body>
+<script>
+$(function writeviewClose(){
+	$("#modifyBtn").click(function(){
+		setTimeout(function(){
+			//opener.document.location.reload();
+			//opener.location.href="../review/reviewMylistview";
+			opener.location.reload();
+			window.close();
+			//window.open('','_self').close();
+		},100);
+	});	
+});
+</script>
 </html>
