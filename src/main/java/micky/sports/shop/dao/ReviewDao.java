@@ -2,7 +2,6 @@ package micky.sports.shop.dao;
 
 import java.util.ArrayList;
 
-import micky.sports.shop.dto.MemberDto;
 import micky.sports.shop.dto.OrderMemberDto;
 import micky.sports.shop.dto.ReviewDto;
 
