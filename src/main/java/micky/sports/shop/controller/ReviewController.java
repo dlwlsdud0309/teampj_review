@@ -164,5 +164,17 @@ public class ReviewController {
 		
 		return "redirect:reviewBoard";
 	}
+
+//	리뷰 관리자 페이지
+	@RequestMapping("/reviewAdminpage")
+	public String reviewAdminpage(HttpServletRequest request, Model model) {
+		System.out.println("=====reviewAdminpage====");
+		
+//		model.addAttribute("request", request);
+//		mickyServiceInter=new ReviewReplydeleteService(sqlSession,httpSession);
+//		mickyServiceInter.execute(model);
+		
+		return "review/reviewAdminpage";
+	}
 	
 }

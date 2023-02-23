@@ -55,8 +55,6 @@ public class ReviewWriteService implements MickyServiceInter{
 			e.printStackTrace();
 		}
 		
-//		String m_id=req.getParameter("m_id");
-		
 		String om_cntnum=req.getParameter("om_cntnum");
 		String p_no=req.getParameter("p_no");
 		String om_state=req.getParameter("om_state");
