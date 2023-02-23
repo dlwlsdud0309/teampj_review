@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import micky.sports.shop.service.MickyServiceInter;
+import micky.sports.shop.service.review.ReviewAdminpageService;
 import micky.sports.shop.service.review.ReviewDeleteService;
 import micky.sports.shop.service.review.ReviewMylistviewService;
 import micky.sports.shop.service.review.ReviewModifyService;
@@ -170,9 +171,9 @@ public class ReviewController {
 	public String reviewAdminpage(HttpServletRequest request, Model model) {
 		System.out.println("=====reviewAdminpage====");
 		
-//		model.addAttribute("request", request);
-//		mickyServiceInter=new ReviewReplydeleteService(sqlSession,httpSession);
-//		mickyServiceInter.execute(model);
+		model.addAttribute("request", request);
+		mickyServiceInter=new ReviewAdminpageService(sqlSession,httpSession);
+		mickyServiceInter.execute(model);
 		
 		return "review/reviewAdminpage";
 	}
