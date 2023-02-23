@@ -9,9 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
-import lombok.experimental.var;
 import micky.sports.shop.dao.ReviewDao;
-import micky.sports.shop.dto.MemberDto;
 import micky.sports.shop.dto.OrderMemberDto;
 import micky.sports.shop.dto.ReviewDto;
 import micky.sports.shop.service.MickyServiceInter;

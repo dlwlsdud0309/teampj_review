@@ -26,10 +26,10 @@
 	$(function writeviewClose(){
 		$("#writeBtn").click(function(){
 			setTimeout(function(){
-				//opener.location.href="../review/reviewMylistview";
-				opener.location.reload();
+				opener.location.href="../review/reviewMylistview";
+				//opener.location.reload();
 				window.close();
-			},100);
+			},1000);
 		});	
 	});
 	
