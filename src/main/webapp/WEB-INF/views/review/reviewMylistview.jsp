@@ -30,7 +30,14 @@
 	
 	function getvalue(target) {
 		alert(target.value);
-	} 
+	}
+	
+	/* 리뷰작성 시 window.open 사용하여 새창 띄우기 */
+	function writeviewOpen(om_cntnum,p_no){
+		var url="reviewWriteview?om_cntnum="+om_cntnum+"&p_no="+p_no;
+		window.open(url,'writeviewOpen','width=400,heigth=500,location=no,fullscreen=no,menubar=no,toolbar=no,status=no,scrollbars=no');
+	}
+	
 </script>
 </head>
 <body>
@@ -72,7 +79,9 @@
 				<div class="hello" style="padding: 10px;">
 					<div>
 						<div class="reviewListview_img_box">
-							<a href="../product/productDetail?pname=${myorderlist.productDto.p_name }&pfilesrc=${myorderlist.productDto.p_filesrc }"><img src="../resources/img/productimg/${myorderlist.productDto.p_filesrc }.jpg" width="230" /></a>
+							<a href="../product/productDetail?pname=${myorderlist.productDto.p_name }&pfilesrc=${myorderlist.productDto.p_filesrc }">
+								<img src="../resources/img/productimg/${myorderlist.productDto.p_filesrc }.jpg" width="230" />
+							</a>
 						</div>
 						<div style="font-size: small;">
 							<!-- 상품명 --><div style="font-weight: bold; font-size: 0.8em;">${myorderlist.productDto.p_name }</div>
@@ -82,8 +91,7 @@
 						</div>
 	
 						<!-- 작성하기 버튼 -->
-						<button onclick="window.open('reviewWriteview?om_cntnum=${myorderlist.om_cntnum }&p_no=${myorderlist.p_no }','writeview','width=200,heigth=800,location=no,resizable=no,menubar=no,toolbar=no,status=no,scrollbars=no');">리뷰작성</button>		
-							
+						<button onclick="writeviewOpen('${myorderlist.om_cntnum }','${myorderlist.p_no }');">리뷰작성</button>
 					</div>
 				</div>
 			</c:forEach>
@@ -118,12 +126,13 @@
 			<div class="row">
 				<div class="cell col11">
 					<div class="reviewListview_img_box">
-						<a href="../product/productDetail?pname=${mylist.productDto.p_name }&pfilesrc=${mylist.productDto.p_filesrc }"><img src="../resources/img/productimg/${mylist.productDto.p_filesrc }.jpg" width="200" /></a>
+						<a href="../product/productDetail?pname=${mylist.productDto.p_name }&pfilesrc=${mylist.productDto.p_filesrc }">
+							<img src="../resources/img/productimg/${mylist.productDto.p_filesrc }.jpg" width="200" />
+						</a>
 					</div>
 					<div>
 						<!-- 수정, 삭제 -->
-						<%-- <button type="button" onclick="location.href='reviewModifyview?r_no=${mylist.r_no }'">수정</button> --%>
-						<button onclick="window.open('reviewModifyview?r_no=${mylist.r_no }','modifyview','width=200,heigth=800,location=no,resizable=no,menubar=no,toolbar=no,status=no,scrollbars=no');">수정</button>
+						<button onclick="window.open('reviewModifyview?r_no=${mylist.r_no }','modifyview','width=400,heigth=500,location=no,fullscreen=no,menubar=no,toolbar=no,status=no,scrollbars=no');">수정</button>
 						
 						<!-- 답글이 달리면 삭제할 수 없도록 '삭제'버튼을 제거 -->
 						<c:choose>
@@ -152,7 +161,11 @@
 							<br />
 							<div>${mylist.r_content }</div>
 							<br />
-							<div><img src="../resources/reviewupload/${mylist.r_filesrc }" width="200" alt="" /></div>
+							<c:if test="${mylist.r_filesrc ne null }">
+								<div>
+									<img src="../resources/reviewupload/${mylist.r_filesrc }" width="200" alt="" />
+								</div>
+							</c:if>
 						</div>
 					</div>
 				</div>
@@ -167,45 +180,4 @@
 	</div>
 </c:if>
 </body>
-<script>
-
-function setThumbnail(event) {
-    for (var image of event.target.files) {
-        var reader = new FileReader();
-
-        reader.onload = function(event) {
-        var img = document.createElement("img");
-        img.setAttribute("src", event.target.result);
-        document.querySelector("div#image_container").appendChild(img);
-      };
-
-      console.log(image);
-      reader.readAsDataURL(image);
-    };
-  };
-  
-	
-	/* function readURL(input) {
-		  if (input.files && input.files[0]) {
-		    var reader = new FileReader();
-		    reader.onload = function(e) {
-		      document.getElementById('preview').src = e.target.result;
-		    };
-		    reader.readAsDataURL(input.files[0]);
-		  } else {
-		    document.getElementById('preview').src = "";
-		  }
-		} */
-	/* function LoadImg(value){
-		if(value.files && value.files[0]){
-			var reader = new FileReader();
-			reader.onload = function(e){
-				$('#loadImg').attr('src', e.target.result);
-			}
-			reader.readAsDataURL(value.files[0]);
-			
-		}
-	} */
-	
-</script>
 </html>

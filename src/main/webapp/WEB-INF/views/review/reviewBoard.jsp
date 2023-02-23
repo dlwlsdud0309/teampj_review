@@ -24,7 +24,6 @@
 	function redeptlist(target) {
 		$('#starInput[name=r_score]').attr('value',target.value);	
 	}
-	
 	function getvalue(target) {
 		alert(target.value);
 	} 
@@ -100,7 +99,7 @@ pfilesrc : ${pfilesrc } <br />
     margin-bottom: 4rem;
 }
 .lists__item {
-    padding: 20px;
+    padding: 10px;
     /* background: #EEE; */
 }
 .lists__item:nth-child(2n) {
@@ -284,12 +283,17 @@ pfilesrc : ${pfilesrc } <br />
 				<span><fmt:formatDate value="${list.r_date }" pattern="yyyy.MM.dd"/></span>
 			</div>
 			<div class="img_box">
-				<img src="../resources/reviewupload/${list.r_filesrc }" width="100" alt="" />
+			<c:if test="${list.r_filesrc ne null }">
+				<div>
+					<img src="../resources/reviewupload/${list.r_filesrc }" width="100" alt="" />
+				</div>
+			</c:if>
 			</div>
 			<div>
 <!-- 리뷰 수정/삭제 -->
 <c:if test="${sessionScope.loginid eq list.memberDto.m_id }">
-				<button onclick="window.open('reviewModifyview?r_no=${list.r_no }','modifyview','width=200,heigth=800,location=no,resizable=no,menubar=no,toolbar=no,status=no,scrollbars=no');">수정</button>
+				<!-- 수정버튼 -->
+				<button onclick="window.open('reviewModifyview?r_no=${list.r_no }','modifyview','width=400,heigth=500,location=no,fullscreen=no,menubar=no,toolbar=no,status=no,scrollbars=no');">수정</button>
 				<!-- 답글이 달리면 삭제할 수 없도록 '삭제'버튼을 제거 -->
 				<c:choose>
 					<c:when test="${list.r_ynn eq 'n' }">
@@ -297,6 +301,7 @@ pfilesrc : ${pfilesrc } <br />
 					</c:when>
 				</c:choose>
 </c:if>
+<!-- 관리자 계정이면 댓글이 삭제 가능하도록 구현 -->
 <c:if test="${sessionScope.loginid eq 'admintest' }">
 				<a href="reviewDelete?r_no=${list.r_no }">삭제</a>
 </c:if>

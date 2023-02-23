@@ -105,7 +105,7 @@ public class ReviewController {
 		return "redirect:reviewBoard";
 	}
 	
-//	수정
+//	수정하기 폼
 	@RequestMapping("/reviewModifyview")
 	public String reviewPopupcontentview(HttpServletRequest request, Model model) {
 		System.out.println("=====reviewModifyview====");
@@ -117,7 +117,7 @@ public class ReviewController {
 		return "review/reviewModifyview";
 	}
 		
-//	Popup 수정하기
+//	수정하기
 	@RequestMapping("/reviewModify")
 	public String reviewPopupcontentmodify(HttpServletRequest request, Model model) {
 		System.out.println("=====reviewModify====");

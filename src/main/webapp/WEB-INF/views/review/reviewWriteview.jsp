@@ -76,9 +76,10 @@
 		<tr>
 			<td class="left">파일첨부</td>
 			<td colspan="2">
+				<input type="file" name="r_filesrc"/>
 				<!-- <input type="file" name="r_filesrc" onchange="readURL(this);" /> -->
 				<!-- <input type="file" id="file" name="r_filesrc" onchange="LoadImg(this);" multiple /> -->
-				<input type="file" id="image" name="r_filesrc" accept="image/*" onchange="setThumbnail(event);" multiple/>
+				<!-- <input type="file" id="image" name="r_filesrc" accept="image/*" onchange="setThumbnail(event);" multiple/> -->
 			</td>
 		</tr>
 		<tr>
