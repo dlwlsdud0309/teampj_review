@@ -28,10 +28,10 @@
 			setTimeout(function(){
 				//opener.document.location.reload();
 				opener.location.reload();
+				window.close();
 				//window.open('','_self').close();
 				//opener.location.href="../review/reviewMylistview";
-				window.close();
-			},100);
+			},3000);
 		});	
 	});
 	
