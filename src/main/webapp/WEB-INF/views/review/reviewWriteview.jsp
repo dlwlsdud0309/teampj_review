@@ -31,7 +31,7 @@
 				window.close();
 				//window.open('','_self').close();
 				//opener.location.href="../review/reviewMylistview";
-			},3000);
+			},100);
 		});	
 	});
 	
