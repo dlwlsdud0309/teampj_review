@@ -37,6 +37,8 @@ public class ReviewService implements MickyServiceInter{
 		String loginId = (String)httpSession.getAttribute("loginid");
 		
 		ServletContext application=request.getSession().getServletContext();
+		
+//		scope application 사용한 pname, pfilesrc값 가져오기
 		String p_name=(String)application.getAttribute("pname");
 		String p_filesrc=(String)application.getAttribute("pfilesrc");
 		
