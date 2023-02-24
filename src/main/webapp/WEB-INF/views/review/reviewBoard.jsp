@@ -34,7 +34,7 @@
 			alert('로그인이 필요합니다.');
 			$(location).attr('href','../member/loginform');
 		}else{
-			$(location).attr('href','reviewMylistview')
+			$(location).attr('href','../review/reviewMylistview')
 		}
 	}
 	function fn_02(checked_id){
@@ -69,10 +69,10 @@
 	<!-- 로그인한 id가 admintest일 경우 관리자페이지로 접근 -->
 	<c:choose>
 		<c:when test="${sessionScope.loginid eq 'admintest' }">
-			<a href="reviewAdminpage">${sessionScope.loginid }님</a>
+			<a href="../review/reviewAdminpage">${sessionScope.loginid }님</a>
 		</c:when>
 		<c:otherwise>
-			<a href="reviewMylistview">${sessionScope.loginid }님</a>
+			<a href="../review/reviewMylistview">${sessionScope.loginid }님</a>
 		</c:otherwise>
 	</c:choose>
 <br />
