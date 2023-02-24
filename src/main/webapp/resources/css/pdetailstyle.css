@@ -1,0 +1,132 @@
+body {
+	margin: 0;
+	font-family: Nanum Gothic;
+}
+a {
+	text-decoration: none;
+}
+.pdt{
+	/* border: 1px solid red; */
+	display: inline-block;
+	width: 1000px;
+	height: auto;
+	margin: 10px 40px;
+}
+.main-img>img {
+	width: 500px;
+	height: auto;
+	float: left;
+	/* border: 1px solid green; */
+	margin:10 auto;
+	padding: 10px;
+}
+.pdtdetailleft{
+	width: 400px;
+	display: inline-block;
+	margin: 10px;
+	padding: 10px 20px;
+	/* border: 1px solid pink; */
+}
+.main-name {
+	width: 400px;
+	float: left;
+	/* border: 1px dotted green; */
+	margin: 0;
+	padding: 5px;
+}
+/* .productList {
+	border: 1px dotted green;
+	margin: 5px 5px 5px 200px;
+	padding: 1px;
+}*/
+.pdtthumbnail {
+	width: 400px;
+	margin: 10px 3px;
+ 	display: inline-block;
+ 	padding-top: 5px;
+/*  	border: 2px dotted red; */
+} 
+.pdtimgs {
+	margin: 5px;
+	width: 70px;
+	padding: 5px;
+	float: left;
+/* 	border: 1px solid blue; */
+}
+.pdtimgs>a>img {
+	margin: 0 5px 0 1px ;
+	padding: 2px;
+	width: 70px;
+	float: left;
+}
+.productDetail {
+	margin: 0 5px 0 1px ;
+	padding: 2px;
+	width: 290px;
+	display: inline-block;
+}
+.pdtsize{
+	margin: 20px 10px;
+	padding: 2px;
+}
+.pdtsizeradio {
+	width: 43px;
+	height: 43px;
+	padding: 2px 5px;
+	display: inline-block;
+}
+.pdtsizeradio input[type=radio] {
+	display: none;
+}
+.pdtsizeradio input[type=radio]+label {
+	display: inline-block;
+    width: 40px;
+	height: 40px;
+	border: 1px solid #333;
+	line-height: 40px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 12px;
+}
+.pdtsizeradio input[type=radio]:checked+label {
+	background: #000;
+	color: #fff;
+}
+.choicelist{
+	/* border: 1px solid red; */
+	display: inline-block;
+	width: 400px;
+}
+.choice{
+	/* border: 1px solid blue; */
+	width: 400px;
+	display: inline-block;
+	float: left;
+	margin: 5px 5px 5px 10px;
+}
+.choice > p{
+	/* border: 1px solid blue; */
+	width: 200px;
+	display: inline-block;
+	float: left;
+	margin: 0 5px;
+}
+.choice > span{
+	/* border: 1px solid pink; */
+	display: inline-block;
+	float: left;
+	margin: 0 2px;
+}
+.choice > button {
+	background-color: #C0C0C0;
+	color: #141414;
+	border: 1px solid #C0C0C0;
+	border-radius: 3px;
+	margin: 0 1px;
+}
+#order_form{
+	background: #141414;
+	color: #fff;
+	width: 200px;
+	margin: 20px 30px;
+}

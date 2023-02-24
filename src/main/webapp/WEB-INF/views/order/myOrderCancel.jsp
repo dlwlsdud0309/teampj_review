@@ -79,7 +79,7 @@
 <script>
 	$('#myOrderCancelReason').keyup(function (e) {
 		let content = $(this).val();
-	    
+
 	    // 글자수 세기
 	    if (content.length == 0 || content == '') {
 	    	$('.textCnt').text('0자');

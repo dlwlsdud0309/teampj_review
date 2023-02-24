@@ -3,103 +3,305 @@
     "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="micky.sports.shop.dao.Member">
-
+	<!-- 회원가입 -->
 	<insert id="join">
-		INSERT INTO MEMBER(M_ID,M_PW,M_NAME,M_TEL,M_NAME2,M_EMAIL,M_GRADE,M_AGE,M_GENDER,M_CASH,M_FILESRC)
-VALUES (#{param1},#{param2},#{param3},#{param4},#{param5},#{param6},#{param7},#{param8},#{param9},#{param10},#{param11})
+		INSERT INTO MEMBER(M_ID,M_PW,M_NAME,M_TEL,M_NAME2,M_EMAIL,M_GRADE,M_AGE,M_GENDER,M_CASH,M_FILESRC,SHA,RSA,M_DATE)
+		VALUES (#{param1},#{param2},#{param3},#{param4},#{param5},#{param6},#{param7},#{param8},#{param9},#{param10},#{param11},#{param12},#{param13},SYSDATE)
 	</insert>
 	
-	<select id="login" resultType="Integer">
-		SELECT COUNT(*) FROM MEMBER WHERE M_ID=#{param1} AND M_PW=#{param2}
+	<select id="getsharsa" resultType="micky.sports.shop.dto.MemberDto">
+		SELECT * FROM MEMBER WHERE M_ID=#{param1}
 	</select>
 	
+	<!-- 로그인 -->
+	<select id="login" resultType="Integer">
+		SELECT COUNT(*) FROM MEMBER WHERE M_ID=#{param1}
+	</select>
+	
+	<!-- 아이디중복검사 -->
 	<select id="joinidcheck" resultType="Integer">
 		SELECT COUNT(*) FROM MEMBER WHERE M_ID=#{param1}
 	</select>
 	
-	<select id="getmemberlist" resultType="micky.sports.shop.dto.MemberDto">
+	
+	
+	
+	<!-- 회원목록 -->
+	<!-- 동적쿼리 -->
+	<sql id="includelist">
+		<choose>
+			<when test="param4==1">
+				WHERE M_ID LIKE '%'||#{param3}||'%'
+			</when>
+			<when test="param4==2">
+				WHERE M_EMAIL LIKE '%'||#{param3}||'%'
+			</when>
+			<when test="param4==3">
+				WHERE M_ID LIKE '%'||#{param3}||'%' OR M_EMAIL LIKE '%'||#{param3}||'%'
+			</when>
+			
+			<otherwise>
+				
+			</otherwise>
+		</choose>
+	</sql>
+	
+	<!-- <select id="getmemberlist" resultType="micky.sports.shop.dto.MemberDto">
 		SELECT * FROM MEMBER
+	</select> -->
+	<select id="getmemberlist" resultType="micky.sports.shop.dto.MemberDto">
+		SELECT M_ID,M_PW,M_NAME,M_TEL,M_NAME2,M_EMAIL,M_GRADE,M_AGE,M_GENDER,M_AGE,M_CASH,M_FILESRC FROM
+		(SELECT ROWNUM NUM, N.*FROM (SELECT * FROM MEMBER)N
+		<include refid="includelist" />    <!-- 동적쿼리 처리한거 불러오기 -->
+		)
+		WHERE NUM BETWEEN #{param1} AND #{param2}
 	</select>
 	
+	<!-- 회원정보수정화면 -->
 	<select id="memberupdateform" resultType="micky.sports.shop.dto.MemberDto">
 		SELECT * FROM MEMBER WHERE M_ID=#{param1}
 	</select>
 	
+	<!-- 회원정보수정 -->
 	<update id="memberupdate">
 		UPDATE MEMBER SET M_PW=#{param2},M_NAME=#{param3},M_TEL=#{param4},M_NAME2=#{param5},
 		M_EMAIL=#{param6},M_GRADE=#{param7},M_AGE=#{param8},M_GENDER=#{param9},M_CASH=#{param10},
-		M_FILESRC=#{param11} WHERE M_ID=#{param1}
+		M_FILESRC=#{param11},SHA=#{param12},RSA=#{param13} WHERE M_ID=#{param1}
 	</update>
 	
+	<!-- 회원정보삭제 -->
 	<delete id="memberdelete">
 		DELETE FROM MEMBER WHERE M_ID=#{param1}
 	</delete>
 	
-	<select id="getqnalist" resultType="micky.sports.shop.dto.Qna_MemberDto">
+	<!-- 마이페이지(회원)문의리스트 -->
+	<!-- <select id="getqnalist" resultType="micky.sports.shop.dto.Qna_MemberDto">
 		SELECT * FROM QNA_MEMBER WHERE Q_MID=#{param1} ORDER BY Q_MGROUP DESC,Q_MSTEP ASC
+	</select>  -->
+	<!-- <select id="getqnalist" resultType="micky.sports.shop.dto.Qna_MemberDto">
+		SELECT Q_MNO,Q_MTITLE,Q_MCONTENT,Q_MREPLY,Q_MID,Q_MYNN,Q_MDATE,Q_MGROUP,Q_MSTEP,Q_MINDENT FROM(
+		SELECT ROWNUM NUM,N.*FROM(SELECT * FROM QNA_MEMBER WHERE Q_MID=#{param1} ORDER BY Q_MNO DESC)N) 
+		WHERE NUM BETWEEN #{param2} AND #{param3}
+	</select> -->
+	<select id="getqnalist" resultType="micky.sports.shop.dto.Qna_MemberDto">
+		SELECT Q_MNO,Q_MTITLE,Q_MCONTENT,Q_MREPLY,Q_MID,Q_MYNN,Q_MDATE,Q_MGROUP,Q_MSTEP,Q_MINDENT FROM(
+		SELECT ROWNUM NUM,N.*FROM(SELECT * FROM QNA_MEMBER WHERE Q_MID=#{param1} ORDER BY Q_MGROUP DESC,Q_MSTEP ASC)N) 
+		WHERE NUM BETWEEN #{param2} AND #{param3}
 	</select>
 	
+	<!-- 마이페이지(회원)문의글쓰기 -->
 	<insert id="qnawrite">
 		INSERT INTO QNA_MEMBER(Q_MNO,Q_MTITLE,Q_MCONTENT,Q_MREPLY,Q_MID,Q_MYNN,Q_MDATE,Q_MGROUP,Q_MSTEP,Q_MINDENT)
 		VALUES (QNA_MEMBER_Q_MNO.NEXTVAL,#{param1},#{param2},'',#{param3},'N',SYSDATE,QNA_MEMBER_Q_MNO.CURRVAL,0,0)
 	</insert>
 	
+	<!-- 문의글디테일 -->
 	<select id="qnadetail" resultType="micky.sports.shop.dto.Qna_MemberDto">
 		SELECT * FROM QNA_MEMBER WHERE Q_MNO=#{param1}
 	</select>
 	
+	<!-- 닉네임중복검사 -->
 	<select id="joinnicknamecheck" resultType="Integer">
 		SELECT COUNT(*) FROM MEMBER WHERE M_NAME2=#{param1}
 	</select>
 	
+	<!-- 이미지가져오기 -->
 	<select id="getimg" resultType="micky.sports.shop.dto.MemberDto">
 		SELECT M_FILESRC FROM MEMBER WHERE M_ID=#{param1}
 	</select>
 	
+	<!-- 마이페이지(회원)내정보수정 -->
 	<update id="infoupdate">
 		UPDATE MEMBER SET M_PW=#{param2},M_TEL=#{param3},M_NAME2=#{param4},
-		M_EMAIL=#{param5},M_FILESRC=#{param6} WHERE M_ID=#{param1}
+		M_EMAIL=#{param5},M_FILESRC=#{param6},SHA=#{param7},RSA=#{param8} WHERE M_ID=#{param1}
 	</update>
+	<update id="infoupdat2">
+		UPDATE MEMBER SET M_PW=#{param2},M_TEL=#{param3},M_NAME2=#{param4},
+		M_EMAIL=#{param5},SHA=#{param6},RSA=#{param7} WHERE M_ID=#{param1}
+	</update>
+	<!-- <update id="infoupdat3">
+		UPDATE MEMBER SET M_PW=#{param2},M_NAME2=#{param3},
+		M_EMAIL=#{param4},SHA=#{param5},RSA=#{param6} WHERE M_ID=#{param1}
+	</update>
+	<update id="infoupdat4">
+		UPDATE MEMBER SET M_PW=#{param2},M_TEL=#{param3},
+		M_EMAIL=#{param4},SHA=#{param5},RSA=#{param6} WHERE M_ID=#{param1}
+	</update>
+	<update id="infoupdat5">
+		UPDATE MEMBER SET M_TEL=#{param2},M_NAME2=#{param3},
+		M_EMAIL=#{param4},SHA=#{param5},RSA=#{param6} WHERE M_ID=#{param1}
+	</update>
+	<update id="infoupdat6">
+		UPDATE MEMBER SET M_PW=#{param2},M_TEL=#{param3},M_NAME2=#{param4},
+		SHA=#{param5},RSA=#{param6} WHERE M_ID=#{param1}
+	</update> -->
 	
+	<!-- 마이페이지(회원)회원탈퇴 진입시 본인확인 -->
 	<select id="memberdropcheck" resultType="Integer">
-		SELECT COUNT(*) FROM MEMBER WHERE M_ID=#{param1} AND M_PW=#{param2}
+		SELECT COUNT(*) FROM MEMBER WHERE M_ID=#{param1}
 	</select>
 	
+	<!-- 관리자페이지 모든회원의 문의리스트 -->
+	<sql id="includelist2">
+		<choose>
+			<when test="param4==1">
+				WHERE Q_MID LIKE '%'||#{param3}||'%'
+			</when>
+			<when test="param4==2">
+				WHERE Q_MDATE LIKE '%'||#{param3}||'%'
+			</when>
+			<when test="param4==3">
+				WHERE Q_MID LIKE '%'||#{param3}||'%' OR Q_MDATE LIKE '%'||#{param3}||'%'
+			</when>
+			
+			<otherwise>
+				
+			</otherwise>
+		</choose>
+	</sql>
 	<select id="getadminqnalist" resultType="micky.sports.shop.dto.Qna_MemberDto">
-		SELECT * FROM QNA_MEMBER WHERE Q_MYNN!='A' ORDER BY Q_MNO DESC
+		SELECT Q_MNO,Q_MTITLE,Q_MCONTENT,Q_MREPLY,Q_MID,Q_MYNN,Q_MDATE,Q_MGROUP,Q_MSTEP,Q_MINDENT FROM(
+		SELECT ROWNUM NUM,N.*FROM(SELECT * FROM QNA_MEMBER WHERE Q_MYNN!='A' ORDER BY Q_MNO DESC)N
+		<include refid="includelist2" />)    <!-- 동적쿼리 처리한거 불러오기 -->
+		WHERE NUM BETWEEN #{param1} AND #{param2}
 	</select>
+	<!-- <select id="getadminqnalist" resultType="micky.sports.shop.dto.Qna_MemberDto">
+		SELECT Q_MNO,Q_MTITLE,Q_MCONTENT,Q_MREPLY,Q_MID,Q_MYNN,Q_MDATE,Q_MGROUP,Q_MSTEP,Q_MINDENT FROM(
+		SELECT ROWNUM NUM,N.*FROM(SELECT * FROM QNA_MEMBER WHERE Q_MYNN!='A' ORDER BY Q_MNO DESC)N) 
+		WHERE NUM BETWEEN #{param1} AND #{param2}
+	</select> -->
 	
+	<!-- 문의에 답변하면 답변유무 업데이트 -->
 	<update id="qnareplyupdate">
 		UPDATE QNA_MEMBER SET Q_MYNN='Y' WHERE Q_MNO=#{param1}
 	</update>
 	
+	<!-- 문의에 답변하기 -->
+	<insert id="qnareply">
+		INSERT INTO QNA_MEMBER(Q_MNO,Q_MTITLE,Q_MCONTENT,Q_MREPLY,Q_MID,Q_MYNN,Q_MDATE,Q_MGROUP,Q_MSTEP,Q_MINDENT)
+		VALUES (QNA_MEMBER_Q_MNO.NEXTVAL,#{param1},#{param2},#{param3},#{param4},'A',SYSDATE,#{param5},
+		#{param6},#{param7})
+	</insert>
+	
+	<!-- 문의 답변 들여쓰기 -->
 	<update id="qnareplyshape">
 		UPDATE QNA_MEMBER SET Q_MSTEP=Q_MSTEP+1 WHERE Q_MGROUP=#{param1} AND Q_MSTEP>#{param2}
 	</update>
 	
-	<insert id="qnareply">
-		INSERT INTO QNA_MEMBER(Q_MNO,Q_MTITLE,Q_MCONTENT,Q_MREPLY,Q_MID,Q_MYNN,Q_MDATE,Q_MGROUP,Q_MSTEP,Q_MINDENT)
-	VALUES (QNA_MEMBER_Q_MNO.NEXTVAL,#{param1},#{param2},#{param3},#{param4},'A',SYSDATE,#{param5},
-	#{param6},#{param7})
-	</insert>
-	
+	<!-- 문의글 삭제하기 -->
 	<delete id="qnadelete" >
 		DELETE FROM QNA_MEMBER WHERE Q_MNO=#{param1}
 	</delete>
 	
+	<!-- 해당 이메일 사용중인지 검색 -->
 	<select id="emailoverlapcheck" resultType="Integer">
 		SELECT COUNT(*) FROM MEMBER WHERE M_EMAIL=#{param1}
 	</select>
 	
+	<!-- 비밀번호찾기로 임시비밀번호 발송되면 회원정보에서 비밀번호를 임시비밀번호로 업데이트 -->
 	<update id="temporarypw">
-		UPDATE MEMBER SET M_PW=#{param1} WHERE M_EMAIL=#{param2}
+		UPDATE MEMBER SET M_PW=#{param1},SHA=#{param3},RSA=#{param4} WHERE M_EMAIL=#{param2}
 	</update>
 	
+	<!-- 비밀번호찾기 -->
 	<select id="findpw" resultType="Integer">
 		SELECT COUNT(*) FROM MEMBER WHERE M_ID=#{param1} and M_EMAIL=#{param2}
 	</select>
 	
+	<!-- 아이디찾기 -->
 	<select id="findid" resultType="String">
 		SELECT M_ID FROM MEMBER WHERE M_NAME=#{param1} and M_EMAIL=#{param2}
 	</select>
+	
+	
+	<select id="selectmemberTotCount" resultType="Integer">
+		SELECT COUNT(*) FROM
+		MEMBER WHERE M_ID LIKE '%'||#{param1}||'%'
+	</select>
+	<select id="selectmemberTotCount2" resultType="Integer">
+		SELECT COUNT(*) FROM
+		MEMBER WHERE M_EMAIL LIKE '%'||#{param1}||'%'
+	</select>
+	<select id="selectmemberTotCount3" resultType="Integer">
+		SELECT COUNT(*) FROM
+		MEMBER WHERE M_EMAIL LIKE '%'||#{param1}||'%' OR M_ID LIKE '%'||#{param1}||'%'
+	</select>
+	<select id="selectmemberTotCount4" resultType="Integer">
+		SELECT COUNT(*) FROM
+		MEMBER
+	</select>
+	
+	
+	<select id="selectqnalistTotCount" resultType="Integer">
+		SELECT COUNT(*) FROM
+		QNA_MEMBER WHERE Q_MID=#{param1}
+	</select>
+	
+	<!-- <select id="selectadminqnalistTotCount" resultType="Integer">
+		SELECT COUNT(*) FROM
+		QNA_MEMBER WHERE Q_MYNN!='A'
+	</select> -->
+	
+	<select id="selectadminqnalistTotCount" resultType="Integer">
+		SELECT COUNT(*) FROM
+		QNA_MEMBER WHERE Q_MID LIKE '%'||#{param1}||'%' AND Q_MYNN!='A'
+	</select>
+	<select id="selectadminqnalistTotCount2" resultType="Integer">
+		SELECT COUNT(*) FROM
+		QNA_MEMBER WHERE Q_MDATE LIKE '%'||#{param1}||'%' AND Q_MYNN!='A'
+	</select>
+	<select id="selectadminqnalistTotCount3" resultType="Integer">
+		SELECT COUNT(*) FROM
+		QNA_MEMBER WHERE Q_MDATE LIKE '%'||#{param1}||'%' OR Q_MID LIKE '%'||#{param1}||'%' AND Q_MYNN!='A'
+	</select>
+	<select id="selectadminqnalistTotCount4" resultType="Integer">
+		SELECT COUNT(*) FROM
+		QNA_MEMBER WHERE Q_MYNN!='A'
+	</select>
+	
+	
+	<select id="getTotalMember" resultType="Integer">
+		SELECT COUNT(*) FROM MEMBER
+	</select>
+	<select id="getMaleMember" resultType="Integer">
+		SELECT COUNT(*) FROM MEMBER WHERE M_GENDER='male'
+	</select>
+	<select id="getFemaleMember" resultType="Integer">
+		SELECT COUNT(*) FROM MEMBER WHERE M_GENDER='female'
+	</select>
+	
+	<select id="getmemberchart1" resultType="Integer">
+		SELECT COUNT(*) FROM MEMBER
+		<![CDATA[WHERE 10<=M_AGE AND M_AGE<20]]>
+	</select>
+	<select id="getmemberchart2" resultType="Integer">
+		SELECT COUNT(*) FROM MEMBER
+		<![CDATA[where 20<=m_age and m_age<30]]>
+	</select>
+	<select id="getmemberchart3" resultType="Integer">
+		SELECT COUNT(*) FROM MEMBER
+		<![CDATA[where 30<=m_age and m_age<40]]>
+	</select>
+	<select id="getmemberchart4" resultType="Integer">
+		SELECT COUNT(*) FROM MEMBER
+		<![CDATA[where 40<=m_age and m_age<50]]>
+	</select>
+	<select id="getmemberchart5" resultType="Integer">
+		SELECT COUNT(*) FROM MEMBER
+		<![CDATA[where 50<=m_age and m_age<60]]>
+	</select>
+	<select id="getmemberchart6" resultType="Integer">
+		SELECT COUNT(*) FROM MEMBER
+		<![CDATA[where 60<=m_age and m_age<70]]>
+	</select>
+	<select id="getmemberchart7" resultType="Integer">
+		SELECT COUNT(*) FROM MEMBER
+		<![CDATA[where 70<=m_age and m_age<80]]>
+	</select>
+	<select id="getmemberchart8" resultType="Integer">
+		SELECT COUNT(*) FROM MEMBER
+		<![CDATA[where 80<=m_age and m_age<90]]>
+	</select>
+	
+
 </mapper>

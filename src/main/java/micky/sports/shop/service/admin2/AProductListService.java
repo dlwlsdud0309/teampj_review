@@ -9,7 +9,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
-import micky.sports.shop.dao.Admin;
 import micky.sports.shop.dao.Admin2;
 import micky.sports.shop.dto.ProductDto;
 import micky.sports.shop.service.MickyServiceInter;
@@ -37,7 +36,8 @@ public class AProductListService implements MickyServiceInter{
 				(SearchVO)map.get("searchVO");
 		
 		Admin2 dao=sqlSession.getMapper(Admin2.class);
-
+		String price=request.getParameter("price");
+		String size=request.getParameter("size");
 		String strPage=request.getParameter("page");
 		if (strPage==null) {
 			strPage="1";
@@ -50,28 +50,13 @@ public class AProductListService implements MickyServiceInter{
 //		총 product list 갯수
 		String search=request.getParameter("q");
 		
-		int total=0;	
 		if (search==null || search.equals("상품명")) {
 			search="";
 		}
+		search=search.toUpperCase().replace(" ", "_");
 		model.addAttribute("search",search);
-		search=search.toUpperCase().replace(" ", "_");	
-		total=dao.selectAdminTotCount(search);			
+	
 		
-		searchVO.pageCalculate(total);
-		//출력확인
-//		System.out.println("합계~~~~"+total);
-//		System.out.println(page);
-//		System.out.println(searchVO.getPageStart());
-//		System.out.println(searchVO.getPageEnd());
-//		System.out.println(searchVO.getTotPage());
-//		System.out.println(searchVO.getRowStart());
-//		System.out.println(searchVO.getRowEnd());
-		
-		int rowStart=searchVO.getRowStart();
-		int rowEnd=searchVO.getRowEnd();
-		String price=request.getParameter("price");
-		String size=request.getParameter("size");
 		
 		int num=0;
 		//처음접속시 null
@@ -98,6 +83,24 @@ public class AProductListService implements MickyServiceInter{
 		System.out.println("받아오는 num : "+num);
 		System.out.println("price 가격순 : "+price);
 		System.out.println("size 크기별로 구분 : "+size);
+		int total=0;	
+//		사이즈를 선택하지 않았을떄
+		
+		total=dao.selectAdminTotCount(search,size);			
+//		사이즈를 선택헀을때		
+		
+		searchVO.pageCalculate(total);
+		//출력확인
+//		System.out.println("합계~~~~"+total);
+//		System.out.println(page);
+//		System.out.println(searchVO.getPageStart());
+//		System.out.println(searchVO.getPageEnd());
+//		System.out.println(searchVO.getTotPage());
+//		System.out.println(searchVO.getRowStart());
+//		System.out.println(searchVO.getRowEnd());
+		
+		int rowStart=searchVO.getRowStart();
+		int rowEnd=searchVO.getRowEnd();
 		ArrayList<ProductDto> plist=dao.plist(rowStart,rowEnd,search,size,num);		
 		
 		model.addAttribute("size",size);

@@ -2,25 +2,32 @@
 .returnolist{
 	text-decoration: none;
 	color: black; 
-	text-align: center;
+/* 	text-align: center; */
 }
 .returnolist:hover{
 	color: gray;
 	font-weight: bold;
 	text-decoration: underline;
 }
-.content_h1,.content_h3{
+ .content_h1,.content_h3{
+	text-align: center;
 	margin-top: -20;
-	margin-right: 50px;
+	margin-right: 40px;
 	padding: 52px;
+} 
+.content_h1{
+	
 }
 table{
 	width : 1200px;
 	text-align: center;
 	border-spacing: 0;
 	border-color: #bcbcbc;
+	
 }
-
 div.a{
-	text-align: center
+	text-align: center; 
+}
+input{
+	border-radius: 14px;
 }

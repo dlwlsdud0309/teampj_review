@@ -1,5 +1,7 @@
 package micky.sports.shop.service.member;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +12,7 @@ import org.springframework.ui.Model;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import micky.sports.shop.crypt.CryptoUtil;
 import micky.sports.shop.dao.Member;
 import micky.sports.shop.service.MickyServiceInter;
 
@@ -27,6 +30,8 @@ public class JoinService implements MickyServiceInter{
 		
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		
+		CryptoUtil crypt = (CryptoUtil) map.get("crypt");
 		
 		String attachPath="resources\\upload\\";
 	    String uploadPath=request.getSession().getServletContext().getRealPath("/");
@@ -56,12 +61,36 @@ public class JoinService implements MickyServiceInter{
 //		String m_filesrc = request.getParameter("m_filesrc");
 	    
 	    //String checkid_YESorNO = req.getParameter("checkid_YESorNO");
+	    String m_tel1 = req.getParameter("m_tel1");
+	    String m_tel2 = req.getParameter("m_tel2");
+	    String m_tel3 = req.getParameter("m_tel3");
+	    
+	    
 	    
 		String m_id = req.getParameter("m_id");
 		//System.out.println(m_id); //확인용
 		String m_pw = req.getParameter("m_pw");
+		String key="";
+		try {
+			key=CryptoUtil.sha512(m_pw);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		System.out.println("sha512방식 암호화 : "+key);
+		
+		String key2=key;
+		String encryStr = "";
+		try {
+			encryStr = CryptoUtil.encryptAES256(m_pw, key2);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		System.out.println("양방향암호화 : "+encryStr);
+		
+		
 		String m_name = req.getParameter("m_name"); 
-		String m_tel = req.getParameter("m_tel");
+		String m_tel = m_tel1+"-"+m_tel2+"-"+m_tel3;
+		System.out.println("전화번호확인 : "+m_tel);
 		String m_name2 = req.getParameter("m_name2");
 		
 		
@@ -78,12 +107,14 @@ public class JoinService implements MickyServiceInter{
 		String m_filesrc = req.getFilesystemName("m_filesrc");
 		System.out.println("확인좀하자@@@@@@@@@@@@@@@@@"+m_filesrc);
 		
+		
+		
 		if(m_filesrc==null) // 파일첨부안하면 null이라 오류떠서 null상황 배제를 위해 조건을 달아준다
 			m_filesrc="";
 		
 		Member dao = sqlSession.getMapper(Member.class);
 		
-		dao.join(m_id,m_pw,m_name,m_tel,m_name2,m_email,m_grade,m_age,m_gender,m_cash,m_filesrc);			
+		dao.join(m_id,m_pw,m_name,m_tel,m_name2,m_email,m_grade,m_age,m_gender,m_cash,m_filesrc,key,encryStr);			
 	}
 
 }

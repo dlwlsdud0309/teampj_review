@@ -45,31 +45,59 @@
 		</tr>
 	</thead>
 	<tbody>
-		<c:forEach items="${omdList }" var="mlist">
-		<tr>
-			<td><fmt:formatDate value="${mlist.om_date }" pattern="yyyy.MM.dd" /></td>
-			<td>${mlist.om_num }</td>
-			<td><img src="../resources/img/productimg/${mlist.productDto.p_filesrc }.jpg" width="50" alt="상품사진" /></td>
-			<td>
-				${mlist.productDto.p_name } <br />
-				${mlist.productDto.p_color } <br />
-				${mlist.productDto.p_size }
-			</td>
-			<td>${mlist.u_cnt }</td>
-			<td>${mlist.p_price }</td>
-			<td>${mlist.om_state }</td>
-			<td>
-				<c:if test="${mlist.om_cancle eq 'N' }">
-					<button type="button" onclick="myOrderCancel('${mlist.om_cntnum }')">결제취소</button>
-					<button type="button" onclick="location.href='../review/reviewMylistview'">리뷰쓰기</button>
-				</c:if>
-				<c:if test="${mlist.om_cancle eq 'Y' }">
-					취소요청 사유 <br />
-					${mlist.c_reason }
-				</c:if>
-			</td>
-		</tr>
-		</c:forEach>
+				<c:choose>
+		<c:when test="${totRowcnt eq '0' }">
+			<tr>
+				<td colspan="8">
+					<c:out value="주문내역이없습니다"></c:out>
+				</td>
+			</tr>
+		</c:when>
+		<c:otherwise>
+			<c:forEach items="${omdList }" var="mlist">
+				<tr>
+					<td><fmt:formatDate value="${mlist.om_date }" pattern="yyyy.MM.dd"/></td>
+					<td>${mlist.om_num }</td>
+					<td><img src="../resources/img/productimg/${mlist.productDto.p_filesrc }.jpg" width="50" alt="상품사진" /></td>
+					<td>
+						${mlist.productDto.p_name } <br />
+						${mlist.productDto.p_color } <br />
+						${mlist.productDto.p_size }
+					</td>
+					<td>${mlist.u_cnt }</td>
+					<td>${mlist.p_price }</td>
+					<td>${mlist.om_state }</td>
+					<td>
+					<c:choose>
+						<c:when test="${mlist.om_cancle eq 'N' && mlist.om_state eq '결제완료'}">
+							<button type="button" onclick="myOrder_btn('myOrderCancel','${mlist.om_cntnum}')">결제취소</button>
+						</c:when>
+						<c:when test="${mlist.om_state eq '주문확정' || mlist.om_state eq '배송중'}">
+							<button type="button" onclick="deliveryCheck('${mlist.om_cntnum}');">배송조회</button>
+						</c:when>
+						<c:when test="${mlist.om_cancle eq 'Y'}">
+							취소요청 사유 <br />
+							${mlist.c_reason}
+						</c:when>
+						<c:when test="${mlist.om_state eq '배송완료' && mlist.om_delcancle eq 'N'}">
+							<button type="button" onclick="myOrder_btn('myDelivCancel','${mlist.om_cntnum}')">반품요청</button> <br />
+							<button type="button" onclick="myOrder_btn('myOrderConfirm','${mlist.om_cntnum}')">구매확정</button>
+						</c:when>
+						<c:when test="${mlist.om_state eq '구매확정'}">
+							<button type="button" onclick="location.href='../review/reviewMylistview'">리뷰쓰기</button>
+						</c:when>
+						<c:when test="${mlist.om_state eq '반품완료'}">
+							<p>감사합니다.</p>
+						</c:when>
+						<c:otherwise>
+							<p>처리중입니다.</p>
+						</c:otherwise>
+					</c:choose>
+					</td>
+				</tr>
+			</c:forEach>
+		</c:otherwise>
+		</c:choose>
 	</tbody>
 </table>
 </form>
@@ -101,8 +129,7 @@ totCnt : ${totRowcnt } <br />
 </c:if>
 
 <script>
-function myOrderCancel(omcntnum){
-	/* alert(omnum); */
+function myOrder_btn(type,omcntnum){
 	var form = document.createElement('form'); // 폼객체 생성
 	var objs;
 	objs = document.createElement('input'); // 값이 들어있는 형식
@@ -111,9 +138,16 @@ function myOrderCancel(omcntnum){
 	objs.setAttribute('value', omcntnum); //객체값
 	form.appendChild(objs);
 	form.setAttribute('method', 'post'); //get,post 가능
-	form.setAttribute('action', "../order/myOrderCancel"); //보내는 url
+	form.setAttribute('action', "../order/"+type); //보내는 url
 	document.body.appendChild(form);
 	form.submit();
+}
+</script>
+<script>
+function deliveryCheck(omcntnum){
+	var win = window.open("", "Delivery", "width=500,height=600");
+	win.focus();
+	win.document.body.innerHTML = `<p>배송작업확인중</p>`;
 }
 </script>
 </body>

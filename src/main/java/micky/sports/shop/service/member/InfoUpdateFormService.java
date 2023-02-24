@@ -35,8 +35,13 @@ public class InfoUpdateFormService implements MickyServiceInter{
 		Member dao = sqlSession.getMapper(Member.class);
 		
 		MemberDto dto = dao.memberupdateform(m_id);
+		String m_email = dto.getM_email();
+		String email = m_email.substring(m_email.indexOf("@"),m_email.length());
+		System.out.println("결과롸고가과고가고가과 : "+email);
 		
+		dto.getM_email();
 		model.addAttribute("infoupdateform",dto);
+		model.addAttribute("m_email2",email);
 	}
 
 }

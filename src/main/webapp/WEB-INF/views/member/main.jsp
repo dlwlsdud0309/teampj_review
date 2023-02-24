@@ -15,19 +15,31 @@
 function logout(){
 	$.ajax({
 		type:'GET',
-		url:'/shop/member/logout',
+		url:'../member/logout',
 		success:function(result){
 			alert("로그아웃했습니다")
 			location.reload();
-			window.location.href="/shop/member/main"
+			window.location.href="../member/main"
 		}
 	})
+}
+function mypage(){
+	var loginid = '<%=session.getAttribute("loginid")%>';
+	alert("로그인아이디확인용 : "+loginid)
+	
+	if(loginid==null){
+		alert("로그인이필요한서비스입니다")
+		window.location.href="../member/loginform"
+	}else{
+		window.location.href="../member/mypageform"
+	}
 }
 </script>
 <h3>main.jsp</h3>
 <h1>메인화면</h1>
 <%if(session.getAttribute("loginid")==null){ //로그인이 실패하면
 %>
+<font color="blue">비회원</font>님반가워요<br />
 <input type="button" value="로그인화면" onclick="location.href='loginform'" /> <br />
 <%
 }else { //로그인이 성공하면 
@@ -39,11 +51,12 @@ function logout(){
 <font color="blue"><%=session.getAttribute("loginid") %></font>
 님 반가워요
 <input type="button" value="로그아웃" onclick="logout()" /> <br />
-<input type="button" value="마이페이지" onclick="location.href='mypageform'" /><br />
+<!-- <input type="button" value="마이페이지" onclick="location.href='mypageform'" /><br /> -->
+<input type="button" value="마이페이지" onclick="mypage()" /><br />
 <% 
-if(loginid.equals("admintest")){ //로그인아이디가 admintest라면 관리자페이지button이 보임
+if(loginid.equals("admintest")||loginid.equals("admintest2")){ //로그인아이디가 admintest라면 관리자페이지button이 보임
 %>
-<input type="button" value="관리자페이지" onclick="location.href='adminpage'"/>	<br />
+<input type="button" value="관리자페이지" onclick="location.href='../qnamember/adminpage'"/>	<br />
 <%
 }
 %>
@@ -52,10 +65,14 @@ if(loginid.equals("admintest")){ //로그인아이디가 admintest라면 관리�
 %>
 
 <!-- 값 확인용 -->
-로그인중인 아이디 : <%=session.getAttribute("loginid") %>
+로그인중인 아이디 확인용 : <%=session.getAttribute("loginid") %>
 
 
 <hr />
+
+<a href="../product/productChart">productChart</a> <br />
 <a href="../product/productList">productlist</a>  <br />
+<a href="../Cart/Cartlist">cart</a>
+
 </body>
 </html>

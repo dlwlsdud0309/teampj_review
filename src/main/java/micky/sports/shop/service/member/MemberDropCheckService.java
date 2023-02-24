@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
+import micky.sports.shop.crypt.CryptoUtil;
 import micky.sports.shop.dao.Member;
 import micky.sports.shop.dto.MemberDto;
 import micky.sports.shop.service.MickyServiceInter;
@@ -32,6 +33,7 @@ public class MemberDropCheckService implements MickyServiceInter{
 		
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		CryptoUtil crypt = (CryptoUtil) map.get("crypt");
 		
 		String m_id = (String)session.getAttribute("loginid");
 		String m_pw = request.getParameter("m_pw"); 
@@ -39,22 +41,44 @@ public class MemberDropCheckService implements MickyServiceInter{
 		
 		Member dao = sqlSession.getMapper(Member.class);
 		
-		memberdropcheck = dao.memberdropcheck(m_id,m_pw);
 		
-		if(memberdropcheck==1) { //본인인증완료
-			System.out.println("본인인증완료"); //확인용
-//			session = request.getSession();
-//			session.setAttribute("loginid", m_id); //세션에 아이디등록
-//			System.out.println("세션등록아이디 확인 : "+session.getAttribute("loginid")); //확인용
-		}else if(memberdropcheck==0) { //본인인증실패
-			System.out.println("본인인증실패");
+			MemberDto dto = dao.getsharsa(m_id);
+			String sha = dto.getSha();
+			String rsa = dto.getRsa();
+
+			if(dto!=null) {
+				System.out.println("확인용 : "+sha+rsa);
+				
+				String decryptStr = "";
+				
 			
-		}else { //오류
-			System.out.println("오류");
+				System.out.println("============================ ");
+					try {
+						decryptStr=CryptoUtil.decryptAES256(rsa,sha );
+						System.out.println("복호화된 데이터 : "+decryptStr);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+						System.out.println("복호화된 데이터실패 : ");
+					} 
+					System.out.println("============================ ");
+					
+					//복호화 처리할때는 암호화에썻던 key2값 써야됨
+					
+
+				if(m_pw.equals(decryptStr)) { 
+					System.out.println("본인인증완료"); 
+					System.out.println("세션등록아이디 확인 : "+session.getAttribute("loginid")); //확인용
+					memberdropcheck = 1;
+				}else{ //로그인실패일때
+					System.out.println("본인인증실패");
+					memberdropcheck = 0;
+				}
+				model.addAttribute("memberdropcheck",memberdropcheck); //로그인확인결과
+			}
+			
 		}
-		//loginid = (String)session.getAttribute("loginid");
-		//model.addAttribute("loginid",loginid);
-		model.addAttribute("memberdropcheck",memberdropcheck); //로그인확인결과
+
 	}
 
-}
+

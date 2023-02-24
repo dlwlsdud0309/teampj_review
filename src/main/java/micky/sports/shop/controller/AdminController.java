@@ -10,23 +10,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import micky.sports.shop.service.MickyServiceInter;
+import micky.sports.shop.service.admin.ABuyConfirmModifyService;
 import micky.sports.shop.service.admin.ACancleModifyService;
 import micky.sports.shop.service.admin.AContentViewService;
+import micky.sports.shop.service.admin.ADelCompleteModifyService;
+import micky.sports.shop.service.admin.AOrderConfirmModifyService;
 import micky.sports.shop.service.admin.AOrderListService;
+import micky.sports.shop.service.admin.ARefundCompleteModifyService;
 import micky.sports.shop.service.admin.ASearchListService;
+import micky.sports.shop.service.admin.ASendMessageService;
+import micky.sports.shop.service.admin.MickyAMessageServiceInter;
 import micky.sports.shop.vopage.SearchVO;
 
 
 @Controller
 public class AdminController {
 	MickyServiceInter mickyServiceInter;
+	MickyAMessageServiceInter mickyamsessageServiceInter;//cancle sms 발송
 	
 	@Autowired
 	private SqlSession sqlSession;
 	
 	//관리자 주문관리 현황 리스트
 	 @RequestMapping("/admin_olist") //url 주소줄 
-	 public String olist(HttpServletRequest request,SearchVO searchVO,Model model) { 
+	 public String olist(HttpServletRequest request, SearchVO searchVO, Model model) { 
 		 System.out.println(">>>>>>>>>olist<<<<<<<<<<");
 		 
 		 //DB 
@@ -80,18 +87,44 @@ public class AdminController {
 	 @RequestMapping(method = RequestMethod.POST, value = "/modify") 
 	 public String amodify(HttpServletRequest request, Model model) {
 		 System.out.println(">>>>>>>>>amodify<<<<<<<<<<");
+		 //acontentview
 		 request.getParameter("om_state");
-		 //DB 
-		 model.addAttribute("request",request);
 		 
+		 //sms
+		 request.getParameter("m_id");
+		 
+		 //DB cancle
+		 model.addAttribute("request",request);
 		 //확인--null
 		 System.out.println(request.getParameter("inputValue"));
 		 
-		 mickyServiceInter=new ACancleModifyService(sqlSession);
-		 mickyServiceInter.execute(model);	
+		 //acountview select option : view단 select option 선택 값
+		 String option=request.getParameter("om_state");
+		 //view단 select option 선택값 확인
+//		 System.out.println("om_state : "+option);
 		 
+		 if(option.equals("주문취소")) {
+			 mickyServiceInter=new ACancleModifyService(sqlSession);//결제완료 → 주문취소
+			 mickyServiceInter.execute(model);
+			 //cancle sms
+			 mickyamsessageServiceInter=new ASendMessageService(sqlSession);
+			 mickyamsessageServiceInter.execute(model);
+		 }else if(option.equals("주문확정")) {
+			 mickyServiceInter=new AOrderConfirmModifyService(sqlSession);//결제완료 → 주문확정
+			 mickyServiceInter.execute(model);
+		 }else if(option.equals("배송완료")) {
+			 mickyServiceInter=new ADelCompleteModifyService(sqlSession);//결제완료 → 배송완료
+			 mickyServiceInter.execute(model);
+		 }else if(option.equals("반품완료")) {
+			 mickyServiceInter=new ARefundCompleteModifyService(sqlSession);//결제완료 → 반품완료
+			 mickyServiceInter.execute(model);
+		 }else if(option.equals("구매확정")) {
+			 mickyServiceInter=new ABuyConfirmModifyService(sqlSession);//결제완료 → 구매확정
+			 mickyServiceInter.execute(model);
+		 }
+		 		 		
 		 return "redirect:admin_olist"; 
-	} 
 		 
+	} 
 		
 }

@@ -1,7 +1,5 @@
 package micky.sports.shop.dto;
 
-import java.util.Date;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,16 +19,15 @@ public class MemberDto {
 	private String m_gender; //성별
 	private int m_cash; //캐시(현금)
 	private String m_filesrc; //첨부파일(회원의프로필이미지)
-	private String sha;
-	private String psa;
-	private Date date;
+	private String sha; //단방향암호화
+	private String rsa; //양방향암호화
 	
 	public MemberDto() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public MemberDto(String m_id, String m_pw, String m_name, String m_tel, String m_name2, String m_email, String m_grade,
-			int m_age, String m_gender, int m_cash, String m_filesrc) {
+			int m_age, String m_gender, int m_cash, String m_filesrc, String sha, String rsa) {
 		super();
 		this.m_id = m_id;
 		this.m_pw = m_pw;
@@ -43,6 +40,8 @@ public class MemberDto {
 		this.m_gender = m_gender;
 		this.m_cash = m_cash;
 		this.m_filesrc = m_filesrc;
+		this.sha = sha;
+		this.rsa = rsa;
 	}
 	
 	

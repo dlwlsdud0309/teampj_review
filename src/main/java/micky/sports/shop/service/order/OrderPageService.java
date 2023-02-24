@@ -29,21 +29,29 @@ public class OrderPageService implements MickyServiceInter {
 		//로그인 세션
 		httpsession = request.getSession();
 		String loginId = (String)httpsession.getAttribute("loginid");
-		System.out.println("*********~~~~~~~~~~~~~~~~~"+loginId);
 
-		String[] no=request.getParameterValues("choice_pno"); 
-		String[] cnt=request.getParameterValues("choice_cnt"); 
+		String[] no=request.getParameterValues("p_no"); 
+		String[] cnt=request.getParameterValues("u_cnt"); 
 		OrderDao odao = sqlSession.getMapper(OrderDao.class);
 		
 		ArrayList<ProductDto> orderPSelect =new ArrayList<ProductDto>();
 		ArrayList<Integer> cnts=new ArrayList<Integer>();
+		
+		int selectPrdPrice=0;
+		int totPrices=0;
+		
 		for (int i = 0; i < no.length; i++) {
-			orderPSelect.addAll(odao.orderSelect(no[i]));
+			orderPSelect.add(odao.orderSelect(no[i]));
 			cnts.add(Integer.parseInt(cnt[i]));
+			//선택상품의 가격
+			selectPrdPrice=odao.orderSelect(no[i]).getP_price();
+			totPrices=totPrices+selectPrdPrice*(Integer.parseInt(cnt[i]));
 		}
-		model.addAttribute("orderPSelectList",orderPSelect);
-		model.addAttribute("cnt",cnts);
-		System.out.println("*********?"+loginId);
+		
+		httpsession.setAttribute("orderPSelectList",orderPSelect);
+		httpsession.setAttribute("cnt",cnts);
+		httpsession.setAttribute("totPrices",totPrices);
+		
 		//주문페이지에서 회원 정보확인
 		model.addAttribute("ordersMember",odao.ordersMember(loginId));		
 	}

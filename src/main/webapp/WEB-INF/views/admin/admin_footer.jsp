@@ -10,16 +10,17 @@
  foorter{
 	height: 200px;
 	margin-top: 30px;
-	background-color: #2c2a29;
+	background-color: #CCCCCC;  /* #2c2a29 */
 	border: solid 1px black;
 	position: absolute;
 } 
-#footer_box{
+ #footer_box{
+	background-color: #CCCCCC;
 	height:200px;
 	margin: 0 auto;
-	background-color: #2c2a29;
-	border: solid 1px black; 	
-}
+	padding-top: -50px;
+	/* border: solid 1px black; */ 	
+} 
 #footer_logo{
 	float: left;
 	margin: 30px 5px 30px 50px;
@@ -30,7 +31,7 @@
 	float: right;
 	margin: 30px 50px 0 5px;
 /* 	border: solid 1px black; */
-	color: white;
+	color: black;
 }
 .homelink{
 	text-decoration: none;
@@ -52,7 +53,7 @@
 			<span> 매장고객 및 A/S문의: 1111-0000</span>
 			<p>Copyright © Micky Sports Wear 2023 All Rights Reserved.</p>
 		</div>
-	</div>
+ 	</div> 
 </footer>
 </body>
 </html>

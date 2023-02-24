@@ -3,7 +3,7 @@
     "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="micky.sports.shop.dao.ProductDao">
     <select id="productlist" resultType="micky.sports.shop.dto.ProductDto">
-		SELECT P_NAME,MIN(P_FILESRC) P_FILESRC FROM PRODUCT GROUP BY P_NAME
+		SELECT P_NAME,MIN(P_FILESRC) P_FILESRC,P_PRICE FROM PRODUCT GROUP BY P_NAME,P_PRICE
     </select>
 
 	<select id="productMain" resultType="micky.sports.shop.dto.ProductDto">
@@ -25,5 +25,16 @@
     <update id="delpayment">
     	UPDATE PRODUCT SET P_CNT=P_CNT-#{param2} WHERE P_NO=#{param1}
     </update>
+    
+    <!-- 상품목록 차트 -->
+	<select id="productChart" resultType="micky.sports.shop.dto.ProductDto">
+		SELECT 판매량,P_COLOR,P_NAME,P_FILESRC,P_PRICE FROM (
+		SELECT ROWNUM NUM, BESTSELL.* FROM
+		(SELECT SUM(OM.U_CNT) 판매량,P.P_COLOR,P.P_NAME,P.P_FILESRC,P.P_PRICE
+		FROM ORDER_MEMBER OM, PRODUCT P
+		WHERE OM.P_NO=P.P_NO
+		GROUP BY P.P_COLOR,P.P_NAME,P.P_FILESRC,P.P_PRICE ORDER BY 판매량 DESC) BESTSELL)
+		WHERE ROWNUM BETWEEN 1 AND 5
+    </select>
     
 </mapper>

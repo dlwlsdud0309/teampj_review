@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import micky.sports.shop.service.MickyServiceInter;
+import micky.sports.shop.service.product.ProductDetail_ReviewService;
 import micky.sports.shop.service.review.ReviewAdminpageService;
 import micky.sports.shop.service.review.ReviewDeleteService;
 import micky.sports.shop.service.review.ReviewMylistviewService;
@@ -40,10 +41,12 @@ public class ReviewController {
 		System.out.println("=====reviewBoard====");
 		
 		model.addAttribute("request", request);
-		mickyServiceInter=new ReviewService(sqlSession,httpSession);
+		//mickyServiceInter=new ReviewService(sqlSession,httpSession);
+		mickyServiceInter=new ProductDetail_ReviewService(sqlSession,httpSession);
 		mickyServiceInter.execute(model);
 		
-		return "review/reviewBoard";
+		//return "review/reviewBoard";
+		return "product/productDetail";
 	}	
 	
 //	마이페이지-카테고리 리뷰로 접근

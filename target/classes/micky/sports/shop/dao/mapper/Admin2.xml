@@ -31,10 +31,22 @@
 		WHERE
 		    NUM BETWEEN #{param1} AND #{param2}	    
 	</select>
+<!-- 	<sql id="includesize"> -->
+<!-- 		<choose> -->
+<!-- 		    <when test="param3==0"> -->
+<!-- 		    	AND P_SIZE=#{param2} -->
+<!-- 		    </when> -->
+<!-- 		    <when test="param3==1"> -->
+<!-- 		    #{param2}   -->
+<!-- 		    </when> -->
+<!-- 		    <otherwise> -->
+<!-- 		    </otherwise> -->
+<!-- 		</choose>			 -->
+<!-- 	</sql> -->
 	
 	<!-- admin_olist page -->
 	<select id="selectAdminTotCount" resultType="Integer">
-		SELECT COUNT(*) FROM PRODUCT WHERE P_NAME LIKE '%'||#{param1}||'%'
+		SELECT COUNT(*) FROM PRODUCT WHERE P_NAME LIKE '%'||#{param1}||'%' AND P_SIZE LIKE '%'||#{param2}||'%' 
 	</select>
 	<!-- 선택한 체크박스 삭제  -->
 	<delete id="Checkdelete">
@@ -45,7 +57,11 @@
 		INSERT INTO PRODUCT VALUES('N'||PNO_SEQ.NEXTVAL,#{param1},#{param2},
 			#{param3},#{param4},#{param5},#{param6},sysdate,#{param7},#{param8})
 	</insert>
-	
+	<!-- 상품 업데이트 -->
+	<update id="aProductUpdate">
+		UPDATE PRODUCT SET P_NAME=#{param1} , P_PRICE=#{param2} , P_CNT=#{param3} 
+		WHERE P_NO=#{param4}
+	</update>
 	
 	
 	

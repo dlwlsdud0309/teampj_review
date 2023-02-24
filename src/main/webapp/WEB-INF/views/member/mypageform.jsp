@@ -6,15 +6,28 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> <!-- 3.x.x 버전 - 가장 최신 버전, 아작스를 지원 -->
 </head>
 <body>
+<script>
+var loginid2 = <%=session.getAttribute("loginid")%>;
+$(document).ready(function(){
+	alert(loginid2)
+	if(loginid2==null){
+		alert("로그인이필요한서비스입니다")
+		window.location.href="../member/loginform"
+	}
+})
+
+</script>
 <h3>mypageform.jsp</h3>
 <h1>마이페이지</h1>
 
 현재로그인된아이디 확인용: <%=session.getAttribute("loginid") %> <br /> <!-- 로그인아이디 확인용 -->
-<%if(!loginid.equals("admintest")){ %>
-<input type="button" value="문의페이지" onclick="location.href='qnalist'" />
-<input type="button" value="내정보수정" onclick="location.href='infoupdateform'" />
+<%if(session.getAttribute("loginid")!="admintest" || session.getAttribute("loginid")==null){ %>
+<input type="button" value="문의페이지" onclick="location.href='../qnamember/qnalist'" />
+<!-- <input type="button" value="내정보수정" onclick="location.href='infoupdateform'" /> -->
+<input type="button" value="내정보수정" onclick="window.open('membercheckform','','width=500,height=500')" />
 <input type="button" value="회원탈퇴" onclick="window.open('memberdropcheckform','','width=500,height=500')" />
 <%
 }

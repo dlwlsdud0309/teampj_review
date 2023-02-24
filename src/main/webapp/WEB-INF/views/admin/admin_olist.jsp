@@ -9,63 +9,36 @@
 <title>Insert title here</title>
 <!-- css 링크 -->
 <link rel="stylesheet" href="resources/css/admin_oliststyle.css" />
- <style>
- .page{
-	 text-decoration: none;
-	 color: black;
- }
- .page:hover{
- 	color: gray;
-    font-weight: bold;
- }
- .om_cntnum{
-	 color: black;
-	 text-decoration: none;
- }
- .om_cntnum:hover{
- 	color: gray;
- 	font-weight: bold;
-
- }
-
- </style>
+<style>
+</style>
 
 <!-- header section -->
 <%@include file="admin_header.jsp" %>
 
 </head>
 
-<body onload="alerttest();">
+<body>
 
-<script>
-function alerttest(){
-	var test = document.getElementById('${dto.p_no }').value;
-	alert(test);
-}
-</script>
 <%-- <aside>
 <%@include file="admin_sidebar.jsp" %>
 </aside> --%>
 
-<div class="jumbotron text-center">
-	<h1 class="line-h1" align="center" 
->
-	주문관리 현황 리스트</h1>
-</div>
-<br /><br />
-
+<!-- <div class="jumbotron text-center">
+	<h1 class="line-h1" align="center">주문관리 현황 리스트</h1>
+</div> -->
+<h1 class="line-h1" align="center">주문관리 현황 리스트</h1>
 
 <!-- 주문취소 목록 검색 기능 : 시작날짜~종료날짜+취소요청Y 기준 -->
 <form action="search_olist" method="post">
-	<div class="container1" align="center">
+	<div class="search1" align="center">
 		<label>
 			검색시작일 : 
 			<input type="date" name="som_cdate" required pattern="\d{4}-\d{2}-\d{2}" value="som_cdate" />
 		</label>
-		<label>&nbsp;
+		<label>&nbsp;&nbsp;
 			검색종료일 : 
  		<input type="date" name="eom_cdate" required pattern="\d{4}-\d{2}-\d{2}" value="eom_cdate" />
-		</label>&nbsp;&nbsp;
+		</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	        <label>주문취소요청여부</label>
 	    	<input type="text" name="om_cancle" value="${resk }" placeholder="검색어를 입력해주세요"/> 
 		    <input type="submit" value="조회"/>		
@@ -76,26 +49,28 @@ function alerttest(){
 
 <div class="container2" align="center">
 	<table border="1" >
-		<tr style="vertical-align: middle;" >
-			<th class="th1" width="10%">상품주문번호</th>
-			<th class="th1" width="13%">주문번호</th>
-			<th class="th1" width="8%">상품번호</th>
+		<tr style="vertical-align: middle; height: 80px;" >
+			<th class="th1" width="9%">상품주문번호</th>
+			<th class="th1" width="10%">주문번호</th>
+			<th class="th1" width="5%">상품번호</th>
 			<th class="th1" width="6%">주문수량</th>			
 			<th class="th1" width="6%">아이디</th>
-			<th class="th1" width="10%">주문일자</th>
-			<th class="th1" width="8%">결제형태</th>
-			<th class="th1" width="10%">총액</th>
-			<th class="th1" width="10%">처리상태</th>
-			<th class="th1" width="6%">주문취소요청여부</th>
-			<th class="th1" width="10%">주문취소일자</th>
+			<th class="th1" width="8%">주문일자</th>
+			<th class="th1" width="5%">결제형태</th>
+			<th class="th1" width="8%">총액</th>
+			<th class="th1" width="6%">처리상태</th>
+			<th class="th1" width="8%">주문취소요청여부</th>
+			<th class="th1" width="8%">주문취소일자</th>
+<!-- 			<th class="th1" width="8%">배송일자</th> -->
+			<th class="th1" width="7%">반품요청여부</th>
 		</tr>
 		
 		<c:forEach items="${olist }" var="dto">
-		<tr style="text-align: center;">
+		<tr style="text-align: center;" height="50px;">
 <!-- 상품주문번호 -->       <td><a href="admin_contentview?om_cntnum=${dto.om_cntnum}" class="om_cntnum">
 									${dto.om_cntnum }</a></td> 
 <!-- 주문번호 -->		    <td>${dto.om_num }</td>
-<!-- 상품번호 -->			<td id="${dto.p_no }" onclick="alerttest();">${dto.p_no }</td>
+<!-- 상품번호 -->			<td>${dto.p_no }</td>
 <!-- 주문수량 -->			<td>${dto.u_cnt }</td>			
 <!-- 아이디 -->			<td>${dto.m_id }</td>
 <!-- 주문일자 -->			<td><fmt:formatDate value="${dto.om_date }" pattern="yyyy-MM-dd"/></td>
@@ -104,6 +79,8 @@ function alerttest(){
 <!-- 처리상태 -->			<td>${dto.om_state }</td>
 <!-- 주문취소요청여부 -->		<td>${dto.om_cancle }</td>
 <!-- 주문취소일자 -->		<td><fmt:formatDate value="${dto.om_cdate }" pattern="yyyy-MM-dd"/></td>
+<%-- <!-- 배송일자 -->			<td><fmt:formatDate value="#" pattern="yyyy-MM-dd"/></td> --%>
+<!-- 반품요청여부 -->		<td>${dto.om_delcancle }</td>
 		</tr>
 		</c:forEach>	
 	</table>
@@ -140,11 +117,5 @@ function alerttest(){
 <footer>
 <%@ include file="admin_footer.jsp"%>
 </footer>
-
-<%-- <a href="/shop_backup/review/reviewBoard">reviewBoard</a>
-<c:set var="p_no" value="${p_no }" scope="application"/> <br />
-p_no : <c:out value="${p_no }"/> <br />
-om_cancle : <c:out value="${param.om_cancle }"/>
-<c:set var="om_cancle" value="${param.om_cancle }" scope="application"/> <br /> <br /> --%>
 </body>
 </html>

@@ -1,0 +1,108 @@
+@charset "UTF-8";
+header{
+background-color: #CCCCCC;
+height: 200px;
+/* position: fixed; */ width: 100%;
+}
+
+/* home | logout| My adminpage */
+.top_ul{
+list-style-type: none;
+font-family: 'Noto Sans KR', sans-serif;
+float: right; 			/* top메뉴 우측정렬 */
+margin: 30px 30px 5px 0px;  /* [위] [오른쪽] [아래] [왼쪽] */
+border: 1px solid black;
+}
+.top_ul li {
+	display: inline; 	/* ※float Χ */
+	font-size: 15px;
+	border-left: 1px solid black;
+	padding: 0px 10px 0px 10px; 
+	margin: 10px 0px 5px 0px; /* [위] [오른쪽] [아래] [왼쪽] */
+}
+/* home 영역 좌측 테두리만 제거 */
+.top_ul li:first-child{
+ border-left: none; 	
+}
+
+.top_ul li a{
+	text-decoration: none;
+	color: black;
+}
+.top_ul li a:hover{
+	text-decoration: underline;
+	color: black; font-weight: bold;
+}
+
+/* home | logout| My adminpage icon */
+.home{
+width: 20px;
+height: 15px;
+
+}
+.logout{
+width: 20px;
+height: 15px;
+
+}
+.my{
+width: 20px;
+height: 18px;
+
+}
+
+
+
+
+
+/* h1+logo */
+.header-wrap1{
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: space-between;
+	padding: 10px 90px 10px 80px;  /* [위] [오른쪽] [아래] [왼쪽] */
+	border: 1px solid black;
+}
+/* admin home h1*/
+.header-h1{  
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 50px;
+	text-align: center;	
+	border: 1px solid black;
+	margin-right: 600px;
+	padding: 20px 0px 0px 5px;
+	
+}
+/* micky logo 이미지 파일 */
+.head-logo{
+	border: 1px solid black;
+	margin-bottom: 10px;
+}
+
+
+/* 회원관리 상품관리 주문관리 chart */
+.main_ul{
+	list-style-type: none;
+	font-family: 'Noto Sans KR', sans-serif;
+	float: right;
+	margin: 0px 100px 5px 0px; /* [위] [오른쪽] [아래] [왼쪽] */
+	border: 1px black solid;
+}
+.main_ul li{
+	display: inline;
+	font-size: 20px;
+	padding: 0px 60px 0px 60px; 
+}
+.main_ul li a{
+	text-decoration: none;
+	color: black;
+}
+.main_ul li:hover{
+	text-decoration: underline;
+	background-color: white;
+	color: black; font-weight: bold;
+}
+
+
+
+

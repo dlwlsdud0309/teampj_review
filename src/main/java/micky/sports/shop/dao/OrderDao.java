@@ -10,7 +10,7 @@ public interface OrderDao {
 	public void payment(String mId,String pNo,int cCnt);
 	
 	//주문페이지 정보보기
-	public ArrayList<ProductDto> orderSelect(String pno);
+	public ProductDto orderSelect(String pno);
 
 	//나의 주문내역에서 주문목록 확인
 	public ArrayList<OrderMemberDto> mtOrderList(String mIdd,int rowStart,int rowEnd);
@@ -32,6 +32,15 @@ public interface OrderDao {
 	
 	//취소사유 적은후 취소요청하기 
 	public void myOCancelOffersubmit(String calcleOfferomcntnum,String myOrderCancelReason);
+	
+	//배송관련 최근주문번호확인
+	public OrderMemberDto checkOmCntnum(String mId);
+	//배송
+	public void delivery(String omCntnum,String mId,String receipt_name,String receipt_phone,String addr1,String addr2,String addr3);
 
+	//구매확정
+	public void myOrderConfirm(String omnum);
+	//반품요청
+	public void myDelivCancelOffer(String omnum);
 	
 }

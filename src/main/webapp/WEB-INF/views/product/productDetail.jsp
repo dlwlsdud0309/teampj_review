@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Nanum+Gothic&family=Noto+Sans+KR:wght@900&family=UnifrakturCook&display=swap" rel="stylesheet">
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +14,7 @@
 <title>Insert title here</title>
 <script src="../resources/js/jquery-3.6.1.min.js"></script>
 <script src="../resources/js/jquery.bpopup.min.js"></script>
+<link rel="stylesheet" href="../resources/css/pdetailstyle.css?after" />
 </head>
 <body>
 <c:if test="${empty sessionScope.loginid }">
@@ -23,42 +30,63 @@
 
 <h3>상품</h3>
 
-<div>
-	<c:forEach items="${productMain }" var="pm">
-		<div>
-			<input type="hidden" name="pname" value="${pm.p_name }" /> 
-			<input type="hidden" name="pfilesrc" value="${pm.p_filesrc }" /> 
-			<a href="productDetail?pname=${pm.p_name }&pfilesrc=${pm.p_filesrc }">
-			<img src="../resources/img/productimg/${pm.p_filesrc }.jpg" width="50" class="product_img" alt="" />
-			</a>
-			<input type="hidden" name="pcolor" value="${pm.p_color }" />
-		</div>
+<div class="pdt">
+	<c:forEach items="${product}" var="p" varStatus="status" begin="0" end="0">
+	<div class="main-img">
+		<img src="../resources/img/productimg/${p.p_filesrc}.jpg" alt="상품사진" />
+	</div>
 	</c:forEach>
-
-</div>
 	
-
-<div>
-	<div>
-		<c:forEach items="${product }" var="p" begin="1" end="1">
-			<span>색상</span>
-			<span>${p.p_color }</span>
+	<div class="pdtdetailleft">
+		<c:forEach items="${product}" var="p" varStatus="status" begin="0" end="0">
+			<div class="main-name">
+				<span>${p.p_name}</span>
+				<span>${p.p_color}</span>
+			</div>
 		</c:forEach>
-	</div>
-	<div>
-	<p>사이즈</p>
-		<c:forEach items="${product }" var="p">
-		<div class="productSelect">
-			<c:if test="${p.p_cnt eq 0 }">
-				${p.p_size } <span style="font-size:12pt; font-family:맑은 고딕;">품절</span>
-			</c:if>
-			<c:if test="${p.p_cnt > 0 }">
-				<input type="radio" class="sizeNo" name="sizeNo" value="${p.p_no }" onclick="sizeNo('${p.p_no }','${p.p_color }','${p.p_size }',${p.p_cnt });" />${p.p_size }
-			</c:if>
+		<div class="pdtthumbnail">
+			<c:forEach items="${productMain}" var="pm">
+				<div class="pdtimgs">
+					<input type="hidden" name="pname" value="${pm.p_name}" />
+					<input type="hidden" name="pfilesrc" value="${pm.p_filesrc}" /> 
+				<!-- 상품사진을 누를때마다 새로운 값을 보내서 아랫단의 ${product } 값을 지정하게됨 -->
+					<a href="../product/productDetail?pname=${pm.p_name}&pfilesrc=${pm.p_filesrc}">
+					<img src="../resources/img/productimg/${pm.p_filesrc}.jpg" width="150" class="product_img" alt="" />
+					</a>
+					<input type="hidden" name="pcolor" value="${pm.p_color}" />
+				</div>		
+			</c:forEach>
 		</div>
-		</c:forEach>
+		
+		<br /> <br />
+		<div class="productDetail">
+			<c:forEach items="${product}" var="p" begin="0" end="0">
+			
+				<span><fmt:formatNumber value="${p.p_price}" pattern="###,###"/>원</span>
+			
+			</c:forEach>
+			<div class="pdtsize">
+				<c:forEach items="${product}" var="p">
+				<div class="pdtsizeradio">				
+					<c:if test="${p.p_cnt > 0}">
+					<div>
+						<input type="radio" id="sizeNo${p.p_no}" class="sizeNo" name="sizeNo" value="${p.p_no}" onclick="sizeNo('${p.p_no}','${p.p_color}','${p.p_size}',${p.p_cnt});"/>
+						<label for="sizeNo${p.p_no}">${p.p_size}</label>
+					</div>
+					</c:if>
+					<c:if test="${p.p_cnt eq 0}">
+					<div style="color: #333; background-color: #ccc; border-radius: 10px;">
+						<input type="radio"/>
+						<label for="sizeNo${p.p_no}">${p.p_size}</label>		
+					</div>
+					</c:if>
+				</div>
+				</c:forEach>
+			</div>
+		</div>
+	
 	</div>
-</div>
+
 
 <!-- 상품을 선택하지 않은 경우-->
 <div>
@@ -68,22 +96,28 @@
 <form action="../order/orderPage" method="post" class="order_form">
 	<!-- 선택시 목록쌓이는 곳 -->
 	<div class="choicelist">
-		<!-- name="choice_cnt"
- 			 name="choice_pno" value="pno" -->
+		<!-- name="u_cnt"
+ 			 name="p_no" value="pno" -->
 	</div>
 	<input type="submit" id="order_form" value="바로구매" />
+	<input type="button" value="장바구니추가" onclick="return addcart(this.form)"/>
 </form>
-
+</div>
 <script>
+	function addcart(frm) {
+		frm.action='../Cart/insertCart';
+		frm.submit();
+		return true;
+	}
 	function Count(type,pno,totcnt) { /* ths [object HTMLButtonElement] */
 		/* alert(type+"***"+pno+"***"+totcnt); */
-		var cnt=".cnt_"+pno;
+		var cnt="#cnt_"+pno;
 		var tCount = Number($(cnt).val());
 		if (type == 'plus') {
 			if (tCount < totcnt)
 				$(cnt).val(Number(tCount) + 1);
 		} else {
-			if (tCount > 0)
+			if (tCount >=2)
 				$(cnt).val(Number(tCount) - 1);
 		}
 	}
@@ -103,11 +137,11 @@
 /* 중복클릭 if else 처리 필요함 */
 	 	var elems= document.getElementsByName('choice');	 	
 	 	/* alert(elems.length); */
-	 	var html='<div name="choice" id="choice_'+pno+'">'+pcolor+'&nbsp;'+psize+'&nbsp;&nbsp;'
+	 	var html='<div class="choice" name="choice" id="choice_'+pno+'"><p>'+pcolor+'&nbsp;'+psize+'</p>&nbsp;&nbsp;'
 	 	+'<span>수량</span>'
 	 	+'<input type="hidden" class="cnttot" name="재고수량" value="'+totcnt+'" />'
-	    +'<input type="text" class="cnt_'+pno+'" name="choice_cnt" value="1" size="1" readonly="readonly" style="text-align: center;" />'
-	 	+'<input type="hidden" name="choice_pno" id="choice_pno" value="'+pno+'" />'
+	    +'<input type="text" class="choice_pno" id="cnt_'+pno+'" name="u_cnt" value="1" size="1" readonly="readonly" style="text-align: center;" />'
+	 	+'<input type="hidden" name="p_no" id="choice_pno" value="'+pno+'" />'
 	    +'<button type="button" onclick="Count(\'minus\',\''+pno+'\','+totcnt+');">-</button>'
 	 	+'<button type="button" onclick="Count(\'plus\',\''+pno+'\','+totcnt+');">+</button>'
 	 	+'&nbsp;&nbsp;&nbsp; <button type="button" onclick="deletechoice(\''+pno+'\');">x</button>'
@@ -137,20 +171,17 @@ $('#order_form').click(function(){
 		$('.print-message-no-opt').css('display','block');
 		return false;
 	}
+
 });
 </script>
 
-장바구니
 
-<br />
-<br />
-<a href="../review/reviewBoard">reviewBoard</a>
 <br />
 <c:set var="pname" value="${param.pname }" scope="application"/> <br />
 <c:set var="pfilesrc" value="${param.pfilesrc }" scope="application"/> <br />
 <br />
 <br />
-<%-- <jsp:include page="/WEB-INF/views/review/reviewBoard.jsp" /> --%>
+<jsp:include page="/WEB-INF/views/review/reviewBoard.jsp" />
 
 </body>
 </html>

@@ -5,17 +5,14 @@
 <mapper namespace="micky.sports.shop.dao.Admin">
 	<!-- 관리자 주문관리 현황 리스트(admin_olist)-->
 	<select id="olist" resultType="micky.sports.shop.dto.OrderMemberDto">
-<!-- 		SELECT OM_CNTNUM,OM_NUM,P_NO,
-		U_CNT,M_ID,OM_DATE,OM_PAY,P_PRICE,
-		OM_STATE,OM_CANCLE,OM_CDATE FROM ORDER_MEMBER -->
 		SELECT OM_CNTNUM,OM_NUM,P_NO,
 		U_CNT,M_ID,OM_DATE,OM_PAY,P_PRICE,
-		OM_STATE,OM_CANCLE,OM_CDATE FROM (SELECT ROWNUM NUM, N.* FROM
+		OM_STATE,OM_CANCLE,OM_CDATE,OM_DELCANCLE FROM (SELECT ROWNUM NUM, N.* FROM
 		(SELECT * FROM ORDER_MEMBER) N)
 		WHERE NUM BETWEEN #{param1} AND #{param2}
 	</select>
 	
-	<!-- admin_olist page -->
+	<!-- admin_olist  : page -->
 	<select id="selectAdminTotCount" resultType="Integer">
 		SELECT COUNT(*) FROM ORDER_MEMBER
 	</select>
@@ -35,18 +32,14 @@
 		</choose>	
 	</sql>
 	
-	<!-- 주문취소 목록 검색 기능-시작날짜~종료날짜+취소요청Y 기준  -->
+	<!-- 주문취소 검색 기능-날짜+취소요청Y 기준  -->
    <select id="slist" resultType="micky.sports.shop.dto.OrderMemberDto">
 		SELECT OM_CNTNUM,OM_NUM,P_NO,
 		U_CNT,M_ID,OM_DATE,OM_PAY,P_PRICE,
-		OM_STATE,OM_CANCLE,OM_CDATE FROM ORDER_MEMBER
+		OM_STATE,OM_CANCLE,OM_CDATE,OM_DELCANCLE FROM ORDER_MEMBER
 		WHERE OM_CANCLE LIKE '%'||#{param1}||'%'
 		<include refid="includelist" />
-		<!-- AND OM_CDATE BETWEEN #{param2}AND #{param3} -->
 	</select>
-     
-     
-     
      
      
      
@@ -54,16 +47,46 @@
 	<select id="acontentview" resultType="micky.sports.shop.dto.OrderMemberDto">
 		SELECT OM_CNTNUM,OM_NUM,P_NO,
 		U_CNT,M_ID,OM_DATE,OM_PAY,P_PRICE,
-		OM_STATE,OM_CANCLE,OM_CDATE,C_REASON
+		OM_STATE,OM_CANCLE,OM_CDATE,C_REASON,OM_DELCANCLE 
 		FROM ORDER_MEMBER WHERE OM_CNTNUM=#{param1} 
 	</select>
 	
-	
-	<!-- 결제완료 → 주문취소 -->
-	<update id="amodify">       
+	<!-- option 값에 따른 상태변경 -->
+	<!-- 1. 결제완료 → 주문취소 -->
+	<update id="acanclemodify">       
 		UPDATE ORDER_MEMBER SET OM_STATE=#{param2} 
 		WHERE OM_CNTNUM=#{param1}
 	</update>
+	<!-- 2. 결제완료 → 주문확정 -->
+	<update id="aorderconfirmmodify">
+	UPDATE ORDER_MEMBER SET OM_STATE=#{param2} 
+	WHERE OM_CNTNUM=#{param1}
+	</update>
+	<!-- 3. 결제완료 → 배송완료 -->
+	<update id="adelmodify">
+	UPDATE ORDER_MEMBER SET OM_STATE=#{param2} 
+	WHERE OM_CNTNUM=#{param1}
+	</update>
+	<!-- 4. 결제완료 → 반품완료 -->
+	<update id="arefundmodify">
+	UPDATE ORDER_MEMBER SET OM_STATE=#{param2} 
+	WHERE OM_CNTNUM=#{param1}
+	</update>
+	<!-- 5. 결제완료 → 구매확정 -->
+	<update id="abuyconfirmmodify">
+	UPDATE ORDER_MEMBER SET OM_STATE=#{param2}
+	WHERE OM_CNTNUM=#{param1}
+	</update>
+	
+	
+	
+	<!-- sms -->
+	<select id="sendcsms" resultType="micky.sports.shop.dto.MemberDto">
+		SELECT M_ID,M_TEL FROM MEMBER 
+		WHERE M_ID=(SELECT M_ID FROM ORDER_MEMBER 
+		WHERE OM_CNTNUM=#{param1})
+	</select>
+	
 	
 	
 </mapper>

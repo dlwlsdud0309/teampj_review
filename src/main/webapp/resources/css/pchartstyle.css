@@ -1,0 +1,81 @@
+body {
+	margin: 0;
+}
+a {
+	text-decoration: none;
+}
+.productChartPackage {
+	width: 1500px;
+	height: 400px;
+	margin:0 auto;
+	padding: 1px;
+	
+}
+.productChart {
+	margin: 5px 2px;
+	padding: 1px;
+}
+.productChart>li {
+	width: 290px;
+	margin: 0.3px 0;
+ 	display: inline-block;
+ 	padding-top: 5px;
+}
+.pdtthumbnail {
+	margin: 0 auto; 
+	padding: 3px;		
+}
+.pdtthumbnail>a>img {
+	margin: 0 5px 0 1px ;
+	padding: 2px;
+	width: 290px;
+}
+.pdtdetail {
+	margin: 0 2px;
+	padding: 0;
+	font-family: Nanum Gothic;
+	position: relative;
+ 	width: 250px;
+}
+.pdtdetail>p {
+	margin: 0 2px 0 2px ;
+	padding: 2px;
+ 	display: inline-block;
+ 	width: 290px;
+ 	height: 20px;
+}
+.pname>a:link {
+ 	width: 250px;
+	height: 5px;
+ 	font-weight: bold;
+ 	font-size: 14px;
+ 	color: #000000;	
+}
+.pname>a:visited {
+	color: #000000;
+}
+.pname>a:hover {
+ 	width: 200px;
+	font-size: 14px;
+	text-decoration:underline;
+}
+
+.pcolor>span {
+ 	margin: 20px 0;
+	position: relative;
+	font-size: 14px;
+	color: #141414;
+	vertical-align: top;
+}
+.pdtthumbnail:hover + .pdtdetail>.pprice>span {
+	visibility: visible;
+	font-size: 14px;
+	color: #141414;
+}
+.pprice>span {
+	visibility: hidden;
+	font-size: 14px;
+	color: #141414;
+}
+
+

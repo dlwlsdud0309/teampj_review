@@ -26,7 +26,7 @@ function checkid(){ //아이디중복확인
 	}else { //제대로된 input id가 타이핑되면
 		//window.location.href="/micky_SportsWear/member/joinidcheck?overlapcheck_id=" + overlapcheck_id;
 		$.ajax({
-			url: '/shop/member/joinidcheck?overlapcheck=' + overlapcheck_id, //input id를 controller의 joinidcheck()으로
+			url: '../member/joinidcheck?overlapcheck=' + overlapcheck_id, //input id를 controller의 joinidcheck()으로
 			type: 'GET',
 			success: function( result ) { 
 				
@@ -55,7 +55,7 @@ function checknickname(){ //닉네임중복확인
 		return false;
 	}else{
 		$.ajax({
-			url: '/shop/member/joinnicknamecheck?overlapcheck=' + overlapcheck_nickname, //input nickname을 controller joinnicknamecheck()으로
+			url: '../member/joinnicknamecheck?overlapcheck=' + overlapcheck_nickname, //input nickname을 controller joinnicknamecheck()으로
 			type: 'GET',
 			success: function( result ) {
 				
@@ -78,17 +78,22 @@ function checkinfo(){ //가입하기form 적용 전에 필수 항목 값 확인
 	var m_id = jf.m_id.value; //input id값
 	var m_pw = jf.m_pw.value; //input pw값
 	var m_name = jf.m_name.value; //input name값
-	var m_tel = jf.m_tel.value; //input tel값
+	var m_tel1 = jf.m_tel1.value;
+	var m_tel2 = jf.m_tel2.value;
+	var m_tel3 = jf.m_tel3.value;
+	//const m_tel = $('#m_tel1').val()+$('#m_tel2').val()+$('#m_tel3').val(); //input tel값
 	var m_name2 = jf.m_name2.value; //input nickname값
 	var m_email = jf.m_email.value; //input email값
 	var checkid_YESorNO = jf.checkid_YESorNO.value; //id중복확인진행 유무(기본값은 NO)
 	var checkname2_YESorNO = jf.checkname2_YESorNO.value; //nickname중복확인진행 유무(기본값은 NO)
 	var checkemail_YESorNO = jf.email_check_input_result.value; //email인증진행 유무(기본값은 NO)
+	var checkpassword_YESorNO = jf.checkpassword_YESorNO.value; //비밀번호확인 진행 유무
 	//var m_grade = jf.m_grade.value;
 	var m_age = jf.m_age.value; //input age값
 	var m_gender = jf.m_gender.value; //input gender값
 	//var m_cash = jf.m_cash.value;
 	let valcheck_pw = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/; //pw 정규식
+	let valcheck_age = /^(19[0-9][0-9]|20\d{2})(0[0-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])$/; //age 정규식
 	//let valcheck_tel = /^01(?:0|1|[6-9])-(?:\d{3}|\d{4})-\d{4}$/; //tel 정규식
 	//let valcheck_email = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 	if(m_id==0 || m_id==""){
@@ -104,10 +109,20 @@ function checkinfo(){ //가입하기form 적용 전에 필수 항목 값 확인
 		alert("비번정규표현식XXXX신호")
 		jf.m_pw.focus();
 		return false;
+	}else if(checkpassword_YESorNO=="NO"){
+		alert("비밀번호확인진행하세요")
+		jf.m_pw.focus();
+		return false;
 	}else if(m_name==0 || m_name==""){
 		alert("이름을입력하세요")
 		return false;
-	}else if(m_tel==0 || m_tel==""){
+	}else if(m_tel1==0 || m_tel1==""){
+		alert("전화번호를입력하세요")
+		return false;
+	}else if(m_tel2==0 || m_tel2==""){
+		alert("전화번호를입력하세요")
+		return false;
+	}else if(m_tel3==0 || m_tel3==""){
 		alert("전화번호를입력하세요")
 		return false;
 	}/* else if(!valcheck_tel.test(m_tel)){
@@ -131,7 +146,11 @@ function checkinfo(){ //가입하기form 적용 전에 필수 항목 값 확인
 		jf.m_email.focus();
 		return false;
 	} */else if(m_age==0 || m_age==""){
-		alert("나이를입력하세요")
+		alert("생년월일을입력하세요")
+		return false;
+	}else if(!valcheck_age.test(m_age) || m_age.length!=8){
+		alert("생년월일확인하세요")
+		jf.m_age.focus();
 		return false;
 	}else if(m_gender==0 || m_gender==""){
 		alert("성별을입력하세요")
@@ -159,7 +178,7 @@ const checkinput = $('.email_check_input') //인증번호입력란 (기본값 �
 
 	$.ajax({
 		type:'GET',
-		url:'/shop/member/emailoverlapcheck?email=' +eamil,
+		url:'../member/emailoverlapcheck?email=' +eamil,
 		success:function(result){
 			alert(result)
 			if(result==1){
@@ -169,7 +188,7 @@ const checkinput = $('.email_check_input') //인증번호입력란 (기본값 �
 				
 				$.ajax({
 					type : 'GET',
-					url : '/shop/member/emailcheck?email=' + eamil, //email주소를 controller emailcheck()으로
+					url : '../member/emailcheck?email=' + eamil, //email주소를 controller emailcheck()으로
 					success : function(data){
 						console.log("data : "+data); //인증번호확인용 (f12콘솔창 확인가능)
 						checkinput.attr('disabled',false); //인증번호입력란 활성화
@@ -189,7 +208,7 @@ const checkinput = $('.email_check_input') //인증번호입력란 (기본값 �
 function emailinputcheck(){ //이메일인증번호확인
 	var input_code = $(".email_check_input").val(); //input 인증번호
 	alert("이메일인증번호확인 테스트") //확인용
-	if(input_code == code){ //input 인증번호가 발급인증번호랑 일치하면
+	if(input_code == code){ //input 인증번호가 발급인증번호랑 일치하면 `` 
 		$("input[name=email_check_input_result]").val('YES'); //이메일인증진행 유무 YES로 값을 변경
 		alert("인증번호OO")
 	}else{
@@ -197,6 +216,33 @@ function emailinputcheck(){ //이메일인증번호확인
 		alert("인증번호XX")
 	}
 }
+function checkpassword(){ //비밀번호확인
+	var input_pw = jf.m_pw.value; //비밀번호
+	var input_checkpw = jf.check_mpw.value; //비밀번호확인
+	
+	alert("비밀번호 : "+input_pw+"비밀번호확인 : "+input_checkpw); //확인용
+	
+	if(input_pw==input_checkpw && input_pw!=""){
+		$("input[name=checkpassword_YESorNO]").val('YES');
+		alert("비밀번호일치")
+	}else if(input_pw==""){
+		alert("비밀번호를 입력하세요")
+	}else{
+		alert("비밀번호가다릅니다")
+	}
+}
+$(document).ready(function(){ //비밀번호표시 체크박스
+	$('input[type=checkbox][name=showpassword]').change(function(){
+		alert("비밀번호표시신호")
+		if($(this).is(':checked')){
+			$('#m_pw').prop("type","text");
+			$('#check_mpw').prop("type","text");
+		}else{
+			$('#m_pw').prop("type","password");
+			$('#check_mpw').prop("type","password");
+		}
+	})
+})
 </script>
 <h3>joinform.jsp</h3>
 <h1>회원가입화면</h1>
@@ -205,16 +251,19 @@ function emailinputcheck(){ //이메일인증번호확인
 <input type="hidden" name="checkid_YESorNO" value="NO" /><br /> <!-- 아이디중복체크유무 -->
 <input type="hidden" name="checkname2_YESorNO" value="NO" /><br /> <!-- 닉네임중복체크유무 -->
 <input type="hidden" name="checkemail_YESorNO" value="NO"/> <br /> <!-- 이메일인증유무 -->
+<input type="hidden" name="checkpassword_YESorNO" value="NO" /> <br /> <!-- 비밀번호확인유무 -->
 
 아이디 : <input type="text" id="id" name="m_id" placeholder="영문자로 시작하는 영문자 또는 숫자 6~20자 " style="width:300px;"/><input type="button" value="중복확인" onclick="checkid()" /> <br />
-비밀번호 : <input type="text" name="m_pw" placeholder="8 ~ 16자 영문, 숫자 조합"/> <br /> 
+비밀번호 : <input type="password" id="m_pw" name="m_pw" placeholder="8 ~ 16자 영문, 숫자 조합"/> 
+비밀번호 확인 : <input type="password" id="check_mpw" name="check_mpw" /> <input type="button" value="확인" onclick="checkpassword()" />
+비밀번호표시<input type="checkbox" name="showpassword" /> <br />
 이름 : <input type="text" name="m_name" /> <br /> 
 <!-- 전화번호 : <input type="text" id="m_tel" name="m_tel" placeholder="휴대폰번호를 입력해주세요" style="ime-mode:disabled"> <br /> -->
 전화번호:
 <td>
-		<input type="text" name="m_tel" id="m_tel"/> - 
-		<input type="text" name="m_tel" id="m_tel"/> - 
-		<input type="text" name="m_tel " id="m_tel"/>
+		<input type="text" name="m_tel1" id="m_tel1" pattern="\d*" maxlength='3'/> - 
+		<input type="text" name="m_tel2" id="m_tel2" pattern="\d*" maxlength='4'/> - 
+		<input type="text" name="m_tel3" id="m_tel3" pattern="\d*" maxlength='4'/>
 </td>
 <br />
 닉네임 : <input type="text" name="m_name2" value=""/><input type="button" value="중복확인" onclick="checknickname()"/> <br />
@@ -231,8 +280,8 @@ function emailinputcheck(){ //이메일인증번호확인
 		<input type="button" value="확인" onclick="emailinputcheck()" />
 		<input type="text" name ="email_check_input_result" value="NO"  readonly/><br /> <!-- 이메일인증진행 유무 -->
 등급 : hidden<input type="hidden" name="m_grade" value="bronze" readonly/> <br /> <!-- 확인용 -->
-나이 : <input type="text" name="m_age" /> <br /> 
-성별 : <input type="radio" name="m_gender" value="male" />남<input type="radio" name="m_gender" value="female" />여 <br /> <!-- 확인용 -->
+생년월일 : <input type="text" name="m_age" pattern="\d*" maxlength='8' placeholder="ex)20230221" /> <br /> 
+성별 : <input type="radio" name="m_gender" value="male" placeholder="ex)19991122" />남<input type="radio" name="m_gender" value="female" />여 <br /> <!-- 확인용 -->
 캐시 : hidden<input type="hidden" name="m_cash" value="500000" readonly/> <br /> 
 첨부파일 : <input type="file" name="m_filesrc" accept="image/png, image/jepg" onchange="readURL(this)"/> <br />
 <img id="preview" width="150px" height="150px" /><br />

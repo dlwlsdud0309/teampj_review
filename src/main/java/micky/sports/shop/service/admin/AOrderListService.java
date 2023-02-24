@@ -31,7 +31,6 @@ public class AOrderListService implements MickyServiceInter{
 		Map<String , Object> map=model.asMap();
 		HttpServletRequest request=
 				(HttpServletRequest)map.get("request");
-		
 //		page
 		SearchVO searchVO=
 				(SearchVO)map.get("searchVO");

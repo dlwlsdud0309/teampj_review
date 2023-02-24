@@ -31,11 +31,13 @@ public class AProductDeleteService implements MickyServiceInter{
 		// service단말고 AdminController2에서 사용해보기 (가져와지긴함)
 		List<String> checkBoxArr=(List<String>)map.get("checkBoxArr");
 		Admin2 dao=sqlSession.getMapper(Admin2.class);
-	
+		int delnum=0;
 		for (String str : checkBoxArr) {
 			System.out.println("삭제할 checkbox 서비스단 : "+str);
-			dao.Checkdelete(str);				
+			dao.Checkdelete(str);
+			delnum+=1;
 		}
-
+//		System.out.println("삭제값 :  : : :"+delnum);
+		model.addAttribute("delnum",delnum);
 	}
 }

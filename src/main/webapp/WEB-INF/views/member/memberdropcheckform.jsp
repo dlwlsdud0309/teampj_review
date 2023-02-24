@@ -16,11 +16,13 @@ function checkValue(){
 		alert("비밀번호입력하세요")
 	}else{
 		$.ajax({
-			url:'/shop/member/memberdropcheck?m_pw=' + inputPw,
+			url:'../member/memberdropcheck?m_pw=' + inputPw,
 			type:'GET',
 			success:function(result){
 				if( result==0) { 
 					alert("본인인증실패")
+					$('#m_pw').val('');
+					document.getElementById("m_pw").focus();
 				} else if( result==1 ) {
 					alert("본인인증완료")
 					self.close();
@@ -33,11 +35,24 @@ function checkValue(){
 		})
 	}
 }
+$(document).ready(function(){ //비밀번호표시 체크박스
+	$('input[type=checkbox][name=showpassword]').change(function(){
+		alert("비밀번호표시신호")
+		if($(this).is(':checked')){
+			$('#m_pw').prop("type","text");
+			$('#check_mpw').prop("type","text");
+		}else{
+			$('#m_pw').prop("type","password");
+			$('#check_mpw').prop("type","password");
+		}
+	})
+})
 </script>
 <h3>memberdropcheckform.jsp</h3>
 <h1>회원탈퇴 진입 전 비밀번호로 본인인증하는 화면</h1>
 아이디 : <input type="text" value="<%=session.getAttribute("loginid") %>" name="m_id" readonly/> <br />
-비밀번호 : <input type="text" name="m_pw" id="m_pw" /> <br />
+비밀번호 : <input type="password" name="m_pw" id="m_pw" /> <br />
+비밀번호표시<input type="checkbox" name="showpassword" /> <br />
 <input type="button" value="확인" onclick="checkValue()" />
 </body>
 </html>

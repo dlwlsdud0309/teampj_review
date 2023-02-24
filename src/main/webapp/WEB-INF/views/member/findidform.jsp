@@ -19,7 +19,7 @@ console.log('아이디입력한거 : '+m_namee); //확인용
 		
 	$.ajax({
 		type:'GET',
-		url:'/shop/member/findid?email=' +eamil+ '&m_name=' + m_namee,
+		url:'../member/findid?email=' +eamil+ '&m_name=' + m_namee,
 		success:function(result){
 			alert("ajax응답완료확인 : "+result)
 			
