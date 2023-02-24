@@ -122,7 +122,7 @@ pfilesrc : ${pfilesrc } <br />
 </style>
 
 
-<!-- 평균별점(avgStarscore), 총 게시글 수(totalCount ) -->
+<!--@@@ 평균별점(avgStarscore), 총 게시글 수(totalCount ) @@@-->
 <div class="review_table">
 	<span style="font-size: 1.5em; font-weight: bolder;">리뷰</span>
 	<span><input style="float: right;" type="button" value="리뷰작성" onclick="fn_01('${sessionScope.loginid }');" /></span>
@@ -154,9 +154,7 @@ pfilesrc : ${pfilesrc } <br />
 </div>
 <div class="clear" ></div>
 
-
 <div class="review_table">
-
 		<!--@@@ select, option, 검색 @@@-->
 		<form action="reviewBoard" method="get">
 		
@@ -206,13 +204,11 @@ pfilesrc : ${pfilesrc } <br />
 										<div class="review_box">
 											<div class="review_label">
 											
-												<!--@@@ 리뷰 제목 @@@-->
+												<!--@@@ 리뷰제목 @@@-->
 												<div><strong>${list.r_title }</strong></div>
 												
-												<!--@@@ 별점, 작성자 id 별처리 @@@-->
 												<div class="tablerow">
 													<div class="tablecell">
-														<!--@@@ 별점 @@@-->
 														<span class="user_date">
 															<span class="star">
 																★★★★★
@@ -222,7 +218,6 @@ pfilesrc : ${pfilesrc } <br />
 														</span>
 													</div>
 													
-													<!--@@@ 작성자 id 별처리 @@@-->
 													<div class="tablerow">
 														<span>&nbsp;&nbsp;&nbsp;&nbsp;
 															<c:out value="${fn:substring(list.memberDto.m_id,0,fn:length(list.memberDto.m_id)-2)}" />**
@@ -230,12 +225,10 @@ pfilesrc : ${pfilesrc } <br />
 													</div>
 												</div>
 												
-												<!--@@@ 구매옵션, 상품 색상, 상품 사이즈 @@@-->
 												<div class="product_option">
 													<strong>구매옵션</strong>&nbsp;<span>${list.productDto.p_color }</span>&nbsp;<span>${list.productDto.p_size }</span>
 												</div>
 												
-												<!--@@@ 리뷰 내용 @@@-->
 												<div class="user_content" onclick="user_content()">
 													<p class="u_content">${list.r_content }</p> 
 												</div>
@@ -248,20 +241,18 @@ pfilesrc : ${pfilesrc } <br />
 							}
 							.sub_menu { display: none; }
 						</style>
-												<!--@@@  답변창  @@@-->
 												<div id="reply_menu">
 													<div>
 														<a class="${list.r_no }" href="#" onclick="return false;">
 															댓글
-															
-															<!--@@@ r_ynn가 y면 1, n이면 0 @@@-->
+															<!--@@@ r_ynn이 y이면 1 @@@-->
 															<c:choose>
 																<c:when test="${list.r_ynn eq 'y' }">1</c:when>
 																<c:otherwise>0</c:otherwise>					
 															</c:choose>
 														</a>
 														
-														<!--@@@ 관리자 답글 제목, 내용 @@@-->
+														<!--@@@ 답글 제목, 내용 @@@-->
 														<div class="snd_menu sub_menu">
 															<div><strong>${list.r_retitle }</strong></div>
 															<div>${list.r_recontent }</div>
@@ -270,16 +261,16 @@ pfilesrc : ${pfilesrc } <br />
 													</div>
 												</div>
 												
-						<!--@@@ 로그인 id가 admintest일 때 @@@-->						
 						<c:if test="${sessionScope.loginid eq 'admintest' }">
 							
-							<!--@@@ r_ynn이 y라면 '수정' 버튼이 나오도록 @@@-->						
+							<!--@@@ r_ynn이 y이면 수정하기, n이면 답글 달기 @@@-->
 							<c:choose>
 								<c:when test="${list.r_ynn eq 'y' }">
 									<div id="reply_menu">
 							          <div><a class="${list.r_no }" href="#" onclick="return false;">수정하기</a>
 							            <div class="snd_menu sub_menu">
-							            	<!--@@@@ 답글수정 form @@@@-->
+							            
+							            	<!--@@@ 답글수정 form @@@@-->
 							            	<form action="reviewReply">
 							            		<input type="hidden" name="r_no" value="${list.r_no }" />
 							            		<div><input type="hidden" name="r_id" value="${sessionScope.loginid }" />관리자</div>
@@ -292,13 +283,11 @@ pfilesrc : ${pfilesrc } <br />
 									</div>
 								</c:when>
 								
-								<!--@@@ r_ynn이 n라면 '댓글달기' 버튼이 나오도록 @@@-->
 								<c:otherwise>
 									<div id="reply_menu">
 							          <div><a class="${list.r_no }" href="#" onclick="return false;">댓글달기</a>
 							            <div class="snd_menu sub_menu">
 							           		
-							           		<!--@@@@ 답글달기 form @@@@-->
 							            	<form action="reviewReply">
 							            		<input type="hidden" name="r_no" value="${list.r_no }" />
 							            		<div><input type="hidden" name="r_id" value="${sessionScope.loginid }" />관리자</div>
@@ -324,12 +313,10 @@ pfilesrc : ${pfilesrc } <br />
 								</div>
 								
 								<div class="cell col2">
-									<!--@@@ 작성날짜 @@@-->
 									<div>
 										<span><fmt:formatDate value="${list.r_date }" pattern="yyyy.MM.dd"/></span>
 									</div>
 									<div class="img_box">
-										<!--@@@ 파일이 있다면 @@@-->
 										<c:if test="${list.r_filesrc ne null }">
 											<div>
 												<img src="../resources/reviewupload/${list.r_filesrc }" width="100" alt="" />
@@ -338,14 +325,13 @@ pfilesrc : ${pfilesrc } <br />
 									</div>
 									<div>
 									
-										<!--@@@ 리뷰 수정/삭제 @@@-->
+										<!--@@@ 로그인한 아이디가 리뷰를 작성한 id와 일치하면 @@@-->
 										<c:if test="${sessionScope.loginid eq list.memberDto.m_id }">
 														
-														<!--@@@ 수정버튼 @@@-->
+														<!--@@@ 수정하기 @@@-->
 														<button onclick="window.open('reviewModifyview?r_no=${list.r_no }','modifyview','width=400,heigth=500,location=no,fullscreen=no,menubar=no,toolbar=no,status=no,scrollbars=no');">수정</button>
 														
-														<!--@@@ 답글이 달리면(r_ynn이 y일 때) 삭제할 수 없도록 '삭제'버튼을 제거 @@@-->
-														<!--@@@ r_ynn이 n이면 @@@-->
+														<!--@@@ 답글이 달리지 않았다면(r_ynn이 n이라면) 삭제 가능 @@@-->
 														<c:choose>
 															<c:when test="${list.r_ynn eq 'n' }">
 																<button type="button" onclick="location.href='reviewDelete?r_no=${list.r_no }'">삭제</button>
