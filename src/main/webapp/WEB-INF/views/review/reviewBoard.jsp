@@ -329,19 +329,19 @@ pfilesrc : ${pfilesrc } <br />
 										<c:if test="${sessionScope.loginid eq list.memberDto.m_id }">
 														
 														<!--@@@ 수정하기 @@@-->
-														<button onclick="window.open('reviewModifyview?r_no=${list.r_no }','modifyview','width=400,heigth=500,location=no,fullscreen=no,menubar=no,toolbar=no,status=no,scrollbars=no');">수정</button>
+														<button onclick="window.open('../review/reviewModifyview?r_no=${list.r_no }','modifyview','width=400,heigth=500,location=no,fullscreen=no,menubar=no,toolbar=no,status=no,scrollbars=no');">수정</button>
 														
 														<!--@@@ 답글이 달리지 않았다면(r_ynn이 n이라면) 삭제 가능 @@@-->
 														<c:choose>
 															<c:when test="${list.r_ynn eq 'n' }">
-																<button type="button" onclick="location.href='reviewDelete?r_no=${list.r_no }'">삭제</button>
+																<button type="button" onclick="location.href='../review/reviewDelete?r_no=${list.r_no }'">삭제</button>
 															</c:when>
 														</c:choose>
 										</c:if>
 										
 										<!--@@@ 관리자 계정이면 댓글이 삭제 가능하도록 구현 @@@-->
 										<c:if test="${sessionScope.loginid eq 'admintest' }">
-														<a href="reviewDelete?r_no=${list.r_no }">삭제</a>
+														<a href="../review/reviewDelete?r_no=${list.r_no }">삭제</a>
 										</c:if>
 										
 									</div>

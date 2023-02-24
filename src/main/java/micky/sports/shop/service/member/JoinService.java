@@ -36,7 +36,8 @@ public class JoinService implements MickyServiceInter{
 		String attachPath="resources\\upload\\";
 	    String uploadPath=request.getSession().getServletContext().getRealPath("/");
 	    System.out.println("uploadpathhhhh:"+uploadPath);
-	    String path = "C:\\2022spring\\springwork1\\micky_SportsWear\\src\\main\\webapp\\resources\\upload";
+//	    String path = "C:\\2022spring\\springwork1\\micky_SportsWear\\src\\main\\webapp\\resources\\upload";
+	    String path = "C:\\2023spring\\springwork1\\micky_SportsWear_review\\src\\main\\webapp\\resources\\upload";
 	    MultipartRequest req = null;
 	    try {
 	    	req=

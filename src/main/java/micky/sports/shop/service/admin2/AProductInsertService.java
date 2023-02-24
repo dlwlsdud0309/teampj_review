@@ -32,7 +32,8 @@ public class AProductInsertService implements MickyServiceInter{
 				(HttpServletRequest)map.get("request");
 		Admin2 dao=sqlSession.getMapper(Admin2.class);
 		
-		String path="C:\\2022spring\\springwork1\\micky_SportsWear\\src\\main\\webapp\\resources\\upload";
+//		String path="C:\\2022spring\\springwork1\\micky_SportsWear\\src\\main\\webapp\\resources\\upload";
+		String path="C:\\2023spring\\springwork1\\micky_SportsWear_review\\src\\main\\webapp\\resources\\upload";
 		MultipartRequest req=null;
 		try {
 			req=new MultipartRequest(request, path, 1024*1024*20, "utf-8",
