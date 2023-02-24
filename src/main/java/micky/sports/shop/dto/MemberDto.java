@@ -1,5 +1,7 @@
 package micky.sports.shop.dto;
 
+import java.util.Date;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,6 +21,9 @@ public class MemberDto {
 	private String m_gender; //성별
 	private int m_cash; //캐시(현금)
 	private String m_filesrc; //첨부파일(회원의프로필이미지)
+	private String sha;
+	private String psa;
+	private Date date;
 	
 	public MemberDto() {
 		// TODO Auto-generated constructor stub

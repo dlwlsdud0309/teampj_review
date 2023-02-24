@@ -122,35 +122,36 @@ pfilesrc : ${pfilesrc } <br />
 </style>
 
 <div class="review_table">
-		<span style="font-size: 1.5em; font-weight: bolder;">리뷰</span>
-		<span><input style="float: right;" type="button" value="리뷰작성" onclick="fn_01('${sessionScope.loginid }');" /></span>
-		<hr />
-		<div>
-		<br />
-		<br />
-			<div class="avg_star">
-				<div class="tablerow">
-					<div class="tablecell">
-						<span class="user_date">
-							<span class="reviewBoard_star">
-								★★★★★
-								<span id="star2" style="width:${avgStarscore*20}%">★★★★★</span>
-							</span>
+	<span style="font-size: 1.5em; font-weight: bolder;">리뷰</span>
+	<span><input style="float: right;" type="button" value="리뷰작성" onclick="fn_01('${sessionScope.loginid }');" /></span>
+	<hr />
+	<div>
+	<br />
+	<br />
+		<div class="avg_star">
+			<div class="tablerow">
+				<div class="tablecell">
+					<span class="user_date">
+						<span class="reviewBoard_star">
+							★★★★★
+							<span id="star2" style="width:${avgStarscore*20}%">★★★★★</span>
 						</span>
-					</div>
-					<div class="tablerow">
-						<b>&nbsp;&nbsp;&nbsp; ${avgStarscore } 총점</b>
-					</div>
+					</span>
 				</div>
-				<div><b>${totalCount }개의 REVIEWS</b></div>
+				<div class="tablerow">
+					<b>&nbsp;&nbsp;&nbsp; ${avgStarscore } 총점</b>
+				</div>
 			</div>
-		<br />
-		<br />
-		<br />
+			<div><b>${totalCount }개의 REVIEWS</b></div>
 		</div>
-	
+	<br />
+	<br />
+	<br />
+	</div>
 <hr />	
 </div>
+
+
 <div class="clear" ></div>
 <div class="review_table">
 		<!-- select, option, 검색 -->

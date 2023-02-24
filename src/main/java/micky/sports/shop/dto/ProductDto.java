@@ -18,6 +18,7 @@ public class ProductDto {
 	private String p_filesrc; //첨부파일
 	private Date p_date; //제품 등록일
 	private String p_category; //제품 등록일
+	private String p_info;
 	
 
 	public ProductDto() {
