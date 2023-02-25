@@ -39,27 +39,27 @@ while(rs.next()){
 }
 
 //데이터를 json처리
-JSONArray arr=new JSONArray();
-while(rs.next()){
+//JSONArray arr=new JSONArray();
+//while(rs.next()){
 	
 	//HashMap<String, Object> hashmap=new HashMap<String, Object>();
-	JSONObject obj=new JSONObject();
-	String p_name=rs.getString("p_name");
-	String avgScore=rs.getString("avgscore");
+	//JSONObject obj=new JSONObject();
+	//String p_name=rs.getString("p_name");
+	//String avgScore=rs.getString("avgscore");
 	
 	//hashmap.put("p_name",p_name);
 	//hashmap.put("avgScore",avgScore);	
 	
-	obj.put("p_name",p_name);
-	obj.put("avgScore",avgScore);
+	//obj.put("p_name",p_name);
+	//obj.put("avgScore",avgScore);
 	
 	//if(obj!=null){
 	//	arr.add(obj);
 	//}
-}
-rs.close();
-pstmt.close();
-con.close();
+//}
+//rs.close();
+//pstmt.close();
+//con.close();
 %>
 
 
@@ -94,28 +94,10 @@ href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
 		/* 차트에서 사용할 수 있는 데이터의 형식과 구조로 설정 */
 		type:'bar',
 		data:{
-			labels:[
-				jArray[0].p_name,
-				jArray[1].p_name,
-				jArray[2].p_name,
-				jArray[3].p_name,
-				jArray[4].p_name,
-				jArray[5].p_name,
-				jArray[6].p_name,
-				jArray[7].p_name
-				],
+			labels:['Red','Blue','Yellow','Green','Purple','Orange'],
 			datasets:[{
 				label:'제품 별점순',
-				data:[
-					jArray[0].avgScore,
-					jArray[1].avgScore,
-					jArray[2].avgScore,
-					jArray[3].avgScore,
-					jArray[4].avgScore,
-					jArray[5].avgScore,
-					jArray[6].avgScore,
-					jArray[7].avgScore,
-					],
+				data:[12,19,3,50,2,3],
 				backgroundColor:[
 					'rgba(255,99,132,1.0)',
 					'rgba(55,162,132,0.2)',
