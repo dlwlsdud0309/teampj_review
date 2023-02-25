@@ -1,5 +1,6 @@
 package micky.sports.shop.service.review;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +9,8 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
+import micky.sports.shop.dao.ReviewDao;
+import micky.sports.shop.dto.ReviewDto;
 import micky.sports.shop.service.MickyServiceInter;
 
 public class ReviewAdminpageService implements MickyServiceInter{
@@ -32,6 +35,21 @@ public class ReviewAdminpageService implements MickyServiceInter{
 		httpSession = request.getSession();
 		String loginId = (String)httpSession.getAttribute("loginid");
 		
+		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
+		
+//		평균별점으로 제품 나열
+//		ArrayList<ReviewDto> reviewChartScoreDesc=rdao.reviewChartScoreDesc();
+		//reviewChartScoreDesc=rdao.reviewChartScoreDesc();
+		
+//		String avgscore="";
+//		for (ReviewDto val : reviewChartScoreDesc) {
+//			if (val.equals("avgscore")) {
+//				model.addAttribute(avgscore, "avgscore");
+//				System.out.println("아무것도안나오나여 : "+avgscore);
+//			}
+//		}
+		
+	//	model.addAttribute("reviewChartScoreDesc", reviewChartScoreDesc);
 	}
 
 }

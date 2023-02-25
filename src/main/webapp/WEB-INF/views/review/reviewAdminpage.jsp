@@ -1,3 +1,9 @@
+<%@page import="org.json.simple.JSONObject"%>
+<%@page import="org.json.simple.JSONArray"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="micky.sports.shop.db.DBCon"%>
+<%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -11,6 +17,46 @@
 <title>Insert title here</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+
+<%
+String sql="select p.p_name p_name,round(avg(r.r_score),1) avgscore"
+		 +" from member m, review r, product p, order_member o"
+		 +" where m.m_id=r.m_id"
+		 +" and r.p_no=p.p_no"
+		 +" and r.om_cntnum=o.om_cntnum"
+		 +" and o.om_state='구매확정'"
+		 +" and r.r_content is not null"
+		 +" group by p.p_name"
+		 +" order by avgscore desc, p.p_name desc";
+
+Connection con=DBCon.getConnection();
+PreparedStatement pstmt=con.prepareStatement(sql);
+ResultSet rs=pstmt.executeQuery();
+
+/* while(rs.next()){
+	System.out.println(rs.getString("p_name")+" : "+rs.getString("avgscore"));
+} */
+
+//데이터를 json처리
+JSONArray arr=new JSONArray();
+while(rs.next()){
+	JSONObject obj=new JSONObject();
+	String p_name=rs.getString("p_name");
+	String avgScore=rs.getString("avgscore");
+	
+	obj.put("p_name",p_name);
+	obj.put("avgScore",avgScore);
+	
+	if(obj!=null){
+		arr.add(obj);
+	}
+}
+rs.close();
+pstmt.close();
+con.close();
+%>
+
+
 <link rel="stylesheet" 
 href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
 </head>
@@ -129,5 +175,9 @@ href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
 	
 	
 </script>
+<%-- 나오나연 : ${reviewChartScoreDesc }
+<c:forEach items="${reviewChartScoreDesc }" var="score">
+	${score.p_name }
+</c:forEach> --%>
 </body>
 </html>
