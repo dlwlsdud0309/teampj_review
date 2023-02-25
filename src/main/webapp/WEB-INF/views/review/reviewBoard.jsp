@@ -363,7 +363,7 @@ pfilesrc : ${pfilesrc } <br />
 <br />
 <br />
 <br />
-
+<jsp:include page="/WEB-INF/views/footer.jsp" />
 </body>
 <!-- 더보기 script -->
 <script>
