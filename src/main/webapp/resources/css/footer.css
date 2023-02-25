@@ -20,9 +20,16 @@ dl{
 }
 dt{
 	display: block;
+	color: black;
 	margin: 25px 0px 25px;
 	font-weight: bolder;
 	font-size: 18px;
+}
+dt>a{
+	color: black;
+}
+dt>a:hover{
+	color: #AF0006;
 }
 dd{
 	margin-left: 0px;
@@ -32,7 +39,7 @@ dd>a{
 	color: black;
 }
 dd>a:hover{
-	color: #9B111E;
+	color: #AF0006;
 }
 .footerAtag_container{
 	width: 100%;
@@ -49,7 +56,7 @@ dd>a:hover{
 	font-weight: bolder;
 }
 .footer_atag>a:hover{
-	color: #9B111E;
+	color: #AF0006;
 }
 .footer-company{
 	background-color: black;
@@ -66,4 +73,14 @@ dd>a:hover{
 	margin: 0px 0px 25px;
 	display: inline-block;
 	padding: 30px 50px;
+}
+.footer-company-div>img{
+	display: inline-block;
+	vertical-align: top;
+	width: 70px;
+	height: 70px;
+	
+}
+.footer-company-div>span{
+	padding: 3px 3px;
 }

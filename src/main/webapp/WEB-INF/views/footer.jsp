@@ -9,7 +9,6 @@
 <link rel="stylesheet" href="../resources/css/footer.css?after" />
 </head>
 <body>
-<h3>footer</h3>
 <footer class="footer">
 	<div class="footer-total">
 		<div class="footer_container">
@@ -83,14 +82,17 @@
 				<span>㈜mickysportswear | 사업자등록번호 : 0000-00-0000 | 대표:micky</span><br />
 				<span>통신판매업 신고번호: 2013-경기성남-0984</span><br />
 				<span>서울특별시 구로구 시흥대로163길 33 주호타워 2층,3층</span><br />
-				<span>온라인몰 고객지원실 02-837-9922 | 매장고객 및 A/S문의: 1111-0000</span>
+				<span>온라인몰 고객지원실 02-837-9922 | 매장고객 및 A/S문의: 1111-0000</span><br />
+				<span>Copyright © Micky Sports Wear 2023 All Rights Reserved</span>
 			</div>
 			<div class="footer-company-div">
+				<img src="https://image.inicis.com/mkt/certmark/escrow/escrow_74x74_gray.png" alt="" />
 				<span>저희 쇼핑몰은 고객님의 안전한 거래를 위해</span><br />
 				<span>실시간 계좌이체 거래에 대해</span><br />
 				<span>구매안전서비스를 적용하고 있습니다.</span>
 			</div>
 			<div class="footer-company-div">
+				<img src="https://image.thenorthfacekorea.co.kr/cmsstatic/theme/northface/assets/images/ISMS-icon.png" alt="" />
 				<span>[인증범위]온라인쇼핑몰</span>
 				<span>(MICKY) 홈페이지</span>
 			</div>
