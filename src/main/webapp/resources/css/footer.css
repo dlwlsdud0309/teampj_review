@@ -20,10 +20,19 @@ dl{
 }
 dt{
 	display: block;
-	margin: 0px 0px 25px;
+	margin: 25px 0px 25px;
+	font-weight: bolder;
+	font-size: 18px;
 }
 dd{
 	margin-left: 0px;
+	font-size: 15px;
+}
+dd>a{
+	color: black;
+}
+dd>a:hover{
+	color: #9B111E;
 }
 .footerAtag_container{
 	width: 100%;
@@ -36,7 +45,25 @@ dd{
 .footer_atag>a{
 	display: inline-block;
 	padding: 30px 50px;
+	color: black;
+	font-weight: bolder;
 }
-.flex .footer-company{
+.footer_atag>a:hover{
+	color: #9B111E;
+}
+.footer-company{
 	background-color: black;
+	width: 100%;
+	margin: 0px 0px;
+	text-align: center;
+}
+.footer-company-div{
+	text-align: left;
+	font-size:smaller;
+	vertical-align: top;
+	display: flex;
+	color: #9B9B9B;
+	margin: 0px 0px 25px;
+	display: inline-block;
+	padding: 30px 50px;
 }
