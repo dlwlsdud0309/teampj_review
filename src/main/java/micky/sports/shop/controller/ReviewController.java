@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import micky.sports.shop.service.MickyServiceInter;
 import micky.sports.shop.service.product.ProductDetail_ReviewService;
@@ -170,7 +171,7 @@ public class ReviewController {
 	}
 
 //	리뷰 관리자 페이지
-	@RequestMapping("/reviewAdminpage")
+	@RequestMapping(value = "/reviewAdminpage", method = RequestMethod.GET)
 	public String reviewAdminpage(HttpServletRequest request, Model model) {
 		System.out.println("=====reviewAdminpage====");
 		
