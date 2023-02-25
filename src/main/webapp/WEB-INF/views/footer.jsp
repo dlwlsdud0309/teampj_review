@@ -12,7 +12,8 @@
 <footer class="footer">
 	<div class="footer-total">
 		<div class="footer_container">
-			<div class="flex">
+			<div class="inner">
+				<div class="flex">
 				<div class="footer_div">
 					<dl>
 						<dt>ABOUT US</dt>
@@ -63,6 +64,7 @@
 					</dl>
 				</div>
 			</div>
+			</div>
 		</div>
 		
 		<div class="footerAtag_container">
@@ -87,9 +89,15 @@
 			</div>
 			<div class="footer-company-div">
 				<img src="https://image.inicis.com/mkt/certmark/escrow/escrow_74x74_gray.png" alt="" />
-				<span>저희 쇼핑몰은 고객님의 안전한 거래를 위해</span><br />
-				<span>실시간 계좌이체 거래에 대해</span><br />
-				<span>구매안전서비스를 적용하고 있습니다.</span>
+				<ul class="footer-company-ul">
+					<li>저희 쇼핑몰은 고객님의 안전한 거래를 위해</li>
+					<li>실시간 계좌이체 거래에 대해</li>
+					<li>구매안전서비스를 적용하고 있습니다.</li>
+				</ul>
+				
+				<!-- <span></span><br />
+				<span></span><br />
+				<span></span> -->
 			</div>
 			<div class="footer-company-div">
 				<img src="https://image.thenorthfacekorea.co.kr/cmsstatic/theme/northface/assets/images/ISMS-icon.png" alt="" />
