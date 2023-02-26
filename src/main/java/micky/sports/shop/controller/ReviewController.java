@@ -136,16 +136,16 @@ public class ReviewController {
 	}
 	
 //	관리자 답글달기 폼
-	@RequestMapping("/reviewPopupReplycontentview")
-	public String reviewReplyview(HttpServletRequest request, Model model) {
-		System.out.println("=====reviewReplyview====");
-		
-		model.addAttribute("request", request);
-		mickyServiceInter=new ReviewReplyviewService(sqlSession,httpSession);
-		mickyServiceInter.execute(model);
-		
-		return "review/reviewPopupReplycontentview";
-	}
+//	@RequestMapping("/reviewPopupReplycontentview")
+//	public String reviewReplyview(HttpServletRequest request, Model model) {
+//		System.out.println("=====reviewReplyview====");
+//		
+//		model.addAttribute("request", request);
+//		mickyServiceInter=new ReviewReplyviewService(sqlSession,httpSession);
+//		mickyServiceInter.execute(model);
+//		
+//		return "review/reviewPopupReplycontentview";
+//	}
 	
 //	관리자 답글달기, 수정하기
 	@RequestMapping("/reviewReply")

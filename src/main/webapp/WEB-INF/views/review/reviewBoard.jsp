@@ -52,13 +52,12 @@
         });
       });
    
-   $(document).ready(function()){
+   /* $(document).ready(function()){
 	   //const offset = $(".scollmove").offset();
 	   $('#reviewBtn').click(function(event){
 		   event.preventDefault();
-		   //$("html, body").animate({scrollTop:${this.hash}.offset().top}, 400};
 	   });
-   };
+   }; */
 </script>
 </head>
 
