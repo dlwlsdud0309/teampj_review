@@ -264,4 +264,10 @@
 		GROUP BY P.P_NAME,P.P_PRICE
 		ORDER BY AVGSCORE DESC, P.P_NAME DESC
 	</select>
+	
+	<select id="productInfo" parameterType="micky.sports.shop.dto.ProductDto" resultMap="ProductDto">
+		SELECT P_INFO FROM PRODUCT
+		WHERE P_NAME=#{param1} AND P_FILESRC=#{param2}
+		GROUP BY P_INFO
+	</select>
 </mapper>

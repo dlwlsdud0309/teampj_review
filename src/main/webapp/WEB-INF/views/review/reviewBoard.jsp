@@ -119,6 +119,14 @@
 </style>
 
 
+<div>
+	<c:forEach items="${productinfo }" var="info">
+		인포 : ${info.p_info }
+	</c:forEach>
+</div>
+
+
+
 <!--@@@ 평균별점(avgStarscore), 총 게시글 수(totalCount ) @@@-->
 <div class="review_table">
    <span style="font-size: 1.5em; font-weight: bolder;">리뷰</span>

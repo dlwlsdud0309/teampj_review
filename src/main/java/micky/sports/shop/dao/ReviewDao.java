@@ -3,6 +3,7 @@ package micky.sports.shop.dao;
 import java.util.ArrayList;
 
 import micky.sports.shop.dto.OrderMemberDto;
+import micky.sports.shop.dto.ProductDto;
 import micky.sports.shop.dto.ReviewDto;
 
 public interface ReviewDao {
@@ -24,4 +25,5 @@ public interface ReviewDao {
 	public int checkMileage(String loginid);
 	public ArrayList<ReviewDto> reviewChartScoreDesc();
 	public ArrayList<ReviewDto> chartScoredesc();
+	public ArrayList<ProductDto> productInfo(String p_name, String p_filesrc);
 }

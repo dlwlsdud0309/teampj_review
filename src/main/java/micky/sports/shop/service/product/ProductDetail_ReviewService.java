@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 
 import micky.sports.shop.dao.ProductDao;
 import micky.sports.shop.dao.ReviewDao;
+import micky.sports.shop.dto.ProductDto;
 import micky.sports.shop.dto.ReviewDto;
 import micky.sports.shop.service.MickyServiceInter;
 
@@ -89,6 +90,10 @@ public class ProductDetail_ReviewService implements MickyServiceInter{
 		model.addAttribute("totalCount", totalCount);
 //		별점평균
 		model.addAttribute("avgStarscore", avgStarscore);
+		
+//		======
+		ArrayList<ProductDto> productinfo=rdao.productInfo(p_name,p_filesrc);
+		model.addAttribute("productinfo", productinfo);
 	}
 
 }
