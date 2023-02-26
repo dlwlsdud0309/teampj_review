@@ -56,7 +56,6 @@
 </head>
 
 <body>
-<h3>Reviewboard</h3>
 <a href="../member/main">메인</a> <br />
 <!-- 로그아웃 상태 -->
 <c:if test="${empty sessionScope.loginid }">
@@ -78,10 +77,7 @@
 <br />
 </c:if>
 
-<br />
-PRODUCT 값 확인 <br />
-pname : ${pname } <br />
-pfilesrc : ${pfilesrc } <br />
+
 <br />
 <br />
 <br />
