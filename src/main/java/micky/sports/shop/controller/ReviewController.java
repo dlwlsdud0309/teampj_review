@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import micky.sports.shop.service.MickyServiceInter;
 import micky.sports.shop.service.product.ProductDetail_ReviewService;
 import micky.sports.shop.service.review.ReviewAdminpageService;
+import micky.sports.shop.service.review.ReviewChartService;
 import micky.sports.shop.service.review.ReviewDeleteService;
 import micky.sports.shop.service.review.ReviewMylistviewService;
 import micky.sports.shop.service.review.ReviewModifyService;
@@ -180,6 +181,18 @@ public class ReviewController {
 		mickyServiceInter.execute(model);
 		
 		return "review/reviewAdminpage";
+	}
+	
+//	차트 별점순 1~5까지
+	@RequestMapping("/reviewChart")
+	public String reviewChart(HttpServletRequest request, Model model) {
+		System.out.println("=====reviewChart====");
+		
+		model.addAttribute("request", request);
+		mickyServiceInter=new ReviewChartService(sqlSession,httpSession);
+		mickyServiceInter.execute(model);
+		
+		return "review/reviewChart";
 	}
 	
 }

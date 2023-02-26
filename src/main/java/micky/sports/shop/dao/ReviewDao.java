@@ -23,4 +23,5 @@ public interface ReviewDao {
 	//public ArrayList<MemberDto> review_mylist_cash(String loginid);
 	public int checkMileage(String loginid);
 	public ArrayList<ReviewDto> reviewChartScoreDesc();
+	public ArrayList<ReviewDto> chartScoredesc();
 }

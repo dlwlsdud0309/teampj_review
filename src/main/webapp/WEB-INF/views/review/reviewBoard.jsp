@@ -77,6 +77,7 @@
 <br />
 </c:if>
 
+<a href="../review/reviewChart">별점순 top5</a>
 
 <br />
 <br />
