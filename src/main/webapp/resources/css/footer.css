@@ -26,14 +26,15 @@ dl{
 	display: block;
 	padding: 10px;
 	margin-left: 20px;
-	margin-bottom: 40px;
+	margin-bottom: 25px;
 }
 dt{
 	display: block;
 	color: black;
-	margin: 25px 0px 25px;
+	margin: 10px 0px 10px;
 	font-weight: bolder;
-	font-size: 18px;
+	font-size: 15px;
+	padding-bottom: 10px;
 }
 dt>a{
 	color: black;
@@ -43,8 +44,8 @@ dt>a:hover{
 }
 dd{
 	margin-left: 0px;
-	font-size: 15px;
-	padding-bottom: 10px;
+	font-size: 12px;
+	padding-bottom: 8px;
 }
 dd>a{
 	color: black;
@@ -65,6 +66,7 @@ dd>a:hover{
 	padding: 30px 50px;
 	color: black;
 	font-weight: bolder;
+	font-size: smaller;
 }
 .footer_atag>a:hover{
 	color: #AF0006;
@@ -81,10 +83,10 @@ dd>a:hover{
 }
 .footer-company-div{
 	text-align: left;
-	font-size:smaller;
+	font-size: 10px;
 	vertical-align: top;
 	color: #9B9B9B;
-	margin: 50px 0px 25px;
+	margin: 20px 0px 20px;
 	display: inline-block;
 	padding: 20px 50px;
 }

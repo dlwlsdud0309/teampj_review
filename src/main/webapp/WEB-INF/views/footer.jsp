@@ -45,7 +45,7 @@
 				</div>
 				<div class="footer_div">
 					<dl>
-						<dt>STORE LOCATION/<dt>
+						<dt>STORE LOCATION<dt>
 						<dd><button type="button">매장찾기</button></dd>
 						<dt>FOLLOW SNS</dt>
 						<dd>SNS/SNS/SNS/SNS</dd>
@@ -81,11 +81,18 @@
 		
 		<div class="footer-company">
 			<div class="footer-company-div">
-				<span>㈜mickysportswear | 사업자등록번호 : 0000-00-0000 | 대표:micky</span><br />
+				<ul>
+					<li>㈜mickysportswear | 사업자등록번호 : 0000-00-0000 | 대표:micky</li>
+					<li>통신판매업 신고번호: 2013-경기성남-0984</li>
+					<li>서울특별시 구로구 시흥대로163길 33 주호타워 2층,3층</li>
+					<li>온라인몰 고객지원실 02-837-9922 | 매장고객 및 A/S문의: 1111-0000</li>
+					<li>Copyright © Micky Sports Wear 2023 All Rights Reserved</li>
+				</ul>
+				<!-- <span>㈜mickysportswear | 사업자등록번호 : 0000-00-0000 | 대표:micky</span><br />
 				<span>통신판매업 신고번호: 2013-경기성남-0984</span><br />
 				<span>서울특별시 구로구 시흥대로163길 33 주호타워 2층,3층</span><br />
 				<span>온라인몰 고객지원실 02-837-9922 | 매장고객 및 A/S문의: 1111-0000</span><br />
-				<span>Copyright © Micky Sports Wear 2023 All Rights Reserved</span>
+				<span>Copyright © Micky Sports Wear 2023 All Rights Reserved</span> -->
 			</div>
 			<div class="footer-company-div">
 				<img src="https://image.inicis.com/mkt/certmark/escrow/escrow_74x74_gray.png" alt="" />
@@ -94,13 +101,13 @@
 					<li>실시간 계좌이체 거래에 대해</li>
 					<li>구매안전서비스를 적용하고 있습니다.</li>
 				</ul>
-				
-				<!-- <span></span><br />
-				<span></span><br />
-				<span></span> -->
 			</div>
 			<div class="footer-company-div">
 				<img src="https://image.thenorthfacekorea.co.kr/cmsstatic/theme/northface/assets/images/ISMS-icon.png" alt="" />
+				<!-- <ul>
+					<li>[인증범위]온라인쇼핑몰</li>
+					<li>(MICKY) 홈페이지</li>
+				</ul> -->
 				<span>[인증범위]온라인쇼핑몰</span>
 				<span>(MICKY) 홈페이지</span>
 			</div>
