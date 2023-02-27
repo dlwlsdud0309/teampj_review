@@ -21,6 +21,15 @@
 	function getvalue(target) {
 		alert(target.value);
 	}
+	
+	$(function writeviewClose(){
+		$("#writeBtn").click(function(){
+			setTimeout(function(){
+				opener.location.reload();
+				window.close();
+			},10);
+		});	
+	});
 </script>
 </head>
 <body>
@@ -98,13 +107,4 @@
 	</table>
 </form>
 </body>
-<script>
-$(function writeviewClose(){
-	$("#writeBtn").click(function(){
-		setTimeout(function(){
-			opener.location.reload();
-			window.close();
-		},10);
-	});	
-});</script>
 </html>

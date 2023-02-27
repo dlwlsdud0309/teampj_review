@@ -34,7 +34,7 @@
 	
 	/* 리뷰작성 시 window.open 사용하여 새창 띄우기 */
 	function writeviewOpen(om_cntnum,p_no){
-		var url="reviewWriteview?om_cntnum="+om_cntnum+"&p_no="+p_no;
+		var url="../review/reviewWriteview?om_cntnum="+om_cntnum+"&p_no="+p_no;
 		window.open(url,'writeviewOpen','width=400,heigth=500,location=no,fullscreen=no,menubar=no,toolbar=no,status=no,scrollbars=no');
 	}
 	
