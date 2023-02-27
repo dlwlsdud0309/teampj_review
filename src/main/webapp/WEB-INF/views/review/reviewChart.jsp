@@ -35,32 +35,84 @@
 </c:if>
 <h3>별점순 top5</h3>
 <div class="productChartPackage">
-
-<ul class="productChart">
-<c:forEach items="${chartScore_top5 }" var="scoredesc">
-	<li>
-		<div class="pdtthumbnail">
-			<a href="../product/productDetail?pname=${scoredesc.productDto.p_name }&pfilesrc=${scoredesc.productDto.p_filesrc }">
-			<img src="../resources/img/productimg/${scoredesc.productDto.p_filesrc }.jpg" alt="" />
-			</a>
-		</div>
-		<div class="pdtdetail">
-			<p class="pname">
-			<a href="../product/productDetail?pname=${scoredesc.productDto.p_name }&pfilesrc=${scoredesc.productDto.p_filesrc }">
-			${scoredesc.productDto.p_name}
-			</a>
-			</p>
-			<p class="ppcolor">
-				<span style="color: #ff7f00;">★</span><span>${scoredesc.productDto.avgscore}</span>
-			</p>
-			<p class="pprice">
-				<span>${scoredesc.productDto.p_price}</span>
-			</p>
-		</div>
-	</li>	
-</c:forEach>
-</ul>
-
+	<ul class="productChart">
+	<c:forEach items="${chartScore_top5 }" var="scoredesc">
+		<li>
+			<div class="pdtthumbnail">
+				<a href="../product/productDetail?pname=${scoredesc.productDto.p_name }&pfilesrc=${scoredesc.productDto.p_filesrc }">
+				<img src="../resources/img/productimg/${scoredesc.productDto.p_filesrc }.jpg" alt="" />
+				</a>
+			</div>
+			<div class="pdtdetail">
+				<p class="pname">
+				<a href="../product/productDetail?pname=${scoredesc.productDto.p_name }&pfilesrc=${scoredesc.productDto.p_filesrc }">
+				${scoredesc.productDto.p_name}
+				</a>
+				</p>
+				<p class="ppcolor">
+					<span style="color: #ff7f00;">★</span><span>${scoredesc.productDto.avgscore}</span>
+				</p>
+				<p class="pprice">
+					<span>${scoredesc.productDto.p_price}</span>
+				</p>
+			</div>
+		</li>	
+	</c:forEach>
+	</ul>
+</div>
+<h3>남성 인기 순위 top5</h3>
+<div class="productChartPackage">
+	<ul class="productChart">
+	<c:forEach items="${maleScore_top5 }" var="malescoredesc">
+		<li>
+			<div class="pdtthumbnail">
+				<a href="../product/productDetail?pname=${malescoredesc.p_name }&pfilesrc=${malescoredesc.p_filesrc }">
+				<img src="../resources/img/productimg/${malescoredesc.p_filesrc }.jpg" alt="" />
+				</a>
+			</div>
+			<div class="pdtdetail">
+				<p class="pname">
+				<a href="../product/productDetail?pname=${malescoredesc.p_name }&pfilesrc=${malescoredesc.p_filesrc }">
+				${malescoredesc.p_name}
+				</a>
+				</p>
+				<p class="ppcolor">
+					<span>${malescoredesc.p_color}</span>
+				</p>
+				<p class="pprice">
+					<span>${malescoredesc.p_price}</span>
+				</p>
+			</div>
+		</li>	
+	</c:forEach>
+	</ul>
+</div>
+<h3>여성 인기 순위 top5</h3>
+<div class="productChartPackage">
+	<ul class="productChart">
+	<c:forEach items="${femaleScore_top5 }" var="femalescoredesc">
+		<li>
+			<div class="pdtthumbnail">
+				<a href="../product/productDetail?pname=${femalescoredesc.p_name }&pfilesrc=${scoredesc.p_filesrc }">
+				<img src="../resources/img/productimg/${femalescoredesc.p_filesrc }.jpg" alt="" />
+				</a>
+			</div>
+			<div class="pdtdetail">
+				<p class="pname">
+				<a href="../product/productDetail?pname=${femalescoredesc.p_name }&pfilesrc=${scoredesc.p_filesrc }">
+				${femalescoredesc.p_name}
+				</a>
+				</p>
+				<p class="ppcolor">
+					<span>${femalescoredesc.p_color}</span>
+				</p>
+				<p class="pprice">
+					<span>${femalescoredesc.p_price}</span>
+				</p>
+			</div>
+		</li>	
+	</c:forEach>
+	</ul>
 </div>
 
 </body>
