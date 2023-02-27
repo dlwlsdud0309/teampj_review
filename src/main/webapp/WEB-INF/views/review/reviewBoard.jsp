@@ -56,12 +56,18 @@
         });
       });
    
-   /* $(document).ready(function()){
-	   //const offset = $(".scollmove").offset();
-	   $('#reviewBtn').click(function(event){
-		   event.preventDefault();
+   /* 버튼을 누르면 해당 위치로 스크롤 이동 */
+   $(document).ready(function(){
+	   $('#productinfoBtn').click(function(){
+		   var offset = $("#p_info").offset();
+		   $('html, body').animate({scrollTop: offset.top},400);
 	   });
-   }; */
+
+	   $('#reviewBtn').click(function(){
+		   var offset = $("#reviewtitle_writebutton").offset();
+		   $('html, body').animate({scrollTop: offset.top},400);
+	   });
+   });
 </script>
 </head>
 
@@ -131,21 +137,19 @@
 
 
 
-
-
 <!--@@@ 평균별점(avgStarscore), 총 게시글 수(totalCount ) @@@-->
 <div class="review_table">
 		<div class="pinfo_review">
-			<a href="#" style="font-size: 1.5em; font-weight: bolder;" onclick="return false;">상품설명</a>
-			<a href="#" style="font-size: 1.5em; font-weight: bolder;" id="reviewBtn" onclick="return false;">리뷰</a>
+			<a href="#" id="productinfoBtn" style="font-size: 1.5em; font-weight: bolder;" onclick="return false;">상품설명</a>
+			<a href="#" id="reviewBtn" style="font-size: 1.5em; font-weight: bolder;" onclick="return false;">리뷰</a>
 		</div>
-		<div class="p_info">
+		<div class="p_info" id="p_info">
 			<c:forEach items="${productinfo }" var="info">
 				${info.p_info }
 			</c:forEach>
 		</div>
 		<hr />
-		<div class=reviewtitle_writebutton>
+		<div id="reviewtitle_writebutton">
 			<span style="font-size: 1.5em; font-weight: bolder;">리뷰</span>
 	   		<span><input style="float: right;" type="button" value="리뷰작성" onclick="fn_01('${sessionScope.loginid }');" /></span>
   		</div>

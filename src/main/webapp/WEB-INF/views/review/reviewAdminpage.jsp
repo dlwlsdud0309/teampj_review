@@ -51,10 +51,6 @@ href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
 	const myChartOne=document.getElementById('myChartOne').getContext('2d');
 	
 
-	<%-- var jArray=new Array();
-	jArray='<%=arr %>';
-	
-	jArray=JSON.parse(jArray); --%>
 	const barChartOne=new Chart(myChartOne,{
 		/* 차트에서 사용할 수 있는 데이터의 형식과 구조로 설정 */
 		type:'line',
