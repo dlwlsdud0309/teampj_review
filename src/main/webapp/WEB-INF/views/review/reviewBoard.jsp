@@ -67,6 +67,11 @@
 		   var offset = $("#reviewtitle_writebutton").offset();
 		   $('html, body').animate({scrollTop: offset.top},400);
 	   });
+
+	   $('#reviewsizeBtn').click(function(){
+		   var offset = $("#reviewSize").offset();
+		   $('html, body').animate({scrollTop: offset.top},400);
+	   });
    });
 </script>
 </head>
@@ -142,18 +147,27 @@
 		<div class="pinfo_review">
 			<a href="#" id="productinfoBtn" style="font-size: 1.5em; font-weight: bolder;" onclick="return false;">상품설명</a>
 			<a href="#" id="reviewBtn" style="font-size: 1.5em; font-weight: bolder;" onclick="return false;">리뷰</a>
+			<a href="#" id="reviewsizeBtn" style="font-size: 1.5em; font-weight: bolder;" onclick="return false;">사이즈 정보</a>
 		</div>
 		<div class="p_info" id="p_info">
-			<c:forEach items="${productinfo }" var="info">
-				${info.p_info }
-			</c:forEach>
+			<span style="font-size: 1.5em; font-weight: bolder;">상품설명</span> <br />
+			<hr />
+			<div class="p_info_div">
+				<c:forEach items="${productinfo }" var="info">
+					${info.p_info }
+				</c:forEach>
+			</div>
 		</div>
-		<hr />
+		<div id="reviewSize">
+			<span style="font-size: 1.5em; font-weight: bolder;">사이즈 정보</span> <br />
+			<hr />
+			<img src="../resources/img/NT7UP19A_NT7UP19A_size00_P.jpg" />
+		</div>
 		<div id="reviewtitle_writebutton">
 			<span style="font-size: 1.5em; font-weight: bolder;">리뷰</span>
 	   		<span><input style="float: right;" type="button" value="리뷰작성" onclick="fn_01('${sessionScope.loginid }');" /></span>
   		</div>
-   <hr />
+  		<hr />
    <div class="">
    <br />
    <br />
@@ -386,6 +400,7 @@
       </div>
 <br />
    </div>
+
 <br />
 <br />
 <br />
