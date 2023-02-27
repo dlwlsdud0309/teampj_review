@@ -1,5 +1,6 @@
 package micky.sports.shop.controller;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -106,9 +107,15 @@ public class ReviewController {
 		
 		model.addAttribute("request", request);
 		mickyServiceInter=new ReviewDeleteService(sqlSession,httpSession);
+		
+		ServletContext application=request.getSession().getServletContext();
+//		scope application 사용한 pname, pfilesrc값 가져오기
+		String p_name=(String)application.getAttribute("pname");
+		String p_filesrc=(String)application.getAttribute("pfilesrc");
+		
 		mickyServiceInter.execute(model);
 		
-		return "redirect:reviewBoard";
+		return "redirect:../product/productDetail?"+"pname="+p_name+"&pfilesrc="+p_filesrc;
 	}
 	
 //	수정하기 폼
@@ -134,19 +141,7 @@ public class ReviewController {
 		
 		return "redirect:reviewBoard";
 	}
-	
-//	관리자 답글달기 폼
-//	@RequestMapping("/reviewPopupReplycontentview")
-//	public String reviewReplyview(HttpServletRequest request, Model model) {
-//		System.out.println("=====reviewReplyview====");
-//		
-//		model.addAttribute("request", request);
-//		mickyServiceInter=new ReviewReplyviewService(sqlSession,httpSession);
-//		mickyServiceInter.execute(model);
-//		
-//		return "review/reviewPopupReplycontentview";
-//	}
-	
+		
 //	관리자 답글달기, 수정하기
 	@RequestMapping("/reviewReply")
 	public String reviewPopupreply(HttpServletRequest request, Model model) {
@@ -154,9 +149,15 @@ public class ReviewController {
 		
 		model.addAttribute("request", request);
 		mickyServiceInter=new ReviewReplyService(sqlSession,httpSession);
+		
+		ServletContext application=request.getSession().getServletContext();
+//		scope application 사용한 pname, pfilesrc값 가져오기
+		String p_name=(String)application.getAttribute("pname");
+		String p_filesrc=(String)application.getAttribute("pfilesrc");
+		
 		mickyServiceInter.execute(model);
 		
-		return "redirect:reviewBoard";
+		return "redirect:../product/productDetail?"+"pname="+p_name+"&pfilesrc="+p_filesrc;
 	}
 	
 //	관리자 답글 삭제
@@ -166,9 +167,15 @@ public class ReviewController {
 		
 		model.addAttribute("request", request);
 		mickyServiceInter=new ReviewReplydeleteService(sqlSession,httpSession);
+		
+		ServletContext application=request.getSession().getServletContext();
+//		scope application 사용한 pname, pfilesrc값 가져오기
+		String p_name=(String)application.getAttribute("pname");
+		String p_filesrc=(String)application.getAttribute("pfilesrc");
+		
 		mickyServiceInter.execute(model);
 		
-		return "redirect:reviewBoard";
+		return "redirect:../product/productDetail?"+"pname="+p_name+"&pfilesrc="+p_filesrc;
 	}
 
 //	리뷰 관리자 페이지

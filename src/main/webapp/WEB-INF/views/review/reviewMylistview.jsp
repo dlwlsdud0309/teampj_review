@@ -18,6 +18,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Nanum+Gothic&family=Noto+Sans+KR:wght@900&family=UnifrakturCook&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="../resources/css/reviewstyle.css?after" />
 <script src="../resources/js/jquery-3.6.1.min.js"></script>
 <script src="../resources/js/jquery.bpopup.min.js"></script>
@@ -132,12 +136,12 @@
 					</div>
 					<div>
 						<!-- 수정, 삭제 -->
-						<button onclick="window.open('reviewModifyview?r_no=${mylist.r_no }','modifyview','width=400,heigth=500,location=no,fullscreen=no,menubar=no,toolbar=no,status=no,scrollbars=no');">수정</button>
+						<button onclick="window.open('../review/reviewModifyview?r_no=${mylist.r_no }','modifyview','width=400,heigth=500,location=no,fullscreen=no,menubar=no,toolbar=no,status=no,scrollbars=no');">수정</button>
 						
 						<!-- 답글이 달리면 삭제할 수 없도록 '삭제'버튼을 제거 -->
 						<c:choose>
 							<c:when test="${mylist.r_ynn eq 'n' }">
-								<button type="button" onclick="location.href='reviewMylistDelete?r_no=${mylist.r_no }'">삭제</button>
+								<button type="button" onclick="location.href='../review/reviewMylistDelete?r_no=${mylist.r_no }'">삭제</button>
 							</c:when>
 						</c:choose>
 					</div>

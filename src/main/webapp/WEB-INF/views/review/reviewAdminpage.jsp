@@ -16,52 +16,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Nanum+Gothic&family=Noto+Sans+KR:wght@900&family=UnifrakturCook&display=swap" rel="stylesheet">
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
-
-<%
-/* String sql="select p.p_name p_name,round(avg(r.r_score),1) avgscore"
-		 +" from member m, review r, product p, order_member o"
-		 +" where m.m_id=r.m_id"
-		 +" and r.p_no=p.p_no"
-		 +" and r.om_cntnum=o.om_cntnum"
-		 +" and o.om_state='구매확정'"
-		 +" and r.r_content is not null"
-		 +" group by p.p_name"
-		 +" order by avgscore desc, p.p_name desc";
-
-Connection con=DBCon.getConnection();
-PreparedStatement pstmt=con.prepareStatement(sql);
-ResultSet rs=pstmt.executeQuery(); */
-
-/* while(rs.next()){
-	System.out.println(rs.getString("p_name")+" : "+rs.getString("avgscore"));
-} */
-
-//데이터를 json처리
-/* JSONArray arr=new JSONArray();
-while(rs.next()){ */
-	
-	//HashMap<String, Object> hashmap=new HashMap<String, Object>();
-	//JSONObject obj=new JSONObject();
-	//String p_name=rs.getString("p_name");
-	//String avgScore=rs.getString("avgscore");
-	
-	//hashmap.put("p_name",p_name);
-	//hashmap.put("avgScore",avgScore);	
-	
-	//obj.put("p_name",p_name);
-	//obj.put("avgScore",avgScore);
-	
-	//if(obj!=null){
-		//arr.add(obj);
-		//System.out.println(arr);
-	//}
-//}
-/* rs.close();
-pstmt.close();
-con.close(); */
-%>
 
 
 <link rel="stylesheet" 

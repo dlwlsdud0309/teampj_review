@@ -1,7 +1,9 @@
 .clear{
 	clear: both;
 }
-
+body {
+	font-family: Nanum Gothic;
+}
 /* =============== reviewBoard=============== */
 div{
 	height: auto;
