@@ -112,6 +112,9 @@ a{
 	justify-content: center;
 	align-items: center;
 }
+.avg_star{
+	text-align: center;
+}
 .star {
    position: relative;
    font-size: 2rem;
