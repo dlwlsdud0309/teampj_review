@@ -62,9 +62,7 @@
 					<tr>
 						<td class="left">파일첨부</td>
 						<td colspan="2" class="image-container">
-							<c:if test="${popupview.r_filesrc ne null }">
-								<img style="width: 200px;" id="preview-image" src="../resources/reviewupload/${popupview.r_filesrc }">
-							</c:if>
+							<img style="width: 200px;" id="preview-image" src="../resources/reviewupload/${popupview.r_filesrc }" alt="이미지를 넣어주세요">
 			   				<input style="display: block;" type="file" name="r_filesrc" id="input-image">
 						</td>
 					</tr>
@@ -93,11 +91,11 @@ function readImage(input) {
     if(input.files && input.files[0]) {
         // 이미지 파일인지 검사 (생략)
         // FileReader 인스턴스 생성
-        const reader = new FileReader()
+        const reader = new FileReader();
         // 이미지가 로드가 된 경우
         reader.onload = e => {
-            const previewImage = document.getElementById("preview-image")
-            previewImage.src = e.target.result
+            const previewImage = document.getElementById("preview-image");
+            previewImage.src = e.target.result;
         }
         // reader가 이미지 읽도록 하기
         reader.readAsDataURL(input.files[0])
@@ -106,7 +104,7 @@ function readImage(input) {
 // input file에 change 이벤트 부여
 const inputImage = document.getElementById("input-image")
 inputImage.addEventListener("change", e => {
-    readImage(e.target)
+    readImage(e.target);
 })
 
 /* 참고 주소 : http://yoonbumtae.com/?p=3304 */
