@@ -83,9 +83,15 @@ public class ReviewController {
 		
 		model.addAttribute("request", request);
 		mickyServiceInter=new ReviewWriteService(sqlSession,httpSession);
+		
+		ServletContext application=request.getSession().getServletContext();
+//		scope application 사용한 pname, pfilesrc값 가져오기
+		String p_name=(String)application.getAttribute("pname");
+		String p_filesrc=(String)application.getAttribute("pfilesrc");
+		
 		mickyServiceInter.execute(model);
 		
-		return "redirect:reviewBoard";
+		return "redirect:../product/productDetail?"+"pname="+p_name+"&pfilesrc="+p_filesrc;
 	}
 	
 //	reviewMylistview에서 리뷰 삭제
@@ -137,9 +143,15 @@ public class ReviewController {
 		
 		model.addAttribute("request", request);
 		mickyServiceInter=new ReviewModifyService(sqlSession,httpSession);
+		
+		ServletContext application=request.getSession().getServletContext();
+//		scope application 사용한 pname, pfilesrc값 가져오기
+		String p_name=(String)application.getAttribute("pname");
+		String p_filesrc=(String)application.getAttribute("pfilesrc");
+		
 		mickyServiceInter.execute(model);
 		
-		return "redirect:reviewBoard";
+		return "redirect:../product/productDetail?"+"pname="+p_name+"&pfilesrc="+p_filesrc;
 	}
 		
 //	관리자 답글달기, 수정하기
