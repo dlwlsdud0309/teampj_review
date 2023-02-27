@@ -103,6 +103,12 @@ div{
 }
 
 /* =============== 별점 =============== */
+.avgstar_totalcount{
+	margin: 60px auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 .star {
    position: relative;
    font-size: 2rem;

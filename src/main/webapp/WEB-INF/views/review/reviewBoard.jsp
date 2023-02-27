@@ -172,7 +172,7 @@
 	   		<span><input style="float: right;" type="button" value="리뷰작성" onclick="fn_01('${sessionScope.loginid }');" /></span>
   		</div>
   		<hr />
-   <div class="">
+   <div class="avgstar_totalcount">
    <br />
    <br />
       <div class="avg_star">
