@@ -108,7 +108,7 @@ public class ReviewController {
 		mickyServiceInter=new ReviewDeleteService(sqlSession,httpSession);
 		mickyServiceInter.execute(model);
 		
-		return "redirect:product/productDetail";
+		return "redirect:reviewBoard";
 	}
 	
 //	수정하기 폼
