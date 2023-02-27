@@ -20,7 +20,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
 
 <%
-String sql="select p.p_name p_name,round(avg(r.r_score),1) avgscore"
+/* String sql="select p.p_name p_name,round(avg(r.r_score),1) avgscore"
 		 +" from member m, review r, product p, order_member o"
 		 +" where m.m_id=r.m_id"
 		 +" and r.p_no=p.p_no"
@@ -32,35 +32,35 @@ String sql="select p.p_name p_name,round(avg(r.r_score),1) avgscore"
 
 Connection con=DBCon.getConnection();
 PreparedStatement pstmt=con.prepareStatement(sql);
-ResultSet rs=pstmt.executeQuery();
+ResultSet rs=pstmt.executeQuery(); */
 
 /* while(rs.next()){
 	System.out.println(rs.getString("p_name")+" : "+rs.getString("avgscore"));
 } */
 
 //데이터를 json처리
-JSONArray arr=new JSONArray();
-while(rs.next()){
+/* JSONArray arr=new JSONArray();
+while(rs.next()){ */
 	
 	//HashMap<String, Object> hashmap=new HashMap<String, Object>();
-	JSONObject obj=new JSONObject();
-	String p_name=rs.getString("p_name");
-	String avgScore=rs.getString("avgscore");
+	//JSONObject obj=new JSONObject();
+	//String p_name=rs.getString("p_name");
+	//String avgScore=rs.getString("avgscore");
 	
 	//hashmap.put("p_name",p_name);
 	//hashmap.put("avgScore",avgScore);	
 	
-	obj.put("p_name",p_name);
-	obj.put("avgScore",avgScore);
+	//obj.put("p_name",p_name);
+	//obj.put("avgScore",avgScore);
 	
-	if(obj!=null){
-		arr.add(obj);
+	//if(obj!=null){
+		//arr.add(obj);
 		//System.out.println(arr);
-	}
-}
-rs.close();
+	//}
+//}
+/* rs.close();
 pstmt.close();
-con.close();
+con.close(); */
 %>
 
 
@@ -70,6 +70,15 @@ href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
 <body>
 <h3>reviewAdminpage</h3>
 <a href="../member/main">메인</a>
+<c:if test="${empty sessionScope.loginid }">
+	<a href="../member/loginform">login</a> 
+	<a href="">join</a>
+</c:if>
+<c:if test="${not empty sessionScope.loginid }">
+	<a href="../member/logout">logout</a> 
+	<a href="reviewMylistview">${sessionScope.loginid }님</a>
+<br />
+</c:if>
 <div class="container">
 	<div class="row">
 		<div class="col-md-6">
@@ -89,10 +98,10 @@ href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
 	const myChartThree=document.getElementById('myChartThree').getContext('2d');
 	
 
-	var jArray=new Array();
+	<%-- var jArray=new Array();
 	jArray='<%=arr %>';
 	
-	jArray=JSON.parse(jArray);
+	jArray=JSON.parse(jArray); --%>
 	const barChartOne=new Chart(myChartOne,{
 		/* 차트에서 사용할 수 있는 데이터의 형식과 구조로 설정 */
 		type:'bar',

@@ -66,7 +66,7 @@ dd>a:hover{
 	padding: 30px 50px;
 	color: black;
 	font-weight: bolder;
-	font-size: smaller;
+	font-size: 15px;
 }
 .footer_atag>a:hover{
 	color: #AF0006;
@@ -83,7 +83,7 @@ dd>a:hover{
 }
 .footer-company-div{
 	text-align: left;
-	font-size: 10px;
+	font-size: smaller;
 	vertical-align: top;
 	color: #9B9B9B;
 	margin: 20px 0px 20px;

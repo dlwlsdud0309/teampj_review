@@ -46,6 +46,9 @@
 			${scoredesc.productDto.p_name}
 			</a>
 			</p>
+			<p class="ppcolor">
+				<span>${scoredesc.productDto.avgscore}</span>
+			</p>
 			<p class="pprice">
 				<span>${scoredesc.productDto.p_price}</span>
 			</p>

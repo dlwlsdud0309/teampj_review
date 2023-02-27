@@ -55,6 +55,7 @@
 		<result column="p_date" property="p_date"/>
 		<result column="p_category" property="p_category"/>
 		<result column="p_info" property="p_info"/>
+		<result column="avgscore" property="avgscore"/>
 	</resultMap>
 	
 	<!-- 4.join위해 사용한 OrderMemberDto -->
