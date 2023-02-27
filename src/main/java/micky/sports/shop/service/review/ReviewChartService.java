@@ -38,9 +38,9 @@ public class ReviewChartService implements MickyServiceInter{
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
 		ArrayList<ReviewDto> chartScore_top5=rdao.chartScore_top5();
 		
-		for (ReviewDto val : chartScore_top5) {
-			System.out.println(val.getProductDto().getP_name());
-		}
+//		for (ReviewDto val : chartScore_top5) {
+//			System.out.println(val.getProductDto().getP_name());
+//		}
 		
 		model.addAttribute("chartScore_top5", chartScore_top5);
 	}
