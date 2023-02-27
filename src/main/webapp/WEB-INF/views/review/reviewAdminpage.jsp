@@ -79,23 +79,16 @@ href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
 	<a href="reviewMylistview">${sessionScope.loginid }님</a>
 <br />
 </c:if>
+
 <div class="container">
 	<div class="row">
 		<div class="col-md-6">
 			<canvas id="myChartOne" width="400" height="400"></canvas>
 		</div>
-		<div class="col-md-6">
-			<canvas id="myChartTwo" width="400" height="400"></canvas>
-		</div>
-		<div class="col-md-6">
-			<canvas id="myChartThree" width="400" height="400"></canvas>
-		</div>
 	</div>
 </div>
 <script>
 	const myChartOne=document.getElementById('myChartOne').getContext('2d');
-	const myChartTwo=document.getElementById('myChartTwo').getContext('2d');
-	const myChartThree=document.getElementById('myChartThree').getContext('2d');
 	
 
 	<%-- var jArray=new Array();
@@ -104,33 +97,21 @@ href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
 	jArray=JSON.parse(jArray); --%>
 	const barChartOne=new Chart(myChartOne,{
 		/* 차트에서 사용할 수 있는 데이터의 형식과 구조로 설정 */
-		type:'bar',
+		type:'line',
 		data:{
-			labels:[
-				'Red',
-				'Blue',
-				'Yellow',
-				'Green',
-				'Purple',
-				'Orange'
-				],
+			labels:[<c:forEach items="${reviewAdmin_ScoreDesc }" var="admin_scoredesc">
+					"${admin_scoredesc.productDto.p_name }", 
+					</c:forEach>],
 			datasets:[{
-				label:'제품 별점순',
-				data:[
-					5,
-					19,
-					3,
-					50,
-					2,
-					3
-					],
+				label:'제품별 평균별점',
+				data:[<c:forEach items="${reviewAdmin_ScoreDesc }" var="admin_scoredesc">
+						"${admin_scoredesc.productDto.avgscore }", 
+						</c:forEach>],
 				backgroundColor:[
-					'rgba(55,162,132,0.2)',
-					'rgba(55,162,132,0.2)',
-					'rgba(255,230,132,1.2)',
-					'rgba(75,99,132,1.0)',
-					'rgba(155,99,132,1.2)',
-					'#0000ff'
+					'red',
+					'blue',
+					'green',
+					'yellow'
 				],
 				borderColor:[
 					'rgba(255,99,132,1)',
@@ -140,13 +121,12 @@ href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
 					'rgba(153,102,255,1)',
 					'rgba(255,99,132,1)'
 				],
-				borderWidth:3
 			}]
 		},
 		options:{
 			title:{
 				display:true,
-				text:'제품 별점순'
+				text:'제품별 평균별점'
 			},
 			legend:{
 				display:true,
@@ -170,49 +150,6 @@ href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
 			} */
 		}
 	});
-	
-	
-	const barChartTwo=new Chart(myChartTwo,{
-		/* 차트에서 사용할 수 있는 데이터의 형식과 구조로 설정 */
-		type:'bar',
-		data:{
-			labels:['Red','Blue','Yellow','Green','Purple','Orange'],
-			datasets:[{
-				label:'# of Votes',
-				data:[12,19,3,50,2,3],
-				backgroundColor:[
-					'rgba(255,99,132,1.0)',
-					'rgba(55,162,132,0.2)',
-					'rgba(255,230,132,1.2)',
-					'rgba(75,99,132,1.0)',
-					'rgba(155,99,132,1.2)',
-					'#0000ff'
-				],
-				borderColor:[
-					'rgba(255,99,132,1)',
-					'rgba(55,162,132,1)',
-					'rgba(255,230,132,1)',
-					'rgba(75,192,192,1)',
-					'rgba(153,102,255,1)',
-					'rgba(255,99,132,1)'
-				],
-				borderWidth:3
-			}]
-		},
-		options:{
-			scales:{
-				y:{
-					beginAtZero:true
-				}
-			}
-		}
-	});
-	
-	
 </script>
-<%-- 나오나연 : ${reviewChartScoreDesc }
-<c:forEach items="${reviewChartScoreDesc }" var="score">
-	${score.p_name }
-</c:forEach> --%>
 </body>
 </html>
