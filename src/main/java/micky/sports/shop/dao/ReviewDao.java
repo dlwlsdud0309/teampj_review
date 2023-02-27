@@ -22,7 +22,6 @@ public interface ReviewDao {
 	public int totalCount(String p_name);
 	public void replydelete(String r_no);
 	public double avgStarscore(String p_name);
-	//public ArrayList<MemberDto> review_mylist_cash(String loginid);
 	public int checkMileage(String loginid);
 	public ArrayList<ReviewDto> chartScore_top5();
 	public ArrayList<ReviewDto> reviewAdmin_ScoreDesc();
