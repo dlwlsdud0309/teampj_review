@@ -33,7 +33,7 @@
 <div class="productChartPackage">
 
 <ul class="productChart">
-<c:forEach items="${chartScoredesc }" var="scoredesc">
+<c:forEach items="${chartScore_top5 }" var="scoredesc">
 	<li>
 		<div class="pdtthumbnail">
 			<a href="../product/productDetail?pname=${scoredesc.productDto.p_name }&pfilesrc=${scoredesc.productDto.p_filesrc }">

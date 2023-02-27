@@ -23,7 +23,6 @@ public interface ReviewDao {
 	public double avgStarscore(String p_name);
 	//public ArrayList<MemberDto> review_mylist_cash(String loginid);
 	public int checkMileage(String loginid);
-	public ArrayList<ReviewDto> reviewChartScoreDesc();
-	public ArrayList<ReviewDto> chartScoredesc();
+	public ArrayList<ReviewDto> chartScore_top5();
 	public ArrayList<ProductDto> productInfo(String p_name, String p_filesrc);
 }

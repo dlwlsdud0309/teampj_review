@@ -36,13 +36,13 @@ public class ReviewChartService implements MickyServiceInter{
 		String loginId = (String)httpSession.getAttribute("loginid");
 		
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
-		ArrayList<ReviewDto> chartScoredesc=rdao.chartScoredesc();
+		ArrayList<ReviewDto> chartScore_top5=rdao.chartScore_top5();
 		
-		for (ReviewDto val : chartScoredesc) {
+		for (ReviewDto val : chartScore_top5) {
 			System.out.println(val.getProductDto().getP_name());
 		}
 		
-		model.addAttribute("chartScoredesc", chartScoredesc);
+		model.addAttribute("chartScore_top5", chartScore_top5);
 	}
 
 }
