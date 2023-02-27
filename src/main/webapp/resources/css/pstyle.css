@@ -7,11 +7,12 @@ a {
 }
 .productNormalPackage {
 	width: 1500px;
-	height: 400px;
+	/* height: 400px; */ /* **************** */
 	/* border: 1px solid green; */
 	margin:0 auto;
 	padding: 1px;
 	
+	margin-left: 5%;
 }
 .productList {
 	/* border: 1px dotted green; */

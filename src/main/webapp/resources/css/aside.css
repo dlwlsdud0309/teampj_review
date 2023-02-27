@@ -1,0 +1,70 @@
+aside{
+	/* position: fixed; */
+	width: 160px;
+	height: 0px;
+	top: 105px;
+	padding-left: 50px;
+	position: -webkit-sticky; /* 사파리 브라우저 지원 */
+    position: sticky;
+}
+
+.aside_dd{
+	margin-left: 10px;
+}
+nav>dl{
+	border-top: 1px solid #ddd;
+}
+nav>dl:first-child{
+	border-top: none;
+} */
+nav>dl{
+	margin-right: 10px;
+	margin-bottom: 50px;
+}
+
+dl{
+	display: block;
+	margin-left: 20px;
+	margin-bottom: 25px;
+}
+dt{
+	display: block;
+	color: black;
+	margin: 10px 0px 10px;
+	font-weight: bolder;
+	font-size: 15px;
+	padding-bottom: 10px;
+}
+dt>a{
+	color: black;
+}
+dt>a:hover{
+	color: #AF0006;
+}
+dd{
+	margin-left: 0px;
+	font-size: 12px;
+	padding-bottom: 8px;
+}
+dd>a{
+	color: black;
+}
+dd>a:hover{
+	color: #AF0006;
+}
+
+
+/* nav{
+	overflow: scroll;
+} */
+/* nav::-webkit-scrollbar {
+    width: 5px;
+    background: #808080; 스크롤바의 색상
+    border-radius: 10px;
+}
+nav::-webkit-scrollbar-thumb {
+    height: 95%;
+}
+nav::-webkit-scrollbar-track {
+    background: rgba(33, 122, 244, .1);  스크롤바 뒷 배경 색상
+} */

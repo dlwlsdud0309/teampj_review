@@ -30,6 +30,12 @@
 <br />
 <a href="../product/productChart">메인탑5으로</a>
 <h3>상품리스트</h3>
+
+
+<!--@@@ aside @@@-->
+<jsp:include page="/WEB-INF/views/aside.jsp" />
+
+
 <div class="productNormalPackage">
 <ul class="productList">
 <c:forEach items="${productlsit}" var="plist">
@@ -53,4 +59,6 @@
 </div>
 
 </body>
+<!--@@@ footer @@@-->
+<jsp:include page="/WEB-INF/views/footer.jsp" />
 </html>

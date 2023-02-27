@@ -108,6 +108,7 @@
 <br />
 </c:if>
 
+
 <a href="../review/reviewChart">별점순 top5</a>
 
 <br />
@@ -427,8 +428,10 @@
 <br />
 
 </body>
+<!--@@@ footer @@@-->
 <jsp:include page="/WEB-INF/views/footer.jsp" />
-<!-- 더보기 script -->
+
+<!--@@@ 더보기 script @@@-->
 <script>
 $(window).on('load', function () {
     load('#js-load', '10');
