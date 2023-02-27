@@ -383,7 +383,14 @@
                               <c:if test="${sessionScope.loginid eq list.memberDto.m_id }">
                                           
                                           <!--@@@ 수정하기 @@@-->
-                                          <button onclick="window.open('../review/reviewModifyview?r_no=${list.r_no }','modifyview','width=400,height=1000,location=no,fullscreen=no,menubar=no,toolbar=no,status=no,scrollbars=no');">수정</button>
+                                          <script>
+                                           	var openWidth=400;
+                                      		var openheight=1000;
+                                      		
+                                      		var openWidthX=(window.screen.width/2)-(openWidth/2);
+                                      		var openheightY=(window.screen.height/2)-(openheight/2);
+                                          </script>
+                                          <button onclick="window.open('../review/reviewModifyview?r_no=${list.r_no }','modifyview','width='+openWidth+',height='+openheight+',location=no,fullscreen=no,menubar=no,toolbar=no,status=no,scrollbars=no,left='+openWidthX+',top='+openheightY);">수정</button>
                                           
                                           <!--@@@ 답글이 달리지 않았다면(r_ynn이 n이라면) 삭제 가능 @@@-->
                                           <c:choose>
