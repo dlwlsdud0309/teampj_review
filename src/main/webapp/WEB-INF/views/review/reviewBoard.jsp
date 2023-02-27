@@ -63,15 +63,16 @@
 		   $('html, body').animate({scrollTop: offset.top},400);
 	   });
 
+	   $('#reviewsizeBtn').click(function(){
+		   var offset = $("#reviewSize").offset();
+		   $('html, body').animate({scrollTop: offset.top},400);
+	   });
+	   
 	   $('#reviewBtn').click(function(){
 		   var offset = $("#reviewtitle_writebutton").offset();
 		   $('html, body').animate({scrollTop: offset.top},400);
 	   });
 
-	   $('#reviewsizeBtn').click(function(){
-		   var offset = $("#reviewSize").offset();
-		   $('html, body').animate({scrollTop: offset.top},400);
-	   });
    });
 </script>
 </head>
@@ -113,6 +114,9 @@
     display: block;
     border-bottom: 1px solid #ddd;
 }
+.js-load.active:last-child {
+	border-bottom: none;
+}
 .is_comp.js-load:after {
     display: none;
 }
@@ -146,8 +150,8 @@
 <div class="review_table">
 		<div class="pinfo_review">
 			<a href="#" id="productinfoBtn" style="font-size: 1.5em; font-weight: bolder;" onclick="return false;">상품설명</a>
-			<a href="#" id="reviewBtn" style="font-size: 1.5em; font-weight: bolder;" onclick="return false;">리뷰</a>
 			<a href="#" id="reviewsizeBtn" style="font-size: 1.5em; font-weight: bolder;" onclick="return false;">사이즈 정보</a>
+			<a href="#" id="reviewBtn" style="font-size: 1.5em; font-weight: bolder;" onclick="return false;">리뷰</a>
 		</div>
 		<div class="p_info" id="p_info">
 			<span style="font-size: 1.5em; font-weight: bolder;">상품설명</span> <br />
