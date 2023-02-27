@@ -15,6 +15,7 @@ public interface ReviewDao {
 	public ArrayList<ReviewDto> mylistview(String loginid);
 	public ReviewDto popupview(String r_no);
 	public void modify(String r_no, String r_title, String r_content, String r_score, String r_filesrc);
+	public void modify2(String r_no, String r_title, String r_content, String r_score);
 	public ReviewDto replyview(String r_no);
 	public void replyUpdate(String r_no, String r_id, String r_retitle, String r_recontent);
 	public ReviewDto getReview(String r_no);

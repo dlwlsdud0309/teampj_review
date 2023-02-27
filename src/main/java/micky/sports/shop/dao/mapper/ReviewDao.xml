@@ -184,6 +184,12 @@
 		R_CONTENT=#{param3}, R_SCORE=#{param4}, R_FILESRC=#{param5}
 		WHERE R_NO=#{param1}
 	</update>
+
+	<update id="modify2">
+		UPDATE REVIEW SET R_TITLE=#{param2},
+		R_CONTENT=#{param3}, R_SCORE=#{param4}
+		WHERE R_NO=#{param1}
+	</update>
 	
 	<select id="replyview" resultType="micky.sports.shop.dto.ReviewDto">
 		SELECT R_NO,M_ID,R_TITLE,R_CONTENT,R_ID,R_RETITLE,
