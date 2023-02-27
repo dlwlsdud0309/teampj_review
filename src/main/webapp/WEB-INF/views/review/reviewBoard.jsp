@@ -14,6 +14,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Nanum+Gothic&family=Noto+Sans+KR:wght@900&family=UnifrakturCook&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="../resources/css/reviewstyle.css" />
+<link rel="stylesheet" href="../resources/css/footer.css" />
 <script src="../resources/js/jquery-3.6.1.min.js"></script>
 <script src="../resources/js/jquery.bpopup.min.js"></script>
 <script src="../resources/js/scriptjsp.js"></script>
@@ -410,8 +411,8 @@
 <br />
 <br />
 
-<jsp:include page="/WEB-INF/views/footer.jsp" />
 </body>
+<jsp:include page="/WEB-INF/views/footer.jsp" />
 <!-- 더보기 script -->
 <script>
 $(window).on('load', function () {
