@@ -39,13 +39,30 @@
 	
 	/* 리뷰작성 시 window.open 사용하여 새창 띄우기 */
 	function writeviewOpen(om_cntnum,p_no){
+		var openWidth=400;
+		var openheight=1000;
+		
+		var openWidthX=(window.screen.width/2)-(openWidth/2);
+		var openheightY=(window.screen.height/2)-(openheight/2);
+		
 		var url="../review/reviewWriteview?om_cntnum="+om_cntnum+"&p_no="+p_no;
-		window.open(url,'writeviewOpen','width=400,heigth=500,location=no,fullscreen=no,menubar=no,toolbar=no,status=no,scrollbars=no');
+		window.open(url,'writeviewOpen','width=400,height=1000,location=no,fullscreen=no,menubar=no,toolbar=no,status=no,scrollbars=no,left='+openWidthX+',top='+openheightY);
+	}
+
+	function modifyviewOpen(r_no){
+		var openWidth=400;
+		var openheight=1000;
+		
+		var openWidthX=(window.screen.width/2)-(openWidth/2);
+		var openheightY=(window.screen.height/2)-(openheight/2);
+		
+		var url="../review/reviewModifyview?r_no="+r_no;
+		window.open(url,'modifyview','width=400,height=1000,location=no,fullscreen=no,menubar=no,toolbar=no,status=no,scrollbars=no,left='+openWidthX+',top='+openheightY);
 	}
 	
 </script>
 </head>
-<body style="margin: -8px; margin-left: auto; margin-right: auto;">
+<body style="margin: 0px;">
 <h1>상품리뷰</h1>
 <div class="mileage_box">
 		<span>리뷰 작성 시 적립 가능한 최대 캐시</span><span class="mileage_span"><strong>${checkMileage }</strong> 캐시</span>
@@ -137,7 +154,7 @@
 					</div>
 					<div>
 						<!-- 수정, 삭제 -->
-						<button onclick="window.open('../review/reviewModifyview?r_no=${mylist.r_no }','modifyview','width=400,heigth=500,location=no,fullscreen=no,menubar=no,toolbar=no,status=no,scrollbars=no');">수정</button>
+						<button onclick="modifyviewOpen('${mylist.r_no }')">수정</button>
 						
 						<!-- 답글이 달리면 삭제할 수 없도록 '삭제'버튼을 제거 -->
 						<c:choose>

@@ -51,7 +51,7 @@
 			</a>
 			</p>
 			<p class="ppcolor">
-				<span>${scoredesc.productDto.avgscore}</span>
+				<span style="color: #ff7f00;">★</span><span>${scoredesc.productDto.avgscore}</span>
 			</p>
 			<p class="pprice">
 				<span>${scoredesc.productDto.p_price}</span>

@@ -19,62 +19,70 @@
 <script src="../resources/js/jquery.bpopup.min.js"></script>
 <script src="../resources/js/scriptjsp.js"></script>
 <script>
-   $(document).ready(function(){
-      $(".u_content").click(function(){
-         $(this).toggleClass("u_content").toggleClass("u_contentGray");
-      });
-   });
-   
-   /* 별점 */      
-   function redeptlist(target) {
-      $('#starInput[name=r_score]').attr('value',target.value);   
-   }
-   function getvalue(target) {
-      alert(target.value);
-   } 
+	
+	/* r_content의 내용이 미리보기를 초과할 때 말줄임표로 줄이기 */
+	$(document).ready(function() {
+		$(".u_content").click(function() {
+			$(this).toggleClass("u_content").toggleClass("u_contentGray");
+		});
+	});
 
-   /* 리뷰작성 로그인 확인 */
-   function fn_01(checked_id){
-      if(fn_02(checked_id)==false){
-         alert('로그인이 필요합니다.');
-         $(location).attr('href','../member/loginform');
-      }else{
-         $(location).attr('href','../review/reviewMylistview')
-      }
-   }
-   function fn_02(checked_id){
-      if(checked_id=='' || checked_id==null){
-         return false;
-      }else{
-         return true;
-      }
-   }
-   
-   /* admin-답글 */
-   $(document).ready(function(){
-        $('#reply_menu > div > a').off().on("click",function(){
-          $(this).next($('.snd_menu')).slideToggle();
-        });
-      });
-   
-   /* 버튼을 누르면 해당 위치로 스크롤 이동 */
-   $(document).ready(function(){
-	   $('#productinfoBtn').click(function(){
-		   var offset = $("#p_info").offset();
-		   $('html, body').animate({scrollTop: offset.top},400);
-	   });
+	/* 별점 */
+	function redeptlist(target) {
+		$('#starInput[name=r_score]').attr('value', target.value);
+	}
+	function getvalue(target) {
+		alert(target.value);
+	}
 
-	   $('#reviewsizeBtn').click(function(){
-		   var offset = $("#reviewSize").offset();
-		   $('html, body').animate({scrollTop: offset.top},400);
-	   });
-	   
-	   $('#reviewBtn').click(function(){
-		   var offset = $("#reviewtitle_writebutton").offset();
-		   $('html, body').animate({scrollTop: offset.top},400);
-	   });
+	/* 리뷰작성 로그인 확인 */
+	function fn_01(checked_id) {
+		if (fn_02(checked_id) == false) {
+			alert('로그인이 필요합니다.');
+			$(location).attr('href', '../member/loginform');
+		} else {
+			$(location).attr('href', '../review/reviewMylistview')
+		}
+	}
+	function fn_02(checked_id) {
+		if (checked_id == '' || checked_id == null) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 
-   });
+	/* admin-답글 */
+	$(document).ready(function() {
+		$('#reply_menu > div > a').off().on("click", function() {
+			$(this).next($('.snd_menu')).slideToggle();
+		});
+	});
+
+	/* 버튼을 누르면 해당 위치로 스크롤 이동 */
+	$(document).ready(function() {
+		$('#productinfoBtn').click(function() {
+			var offset = $("#p_info").offset();
+			$('html, body').animate({
+				scrollTop : offset.top
+			}, 400);
+		});
+
+		$('#reviewsizeBtn').click(function() {
+			var offset = $("#reviewSize").offset();
+			$('html, body').animate({
+				scrollTop : offset.top
+			}, 400);
+		});
+
+		$('#reviewBtn').click(function() {
+			var offset = $("#reviewtitle_writebutton").offset();
+			$('html, body').animate({
+				scrollTop : offset.top
+			}, 400);
+		});
+
+	});
 </script>
 </head>
 
@@ -375,7 +383,7 @@
                               <c:if test="${sessionScope.loginid eq list.memberDto.m_id }">
                                           
                                           <!--@@@ 수정하기 @@@-->
-                                          <button onclick="window.open('../review/reviewModifyview?r_no=${list.r_no }','modifyview','width=400,heigth=500,location=no,fullscreen=no,menubar=no,toolbar=no,status=no,scrollbars=no');">수정</button>
+                                          <button onclick="window.open('../review/reviewModifyview?r_no=${list.r_no }','modifyview','width=400,height=1000,location=no,fullscreen=no,menubar=no,toolbar=no,status=no,scrollbars=no');">수정</button>
                                           
                                           <!--@@@ 답글이 달리지 않았다면(r_ynn이 n이라면) 삭제 가능 @@@-->
                                           <c:choose>

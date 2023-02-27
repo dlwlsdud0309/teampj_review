@@ -9,6 +9,9 @@ div{
 	height: auto;
 	display: block;
 }
+a{
+	text-decoration: none;
+}
 .pinfo_review{
 	width: 100%;
 	height: 100%;
@@ -220,7 +223,9 @@ input#replyToggle:checked+div#reply_box{
 	display: inline-block;
 	float: right;
 }
-
+li{
+	list-style-type: none;
+}
 .class_review_orderlist{
 	display: flex;
 	flex-flow: row wrap;
