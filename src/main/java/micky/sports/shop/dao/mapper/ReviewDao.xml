@@ -263,16 +263,19 @@
 	</select>
 
 	<select id="reviewAdmin_ScoreDesc" parameterType="micky.sports.shop.dto.ReviewDto" resultMap="ReviewDto">
-		SELECT 
-		P.P_NAME AS P_NAME,P.P_PRICE AS P_PRICE,ROUND(AVG(R.R_SCORE),1) AS AVGSCORE
+		SELECT ROWNUM,R.* FROM
+		(
+		SELECT P.P_NAME P_NAME,ROUND(AVG(R.R_SCORE),1) AVGSCORE
 		FROM MEMBER M, REVIEW R, PRODUCT P, ORDER_MEMBER O
-		WHERE M.M_ID=R.M_ID 
+		WHERE M.M_ID=R.M_ID
 		AND R.P_NO=P.P_NO
 		AND R.OM_CNTNUM=O.OM_CNTNUM
 		AND O.OM_STATE='구매확정'
 		AND R.R_CONTENT IS NOT NULL
-		GROUP BY P.P_NAME,P.P_PRICE
+		GROUP BY P.P_NAME
 		ORDER BY AVGSCORE DESC, P.P_NAME DESC
+		)R
+		WHERE ROWNUM BETWEEN 1 AND 10
 	</select>
 	
 	<select id="productInfo" parameterType="micky.sports.shop.dto.ProductDto" resultMap="ProductDto">
