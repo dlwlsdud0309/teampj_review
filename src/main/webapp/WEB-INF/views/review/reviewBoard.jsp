@@ -116,60 +116,6 @@
 <br />
 
 
-<style>
-.js-load {
-    display: none;
-}
-.js-load.active {
-    display: block;
-    border-bottom: 1px solid #ddd;
-}
-.js-load.active:last-child {
-	border-bottom: none;
-}
-.is_comp.js-load:after {
-    display: none;
-}
-.btn-wrap, .lists, .main {
-    display: block;
-}
-.main {
-    max-width: 100%;
-    margin: 0 auto;
-}
-.lists {
-    margin-bottom: 4rem;
-}
-.lists__item {
-    padding: 10px;
-    /* background: #EEE; */
-}
-.lists__item:nth-child(2n) {
-    /* background: #59b1eb;
-    color: #fff; */
-}
-.btn-wrap {
-    text-align: center;
-}
-.btn-wrap>a{
-	font-weight: bolder;
-	color: black;
-	padding: 15px 170px;
-	border: 1px solid #ddd;
-	position: relative;
-	top: -75px;
-	background-color: white;
-}
-.btn-wrap>a>img{
-	width: 25px;
-	vertical-align: middle;
-}
-
-</style>
-
-
-
-
 <!--@@@ 평균별점(avgStarscore), 총 게시글 수(totalCount ) @@@-->
 <div class="review_table">
 		<div class="pinfo_review">
