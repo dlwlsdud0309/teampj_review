@@ -202,9 +202,12 @@
                <div style="text-align: center;">
                   <br />
                   <br />
-                  <h4 style="font-weight: bold; color: #C0C0C0">리뷰가 없습니다.</h4>
-                  <h3 style="font-weight: bolder; color: #696969">리뷰를 작성해보세요!</h3> <br />
-                  <br />
+						<div class="htag">
+							<h4 style="font-weight: bold; color: #C0C0C0">리뷰가 없습니다.</h4>
+							<h3 style="font-weight: bolder; color: #696969">리뷰를 작성해보세요!</h3>
+							<br />
+						</div>
+					<br />
                   <br />
                </div>
             </c:if>
