@@ -104,7 +104,17 @@
             </li>
             <li>
                 <a class="aside_atag as_category" href="#" onclick="return false;">상품가격</a>
-                <ul class="snd_menu sub_menu">
+                <ul class="snd_menu sub_menu as_checkbox">
+                    <li><input type="checkbox" /><span class="aside_span">1,000,000원~10,000,000원</span></li>
+                    <li><input type="checkbox" /><span class="aside_span">500,000원~1,000,000원</span></li>
+                    <li><input type="checkbox" /><span class="aside_span">200,000원~500,000원</span></li>
+                    <li><input type="checkbox" /><span class="aside_span">100,000원~200,000원</span></li>
+                    <li><input type="checkbox" /><span class="aside_span">0원~100,000원</span></li>
+                </ul>
+            </li>
+            <li>
+                <a class="aside_atag as_category" href="#" onclick="return false;">성별</a>
+                <ul class="snd_menu sub_menu as_checkbox">
                     <li><input type="checkbox" /><span class="aside_span">남녀공용</span></li>
                     <li><input type="checkbox" /><span class="aside_span">남성</span></li>
                     <li><input type="checkbox" /><span class="aside_span">여성</span></li>

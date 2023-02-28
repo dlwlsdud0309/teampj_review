@@ -4,8 +4,8 @@ aside{
 	height: 0px;
 	top: 105px;
 	padding-left: 50px;
-	position: -webkit-sticky; /* 사파리 브라우저 지원 */
-    position: sticky;
+	/* position: -webkit-sticky; 사파리 브라우저 지원
+    position: sticky; */
 }
 
 .aside_dd{
@@ -14,7 +14,7 @@ aside{
 nav>dl{
 	border-top: 1px solid #ddd;
 }
-nav>dl:first-child{
+/* nav>dl:first-child{
 	border-top: none;
 } */
 nav>dl{
@@ -59,9 +59,12 @@ nav>ul{
 	top: 105px;
 	bottom:400px;
 }
+nav>ul>li>ul{
+	margin-top: 10px;
+}
 .aside_atag{
 	color: black;
-	font-size: smaller;
+	font-size: 14px;
 	margin: 20px 0px;
 }
 .aside_atag:hover{
@@ -82,7 +85,10 @@ nav>ul>li>ul>li{
 	line-height: 25px;
 }
 .aside_span{
-	font-size: smaller;
+	font-size: 13px;
+}
+.as_checkbox{
+	margin-left: -25px;
 }
 
 /* nav{
