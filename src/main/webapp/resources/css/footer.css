@@ -1,6 +1,15 @@
 footer{
 	display: block;
 }
+a:hover{
+	text-decoration:none;
+}
+a:active{
+	text-decoration:none;
+}
+ul{
+	list-style: none;
+}
 .inner{
 	width: 1100px;
 	margin: 0 auto;
@@ -70,6 +79,7 @@ dd>a:hover{
 }
 .footer_atag>a:hover{
 	color: #AF0006;
+	text-decoration:none;
 }
 .footer-company{
 	background-color: black;

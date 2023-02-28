@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="../resources/js/jquery-3.6.1.min.js"></script>
-<link rel="stylesheet" href="../resources/css/footer.css?after" />
+<link rel="stylesheet" href="../resources/css/footer.css" />
 </head>
 <body>
 <footer class="footer">
