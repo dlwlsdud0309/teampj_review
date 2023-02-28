@@ -151,6 +151,17 @@
 .btn-wrap {
     text-align: center;
 }
+.btn-wrap>a{
+	font-weight: bolder;
+	color: black;
+	padding: 15px 150px;
+	border: 1px solid #ddd;
+}
+.btn-wrap>a>img{
+	width: 25px;
+	vertical-align: middle;
+}
+
 </style>
 
 
@@ -415,7 +426,7 @@
             
          <!--@@@ 더보기 @@@-->   
          <div id="js-btn-wrap" class="btn-wrap">
-            <a href="javascript:;" class="button">더보기</a>
+            <a href="javascript:;" class="button">리뷰 더보기 &nbsp;<img src="../resources/img/more_icon.png" /></a>
          </div>
       </div>
       </div>
