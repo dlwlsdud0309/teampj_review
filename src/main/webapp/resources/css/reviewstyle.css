@@ -226,6 +226,10 @@ input#replyToggle:checked+div#reply_box{
 	display: inline-block;
 	float: right;
 }
+.review_info>ul>li{
+	list-style-type: none;
+	line-height: 25px;	
+}
 li{
 	list-style-type: none;
 }
@@ -234,7 +238,7 @@ li{
 	flex-flow: row wrap;
 	justify-content: flex-start;
 	padding: 10px;
-	margin: 20px;
+	margin: 50px 50px;
 }
 .small_gray{
 	font-size: small;
@@ -245,10 +249,13 @@ li{
 .reviewListview_total{
 	display: table;
 	width: 80%;
-	margin: 15px;
+	margin: 50px 50px;
 }
 .reviewListview_label{
 	margin: 20px;
+}
+.myreview{
+	padding-bottom: 50px;
 }
 .col11{
 	width: 30%;

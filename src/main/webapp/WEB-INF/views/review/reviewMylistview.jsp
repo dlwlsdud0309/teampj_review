@@ -71,7 +71,7 @@
 	<div class="mileage_box">
 		<span>리뷰 작성 시 적립 가능한 최대 캐시</span><span class="mileage_span"><strong>${checkMileage }</strong> 캐시</span>
 	</div>
-	<div>
+	<div class="review_info">
 		<p>
 			리뷰 리워드 혜택 안내
 			<br />
@@ -132,10 +132,12 @@
 
 	<br />
 	<h1>작성한 리뷰보기</h1>
-		<ul>
-			<li>리워드가 적립된 리뷰는 삭제가 불가하며, 삭제버튼이 노출되지 않습니다.</li>
-			<li>리워드가 적립된 리뷰에 대한 삭제 요청은 고객센터로 문의해주세요.</li>
-		</ul>
+		<div class="review_info">
+			<ul>
+				<li>리워드가 적립된 리뷰는 삭제가 불가하며, 삭제버튼이 노출되지 않습니다.</li>
+				<li>리워드가 적립된 리뷰에 대한 삭제 요청은 고객센터로 문의해주세요.</li>
+			</ul>
+		</div>
 		<br />
 		<div class="clear" ></div>
 		<hr />
@@ -159,7 +161,7 @@
 		<div class="reviewListview_total">
 			<div class="reviewListview_label">
 			<c:forEach items="${review_mylist }" var="mylist">
-				<div class="row">
+				<div class="myreview">
 					<div class="cell col11">
 						<div class="reviewListview_img_box">
 							<a href="../product/productDetail?pname=${mylist.productDto.p_name }&pfilesrc=${mylist.productDto.p_filesrc }">
