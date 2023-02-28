@@ -154,8 +154,11 @@
 .btn-wrap>a{
 	font-weight: bolder;
 	color: black;
-	padding: 15px 150px;
+	padding: 15px 170px;
 	border: 1px solid #ddd;
+	position: relative;
+	top: -75px;
+	background-color: white;
 }
 .btn-wrap>a>img{
 	width: 25px;
