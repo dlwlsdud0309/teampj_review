@@ -61,8 +61,19 @@
 	}
 	
 </script>
+<!-- 사이드 -->
+<link href="../resources/css/checkIndex.css" rel="stylesheet">
 </head>
+
 <body style="margin: 0px;">
+<!--@@@ header @@@-->
+<jsp:include page="/WEB-INF/views/header.jsp" />
+
+<!-- 사이드 -->
+<jsp:include page="/WEB-INF/views/myPage/checkIndex.jsp" />
+<main class="" id="main-collapse">
+
+
 <h1>상품리뷰</h1>
 <div>
 
@@ -216,10 +227,15 @@
 			</c:forEach>
 			</div>
 		</div>
+
 	</c:if>
 </div>
 
 <div class="clear"></div>
 <jsp:include page="/WEB-INF/views/footer.jsp" />
+
+
+</main>
+
 </body>
 </html>

@@ -6,7 +6,7 @@ a {
 }
 .productChartPackage {
 	width: 1500px;
-	height: 400px;
+	height: auto;
 	margin:0 auto;
 	padding: 1px;
 	

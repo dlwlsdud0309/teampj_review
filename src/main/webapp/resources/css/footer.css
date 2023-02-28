@@ -105,6 +105,7 @@ dd>a:hover{
 .footer-company-div>ul{
 	margin: 0px;
 	margin-left: 5px;
+	list-style: none;
 }
 .footer-company-div li{
 	line-height: 20px;

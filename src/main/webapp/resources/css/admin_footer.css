@@ -1,0 +1,37 @@
+@charset "UTF-8";
+ foorter{
+	height: 200px;
+	margin-top: 30px;
+	background-color: #CCCCCC;  /* #2c2a29 */
+	border: solid 1px black;
+	position: absolute;
+} 
+ #footer_box{
+	background-color: #CCCCCC;
+	height:200px;
+	margin: 0 auto;
+	padding-top: -50px;
+	/* border: solid 1px black; */ 	
+} 
+#footer_logo{
+	float: left;
+	margin: 50px 5px 30px 50px; /* [위] [오른쪽] [아래] [왼쪽] */
+	/* border: solid 1px black; */
+	/* background-color: white; */
+}
+#footer_box #footer_detail{
+	float: right;
+	margin: 40px 50px 0 5px;
+	color: black;
+ 	/* border: solid 1px black;  */
+}
+.homelink{
+	text-decoration: none;
+}
+
+.f_img{
+	height: 100px;
+	margin-right: 45px;
+}
+
+

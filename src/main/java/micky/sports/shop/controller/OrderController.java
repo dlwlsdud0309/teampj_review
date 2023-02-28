@@ -34,7 +34,6 @@ public class OrderController {
 	//주문하는 페이지
 	@RequestMapping("/orderPage")
 	public String orderView(HttpServletRequest request, Model model) {
-		System.out.println("========orderPage=======");
 
 		model.addAttribute("request",request);
 		mickyServiceInter=new OrderPageService(sqlSession,httpsession);
@@ -46,13 +45,11 @@ public class OrderController {
 	// 주문 기능 payment +배송지입력
 	@RequestMapping("/payment")
 	public String payment(HttpServletRequest request, Model model) {
-		System.out.println("========payment=======");
 		
 		model.addAttribute("request",request);
 		mickyServiceInter=new OrderPaymentService(sqlSession,httpsession);
 		mickyServiceInter.execute(model);
 		
-		System.out.println("========delivery=======");
 		mickyServiceInter=new OrderDeliveryService(sqlSession,httpsession);
 		mickyServiceInter.execute(model);
 		
@@ -62,7 +59,6 @@ public class OrderController {
 	//나의 주문 내역보기
 	@RequestMapping("/myOrderList")
 	public String orderList(HttpServletRequest request,SearchVO searchVO, Model model) {
-		System.out.println("========myOrderList=======");
 		
 		model.addAttribute("request",request);
 		mickyServiceInter=new MyOrderListService(sqlSession,searchVO,httpsession);
@@ -74,7 +70,6 @@ public class OrderController {
 	//나의 주문 내역에서 취소요청시
 		@RequestMapping("/myOrderCancel")
 		public String myOrderCancel(HttpServletRequest request,Model model) {
-			System.out.println("========myOrderCancel=======");
 			
 			model.addAttribute("request",request);
 			mickyServiceInter=new MyOrderCancelService(sqlSession,httpsession);
@@ -85,7 +80,6 @@ public class OrderController {
 		//취소요청페이지에서 취소요청하기 클릭
 		@RequestMapping(method = RequestMethod.POST, value = "/myOCancleOffer")
 		public String myOCancleOffer(HttpServletRequest request,Model model) throws Exception {
-			System.out.println("========myOCancleOffer=======");
 			
 			request.setCharacterEncoding("UTF-8");
 			model.addAttribute("request",request);
@@ -98,7 +92,6 @@ public class OrderController {
 		//배송완료 상태에서 반품요청
 		@RequestMapping("/myDelivCancel")
 		public String myDelivCancel(HttpServletRequest request,Model model) {
-			System.out.println("========myDelivCancel,=======");
 			
 			model.addAttribute("request",request);
 			mickyServiceInter=new MyDelivCancelService(sqlSession,httpsession);
@@ -109,7 +102,6 @@ public class OrderController {
 		//배송완료 상태에서 구매확정
 		@RequestMapping("/myOrderConfirm")
 		public String myOrderConfirm(HttpServletRequest request,Model model) {
-			System.out.println("========myOrderConfirm=======");
 			
 			model.addAttribute("request",request);
 			mickyServiceInter=new MyOrderConfirmService(sqlSession,httpsession);

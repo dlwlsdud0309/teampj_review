@@ -2,6 +2,7 @@ package micky.sports.shop.controller;
 
 import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -67,7 +68,15 @@ public class CartController {
 		mickyServiceInter=new MickyCartinsertservice(sqlSession,session);
 		mickyServiceInter.execute(model);
 //		위치변경필
-		return "product/productDetail";
+		ServletContext application=request.getSession().getServletContext();
+//      scope application 사용한 pname, pfilesrc값 가져오기
+		String p_name=(String)application.getAttribute("pname");
+		String p_filesrc=(String)application.getAttribute("pfilesrc");
+      
+		mickyServiceInter.execute(model);
+      
+		return "redirect:../product/productDetail?"+"pname="+p_name+"&pfilesrc="+p_filesrc;
+		
 	}
 	//장바구니 리스트
 	@RequestMapping("/Cartlist")
@@ -131,7 +140,6 @@ public class CartController {
 	@RequestMapping("/changeoption")
 	public String changeoption(HttpServletRequest request,Model model) {
 		//장바구니 화면 구성 
-		String c_no=request.getParameter("c_no");
 		model.addAttribute("request",request);
 //		System.out.println("장바구니 넘버확인 : "+c_no);
 		

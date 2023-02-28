@@ -8,6 +8,9 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 import micky.sports.shop.crypt.CryptoUtil;
 import micky.sports.shop.dao.Member;
 import micky.sports.shop.dto.MemberDto;
@@ -30,20 +33,42 @@ public class MemberUpdateService implements MickyServiceInter{
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		
+		CryptoUtil crypt = (CryptoUtil) map.get("crypt");
+		
+		String attachPath="resources\\upload\\";
+	    String uploadPath=request.getSession().getServletContext().getRealPath("/");
+	    System.out.println("uploadpathhhhh:"+uploadPath);
+	    String path = "C:\\2022spring\\springwork1\\micky_SportsWear\\src\\main\\webapp\\resources\\upload";
+	    MultipartRequest req = null;
+	    try {
+	    	req=
+	  	          new MultipartRequest(request, path, 1024*1024*20, "utf-8",
+	  	                new DefaultFileRenamePolicy());
+	    	System.out.println("req : "+req);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		
+		
 		Member dao = sqlSession.getMapper(Member.class);
-
-		String m_id = request.getParameter("m_id");
-		String m_pw = request.getParameter("m_pw");
-		String m_name = request.getParameter("m_name");
-		String m_tel = request.getParameter("m_tel");
-		String m_name2 = request.getParameter("m_name2");
-		String m_email = request.getParameter("m_email");
-		String m_grade = request.getParameter("m_grade");
-		int m_age = Integer.parseInt(request.getParameter("m_age"));
-		String m_gender = request.getParameter("m_gender");
-		int m_cash = Integer.parseInt(request.getParameter("m_cash"));
-		String m_filesrc = request.getParameter("m_filesrc");
-
+		System.out.println("오륭로ㅓ율오류오류오");
+		String m_id = req.getParameter("m_id");
+		String m_pw = req.getParameter("m_pw");
+		String m_name = req.getParameter("m_name");
+		String m_tel = req.getParameter("m_tel");
+		String m_name2 = req.getParameter("m_name2");
+		String m_email = req.getParameter("m_email");
+		String m_grade = req.getParameter("m_grade");
+		int m_age = Integer.parseInt(req.getParameter("m_age"));
+		String m_gender = req.getParameter("m_gender");
+		int m_cash = Integer.parseInt(req.getParameter("m_cash"));
+		String m_filesrc = req.getFilesystemName("m_filesrc");
+		
+		
+		
+		System.out.println("확인용 : "+m_id+m_pw+m_name+m_tel+m_name2+m_email+m_grade+m_age+m_gender+m_cash);
+		System.out.println("왜 사진이 안올라가니 : "+m_filesrc);
 		String key="";
 		try {
 			key=CryptoUtil.sha512(m_pw);
@@ -61,7 +86,16 @@ public class MemberUpdateService implements MickyServiceInter{
 		}
 		System.out.println("양방향암호화 : "+encryStr);
 		
-		dao.memberupdate(m_id,m_pw,m_name,m_tel,m_name2,m_email,m_grade,m_age,m_gender,m_cash,m_filesrc,key,encryStr);
+		if(m_filesrc==null) { // 파일첨부안하면 null이라 오류떠서 null상황 배제를 위해 조건을 달아준다
+			m_filesrc="";
+			dao.memberupdate2(m_id,m_pw,m_name,m_tel,m_name2,m_email,m_grade,m_age,m_gender,m_cash,key,encryStr);
+		}else{
+			dao.memberupdate(m_id,m_pw,m_name,m_tel,m_name2,m_email,m_grade,m_age,m_gender,m_cash,m_filesrc,key,encryStr);
+		}
+		
+		
+		
+//		dao.memberupdate(m_id,m_pw,m_name,m_tel,m_name2,m_email,m_grade,m_age,m_gender,m_cash,m_filesrc,key,encryStr);
 
 	}
 

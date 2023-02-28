@@ -7,11 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- css 링크 -->	
 <link rel="stylesheet" href="resources/css/admin_contentviewstyle.css" />
+<!-- 폰트 링크 -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+	rel="stylesheet">
 </head>
 
 <body>
-<!-- class="jumbotron text-center" -->
+
 <div>
 	<h1 class="content_h1" align="center">관리자 주문내역 상세</h1>
 	<h3 class="content_h3" align="center">관리자 주문/결제 수정</h3>
@@ -49,8 +53,8 @@ alert(selectValue);
 
 <form action="modify" method="post">
 <input type="hidden" name="om_cntnum" value="${acontent_view.om_cntnum }" />
-  <table border="1" style="margin-left: 640px;">
-		 <tr bgcolor="#CCCCCC" style="height: 100px; font-size:x-large;">
+  <table border="1" style="">
+		 <tr bgcolor="#CCCCCC" style="height: 80px; font-size:large;">
 		 	<th colspan="4">주문상세</th>
 		 	
 		 	
@@ -66,7 +70,7 @@ alert(selectValue);
 		 	<td>${acontent_view.m_id }</td>
 		 	<td colspan="2">${acontent_view.om_num }</td>
 		 </tr>	
-		 <tr bgcolor="#CCCCCC" style="height: 100px; font-size:x-large;">
+		 <tr bgcolor="#CCCCCC" style="height: 80px; font-size:large;">
 		 	<th colspan="4">제품정보</th>
 		 	
 		 	
@@ -83,7 +87,7 @@ alert(selectValue);
 		     <td>${acontent_view.p_no }</td>
 		     <td><fmt:formatNumber type="currency" value="${acontent_view.p_price }" /></td>
 		     <td>
-		     <label>결제완료</label>							
+		     <label>결제완료</label>&nbsp;&nbsp;&nbsp;							
 		     <select id="om_stateBox" name="om_state"  onchange="alert(this.value)">
 		       <option value="" selected>-- 결제완료 --</option>
 		       <option id="0" value="주문취소">주문취소</option>	              
@@ -91,21 +95,21 @@ alert(selectValue);
 		       <option id="2" value="배송완료">배송완료</option>	                            
 		       <option id="3" value="반품완료">반품완료</option>	                            
 		       <option id="4" value="구매확정">구매확정</option>	
-		     </select>
+		     </select>&nbsp;&nbsp;&nbsp;&nbsp;
 		       <input type="submit" id="admin_cancle" value="변경"/>                            
 		    </td>
 		 </tr>
 		 <tr bgcolor="#e8e8e8" style="height: 40px;">
 		 	 <th>주문취소일자</th> 
 		 	<th>주문취소사유</th>
-		 	<th colspan="1"></th>
-		 	<th></th>
+		 	<th colspan="2">비고</th>
+		 	
 		 </tr>
 		 <tr style="height: 50px;">
 		    <td><fmt:formatDate value="${acontent_view.om_cdate }" pattern="yyyy-MM-dd"/></td>
 		    <td>${acontent_view.c_reason }</td>
-		 	<td colspan="1"></td>
-		 	<td></td>
+		 	<td colspan="2"></td>
+		 	
 		 </tr>
 	</table>
 	<br /> <br /><br />

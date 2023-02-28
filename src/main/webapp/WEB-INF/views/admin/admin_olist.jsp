@@ -11,45 +11,37 @@
 <link rel="stylesheet" href="resources/css/admin_oliststyle.css" />
 <style>
 </style>
-
 <!-- header section -->
 <%@include file="admin_header.jsp" %>
-
 </head>
 
 <body>
-
-<%-- <aside>
-<%@include file="admin_sidebar.jsp" %>
-</aside> --%>
-
-<!-- <div class="jumbotron text-center">
-	<h1 class="line-h1" align="center">주문관리 현황 리스트</h1>
-</div> -->
 <h1 class="line-h1" align="center">주문관리 현황 리스트</h1>
 
 <!-- 주문취소 목록 검색 기능 : 시작날짜~종료날짜+취소요청Y 기준 -->
 <form action="search_olist" method="post">
-	<div class="search1" align="center">
+	<div class="search1" align="center" style="font-size: 14px">
 		<label>
 			검색시작일 : 
 			<input type="date" name="som_cdate" required pattern="\d{4}-\d{2}-\d{2}" value="som_cdate" />
 		</label>
-		<label>&nbsp;&nbsp;
+		<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			검색종료일 : 
  		<input type="date" name="eom_cdate" required pattern="\d{4}-\d{2}-\d{2}" value="eom_cdate" />
-		</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	        <label>주문취소요청여부</label>
-	    	<input type="text" name="om_cancle" value="${resk }" placeholder="검색어를 입력해주세요"/> 
-		    <input type="submit" value="조회"/>		
+	    	<input class="input1" type="text" name="om_cancle" value="${resk }" placeholder="검색어를 입력해주세요"/>
+	    	&nbsp;&nbsp;&nbsp;
+		    <input class="input2" type="submit" value="조회"/>		
 	</div>
 </form>
 <br />
 
 
-<div class="container2" align="center">
+<div class="olist_table" align="center">
 	<table border="1" >
-		<tr style="vertical-align: middle; height: 80px;" >
+		<tr style="vertical-align: middle; height: 80px;">
 			<th class="th1" width="9%">상품주문번호</th>
 			<th class="th1" width="10%">주문번호</th>
 			<th class="th1" width="5%">상품번호</th>
@@ -61,7 +53,7 @@
 			<th class="th1" width="6%">처리상태</th>
 			<th class="th1" width="8%">주문취소요청여부</th>
 			<th class="th1" width="8%">주문취소일자</th>
-<!-- 			<th class="th1" width="8%">배송일자</th> -->
+<!-- 		<th class="th1" width="8%">배송일자</th> -->
 			<th class="th1" width="7%">반품요청여부</th>
 		</tr>
 		

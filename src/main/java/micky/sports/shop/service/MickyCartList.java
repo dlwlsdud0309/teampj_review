@@ -37,7 +37,6 @@ public class MickyCartList implements MickyServiceInter{
 			m_id="";
 		}
 		System.out.println("m_id : "+m_id);
-		System.out.println("c_no : "+c_no);
 		ArrayList<CartDto> list=dao.Cartlist(m_id);
 		
 		
@@ -45,7 +44,7 @@ public class MickyCartList implements MickyServiceInter{
 		System.out.println("Cartlist 서비스");
 		int sum=0;
 		for (CartDto cartDto : list) {
-//			System.out.println("가격  : "+cartDto.getProductDto().getP_price());
+			System.out.println("가격  : "+cartDto.getProductDto().getP_price());
 			
 			sum +=cartDto.getProductDto().getP_price()*cartDto.getC_cnt();
 //			System.out.println("총합 : "+sum);

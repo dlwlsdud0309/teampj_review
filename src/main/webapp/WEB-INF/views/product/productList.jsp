@@ -13,6 +13,9 @@
 <link rel="stylesheet" href="../resources/css/pstyle.css" />
 </head>
 <body>
+<!--@@@ header @@@-->
+<jsp:include page="/WEB-INF/views/header.jsp" />
+
 <c:if test="${empty sessionScope.loginid }">
    <a href="../member/loginform">login</a> 
    |  <a href="../member/joinform">join</a>
@@ -20,10 +23,10 @@
  <c:if test="${not empty sessionScope.loginid }">
     <a href="../member/logout">logout</a> 
  <br />
- ${sessionScope.loginid } 님, 로그인상태입니다 ദ്ദി*ˊᗜˋ*)
+ ${sessionScope.loginid } 님, 로그인상태입니다.
  	 <div>
 		<p class="go-myOrderList" style="color: #336666;">
-		<a href="../order/myOrderList">나의 주문내역보기</a>
+		<a href="../member/mypageform">마이페이지로</a>
 		</p>
 	</div>
  </c:if>
@@ -59,6 +62,8 @@
 </div>
 
 </body>
+
 <!--@@@ footer @@@-->
 <jsp:include page="/WEB-INF/views/footer.jsp" />
+
 </html>

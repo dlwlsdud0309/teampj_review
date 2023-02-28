@@ -27,13 +27,9 @@ public class MyDelivCancelService implements MickyServiceInter{
 		//로그인 세션
 		httpsession = request.getSession();
 		String loginId = (String)httpsession.getAttribute("loginid");
-		// TODO 세션 중간 끊김 해결해야함...
-		//if (loginId==null) {
-		//} 
-		System.out.println("*********~~~~~~~~~~~~~~~~~"+loginId);
 
 		String omcntnum=request.getParameter("omcntnum");
-		System.out.println("*****///"+omcntnum);
+
 		OrderDao odao = sqlSession.getMapper(OrderDao.class);
 		odao.myDelivCancelOffer(omcntnum);
 		

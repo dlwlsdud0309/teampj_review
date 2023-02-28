@@ -59,21 +59,17 @@ public class InfoUpdateService implements MickyServiceInter{
 //		//String m_email = m_emaill+m_email2;
 //		
 //		String m_filesrc = request.getParameter("m_filesrc");
-	    String m_tel1 = req.getParameter("m_tel1");
-	    String m_tel2 = req.getParameter("m_tel2");
-	    String m_tel3 = req.getParameter("m_tel3");
 	    
 	    
 	    String m_id = req.getParameter("m_id");
 		String m_pw = req.getParameter("m_pw");
 	
-		String m_tel = m_tel1+"-"+m_tel2+"-"+m_tel3;
+		String m_tel = req.getParameter("m_tel");
 		String m_name2 = req.getParameter("m_name2"); 
 		
 		
-		String m_emaill = req.getParameter("m_email"); //이메일 앞주소
-		String m_email2 = req.getParameter("m_email2"); //이메일 뒷주소
-		String m_email = m_emaill+m_email2;
+
+		String m_email = req.getParameter("m_email");
 		
 		System.out.println("이메일주소조합확인 : "+m_email);
 		

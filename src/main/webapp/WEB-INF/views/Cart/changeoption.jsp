@@ -49,22 +49,9 @@ function dbupdate() {
 	     }
 	});
 }
-function selectsize(type){
-	var result="";
-	if(type=='xs'){
-		result="085XS";
-    }else if(type=='s'){
-    	result="090S";
-    }else if(type=='m'){
-    	result="095M";
-    }else {
-    	result="100L";
-    }
-	document.getElementById("result").value=result;
-}
-function test() {
-	var dd=document.getElementById("test").value
-	alert(dd);
+function selectsize(ths){
+	var size=$(ths).val();
+	document.getElementById("result").value=size;
 }
 //별점
 function redeptlist(target) {
@@ -76,71 +63,152 @@ function redeptlist(target) {
     alert(target.value);
  } 
 </script>
-
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
 <title>Insert title here</title>
+<style>
+.title-text{
+    border-bottom: 2px solid #333;
+}
+.option-img{
+    width: 100%;
+    /* height: 350px; */
+}
+.size-btn-center{
+    /* text-align: center; */
+    /* border: 1px solid red; */
+}
+.pdtsizeradio {
+	width: 60px;
+	height: 43px;
+	padding: 2px 5px;
+	display: inline-block;
+}
+.pdtsizeradio input[type=radio] {
+	display: none;
+}
+.pdtsizeradio input[type=radio]+label {
+	display: inline-block;
+    width: 55px;
+	height: 40px;
+	border: 1px solid #333;
+	line-height: 40px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 12px;
+    cursor: pointer;
+}
+.pdtsizeradio input[type=radio]:checked+label {
+	background: #000;
+	color: #fff;
+}
+.cnt-btn{
+    width: 35px;
+    /* height: 33px; */
+    text-align: center;
+    /* margin-left: 10px; */
+    margin-left: -3px;
+    margin-right: -2px;
+    margin-bottom: 10px;
+    color: #666666;
+    font-size: 20px;
+    /* font-weight: bold; */
+    background-color: white;
+    border: 1px solid #cccccc;
+}
+.cnt-btn-position{
+	padding-left: 10px;
+/* 	line-height: 30px; */
+}
+.selectbutton{
+    width: 300px;
+    /* width: 80%; */
+    margin-left: 7px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px 2px;
+    background-color: black;
+    color: #eeeeee;
+    font-weight: bold;
+}
+</style>
 </head>
 <body>
-<h3>옵션 변경</h3>
 
-<hr />
-<form name="forms">
-<div><img src="../resources/img/productimg/${list.productDto.p_filesrc }.jpg" alt="img" width="100px" height="100px"/></div>
-<div>
-	${list.productDto.p_no } <br />	
-	<b>${list.productDto.p_name }</b>  <a href="#">상품상세</a><br /><!-- 상품의 디테일로가는링크 -->
-	
-	${list.productDto.p_price } <span>원</span> <br />     
-	<hr />
-	<div>
-         <div class="avg_star">
-            <div class="tablerow">
-               <div class="tablecell">
-                  <span class="user_date">
-                     <span class="reviewBoard_star">
-                        ★★★★★
-                        <span id="star2" style="width:8${avgStarscore*20}%">★★★★★</span>
-                     </span>
-                  </span>
-               </div>
-               <div class="tablerow">
-                  <%-- <b>&nbsp;&nbsp;&nbsp; ${avgStarscore } 총점</b> --%>
-               </div>
+<div class="container-fluid">
+    <div class="title-text">
+        <h3>옵션 변경</h3>
+    </div>
+<br />
+    <form name="forms">
+        <div class="row">        
+            <div class="col-xs-6">
+                <img src="../resources/img/productimg/${list.productDto.p_filesrc }.jpg" alt="img" class="option-img"/>        
             </div>
-            <div><b>${totalCount }2개의 REVIEWS</b></div>
-         </div>
-      <br />
-      </div>
-	<hr />
-	<!-- 상품의색상의 이미지를 클릭하면 그 상품으로 변환  -->
-	${list.productDto.p_color } <br />
-		<img src="../resources/reviewupload/${list.productDto.p_filesrc }" alt="상품이미지들."  /> <br />
-	<hr />
-	<!-- 사이즈 변경시 같은색의 선택한 사이즈의 상품으로 변환 -->
-	사이즈 
-		<p class="count">담기</p>
-		<input type="button" name="size" value="085(XS)" onclick="selectsize('xs');"/>
-		<input type="button" name="size" value="090(S)" onclick="selectsize('s');"/>
-		<input type="button" name="size" value="095(M)" onclick="selectsize('m');"/>
-<!-- 		<input type="button" name="size" value="105(XL)" onclick="selectsize('xl');"/> -->	
-	 <br />
-	수량
-	<p class="c_cnt" style="display: none;">${list.productDto.p_cnt }</p> <br />
-	<!-- +,-에 update달기 -->
-		<input type="text" name="c_cnt" value="${list.c_cnt }" readonly="readonly" style="text-align:center;" size=2/>
-		<button type="button" onclick="fnCalCount('m', this);">-</button>
-		<button type ="button" onclick="fnCalCount('p',this);">+</button>
+            <div class="col-xs-6">
+                ${list.productDto.p_no } <br />	
+                <b>${list.productDto.p_name }</b>  <a href="#">상품상세</a><br /><!-- 상품의 디테일로가는링크 -->
+                
+                ${list.productDto.p_price } <span>원</span> <br />     
+                <hr />
+                <div>
+                    <div class="avg_star">
+                        <div class="tablerow">
+                        <div class="tablecell">
+                            <span class="user_date">
+                                <span class="reviewBoard_star">
+                                    ★★★★★
+                                    <span id="star2" style="width:8${avgStarscore*20}%">★★★★★</span>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="tablerow">
+                            <%-- <b>&nbsp;&nbsp;&nbsp; ${avgStarscore } 총점</b> --%>
+                        </div>
+                        </div>
+                        <div><b>${totalCount }2개의 REVIEWS</b></div>
+                    </div>
+                <br />
+                </div>
+                <hr />
+                <!-- 상품의색상의 이미지를 클릭하면 그 상품으로 변환  -->
+                ${list.productDto.p_color } <br />
+                <hr />
+                <!-- 사이즈 변경시 같은색의 선택한 사이즈의 상품으로 변환 -->
+                사이즈 	
+                    <div class="size-btn-center">
+                        <c:forEach var="plist" items="${plist }" >
+                            <div class="pdtsizeradio">
+                                <c:if test="${plist.p_cnt eq 0 }">
+                                </c:if>
+                                <c:if test="${plist.p_cnt > 0 }">
+                                    <input type="radio" id="size${plist.p_size }" name="size" value="${plist.p_size }" onclick="selectsize(this);"/>
+                                    <label for="size${plist.p_size }">${plist.p_size }</label>            
+                                </c:if>
+                            </div>
+                        </c:forEach>
+                    </div>
+                    <br />
+                수량
+                <p class="c_cnt" style="display: none;">${list.productDto.p_cnt }</p> <br />
+                <!-- +,-에 update달기 -->
+                <div class="cnt-btn-position">
+                    <input type="text" name="c_cnt" value="${list.c_cnt }" readonly="readonly" class="cnt-btn"/>
+                    <button type="button" class="cnt-btn" onclick="fnCalCount('m', this);">-</button>
+                    <button type ="button" class="cnt-btn" onclick="fnCalCount('p',this);">+</button>
+                </div>
+                <input type="button" value="선택완료" class="selectbutton" onclick="dbupdate();" />	
+            </div>
+        </div>
+        <input type="text" name="p_no" value="${list.productDto.p_no }">
+        <input type="text" name="p_color" value="${list.productDto.p_color }">
+        <input type="text" id="result" name="p_size" value="${list.productDto.p_size }">
+        <input type="text" name="c_no" value="${list.c_no }">
+        <input type="text" name="p_category" value="${list.productDto.p_category }">
+        <input type="text" name="p_name" value="${list.productDto.p_name }">
+    </form>
 </div>
-	<input type="text" name="p_no" value="${list.productDto.p_no }">
-	<input type="text" name="p_color" value="${list.productDto.p_color }">
-	<input type="text" id="result" name="p_size" value="${list.productDto.p_size }">
-	<input type="text" name="c_no" value="${list.c_no }">
-	<input type="text" name="p_category" value="${list.productDto.p_category }">
-	<input type="text" name="p_name" value="${list.productDto.p_name }">
-	<input type="button" value="선택완료" onclick="dbupdate();" />	
-<!-- 만약 변견된 값만 부모 view에 보내주면 -->	
-</form>
-
 </body>
 </html>

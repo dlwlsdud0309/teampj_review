@@ -10,7 +10,7 @@ function selectAll(selectAll)  {
 	  const checkboxes 
 	       = document.getElementsByName('checkbox');
 	  
-	  checkboxes.forEach((checkbox) => {
+	  checkboxes.forEach((checkbox) = {
 	    checkbox.checked = selectAll.checked;
 	  })
 	}
@@ -126,13 +126,13 @@ function modifydb(ths) {
 				<td>
 				<input type='checkbox' name='checkbox' value='selectall' onclick='selectAll(this)'/> 
 				</td>
+				<td>상품</td>
 				<td>상품번호</td>
 				<td>상품명</td>
 				<td>가격</td>
 				<td>재고</td>
 				<td>색상</td>
 				<td>사이즈</td>
-				<td>첨부파일</td>
 				<td>상품카테고리</td>
 				<td>상품등록일</td>
 				<td>수정</td>
@@ -142,6 +142,7 @@ function modifydb(ths) {
 					<td>
 						<input type="checkbox" name="checkbox" value="${list.p_no }"/>
 					</td>
+					<td><img src="./resources/img/productimg/${list.p_filesrc }.jpg" alt="img" width="100px" height="100px"/></td>
 					<td class="p_no" id="p_no">${list.p_no }</td>
 					<td>
 						<em id="${list.p_no }a1">${list.p_name }</em>
@@ -157,7 +158,6 @@ function modifydb(ths) {
 					</td>
 					<td>${list.p_color }</td>
 					<td>${list.p_size }</td>
-					<td><a href="detaillist?p_no=${list.p_no }">${list.p_filesrc }</a></td>
 					<td>${list.p_category }</td>
 					<td>${list.p_date }</td>
 					<td>

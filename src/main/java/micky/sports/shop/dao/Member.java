@@ -9,7 +9,7 @@ public interface Member {
 	
 	//회원가입
 	public void join(String m_id,String m_pw,String m_name,String m_tel,String m_name2,String m_email,
-			String m_grade,int m_age,String m_gender,int m_cash,String m_filesrc,String key,String encryStr);
+			String m_grade,int m_age,String m_gender,String m_filesrc,String key,String encryStr);
 	
 	public MemberDto getsharsa(String m_id);
 	
@@ -28,6 +28,9 @@ public interface Member {
 	//회원정보수정
 	public void memberupdate(String m_id, String m_pw, String m_name, String m_tel, String m_name2, String m_email, String m_grade,
 			int m_age, String m_gender, int m_cash, String m_filesrc, String sha, String rsa);
+	//회원정보수정2
+		public void memberupdate2(String m_id, String m_pw, String m_name, String m_tel, String m_name2, String m_email, String m_grade,
+				int m_age, String m_gender, int m_cash, String sha, String rsa);
 	
 	//회원정보삭제
 	public void memberdelete(String m_id);

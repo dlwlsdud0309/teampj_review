@@ -51,7 +51,7 @@ public class MickyModifyCartOption implements MickyServiceInter{
 			
 //		중복이 아닐때		
 		if (count == 0) 
-			num=dao.CartOptionModify(p_color,p_size,c_cnt,c_no);
+			num=dao.CartOptionModify(p_color,p_size,c_cnt,c_no,p_name);
 //		중복일때
 		else {
 //			0 이면 중복x,1 이면 중복o

@@ -53,8 +53,8 @@ public class AProductListService implements MickyServiceInter{
 		if (search==null || search.equals("상품명")) {
 			search="";
 		}
-		search=search.toUpperCase().replace(" ", "_");
 		model.addAttribute("search",search);
+		search=search.toUpperCase().replace(" ", "_");
 	
 		
 		

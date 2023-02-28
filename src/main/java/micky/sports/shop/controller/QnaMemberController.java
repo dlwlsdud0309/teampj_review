@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import micky.sports.shop.crypt.CryptoUtil;
 import micky.sports.shop.service.MickyServiceInter;
 import micky.sports.shop.service.member.EmailOverlapCheckService;
 import micky.sports.shop.service.member.FindIdService;
@@ -242,9 +243,10 @@ public class QnaMemberController {
 	
 	//회원정보수정기능
 	@RequestMapping("/memberupdate")
-	public String memberupdate(HttpServletRequest request,Model model) {
+	public String memberupdate(HttpServletRequest request,Model model,CryptoUtil crypt) {
 		System.out.println("@@@MemberController/memberupdate()@@@");
 		model.addAttribute("request", request);
+		model.addAttribute("crypt",crypt);
 		mickyServiceInter = new MemberUpdateService(sqlSession,session);
 		mickyServiceInter.execute(model);	
 				

@@ -2,106 +2,136 @@
 header{
 background-color: #CCCCCC;
 height: 200px;
-/* position: fixed; */ width: 100%;
+width: 100%;
 }
 
 /* home | logout| My adminpage */
 .top_ul{
-list-style-type: none;
-font-family: 'Noto Sans KR', sans-serif;
-float: right; 			/* top메뉴 우측정렬 */
-margin: 30px 30px 5px 0px;  /* [위] [오른쪽] [아래] [왼쪽] */
-border: 1px solid black;
+	list-style-type: none;
+	font-family: 'Noto Sans KR', sans-serif;
+	float: right; 			/* top메뉴 우측정렬 */
+	margin: 30px 30px 5px 0px;  /* [위] [오른쪽] [아래] [왼쪽] */
+	/* border: 1px solid black; */
 }
 .top_ul li {
 	display: inline; 	/* ※float Χ */
-	font-size: 15px;
+	font-size: 11px;
 	border-left: 1px solid black;
 	padding: 0px 10px 0px 10px; 
 	margin: 10px 0px 5px 0px; /* [위] [오른쪽] [아래] [왼쪽] */
 }
 /* home 영역 좌측 테두리만 제거 */
 .top_ul li:first-child{
- border-left: none; 	
+ 	border-left: none; 	
 }
 
 .top_ul li a{
-	text-decoration: none;
+	text-decoration: none; /* 링크줄제거 */
 	color: black;
 }
 .top_ul li a:hover{
-	text-decoration: underline;
+	text-decoration: underline;  
 	color: black; font-weight: bold;
+	background: none;		/* 호버시 배경색 없음 */
 }
 
-/* home | logout| My adminpage icon */
+/* home | logout| My adminpage 이미지 아이콘 */
 .home{
-width: 20px;
+width: 15px;
 height: 15px;
-
 }
 .logout{
-width: 20px;
+width: 15px;
 height: 15px;
-
 }
 .my{
-width: 20px;
-height: 18px;
-
+width: 15px;
+height: 15px;
 }
 
 
 
-
-
-/* h1+logo */
+/* Adminhome(헤더 헤드라인)+logo 이미지 */
 .header-wrap1{
 	display: flex;
-	flex-direction: row-reverse;
+	flex-direction: row-reverse; /* ← 방향으로 메뉴 생성 */
 	justify-content: space-between;
 	padding: 10px 90px 10px 80px;  /* [위] [오른쪽] [아래] [왼쪽] */
-	border: 1px solid black;
+	/* border: 1px solid black; */
 }
-/* admin home h1*/
+/* admin home (h1) */
 .header-h1{  
 	font-family: 'Noto Sans KR', sans-serif;
-	font-size: 50px;
+	font-size: 35px;
 	text-align: center;	
-	border: 1px solid black;
-	margin-right: 600px;
+	margin-right: 500px;
 	padding: 20px 0px 0px 5px;
+	/* border: 1px solid black; */
 	
 }
 /* micky logo 이미지 파일 */
 .head-logo{
-	border: 1px solid black;
 	margin-bottom: 10px;
+	height: 100px;
+	/* border: 1px solid black; */
 }
+
+
 
 
 /* 회원관리 상품관리 주문관리 chart */
 .main_ul{
-	list-style-type: none;
 	font-family: 'Noto Sans KR', sans-serif;
+	list-style-type: none;   /* ● 제거 */
 	float: right;
-	margin: 0px 100px 5px 0px; /* [위] [오른쪽] [아래] [왼쪽] */
-	border: 1px black solid;
+	margin: 20px 100px 0px 0px; /* [위] [오른쪽] [아래] [왼쪽] */ 
+	line-height: 45px; /* 부메뉴와의 높이 간격 */
+	/* border: 1px black solid; */
 }
+/* 메인메뉴 위치-부메뉴 설정과 참고하기 */ 
 .main_ul li{
-	display: inline;
-	font-size: 20px;
-	padding: 0px 60px 0px 60px; 
+	display: inline-block;
+	text-align: center;
+	font-size: 15px;
+	padding: 0px 60px 0px 60px;
 }
 .main_ul li a{
-	text-decoration: none;
+	text-decoration: none; /* 링크줄제거(부메뉴포함) */
 	color: black;
 }
-.main_ul li:hover{
-	text-decoration: underline;
-	background-color: white;
-	color: black; font-weight: bold;
+/* 메인메뉴 호버 */
+.main_ul li a:hover{
+ 	background-color: white; 
+	color: black; 
+	font-weight: bold; 
 }
+
+
+
+
+
+/* 차트 부메뉴 카테코리 */
+.main_ul .main_lich{
+	float: right;
+}
+.main_ul .main_lich .chartsub_ul{
+	 background: #CCCCCC;
+ 	 text-align:center;
+	 display: none;   /* 차트부메뉴숨기기 */
+ 	 position: absolute;  /* 부메뉴 위치잡기 */
+	 right: 60px;
+}
+.main_ul .main_lich:hover .chartsub_ul {
+	display: flex; /* 마우스 오버시 부메뉴 표시 */
+	flex-direction: column; /* ↓ 방향으로 메뉴 생성 */
+}											
+/* 부메뉴 글씨크기 설정 */
+.chartsub_ul li{
+	font-size: 15px;
+}
+
+
+
 
 
 

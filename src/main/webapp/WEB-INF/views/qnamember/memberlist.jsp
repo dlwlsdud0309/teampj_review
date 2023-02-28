@@ -6,9 +6,33 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- css 링크 -->
+<link rel="stylesheet" href="../resources/css/admin_header.css" />
+<!-- 폰트 링크 -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+	rel="stylesheet">
+<!-- 반응형 setting -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+	.btn1{
+		color: white;
+		background-color: black;
+		border-color: black;
+	}
+		.btn1:hover {
+		color: black;
+		background-color: white;
+		border-color: white;
+		cursor: pointer;
+}
+</style>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> <!-- 3.x.x 버전 - 가장 최신 버전, 아작스를 지원 -->
+<!-- header section -->
 </head>
-<body>
+<body style="text-align: center">
+<div class="container">
 <script>
 var loginid2 = <%=session.getAttribute("loginid")%>;
 $(document).ready(function(){
@@ -19,10 +43,9 @@ $(document).ready(function(){
 	}
 })
 </script>
-<h3>memberlistform.jsp</h3>
 <h1>회원목록</h1>
-<a href="adminpage">관리자페이지로</a>
-<table width="500" border="1">
+<input class="btn1" type="button" value="관리자페이지로" onclick="location.href='../qnamember/adminpage'"/>
+<table class="table table-hover" width="1000" border="1" style="margin-left:auto;margin-right:auto;">
 	<tr>
 		<td>아이디</td>
 		<td>비밀번호</td>
@@ -103,8 +126,9 @@ totCnt : ${totRowcnt }
 		<!-- <input type="checkbox" name="searchType" value="btitle"/> 제목 -->
 		<!-- <input type="checkbox" name="searchType" value="bcontent"/> 내용 -->
 		<input type="text" name="sk" value="${resk }" />
-		<input type="submit" value="검색" />
+		<input class="btn1" type="submit" value="검색" />
 	</div>
 	</form>
+</div>
 </body>
 </html>

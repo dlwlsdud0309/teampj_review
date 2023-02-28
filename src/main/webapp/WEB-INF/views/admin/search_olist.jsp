@@ -7,27 +7,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- header section -->
-<%-- <%@include file="admin_header.jsp" %> --%>
+<!-- css 링크 -->
 <link rel="stylesheet" href="resources/css/search_oliststyle.css" />
 <style>
-.om_cntnum{
-	 color: black;
-	 text-decoration: none;
-}
-.om_cntnum:hover{
- 	color: gray;
- 	font-weight: bold;
- }
 </style>
+<!-- header section -->
+<%@include file="admin_header.jsp" %>
 </head>
 
 <body>
-<h3 class="line-h3" align="center" 
-style="margin-top: -20; margin-right: 50px; padding: 52px;">
-관리자 주문현황 검색</h3>
+<h3 class="line-h3" align="center">관리자 주문현황 검색</h3>
 <br />
-		<!-- class="scontainer" -->
+<div class="a">
+<a href="admin_olist" class="returnolist">돌아가기</a>
+</div>
 	<div align="center">
 	<table border="1" >
 		<tr bgcolor="#CCCCCC" style="height: 80px;">
@@ -65,7 +58,8 @@ style="margin-top: -20; margin-right: 50px; padding: 52px;">
 		</c:forEach>
 	</table>	
   </div>
-    
+  
+
 	
 </body>
 <br /><br /><br /><br />

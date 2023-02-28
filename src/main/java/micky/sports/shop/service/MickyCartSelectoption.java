@@ -1,5 +1,6 @@
 package micky.sports.shop.service;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +10,7 @@ import org.springframework.ui.Model;
 
 import micky.sports.shop.dao.CartDao;
 import micky.sports.shop.dto.CartDto;
+import micky.sports.shop.dto.ProductDto;
 
 
 public class MickyCartSelectoption implements MickyServiceInter{
@@ -42,6 +44,9 @@ public class MickyCartSelectoption implements MickyServiceInter{
 //			System.out.println("총합 : "+sum);
 //			model.addAttribute("totalprice",sum);
 //		}
+		String p_no=list.getP_no();
+		List<ProductDto> plist=dao.ProductSizeoption(p_no);
+		model.addAttribute("plist",plist);
 		model.addAttribute("list",list);	
 	}
 	

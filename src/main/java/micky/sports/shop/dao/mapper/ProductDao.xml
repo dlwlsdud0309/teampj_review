@@ -37,4 +37,25 @@
 		WHERE ROWNUM BETWEEN 1 AND 5
     </select>
     
+
+    <!-- 상품목록 차트 -->
+	<select id="mainsearch" resultType="Integer">
+		SELECT COUNT(*) 
+		FROM PRODUCT 
+		WHERE P_NAME LIKE '%'||#{param1}||'%' OR P_COLOR LIKE '%'||#{param1}||'%' OR P_SIZE LIKE '%'||#{param1}||'%' 
+		OR P_CATEGORY LIKE '%'||#{param1}||'%' OR P_INFO LIKE '%'||#{param1}||'%'
+    </select>
+
+    <!-- 상품목록 차트 시간별 -->
+	<select id="pdtTimeChart" resultType="micky.sports.shop.dto.ProductDto">
+	    SELECT BB.P_NO,P.P_COLOR,P.P_SIZE,P.P_NAME,P.P_FILESRC,P.P_PRICE
+		FROM (SELECT P_NO,BESTHH FROM (
+		SELECT ROWNUM NUM, BESTSELL.* FROM
+		(SELECT P_NO,SUM(U_CNT) BESTHH FROM ORDER_MEMBER WHERE TO_CHAR(OM_DATE,'HH24')=#{param1} AND OM_STATE='구매확정' GROUP BY P_NO ORDER BY BESTHH DESC) BESTSELL)
+		WHERE ROWNUM BETWEEN 1 AND 5) BB, PRODUCT P
+		WHERE BB.P_NO=P.P_NO
+    </select>
+
+
+    
 </mapper>

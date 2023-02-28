@@ -70,7 +70,7 @@ a {
 	padding: 2px;
 }
 .pdtsizeradio {
-	width: 43px;
+	width: 50px;
 	height: 43px;
 	padding: 2px 5px;
 	display: inline-block;
@@ -80,7 +80,7 @@ a {
 }
 .pdtsizeradio input[type=radio]+label {
 	display: inline-block;
-    width: 40px;
+    width: 55px;
 	height: 40px;
 	border: 1px solid #333;
 	line-height: 40px;
@@ -124,9 +124,25 @@ a {
 	border-radius: 3px;
 	margin: 0 1px;
 }
+.btns{
+	display: inline-block;
+	float: left;
+	width: 380px;
+	padding-top: 15px;
+	margin-left: 20px;
+}
 #order_form{
 	background: #141414;
 	color: #fff;
-	width: 200px;
-	margin: 20px 30px;
+	width: 170px;
+	height: 35px;
+	margin: 2px 3px;
+}
+.cart-btn{
+	background: #fff;
+	color: #141414;
+	width: 170px;
+	height: 35px;
+	margin: 2px 5px;
+	border: 1px solid #141414;
 }

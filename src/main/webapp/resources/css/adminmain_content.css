@@ -1,0 +1,280 @@
+@charset "UTF-8";
+/*   today  */
+.today{
+	text-align: left;
+	margin-top: 50px;
+	margin-left: 50px;
+}
+.todaymember{
+	font-family: 'Noto Sans KR', sans-serif;
+	background-color: #CCCCCC; 
+	font-weight: bolder; 
+	width:130px; height:23px; 
+	border:1px; border-radius: 15px; 
+}
+.todaytotal{
+	font-family: 'Noto Sans KR', sans-serif;
+	background-color: #CCCCCC; 
+	font-weight:bolder;
+	width:100px; height:25px; 
+	border: 1px; border-radius: 15px; 
+	
+	margin-left: 50px;
+}
+.todaymember_l{
+	color: red;
+}
+.todaytotal_l{
+	color: red;
+}
+/* 구분선 */
+.c_hr{
+	border-color: #CCCCCC;
+	width:50%;
+	margin-left: 50px;
+}
+
+
+
+/* 오늘의 할일 리스트  */
+/* 테이블 설정 */
+.job_table{
+	font-family: 'Noto Sans KR', sans-serif;
+	border-spacing: 0;
+	border-color: #e8e8e8;
+	text-align: left;
+	width:1600px;
+	margin-left: 50px;
+ }
+
+.todayjob{
+	background-color: white; 
+	font-weight:bold;
+	text-align: center;
+	width:35px; height:20px; 
+	border: none; border-radius: 15px; 
+}
+/* 테이블 헤드라인 */
+.job_th{
+	background-color: #CCCCCC;
+	font-weight: bolder;
+	font-size: 15px;
+	height:75px; 
+}
+td{
+	 height:100px;
+	 font-size: 14px;
+}
+/* ★ input 설정 */
+.job .job_table td>input{
+	background-color: #CCCCCC;
+	font-family: 'Noto Sans KR', sans-serif; 
+	font-weight: normal; 
+	color:black;
+	width:130px; height:25px; 
+	border:1px; border-radius: 15px; 
+}
+/* label 설정 */
+.job .job_table td>label{
+	color: red;
+}
+
+
+
+
+/* table list 3개 정렬  */
+.project_table123{
+	display: flex;
+    font-family: 'Noto Sans KR', sans-serif;
+    
+    margin-left: 43px;
+	margin-right: 10px;
+} 
+/* 1. 완료된 프로젝트 목록 */
+.completeproject_table{
+	text-align:center;
+	border-spacing: 0;
+	border-color: #e8e8e8;
+	margin-left: 10px;
+}
+.completeproject_table th{
+	background-color: #CCCCCC;
+	text-align:center;
+	font-weight: bolder;
+	font-size: 15px;
+	height:100px; width:300px;
+}
+.completeproject_table td{
+	 /* height:70px; */
+	 height:100px;
+	 font-size: 14px;
+	/* ★ 테이블 줄 설정 */
+ 	 border-top:none;	 
+	 border-bottom: none; 
+}
+/* ★ input color 변경 */
+.completeproject_table input{
+ 	accent-color: gray;
+}
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+
+
+/*   2. 진행중인 프로젝트 목록  */
+.goproject_table{
+	text-align:center;
+	border-spacing: 0;
+	border-color: #e8e8e8;
+	margin-left: 10px;
+} 
+.goproject_table th{
+	background-color: #CCCCCC;
+	text-align:center;
+	font-weight: bolder;
+	font-size: 15px;
+	height:100px; width:300px;
+	border-right: none;
+} 
+.goproject_table td{
+	 /* height:70px; */
+	 height:100px;
+	/* ★ 테이블 줄 설정 */
+ 	 border-top:none;	 
+	 border-bottom: none; 
+} 
+ /* ★ input color 변경  */
+.goproject_table input{
+ 	accent-color: gray;
+ }  
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"); 
+
+/* 3.예정된 프로젝트 테이블 설정 */
+.fproject_table{
+	text-align:center;
+	border-spacing: 0;
+	border-color: #e8e8e8;
+	margin-left: 10px;
+}
+.fproject_table th{
+	background-color: #CCCCCC;
+	text-align:center;
+	font-weight: bolder;
+	font-size: 15px;
+	height:70px; width:300px;
+}
+.fproject_table td{
+	 /* height:50px; */
+	 height:70px;
+	 font-size: 14px;
+	/* ★ 테이블 줄 설정 */
+  	 border-top:none;	 
+	 border-bottom: none;  
+}
+/* ★ input color 변경 */
+.fproject_table input{
+ 	accent-color: gray;
+}
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"); 
+
+
+/* 관리자 프로필  */
+.admintable_f{
+	background-color:#252525;
+	width:500px; 
+	border:none; color:#bcbcbc;
+	font-family:'Noto Sans KR', sans-serif;
+	
+	text-align: center;
+	margin-top: 0px;
+	margin-left: 0px;
+ 	float: right;  
+	
+}
+
+/* 관리자 메모+운영진+배너광고  */
+  .admin_me_se_ad{
+ 	display: flex;
+	flex-direction: column;  
+	margin-top: 30px;
+	margin-left: 0px;
+	float: right;
+}  
+/* 관리자 메모  */
+.admin_memo{
+	margin-top: 0px;
+	margin-left: 0px;
+
+	
+}
+ /* 관리자 운영진  */
+.admin_setting{
+	margin-top: 20px;
+	margin-left: 0px;
+	
+	
+} 
+
+/* 광고배너 */
+.i1{
+	margin-top: 10px;
+	margin-bottom: 0px;
+	margin-left: 0px;		
+}
+.i2{
+	margin-top: 0px;
+	margin-left: 0px
+}
+
+
+
+
+
+
+
+
+/* 최근발송알림테이블 */
+.altable{
+	border-spacing:0px;
+	width:800px; height:100px; 
+	font-family:'Noto Sans KR', sans-serif;
+	/* 밑줄효과 */
+	border-bottom: none; 
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	margin-left: 50px;
+}
+.altable tr{
+ 	border-bottom: none; 
+}
+.altable td{
+	height: 40px;
+	/* ★ 테이블 줄 설정 */
+	border-top-color: #e8e8e8;
+	/* 밑줄효과 */
+	border-bottom: none; 
+ 	border-bottom: none; 
+	border-left: none;
+	border-right: none;  
+}
+.altable td img{
+ 	height: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

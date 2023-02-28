@@ -17,6 +17,8 @@
 <link rel="stylesheet" href="../resources/css/pdetailstyle.css?after" />
 </head>
 <body>
+<!--@@@ header @@@-->
+<jsp:include page="/WEB-INF/views/header.jsp" />
 <c:if test="${empty sessionScope.loginid }">
    <a href="../member/loginform">login</a> 
    |  <a href="../member/joinform">join</a>
@@ -25,7 +27,7 @@
  <c:if test="${not empty sessionScope.loginid }">
     <a href="../member/logout">logout</a> 
  <br />
- ${sessionScope.loginid } 님, 로그인상태입니다 ദ്ദി*ˊᗜˋ*)
+ ${sessionScope.loginid } 님, 로그인상태입니다.
  </c:if>
 
 <h3>상품</h3>
@@ -99,15 +101,30 @@
 		<!-- name="u_cnt"
  			 name="p_no" value="pno" -->
 	</div>
-	<input type="submit" id="order_form" value="바로구매" />
-	<input type="button" value="장바구니추가" onclick="return addcart(this.form)"/>
+
+	<div class="btns">
+		<input type="submit" id="order_form" value="바로구매" />
+		<input type="button" value="장바구니추가" onclick="return addcart(this.form)" class="cart-btn"/>
+	</div>
+
 </form>
 </div>
 <script>
 	function addcart(frm) {
+		var userid='<%=(String)session.getAttribute("loginid")%>';
+		if(userid=='null'){
+			alert("로그인이 필요합니다.");
+			return false;
+		}
+		if($('#choice_pno').val()==null ){
+			$('.print-message-no-opt').css('display','block');
+			return false;
+		}else{
 		frm.action='../Cart/insertCart';
 		frm.submit();
+		alert("상품이 카트에 담겼습니다.");
 		return true;
+		}
 	}
 	function Count(type,pno,totcnt) { /* ths [object HTMLButtonElement] */
 		/* alert(type+"***"+pno+"***"+totcnt); */
@@ -173,6 +190,7 @@ $('#order_form').click(function(){
 	}
 
 });
+
 </script>
 
 

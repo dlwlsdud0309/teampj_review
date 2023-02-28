@@ -27,12 +27,10 @@ public class MyOCancelOfferService implements MickyServiceInter{
 		//로그인 세션
 		httpsession = request.getSession();
 		String loginId = (String)httpsession.getAttribute("loginid");
-		System.out.println("*********~~~~~~~~~~~~~~~~~"+loginId);
 		
 		String calcleOfferomcntnum=request.getParameter("calcleOfferomcntnum");
 		String myOrderCancelReason=request.getParameter("myOrderCancelReason");
-		System.out.println("*****///"+calcleOfferomcntnum);
-		System.out.println("*****///"+myOrderCancelReason);
+
 		OrderDao odao = sqlSession.getMapper(OrderDao.class);
 		odao.myOCancelOffersubmit(calcleOfferomcntnum,myOrderCancelReason);
 

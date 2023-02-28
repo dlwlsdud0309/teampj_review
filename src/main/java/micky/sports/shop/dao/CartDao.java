@@ -25,7 +25,7 @@ public interface CartDao {
 //	public ArrayList<CartDto> CartSelectOptionlist(String c_no);
 	public CartDto CartSelectOptionlist(String c_no);
 
-	public int CartOptionModify(String p_color, String p_size, String c_cnt, String c_no);
+	public int CartOptionModify(String p_color, String p_size, String c_cnt, String c_no, String p_name);
 
 	public void AllDeletelist(String c_no);
 
@@ -34,6 +34,8 @@ public interface CartDao {
 	public int checkCartlist2(String m_id, String p_no, String c_no, String p_category, String c_no2, String p_name);
 
 	public List<CartDto> cartChartList();
+	//해당상품의 사이즈 옵션들
+	public List<ProductDto> ProductSizeoption(String p_no);
 	
 	
 

@@ -26,7 +26,7 @@ public class OrderPaymentService implements MickyServiceInter {
 		Map<String, Object> map=model.asMap();
 		HttpServletRequest request=
 				(HttpServletRequest)map.get("request");	
-		
+
 		//로그인 세션
 		httpsession = request.getSession();
 		String loginId = (String)httpsession.getAttribute("loginid");
@@ -57,7 +57,7 @@ public class OrderPaymentService implements MickyServiceInter {
 			
 			//수량이나 캐시가 없으면 결제가 진행되지 않도록하기
 			int memberCach=odao.ordersMember(loginId).getM_cash();
-			//System.out.println("캐시확인"+memberCach);
+			
 			if(memberCach<totPrices) { //캐시부족...
 				orderResult="0";
 			}else {
@@ -69,22 +69,27 @@ public class OrderPaymentService implements MickyServiceInter {
 					}
 				}	
 			}
-			
+			int payInsert=0;
+			int delInsert=0;
 			if (orderResult=="주문성공") {
 				for (int i = 0; i < pNo.size(); i++) {
 					//구매이력 추가 insert
-					odao.payment(loginId,pNo.get(i),cnt.get(i));
+					payInsert=odao.payment(loginId,pNo.get(i),cnt.get(i));
 					//구매한 수량 재고 삭제 update
-					pdao.delpayment(pNo.get(i),cnt.get(i));						
+					delInsert=pdao.delpayment(pNo.get(i),cnt.get(i));						
 				}		
 				//구매한 금액 회원 캐시 차감 update
-				odao.delcash(loginId,totPrices);
+				if(payInsert>0 && delInsert>0){
+					odao.delcash(loginId,totPrices);
+				}else {
+					orderResult="3"; //서버오류
+				}
 			}
-			
+	
 			httpsession.removeAttribute("orderPSelectList");
 			httpsession.removeAttribute("cnt");
 			httpsession.removeAttribute("totPrices");
-			
+
 		//가장최근 주문번호확인
 		String checkOmnum= odao.checkOmnum(loginId);
 

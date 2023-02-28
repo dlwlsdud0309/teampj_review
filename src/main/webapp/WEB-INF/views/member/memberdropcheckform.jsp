@@ -6,8 +6,24 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> <!-- 3.x.x 버전 - 가장 최신 버전, 아작스를 지원 -->
+<style>
+		.btn1{
+			color: white;
+			background-color: black;
+			border-color: black;
+			transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+			border-radius: 5px;
+			border: 1px solid;
+		}
+		.btn1:hover {
+			color: black;
+			background-color: white;
+			border-color: black;
+			cursor: pointer;
+}
+</style>
 </head>
-<body>
+<body style="text-align: center">
 <script>
 function checkValue(){
 	inputPw = document.getElementById("m_pw").value; //input password값
@@ -48,11 +64,11 @@ $(document).ready(function(){ //비밀번호표시 체크박스
 	})
 })
 </script>
-<h3>memberdropcheckform.jsp</h3>
-<h1>회원탈퇴 진입 전 비밀번호로 본인인증하는 화면</h1>
-아이디 : <input type="text" value="<%=session.getAttribute("loginid") %>" name="m_id" readonly/> <br />
-비밀번호 : <input type="password" name="m_pw" id="m_pw" /> <br />
-비밀번호표시<input type="checkbox" name="showpassword" /> <br />
-<input type="button" value="확인" onclick="checkValue()" />
+<h1 style="margin-right: 30px">본인인증</h1>
+아이디 : <input type="text" value="<%=session.getAttribute("loginid") %>" style="margin-right: 106px;" name="m_id" readonly/> <br />
+비밀번호 : <input type="password" name="m_pw" id="m_pw" />
+비밀번호표시<input type="checkbox" name="showpassword" /> <br /> <br />
+<input class="btn1" type="button" value="확인" onclick="checkValue()" />
+<input class="btn1" type="button" value="취소" onclick="window.close()" style="margin-right: 25px" />
 </body>
 </html>

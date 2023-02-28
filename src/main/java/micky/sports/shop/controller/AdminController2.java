@@ -87,7 +87,7 @@ public class AdminController2 {
 
 		return "redirect:/admin_product";
 	}
-	// 관리자 상품관리 상품등록
+	// 관리자 상품관리 차트
 		@RequestMapping("/admin_cartchart")
 		public String admin_cartchart(HttpServletRequest request, Model model) {
 			

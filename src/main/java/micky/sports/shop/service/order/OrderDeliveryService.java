@@ -30,7 +30,6 @@ public class OrderDeliveryService implements MickyServiceInter{
 				(HttpServletRequest)map.get("request");	
 		
 
-		System.out.println("===OrderDeliveryService=====delivery=======");
 		//로그인 세션
 		httpsession = request.getSession();
 		String loginId = (String)httpsession.getAttribute("loginid");
@@ -44,7 +43,7 @@ public class OrderDeliveryService implements MickyServiceInter{
 		OrderDao odao=sqlSession.getMapper(OrderDao.class);
 		//가장최근 주문번호확인
 		OrderMemberDto checkOmCntnum= odao.checkOmCntnum(loginId);
-		System.out.println("여기는"+checkOmCntnum.getOm_cntnum()+"없");
+		
 		String omCntnum=checkOmCntnum.getOm_cntnum();
 		
 		odao.delivery(omCntnum,loginId,receipt_name,receipt_phone,addr1,addr2,addr3);

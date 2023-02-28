@@ -7,8 +7,24 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> <!-- 3.x.x 버전 - 가장 최신 버전, 아작스를 지원 -->
+<style>
+		.btn1{
+			color: white;
+			background-color: black;
+			border-color: black;
+			transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+			border-radius: 5px;
+			border: 1px solid;
+		}
+		.btn1:hover {
+			color: black;
+			background-color: white;
+			border-color: black;
+			cursor: pointer;
+}
+</style>
 </head>
-<body>
+<body style="text-align: center">
 <script>
 var loginid2 = <%=session.getAttribute("loginid")%>;
 $(document).ready(function(){
@@ -31,31 +47,18 @@ function checkValue(){
 	}
 }
 </script>
-<h3>qnawriteform.jsp</h3>
-<h1>문의하기화면</h1>
-<form name="qwf" action="qnawrite" onsubmit="return checkValue()">
-<table>
-	<tr>
-		<td class = "left">제목</td>
-		<td><input type="text" name="q_mtitle" /></td>
-	</tr>
-	<tr>
-		<td class = "left">내용</td>
-		<td><textarea name="q_mcontent"></textarea></td>
-	</tr>
-	<tr>
-		<td class = "left">아이디</td>
-		<td><input type="text" name="q_mid" value="<%=session.getAttribute("loginid") %>" readonly /></td>
-	</tr>
-	<tr>
-		<td colspan = "2">
-		<input type="submit" value="문의하기" /> &nbsp;&nbsp;
-		<a href="qnalist">목록</a> &nbsp;&nbsp;
-		<a href="#">삭제</a> &nbsp;&nbsp;
-		<a href="#">답변폼으로</a> &nbsp;&nbsp;
-		</td>
-	</tr>
-</table>
+<h1>1:1문의</h1>
+
+<form name="qwf" action="qnawrite" onsubmit="return checkValue()">	
+		<input type="text" name="q_mtitle" placeholder="제목" style="width: 559px; height: 30px;"/>
+		<input type="text" name="q_mid" value="<%=session.getAttribute("loginid") %>" style="width: 559px; height: 30px; padding-top: 2px; padding-bottom: 0;" readonly />
+		<br /><br />
+		<textarea name="q_mcontent" placeholder="내용" style="width: 1135px; height: 400px;"></textarea>
+		<br /><br />
+		<input class="btn1" type="submit" value="문의하기" /> &nbsp;&nbsp;
+		<input class="btn1" type="button" value="목록으로" onclick="location.href='../qnamember/qnalist'"/> &nbsp;&nbsp;
+
+
 </form>
 </body>
 </html>

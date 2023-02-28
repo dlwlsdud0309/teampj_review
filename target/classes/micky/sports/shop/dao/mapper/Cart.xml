@@ -114,7 +114,7 @@
 		UPDATE 
 		    CART 
 		SET 
-		    P_NO=(SELECT P.P_NO FROM PRODUCT P WHERE P.P_COLOR=#{param1} AND P.P_SIZE=#{param2}),C_CNT=#{param3} 
+		    P_NO=(SELECT P.P_NO FROM PRODUCT P WHERE P.P_COLOR=#{param1} AND P.P_SIZE=#{param2} and P.P_NAME=#{param5}),C_CNT=#{param3} 
 		WHERE 
 		    C_NO=#{param4}
 	</update>
@@ -129,5 +129,8 @@
 			P.P_NAME 
 		ORDER BY 
 			P.P_NAME
+	</select>
+	<select id="ProductSizeoption" resultType="micky.sports.shop.dto.ProductDto" >
+		SELECT * FROM PRODUCT WHERE P_NAME=(SELECT P_NAME FROM PRODUCT WHERE P_NO=#{param1})
 	</select>
 </mapper>

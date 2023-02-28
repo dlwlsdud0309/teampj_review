@@ -7,8 +7,22 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> <!-- 3.x.x 버전 - 가장 최신 버전, 아작스를 지원 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<style>
+	.btn1{
+		color: white;
+		background-color: black;
+		border-color: black;
+	}
+		.btn1:hover {
+		color: black;
+		background-color: white;
+		border-color: white;
+		cursor: pointer;
+}
+</style>
 </head>
-<body>
+<body style="text-align: center">
 <script>
 var loginid2 = <%=session.getAttribute("loginid")%>;
 $(document).ready(function(){
@@ -19,11 +33,11 @@ $(document).ready(function(){
 	}
 })
 </script>
-<h3>adminqnalist.jsp.jsp</h3>
+<div class="container">
 <h1>관리자문의게시판</h1>
 현재로그인된아이디 확인용 : <%=session.getAttribute("loginid") %> <br />
-<input type="button" value="관리자페이지" onclick="location.href='adminpage'" />
-<table width="500" border="1">
+<input class="btn1" type="button" value="관리자페이지로" onclick="location.href='../qnamember/adminpage'"/>
+<table class="table table-hover" width="1000" border="1" style="margin-left:auto;margin-right:auto;">
 	<tr>
 		<td>문의번호</td>
 		<td>문의제목</td>
@@ -83,8 +97,9 @@ totCnt : ${totRowcnt }
 			<option >아이디+날짜</option>
 	</select>
 	<input type="text" name="sk" value="${resk }" />
-	<input type="submit" value="검색" />
+	<input class="btn1" type="submit" value="검색" />
 </div>
 </form>
+</div>
 </body>
 </html>

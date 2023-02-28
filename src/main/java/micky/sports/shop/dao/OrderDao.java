@@ -7,7 +7,7 @@ import micky.sports.shop.dto.OrderMemberDto;
 import micky.sports.shop.dto.ProductDto;
 
 public interface OrderDao {
-	public void payment(String mId,String pNo,int cCnt);
+	public int payment(String mId,String pNo,int cCnt);
 	
 	//주문페이지 정보보기
 	public ProductDto orderSelect(String pno);

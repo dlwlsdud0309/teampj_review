@@ -126,5 +126,22 @@ public class AdminController {
 		 return "redirect:admin_olist"; 
 		 
 	} 
+	 
+	 //관리자 메인페이지
+	 @RequestMapping("/adminmain")  			//Model model
+	 public String adminmain(HttpServletRequest request) {
+		 System.out.println(">>>>>>>>>adminmain<<<<<<<<<<");
+	
+		 //DB 
+		 mickyServiceInter=new AContentViewService(sqlSession);
+		 
+		 return "admin/adminmain"; 
+	}
+	 
+	 
+	 
+	 
+	 
+	 
 		
 }
