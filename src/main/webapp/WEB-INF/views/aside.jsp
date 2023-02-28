@@ -10,7 +10,7 @@
 </head>
 <body>
 <aside>
-	<!-- <script>
+	<script>
 		$(document).ready(function(){
 			$('#main_menu > li > a').off().on("click", function() {
 				$(this).next($('.snd_menu')).slideToggle('fast');
@@ -20,9 +20,9 @@
 	            $(this).next($('.trd_menu')).slideToggle('fast');
 	        })
 		});
-	</script> -->
+	</script>
 	<nav>
-		<dl>
+		<!-- <dl>
 			<dt>아우터</dt>
 			<dd class="aside_dd"><a href="#" onclick="return false;">패딩</a></dd>
 			<dd class="aside_dd"><a href="#" onclick="return false;">자켓</a></dd>
@@ -57,39 +57,60 @@
 			<dd><input type="checkbox" /><span>남녀공용</span></dd>
 			<dd><input type="checkbox" /><span>남성</span></dd>
 			<dd><input type="checkbox" /><span>여성</span></dd>
-		</dl>
-		<!-- <ul id="main_menu">
+		</dl> -->
+		<ul id="main_menu">
           <li>
-            <a href="#" onclick="return false;">아우터</a>
+            <a class="aside_atag as_category" href="#" onclick="return false;">아우터</a>
             <ul class="snd_menu sub_menu">
-                <li><a href="#" onclick="return false;">패딩</a></li>
-                <li><a href="#" onclick="return false;">자켓</a></li>
+                <li><a class="aside_atag" href="#" onclick="return false;">패딩</a></li>
+                <li><a class="aside_atag" href="#" onclick="return false;">자켓</a></li>
             </ul>
          </li>
           
             <li>
-                <a href="#" onclick="return false;">티＆셔츠</a>
+                <a class="aside_atag as_category" href="#" onclick="return false;">티＆셔츠</a>
                 <ul class="snd_menu sub_menu">
-                    <li><a href="#" onclick="return false;">라운드티</a></li>
-                    <li><a href="#" onclick="return false;">후드티</a></li>
-                    <li><a href="#" onclick="return false;">셔츠</a></li>
+                    <li><a class="aside_atag" href="#" onclick="return false;">라운드티</a></li>
+                    <li><a class="aside_atag" href="#" onclick="return false;">후드티</a></li>
+                    <li><a class="aside_atag" href="#" onclick="return false;">셔츠</a></li>
                 </ul>
             </li>
             <li>
-                <a href="#" onclick="return false;">바지</a>
+                <a class="aside_atag as_category" href="#" onclick="return false;">바지</a>
                 <ul class="snd_menu sub_menu">
-                    <li><a href="#" onclick="return false;">트레이닝/조거팬츠</a></li>
-                    <li><a href="#" onclick="return false;">레깅스</a></li>
+                    <li><a class="aside_atag" href="#" onclick="return false;">트레이닝/조거팬츠</a></li>
+                    <li><a class="aside_atag" href="#" onclick="return false;">레깅스</a></li>
                 </ul>
             </li>
             <li>
-                <a href="#" onclick="return false;">BACK PACK</a>
+                <a class="aside_atag as_category" href="#" onclick="return false;">BACK PACK</a>
                 <ul class="snd_menu sub_menu">
-                    <li><a href="#" onclick="return false;">등산백팩</a></li>
-                    <li><a href="#" onclick="return false;">캐주얼백팩</a></li>
+                    <li><a class="aside_atag" href="#" onclick="return false;">등산백팩</a></li>
+                    <li><a class="aside_atag" href="#" onclick="return false;">캐주얼백팩</a></li>
                 </ul>
             </li>
-        </ul> -->
+            <li>
+                <a class="aside_atag as_category" href="#" onclick="return false;">모자</a>
+                <ul class="snd_menu sub_menu">
+                    <li><a class="aside_atag" href="#" onclick="return false;">캡</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="aside_atag as_category" href="#" onclick="return false;">기타용품</a>
+                <ul class="snd_menu sub_menu">
+                    <li><a class="aside_atag" href="#" onclick="return false;">양말</a></li>
+                    <li><a class="aside_atag" href="#" onclick="return false;">마스크</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="aside_atag as_category" href="#" onclick="return false;">상품가격</a>
+                <ul class="snd_menu sub_menu">
+                    <li><input type="checkbox" /><span class="aside_span">남녀공용</span></li>
+                    <li><input type="checkbox" /><span class="aside_span">남성</span></li>
+                    <li><input type="checkbox" /><span class="aside_span">여성</span></li>
+                </ul>
+            </li>
+        </ul>
 	</nav>
 </aside>
 </body>

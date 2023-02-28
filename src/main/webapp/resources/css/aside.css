@@ -53,6 +53,37 @@ dd>a:hover{
 	color: #AF0006;
 }
 
+/* =========== */
+nav>ul{
+	width: 160px;
+	top: 105px;
+	bottom:400px;
+}
+.aside_atag{
+	color: black;
+	font-size: smaller;
+	margin: 20px 0px;
+}
+.aside_atag:hover{
+	color: #AF0006;
+}
+.as_category{
+	font-weight: bolder;
+	font-size: medium;
+}
+nav>ul>li{
+	list-style: none;
+	padding: 10px;
+	margin: 15px -20px;
+}
+nav>ul>li>ul>li{
+	list-style: none;
+	margin-left: -25px;
+	line-height: 25px;
+}
+.aside_span{
+	font-size: smaller;
+}
 
 /* nav{
 	overflow: scroll;
