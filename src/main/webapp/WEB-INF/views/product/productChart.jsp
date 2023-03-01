@@ -12,7 +12,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="../resources/css/pchartstyle.css" />
 </head>
-<body style="margin-left: 13px; margin-right: -13px">
+<body>
 <!--@@@ header @@@-->
 <jsp:include page="/WEB-INF/views/header.jsp" />
 
@@ -179,9 +179,46 @@
 	.main_imgbox>img{
 		margin-bottom: 5px;
 	}
+	.main_imgbox2{
+		text-align: center;
+	}
+	.main_imgbox2>img{
+		margin: 5px;
+		width: 310px;
+		height: 410px;
+	}
+	.main_text_gucci{
+		margin-top: 70px;
+		margin-bottom: 30px;
+		color: black;
+	}
+	.main_text_gucci>h2{
+		text-align: center;
+		font-weight: bolder;
+	}
+	.main_imgbox_andGucci{
+		text-align: center;
+	}
+	.main_imgbox_andGucci>img{
+		margin: 5px;
+		height: 485px;
+	}
 </style>
  
 <img class="middle_img" src="../resources/img/mainimg/img2_76226.jpg" />
+<div class="main_imgbox2">
+	<img src="../resources/img/mainimg/the-north-face-urban-exploration-flexi-gear-lookbook-06-2fbf62fd-c9f3-48b9-86a8-567a299423ec.jpg"/>
+	<img src="../resources/img/mainimg/the-north-face-urban-exploration-flexi-gear-lookbook-13-bce97e70-41bf-4484-9710-9816fb8a157d.jpg"/>
+	<img src="../resources/img/mainimg/the-north-face-urban-exploration-flexi-gear-lookbook-12-2be83b76-b8f1-4ba2-8eb4-d4cab2b8df2e.jpg"/>
+	<img src="../resources/img/mainimg/the-north-face-urban-exploration-flexi-gear-lookbook-04-c3ba5b77-44a2-4bfa-a1a1-923b65c94cca.jpg"/>
+</div>
+<div class="main_text_gucci">
+	<h2>THE NORTH FACE X GUCCI</h2>
+</div>
+<div class="main_imgbox_andGucci">
+	<img src="../resources/img/mainimg/gucci-north-face-collaborative-collection-teasure-release-01.jpg"/>
+	<img src="../resources/img/mainimg/gi7yszc501rsuigib5qc.png"/>
+</div>
 <div class="main_imgbox">
 	<img src="../resources/img/mainimg/The-North-Face-x-Gucci-The-Third-Chapter-01-800x450.jpg"/>
 	<img src="../resources/img/mainimg/The-North-Face-x-Gucci-The-Third-Chapter-02-800x450.jpg"/>
