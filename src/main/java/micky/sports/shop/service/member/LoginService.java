@@ -47,6 +47,7 @@ public class LoginService implements MickyServiceInter {
 		String m_id = request.getParameter("loginform_input_id"); //loginform에서 입력받은 id값
 		String m_pw = request.getParameter("loginform_input_pw"); //loginform에서 입력받은 password값
 		
+		System.out.println("아이디비번확인 : "+m_id + m_pw);
 //		logincheck_result = dao.login(m_id);
 		
 //		if(logincheck_result == 0) {

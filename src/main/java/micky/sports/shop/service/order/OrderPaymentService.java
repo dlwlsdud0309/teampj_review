@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
+import micky.sports.shop.dao.CartDao;
 import micky.sports.shop.dao.OrderDao;
 import micky.sports.shop.dao.ProductDao;
 import micky.sports.shop.dto.ProductDto;
@@ -39,13 +40,16 @@ public class OrderPaymentService implements MickyServiceInter {
 		
 		ArrayList<String> pNo=new ArrayList<String>();
 		ArrayList<Integer> cnt=new ArrayList<Integer>();
-		
+		CartDao cdao=sqlSession.getMapper(CartDao.class);
+		String m_id=(String)httpsession.getAttribute("loginid");
+		System.out.println("해당 아이디 : "+m_id);
 		String orderResult="주문성공";
 		if(orderPSelectList==null) { //새로고침 했을때는 세션을 삭제했으므로 예외처리해야함
 			orderResult="2";
 		}else {			
 			for (ProductDto orderPSelect : orderPSelectList) {
 				pNo.add(orderPSelect.getP_no()); //상품번호
+				cdao.PaymentDeleteCart(orderPSelect.getP_no(),m_id);
 			}
 			for (Integer c : cntList) {
 				cnt.add(c); //수량

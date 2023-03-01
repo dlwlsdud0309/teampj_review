@@ -104,4 +104,10 @@
 	<update id="myDelivCancelOffer">
 		UPDATE ORDER_MEMBER SET OM_DELCANCLE='Y' WHERE OM_CNTNUM=#{param1}
 	</update>
+	
+	<!-- 마이페이지 인트로 -->
+    <select id="myPage" parameterType="micky.sports.shop.dto.OrderMemberDto" resultMap="OrderMemberDto">
+    	SELECT OM_CNTNUM,OM_NUM,P_NO,U_CNT,M_ID,OM_DATE,OM_PAY,OM_STATE,OM_CANCLE,OM_CDATE,C_REASON,OM_DELCANCLE
+		FROM ORDER_MEMBER WHERE M_ID=#{param1} ORDER BY OM_DATE
+    </select>
 </mapper>

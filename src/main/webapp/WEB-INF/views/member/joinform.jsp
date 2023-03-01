@@ -442,18 +442,6 @@ function checkname(){
 	}
 }
 </script>
- 
-    <header>
-
-        <!-- 클릭 시 메인 페이지로 이동 -->
-        <button onclick="PageRequest(Main_page)">Remember-Feedback</button>
-        <!-- 클릭 시 로그인 페이지 이동 -->
-        <button onclick="PageRequest(Login_page)">로그인</button>
-
-    </header>
-
-
-    <!--  -->
     <form class="container" action="join" name="jf" method="post" enctype="multipart/form-data" onsubmit="return checkinfovalue()">
       
     <input type="hidden" name="checkid_YESorNO" id="checkid_YESorNO" value="NO" /><br /> <!-- 아이디중복체크유무 -->

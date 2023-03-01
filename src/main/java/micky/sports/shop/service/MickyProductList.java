@@ -6,8 +6,10 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import lombok.Setter;
 import micky.sports.shop.dao.CartDao;
 import micky.sports.shop.dto.ProductDto;
 

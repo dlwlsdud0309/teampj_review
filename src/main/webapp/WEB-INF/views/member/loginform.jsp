@@ -5,63 +5,49 @@
 <head>
 <meta charset="UTF-8">
 <title>/users/loginform2.jsp</title>
-<link rel="stylesheet" href="../resources/css/loginform.min.css" />
 <style>
-html,
-body {
-  height: 100%;
+.loginformbtn{
+	color: white;
+	background-color: black;
+	border-color: black;
+	transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+	border-radius: 5px;
+	border: 1px solid;
+	width: 150px; 
+	height: 30px;
+}	
+.loginformbtn:hover {
+	color: black;
+	background-color: white;
+	border-color: black;
+	cursor: pointer;
 }
-
-body {
-  display: flex;
-  align-items: center;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  /* background-color: #f5f5f5; */
-  background-color: #ffffff;
+.inputvalue{
+	width: 300px;
+	height: 30px;
+	border: 1px solid #c4c4c4;
+	background-color: #ffffff;
 }
-
-.form-signin {
-  width: 100%;
-  max-width: 330px;
-  padding: 15px;
-  margin: auto;
+.findidpw{
+	
 }
-
-.form-signin .checkbox {
-  font-weight: 400;
+.findidpwform{
+	font-weight: bold;
+	color: black;
+	text-decoration: underline;
 }
-
-.form-signin .form-floating:focus-within {
-  z-index: 2;
+.findidpwform:hover {
+	color: red;
 }
-
-.form-signin input[type="text"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-  background-color: white;
+.findidpwform:hover {
+	cursor: pointer;
 }
-
-.form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+.showpwbox{
+	accent-color:black;
 }
-#loginform_input_pw{
-	margin-bottom:10px;
-}
-/* .id_notok{
-	color:red;
-	display: none;
-}
-.pw_notok{
-	color:red;
-	display: none;
-} */
-
 </style>
-<!-- <script src="../resources/js/loginform.bundle.min.js"></script> -->
+<!-- 사이드 -->
+<link href="../resources/css/checkIndex.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script>
 function check_id_pw(){
@@ -73,15 +59,20 @@ function check_id_pw(){
 		alert("비밀번호를입력하세요")
 	}else {
 		$.ajax({
-			type:'GET',
-			url:'../member/login?loginform_input_id=' + loginform_input_id + '&loginform_input_pw=' + loginform_input_pw, //membercontroller의 login()으로 input_id,input_pw를 보냄
-			success:function(result){ //input_id,input_pw를 db에 select한 결과(int)
-				alert("result확인 : "+result)
+			 type:'POST',
+			/*  url:'../member/login?loginform_input_id=' + loginform_input_id + '&loginform_input_pw=' + loginform_input_pw, */  //membercontroller의 login()으로 input_id,input_pw를 보냄
+			 url:'../member/login',
+			 data:"loginform_input_id="+loginform_input_id+"&loginform_input_pw="+loginform_input_pw,
+			 dataType:'text',
+					success:function(result){ //input_id,input_pw를 db에 select한 결과(int)
+				/* alert("result확인 : "+result) */
 				if(result==0){ //아이디나비밀번호가 틀릴때
 					alert("아이디비밀번호를확인하세요")
 				}else if(result==1){ //아이디비밀번호가 맞을때
-					alert("로그인성공")
-					window.location.href="../member/main" //로그인성공시 메인페이지로이동
+
+					alert("로그인성공");
+					window.location.href="../product/productChart" //로그인성공시 메인페이지로이동
+
 				}
 			}
 		})
@@ -90,7 +81,7 @@ function check_id_pw(){
 }
 $(document).ready(function(){ //비밀번호표시 체크박스
 	$('input[type=checkbox][name=showpassword]').change(function(){
-		alert("비밀번호표시신호")
+		/* alert("비밀번호표시신호") */
 		if($(this).is(':checked')){
 			$('#loginform_input_pw').prop("type","text");
 		}else{
@@ -100,38 +91,35 @@ $(document).ready(function(){ //비밀번호표시 체크박스
 })
 </script>
 </head>
-<body class="text-center">
-
-<div class="container">
-   <main class="form-signin">
-         <img class="mb-4" src="../resources/kthimg/logo.png" alt="" width="300" height="250">
-         <h1 class="h3 mb-3 fw-normal">로그인 페이지</h1>
-         
-         <div class="form-floating">
-            <input type="text" class="form-control" name="loginform_input_id" id="loginform_input_id" placeholder="아이디 입력..." />
+<body>
+<!--@@@ header @@@-->
+<jsp:include page="/WEB-INF/views/header.jsp" />
+<!-- 사이드 -->
+<jsp:include page="/WEB-INF/views/myPage/checkIndex.jsp" />
+		<div class="container" style="border: solid 1px; width: 500px; height: 350px; text-align: center">
+         <!-- <img src="../resources/kthimg/THEMICKYFACE2.png"  width="300" height="250"> -->   
+		 <h1>로그인</h1>  
+         <div>
+            <input class="inputvalue" type="text" name="loginform_input_id" id="loginform_input_id" placeholder="아이디 입력..." />
             <!-- <div class="id_notok">아이디를 입력하세요</div> -->
          </div>
          <br />
-         <div class="form-floating">
-            <input type="password" class="form-control" name="loginform_input_pw" id="loginform_input_pw" placeholder="Password" />
+         <div>
+            <input class="inputvalue" type="password" name="loginform_input_pw" id="loginform_input_pw" placeholder="Password" />
         	<!-- <div class="pw_notok">비밀번호를 입력하세요</div> -->
          </div>
-         
-         <div class="checkbox mb-3">
-            <!-- <label>
-               <input type="checkbox" value="remember-me" style="accent-color:black;"> 아이디 저장
-            </label> -->
-             <label>
-            	&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="showpassword" style="accent-color:black;" /> 비밀번호표시
-            </label>
-         </div>
-         <button class="w-100 btn btn-lg btn-primary" onclick="check_id_pw()">로그인</button> <br /> <br />
-         <button class="w-100 btn btn-lg btn-primary" onclick="location.href='joinform'">회원가입</button> <br /> <br /> <br />
-         <a href="findidform" style="font-weight: bold">아이디찾기</a>
+         <input class="showpwbox" type="checkbox" name="showpassword" /> 비밀번호표시
+         <br />
+         <br />
+         <button class="loginformbtn" onclick="check_id_pw()" >로그인</button>
+         <button class="loginformbtn" onclick="location.href='joinform'" >회원가입</button> <br /> <br /> <br />
+         <div class="findidpw">
+         <a href="#" onclick="window.open('findidform','','width=525, height=370');" class="findidpwform" >아이디찾기</a>
          &nbsp;/&nbsp;
-         <a href="findpwform" style="font-weight: bold">비밀번호찾기</a>
-         <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
-   </main>
-</div>
+         <a href="#" onclick="window.open('findpwform','','width=525, height=370');" class="findidpwform" >비밀번호찾기</a>
+         </div>
+         </div>
+<!--@@@ footer @@@-->
+<jsp:include page="/WEB-INF/views/footer.jsp" />
 </body>
 </html>

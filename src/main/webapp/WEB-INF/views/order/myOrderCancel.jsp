@@ -9,44 +9,30 @@
 <title>Insert title here</title>
 <script src="../resources/js/jquery-3.6.1.min.js"></script>
 <script src="../resources/js/jquery.bpopup.min.js"></script>
+<style>
+.cancel-form{margin: 50px auto;}
+h3{margin: 50px auto; text-align: center;}
+table{border-collapse: collapse;margin: 30px auto;}
+.thead{text-align: center;}
+td{padding: 3px;margin: 3px;border:1px solid #ccc;}
+.submit-btn-div{margin: 3px auto;text-align: center;}
+.submit-btn{background-color: #FFF;	border: 1px solid #353535; border-radius: 3px; margin: 2px auto; text-align: center;}
+.go-productList{margin: 3px auto;text-align: center;}
+</style>
 </head>
 <body>
-<c:if test="${empty sessionScope.loginid }">
-   <a href="../loginform">login</a> 
-   |  <a href="">join</a>
-
-</c:if>
- <c:if test="${not empty sessionScope.loginid }">
-    <a href="../logout">logout</a> 
- <br />
- ${sessionScope.loginid } 님, 로그인상태입니다.
- </c:if>
- myOrderCancel
- 
- <div>
-	<p class="go-productList">
-	<a href="../order/myOrderList">이전으로</a>
-	</p>
- </div>
- <div>
- 	<p>회원님의 현재 보유 캐시 : ${myList.m_cash }</p>
- </div>
- 
-
 <h3>취소요청 상품 </h3>
+<div class="cancel-form">
 <form action="myOCancleOffer" method="post">
 	<input type="hidden" name="calcleOfferomcntnum" id="calcleOfferomcntnum" value="${myOrderCancelOffer.om_cntnum }" />
-	<table width="800" border="1" id="more_list">
-		<thead>
-			<tr>
+	<table id="more_list">
+			<tr class="thead">
 				<td>주문일자</td>
 				<td>주문번호</td>
 				<td colspan="2">상품정보</td>
 				<td>주문수량</td>
 				<td>총액</td>
 			</tr>
-		</thead>
-		<tbody>
 			<tr>
 				<td><fmt:formatDate value="${myOrderCancelOffer.om_date }" pattern="yyyy.MM.dd"/></td>
 				<td>${myOrderCancelOffer.om_num }</td>
@@ -58,7 +44,7 @@
 					${myOrderCancelOffer.productDto.p_size }
 				</td>
 				<td>${myOrderCancelOffer.u_cnt }</td>
-				<td>${myOrderCancelOffer.p_price }</td>
+				<td><fmt:formatNumber value="${myOrderCancelOffer.p_price}" pattern="###,###"/>원</td>
 			</tr>
 			<tr>
 				<td colspan="8">
@@ -70,12 +56,19 @@
 					</div>
 				</td>
 			</tr>
-		</tbody>
 	</table>
-	<input type="submit" value="취소요청하기" />
+	<div class="submit-btn-div">
+	<input type="submit" value="취소요청하기" class="submit-btn" />
+	</div>
 </form>
-<br />
 
+<br />
+ <div>
+	<p class="go-productList">
+	<a href="../order/myOrderList" >이전으로</a>
+	</p>
+ </div>
+ </div>
 <script>
 	$('#myOrderCancelReason').keyup(function (e) {
 		let content = $(this).val();

@@ -38,7 +38,7 @@ public class ReviewChartService implements MickyServiceInter{
 		
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
 		ArrayList<ReviewDto> chartScore_top5=rdao.chartScore_top5();
-
+		
 		ArrayList<ProductDto> maleScore_top5=rdao.maleScore_top5();
 		ArrayList<ProductDto> femaleScore_top5=rdao.femaleScore_top5();
 		

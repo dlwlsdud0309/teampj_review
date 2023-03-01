@@ -8,19 +8,9 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta content="IE=edge" http-equiv="X-UA-Compatible">
-  <meta content="width=device-width,initial-scale=1" name="viewport">
-  <meta content="Page description" name="description">
-  <meta name="google" content="notranslate" />
-  <meta content="Mashup templates have been developped by Orson.io team" name="author">
 
-  <!-- Disable tap highlight on IE -->
-  <meta name="msapplication-tap-highlight" content="no">
-  
   <link href="../resources/img/myPage/myP-icon.png" rel="myP-icon">
   <link href="../resources/img/myPage/favicon.ico" rel="icon">
-
-
 
   <title>Title page</title>  
 
@@ -28,18 +18,15 @@
 </head>
 
 <body>
-
-
-<div>
+<!-- 사이드@@@@@@@ -->
 <!-- Add your content of header -->
-<header class="">
   <div class="navbar navbar-default visible-xs">
     <button type="button" class="navbar-toggle collapsed">
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a href="../member/mypageform" class="navbar-brand">MICKY</a>
+    <a href="../myPage/myPageIntro" class="navbar-brand">MICKY</a>
   </div>
 
   <nav class="sidebar">
@@ -49,7 +36,7 @@
             <img class="img-responsive site-logo" alt="" src="../resources/img/myPage/mashup-logo.svg">
             MICKY SHOP
           </a>
-          <a href="../member/mypageform" title="">
+          <a href="../myPage/myPageIntro" title="">
          	마이페이지
           </a>
         
@@ -76,29 +63,14 @@
       <ul class="nav">
         <li><a href="../order/myOrderList" title="">나의주문내역</a></li>
         <li><a href="../review/reviewMylistview" title="">나의리뷰보기</a></li>
-        <li><input type="button" value="내정보수정" onclick="window.open('../member/membercheckform','','width=500,height=500')" style="padding:0;border:0;outline:0;background: transparent;"/></li>
+        <li><input type="button" value="내정보수정" onclick="window.open('../member/membercheckform','','width=500,height=500')"/></li>
         <li><a href="../qnamember/qnalist" title="">나의문의내역</a></li>
-
+        <li><input type="button" value="회원탈퇴" onclick="window.open('../member/memberdropcheckform','','width=500,height=500')"/></li>
       </ul>
 
-      	<nav class="nav-footer">
-
-		</nav>  
     </div> 
   </nav>
-</header>
 
-<!-- <main class="" id="main-collapse">
-
-Add your site or app content here
- 
-<script>
-  document.addEventListener("DOMContentLoaded", function (event) {
-     masonryBuild();
-  });
-</script>
-
-</main> -->
 
 <script>
 document.addEventListener("DOMContentLoaded", function (event) {
@@ -108,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 
 <script type="text/javascript" src="../resources/js/checkIndex.js"></script>
-</div>
+
 </body>
 
 

@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import micky.sports.shop.service.MickyServiceInter;
+import micky.sports.shop.service.myPage.MyPageService;
 
 @Controller
 @RequestMapping("/myPage")
@@ -28,6 +29,15 @@ public class MyPageController {
 		model.addAttribute("request",request);
 		
 		return "myPage/checkIndex";
+	}
+	//마이페이지
+	@RequestMapping("/myPageIntro")
+	public String myPage(HttpServletRequest request, Model model) {
+
+		mickyServiceInter = new MyPageService(sqlSession,httpsession);
+		mickyServiceInter.execute(model);
+		
+		return "myPage/myPageIntro";
 	}
 	
 

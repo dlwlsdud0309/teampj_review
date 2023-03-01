@@ -43,4 +43,6 @@ public interface OrderDao {
 	//반품요청
 	public void myDelivCancelOffer(String omnum);
 	
+	//마이페이지 인트로
+	public ArrayList<OrderMemberDto> myPage(String mId);
 }

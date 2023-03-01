@@ -10,24 +10,23 @@
 <script src="../resources/js/jquery-3.6.1.min.js"></script>
 <script src="../resources/js/jquery.bpopup.min.js"></script>
 </head>
-<body>
-
-<c:if test="${empty sessionScope.loginid }">
-   <a href="../loginform">login</a> 
-   |  <a href="">join</a>
-</c:if>
-<c:if test="${not empty sessionScope.loginid }">
-    <a href="../logout">logout</a> 
-<br />
-${sessionScope.loginid } 님, 로그인상태입니다.
-</c:if>
- 
+<body style="text-align: center;margin: 100px;">
 
  <div>
 	<h3>취소신청완료</h3> 	
  </div>
  
-
+<style>
+a{color: black;	text-decoration: none;}
+	a:hover{
+		color: black;
+		text-decoration: none;
+	}
+	a:active{
+		color: black;
+		text-decoration: none;
+	}
+</style>
 <div>
 	<p class="go-myOrderList">
 		<a href="../order/myOrderList">나의주문내역보기</a>
@@ -35,6 +34,9 @@ ${sessionScope.loginid } 님, 로그인상태입니다.
 	<p class="go-productList">
 		<a href="../product/productList">상품둘러보기</a>
 	</p>
+</div>
+<div>
+	<img src="../resources/img/THEMICKYFACE2.png" alt="미키로고" />
 </div>
 
 </body>

@@ -87,7 +87,7 @@
 </head>
 
 <body>
-<a href="../member/main">메인</a> <br />
+<%-- <a href="../member/main">메인</a> <br />
 <!-- 로그아웃 상태 -->
 <c:if test="${empty sessionScope.loginid }">
    <a href="../member/loginform">login</a> 
@@ -106,13 +106,13 @@
       </c:otherwise>
    </c:choose>
 <br />
-</c:if>
+</c:if> --%>
 
 
-<a href="../review/reviewChart">별점순 top5</a>
+<!-- <a href="../review/reviewChart">별점순 top5</a> -->
 
 <br />
-<br />
+<br /> 
 <br />
 
 

@@ -232,10 +232,10 @@
 </div>
 
 <div class="clear"></div>
+</main>
 <jsp:include page="/WEB-INF/views/footer.jsp" />
 
 
-</main>
 
 </body>
 </html>

@@ -10,7 +10,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Nanum+Gothic&family=Noto+Sans+KR:wght@900&family=UnifrakturCook&display=swap" rel="stylesheet">
 
 <script src="../resources/js/jquery-3.6.1.min.js"></script>
-<link rel="stylesheet" href="../resources/css/footer.css" />
+
+<link rel="stylesheet" href="../resources/css/footer.css?after" />
+<link rel="stylesheet" href="./resources/css/footer.css?after" />
+
 </head>
 <body>
 <footer class="footer">

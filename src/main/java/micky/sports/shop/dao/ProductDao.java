@@ -1,6 +1,7 @@
 package micky.sports.shop.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import micky.sports.shop.dto.ProductDto;
 
@@ -24,10 +25,13 @@ public interface ProductDao {
 	
 
 	//메인 검색기능
-	public int mainsearch(String search);
+	public List<ProductDto> mainsearch(String search);
 
 	//상품목록 차트
 	public ArrayList<ProductDto> pdtTimeChart(String simpleTime);
+	
+	//상품 카테고리 선택 리스트
+	public List<ProductDto> categorylist(String category);
 
 
 }

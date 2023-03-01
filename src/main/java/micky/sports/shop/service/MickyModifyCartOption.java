@@ -48,14 +48,23 @@ public class MickyModifyCartOption implements MickyServiceInter{
 		System.out.println("변경후 : "+p_size);
 //		동일한 상품이 있는지 중복체크 있으면 count=1 없으면 count=0
 		int count=dao.checkCartlist2(m_id,p_size,p_color,p_category,c_no,p_name);		
-			
+		int resultcnt=dao.cntcheck(p_name,p_color,p_size);
+		System.out.println("내가새로고든 상품의 재고 : "+resultcnt);
+		int c_cnt2=Integer.parseInt(c_cnt);
+		System.out.println("내가고른 수량 : "+c_cnt2);
 //		중복이 아닐때		
-		if (count == 0) 
-			num=dao.CartOptionModify(p_color,p_size,c_cnt,c_no,p_name);
+		if (count == 0) {
+//			변경된 상품의 재고가 내가 선택한 수량보다 적으면 옵션변경불가
+			if (resultcnt>=c_cnt2) {
+				num=dao.CartOptionModify(p_color,p_size,c_cnt,c_no,p_name);				
+			}else {
+				count=3;				
+			}
+		}
 //		중복일때
 		else {
-//			0 이면 중복x,1 이면 중복o
 		}
+		
 		model.addAttribute("count",count);
 //		model.addAttribute("num",num);
 //		System.out.println("1.색  : "+p_color);

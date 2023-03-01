@@ -54,9 +54,9 @@
 				options:{
 					responsive: false,
 					scales:{
-						y:{
+						/* y:{
 							beginAtZero:true
-						}
+						} */
 					}
 				}
 			}
@@ -94,9 +94,9 @@
 				options:{
 					responsive: false,
 					scales:{
-						y:{
-							beginAtZero:true
-						}
+						/* y:{
+							beginAtZero:false
+						} */
 					}
 				}
 			}

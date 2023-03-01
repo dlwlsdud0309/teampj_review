@@ -6,7 +6,7 @@
     "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="micky.sports.shop.dao.ReviewDao">
-
+	
 	<!-- 1.join위해 사용한 ReviewDto -->
 	<resultMap type="micky.sports.shop.dto.ReviewDto" id="ReviewDto">
 		<result column="m_id" property="m_id" />

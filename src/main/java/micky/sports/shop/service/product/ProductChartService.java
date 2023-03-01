@@ -35,10 +35,6 @@ public class ProductChartService implements MickyServiceInter{
 		HttpServletRequest request=
 				(HttpServletRequest)map.get("request");	
 
-		//로그인 세션
-		httpsession = request.getSession();
-		String loginId = (String)httpsession.getAttribute("loginid");
-	
 		
 		ProductDao Pdao=sqlSession.getMapper(ProductDao.class);
 		model.addAttribute("productChart",Pdao.productChart());

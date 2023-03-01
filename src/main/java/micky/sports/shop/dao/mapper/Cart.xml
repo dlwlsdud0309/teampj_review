@@ -31,7 +31,7 @@
 	</select>
 	<!-- 장바구니 추가 -->
 	<insert id="insertCart" >
-		INSERT INTO CART VALUES((SELECT MAX(C_NO) FROM CART)+1,#{param1},#{param2},#{param3})		
+		INSERT INTO CART VALUES(CART_SEQ.NEXTVAL,#{param1},#{param2},#{param3})		
 	</insert>
 	
 	<resultMap type="micky.sports.shop.dto.ProductDto" id="ProductDto" >	
@@ -131,6 +131,18 @@
 			P.P_NAME
 	</select>
 	<select id="ProductSizeoption" resultType="micky.sports.shop.dto.ProductDto" >
-		SELECT * FROM PRODUCT WHERE P_NAME=(SELECT P_NAME FROM PRODUCT WHERE P_NO=#{param1})
+		SELECT * FROM PRODUCT WHERE P_NAME=(SELECT P_NAME FROM PRODUCT WHERE P_NO=#{param1}) 
+			AND P_COLOR=(SELECT P_COLOR FROM PRODUCT WHERE P_NO=#{param1})
 	</select>
+	<select id="cntcheck" resultType="Integer" >
+		SELECT 
+			P_CNT 
+		FROM 
+			PRODUCT 
+		WHERE 
+			P_NAME=#{param1} AND P_COLOR=#{param2} AND P_SIZE=#{param3}
+	</select>
+	<delete id="PaymentDeleteCart">
+		DELETE CART WHERE P_NO=#{param1} AND M_ID=#{param2}
+	</delete>
 </mapper>

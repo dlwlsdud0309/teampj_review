@@ -19,16 +19,7 @@
 <body>
 <!--@@@ header @@@-->
 <jsp:include page="/WEB-INF/views/header.jsp" />
-<c:if test="${empty sessionScope.loginid }">
-   <a href="../member/loginform">login</a> 
-   |  <a href="../member/joinform">join</a>
 
-</c:if>
- <c:if test="${not empty sessionScope.loginid }">
-    <a href="../member/logout">logout</a> 
- <br />
- ${sessionScope.loginid } 님, 로그인상태입니다.
- </c:if>
 
 <h3>상품</h3>
 

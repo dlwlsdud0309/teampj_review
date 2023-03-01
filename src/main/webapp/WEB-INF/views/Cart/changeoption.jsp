@@ -40,6 +40,8 @@ function dbupdate() {
 // 				중복일떄
 				if (result == 1 ) {
 					alert("중복된 상품이 있습니다.")
+				}else if(result == 3){
+					alert("재고 부족")
 				}
 	        	opener.document.location.reload();
 	        	window.close();
