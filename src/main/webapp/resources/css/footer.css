@@ -10,6 +10,9 @@ a:active{
 ul{
 	list-style: none;
 }
+.footer-total{
+	margin-top: 150px;
+}
 .inner{
 	width: 1100px;
 	margin: 0 auto;
