@@ -14,6 +14,7 @@ a {
 .productChart {
 	margin: 5px 2px;
 	padding: 1px;
+	text-align: center;
 }
 .productChart>li {
 	width: 290px;

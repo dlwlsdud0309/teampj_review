@@ -90,7 +90,7 @@
         	position: absolute;
         	width: 50%;
         	height: 50%;
-        	left: -3%;
+        	left: -2%;
         	bottom: 23%;
         }
         .swiper-text-htag>h1{
