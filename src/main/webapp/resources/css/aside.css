@@ -77,11 +77,11 @@ nav>ul>li>ul{
 nav>ul>li{
 	list-style: none;
 	padding: 10px;
-	margin: 15px -20px;
+	margin: 15px -30px;
 }
 nav>ul>li>ul>li{
 	list-style: none;
-	margin-left: -25px;
+	margin-left: -28px;
 	line-height: 25px;
 }
 .aside_span{
