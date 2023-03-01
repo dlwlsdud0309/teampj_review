@@ -92,7 +92,7 @@
         	width: 50%;
         	height: 50%;
         	left: -2%;
-        	bottom: 23%;
+        	bottom: 25%;
         }
         .swiper-text-htag>h1{
         	font-weight: bolder;
@@ -168,7 +168,7 @@
 	}
 	.productChartPackage>h4{
 		margin-top: 70px;
-		margin-bottom: 30px;
+		margin-bottom: 40px;
 		text-align: center;
 		font-weight: bold;
 		font-size: 25px;
@@ -185,16 +185,22 @@
 	.main_imgbox2>img{
 		margin: 5px;
 		width: 310px;
-		height: 410px;
+		height: 450px;
 	}
 	.main_text_gucci{
-		margin-top: 70px;
-		margin-bottom: 30px;
+		margin-top: 200px;
+		margin-bottom: 60px;
 		color: black;
 	}
 	.main_text_gucci>h2{
 		text-align: center;
 		font-weight: bolder;
+	}
+	.main_text_gucci>h4{
+		text-align: center;
+		color: #757575;
+		font-size: 16px;
+		font-weight: bold;
 	}
 	.main_imgbox_andGucci{
 		text-align: center;
@@ -212,8 +218,15 @@
 	<img src="../resources/img/mainimg/the-north-face-urban-exploration-flexi-gear-lookbook-12-2be83b76-b8f1-4ba2-8eb4-d4cab2b8df2e.jpg"/>
 	<img src="../resources/img/mainimg/the-north-face-urban-exploration-flexi-gear-lookbook-04-c3ba5b77-44a2-4bfa-a1a1-923b65c94cca.jpg"/>
 </div>
+<div class="main_imgbox2">
+	<img src="../resources/img/mainimg/the-north-face-urban-exploration-new-20-ss-capsule-collection-01-32dc87ac-9247-46a5-8ee5-82bba89de2a8.jpg"/>
+	<img src="../resources/img/mainimg/the-north-face-urban-exploration-new-20-ss-capsule-collection-04-e3581233-2761-407b-993b-76f374db7ad1.jpg"/>
+	<img src="../resources/img/mainimg/low10.jpg"/>
+	<img src="../resources/img/mainimg/low7-1.jpg"/>
+</div>
 <div class="main_text_gucci">
 	<h2>THE NORTH FACE X GUCCI</h2>
+	<h4>명품성과 실용성의 조화</h4>
 </div>
 <div class="main_imgbox_andGucci">
 	<img src="../resources/img/mainimg/gucci-north-face-collaborative-collection-teasure-release-01.jpg"/>
