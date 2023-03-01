@@ -12,7 +12,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="../resources/css/pchartstyle.css" />
 </head>
-<body>
+<body style="margin-left: 13px; margin-right: -13px">
 <!--@@@ header @@@-->
 <jsp:include page="/WEB-INF/views/header.jsp" />
 
@@ -77,6 +77,7 @@
         .swiper-button-prev:after{
         	position: relative;
         	bottom: 120px;
+        	left: 5px;
         }
         div.swiper-button-next::after{
       		position: relative;
