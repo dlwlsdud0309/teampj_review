@@ -31,7 +31,7 @@
 <h1>리뷰 수정하기</h1>
 	<div id="title_content">
 		<form action="reviewModify" method="post" enctype="multipart/form-data">
-			<input type="hidden" name="r_no" value="${popupview.r_no }" />
+			<input type="hidden" name="r_no" value="${modifyview.r_no }" />
 			<h3 class="popup_review_title">상품리뷰쓰기</h3>
 			<div>
 				<strong>리뷰 리워드 혜택 제공</strong> <br />
@@ -41,7 +41,7 @@
 					<tr id="data">
 						<td class="star">
 							★★★★★
-							<span class="star2" style="width:${popupview.r_score*20}%">★★★★★</span>
+							<span class="star2" style="width:${modifyview.r_score*20}%">★★★★★</span>
 							<input type="range" onclick="redeptlist(this);" oninput="drawStar(this)" value="1" step="1" min="0" max="5"/>
 						</td>
 					</tr>
@@ -49,26 +49,26 @@
 						<td colspan="3" class="left">제목</td>
 					</tr>
 					<tr>
-						<td colspan="3"><input type="text" name="r_title" size="45" value="${popupview.r_title }"/></td>
+						<td colspan="3"><input type="text" name="r_title" size="45" value="${modifyview.r_title }"/></td>
 					</tr>
 					<tr>
 						<td colspan="3" class="left">내용</td>
 					</tr>
 					<tr>
 						<td colspan="3">
-							<textarea name="r_content" rows="10" cols="47">${popupview.r_content }</textarea>
+							<textarea name="r_content" rows="10" cols="47">${modifyview.r_content }</textarea>
 						</td>
 					</tr>
 					<tr>
 						<td class="left">파일첨부</td>
 						<td colspan="2" class="image-container">
-							<img style="width: 200px;" id="preview-image" src="../resources/reviewupload/${popupview.r_filesrc }" alt="이미지를 넣어주세요">
+							<img style="width: 200px;" id="preview-image" src="../resources/reviewupload/${modifyview.r_filesrc }" alt="이미지를 넣어주세요">
 			   				<input style="display: block;" type="file" name="r_filesrc" id="input-image">
 						</td>
 					</tr>
 					<tr>
 						<td colspan="3">
-							<input id="starInput" type="hidden" name="r_score" value="${popupview.r_score }" size="10" />
+							<input id="starInput" type="hidden" name="r_score" value="${modifyview.r_score }" size="10" />
 							<input id="modifyBtn" type="submit" value="수정하기" onclick="modifyviewClose();"/>
 						</td>
 					</tr>

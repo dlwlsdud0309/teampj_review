@@ -13,7 +13,7 @@ public interface ReviewDao {
 	public ArrayList<OrderMemberDto> reviewOrderlist(String loginid);
 	public OrderMemberDto reviewWrite_orderlist(String loginid,String om_cntnum);
 	public ArrayList<ReviewDto> mylistview(String loginid);
-	public ReviewDto popupview(String r_no);
+	public ReviewDto modifyview(String r_no);
 	public void modify(String r_no, String r_title, String r_content, String r_score, String r_filesrc);
 	public void modify2(String r_no, String r_title, String r_content, String r_score);
 	public ReviewDto replyview(String r_no);

@@ -19,8 +19,6 @@
 		<result column="r_ynn" property="r_ynn" />
 		<result column="r_date" property="r_date" />
 		<result column="r_group" property="r_group" />
-		<result column="r_step" property="r_step" />
-		<result column="r_indent" property="r_indent" />
 		<result column="r_filesrc" property="r_filesrc" />
 		<result column="r_score" property="r_score"/>
 		<collection property="memberDto" resultMap="MemberDto" />
@@ -84,7 +82,7 @@
 		R.R_NO,
 		O.OM_CNTNUM,O.P_NO,O.OM_STATE,O.OM_CANCLE,
 		M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
-		R.R_RECONTENT,R.R_YNN,R.R_DATE,R.R_GROUP,R.R_STEP,R.R_INDENT,R.R_FILESRC,R.R_SCORE,
+		R.R_RECONTENT,R.R_YNN,R.R_DATE,R.R_GROUP,R.R_FILESRC,R.R_SCORE,
 		P.P_NAME,P.P_COLOR,P.P_SIZE
 		FROM MEMBER M, REVIEW R, PRODUCT P, ORDER_MEMBER O
 		WHERE R.M_ID=M.M_ID
@@ -106,7 +104,7 @@
 	<insert id="write">
 		INSERT INTO REVIEW VALUES(REVIEW_SEQ.NEXTVAL,#{param1},
 		#{param2},#{param3},'','','','n',SYSDATE,
-		REVIEW_SEQ.CURRVAL,0,0,#{param4},#{param5},#{param6},#{param7})
+		REVIEW_SEQ.CURRVAL,#{param4},#{param5},#{param6},#{param7})
 	</insert>
 	
 	<!-- 글삭제 -->
@@ -141,7 +139,7 @@
 		SELECT R.R_NO,
 		R.OM_CNTNUM,O.P_NO,O.OM_STATE,O.OM_CANCLE,
 		M.M_ID,R.R_TITLE,R.R_CONTENT,R.R_ID,R.R_RETITLE,
-		R.R_RECONTENT,R.R_YNN,R.R_DATE,R.R_GROUP,R.R_STEP,R.R_INDENT,R.R_FILESRC,R.R_SCORE,
+		R.R_RECONTENT,R.R_YNN,R.R_DATE,R.R_GROUP,R.R_FILESRC,R.R_SCORE,
 		P.P_NAME,P.P_COLOR,P.P_SIZE,P.P_FILESRC
 		FROM MEMBER M, REVIEW R, PRODUCT P, ORDER_MEMBER O
 		WHERE M.M_ID=R.M_ID
@@ -172,11 +170,11 @@
 		ORDER BY O.OM_CNTNUM DESC
 	</select>
 	
-	<select id="popupview" resultType="micky.sports.shop.dto.ReviewDto">
+	<select id="modifyview" resultType="micky.sports.shop.dto.ReviewDto">
 		SELECT R_NO,M_ID,R_TITLE,R_CONTENT,R_ID,R_RETITLE,
-		R_RECONTENT,R_YNN,R_DATE,R_GROUP,R_STEP,R_INDENT,R_FILESRC,R_SCORE,P_NO FROM REVIEW
+		R_RECONTENT,R_YNN,R_DATE,R_GROUP,R_FILESRC,R_SCORE,P_NO FROM REVIEW
 		WHERE R_NO=#{param1}
-		ORDER BY R_GROUP DESC, R_STEP ASC
+		ORDER BY R_GROUP DESC
 	</select>
 	
 	<update id="modify">
@@ -193,7 +191,7 @@
 	
 	<select id="replyview" resultType="micky.sports.shop.dto.ReviewDto">
 		SELECT R_NO,M_ID,R_TITLE,R_CONTENT,R_ID,R_RETITLE,
-		R_RECONTENT,R_YNN,R_DATE,R_GROUP,R_STEP,R_INDENT,R_FILESRC,R_SCORE,P_NO FROM REVIEW
+		R_RECONTENT,R_YNN,R_DATE,R_GROUP,R_FILESRC,R_SCORE,P_NO FROM REVIEW
 		WHERE R_NO=#{param1}
 		ORDER BY R_GROUP DESC, R_STEP ASC
 	</select>
@@ -225,10 +223,6 @@
 		AND R.P_NO=P.P_NO
 		AND P.P_NAME=#{param1}
 	</select>
-
-	<!-- <select id="review_mylist_cash" resultType="micky.sports.shop.dto.MemberDto">
-		SELECT M_CASH FROM MEMBER WHERE M_ID=#{param1}
-	</select> -->
 
 	<select id="checkMileage" resultType="Integer">
 		SELECT COUNT(*) FROM (SELECT O.OM_CNTNUM,O.OM_NUM,P.P_NO,O.U_CNT,O.M_ID,

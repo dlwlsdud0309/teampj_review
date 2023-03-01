@@ -18,8 +18,6 @@ public class ReviewDto {
 	private String r_ynn; //답변유무, 타입 char(1)
 	private Date r_date; //작성날짜
 	private int r_group; //그룹
-	private int r_step; //스텝
-	private int r_indent; //인덴트
 	private String r_filesrc; //첨부파일
 	
 	private int r_score; //별점

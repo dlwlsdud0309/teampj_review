@@ -38,10 +38,10 @@ public class ReviewModifyviewService implements MickyServiceInter{
 		
 		ReviewDao rdao=sqlSession.getMapper(ReviewDao.class);
 //		ArrayList<ReviewDto> popup_list=rdao.popupview(r_no);
-		ReviewDto popupview=rdao.popupview(r_no);
+		ReviewDto modifyview=rdao.modifyview(r_no);
 		
 		
-		model.addAttribute("popupview", popupview);
+		model.addAttribute("modifyview", modifyview);
 	}
 
 }
