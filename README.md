@@ -14,3 +14,6 @@ Java, Apache Tomcat 9.0, HTML5, CSS, JS, JSP, jQuery, ORACLE
 - 리뷰 내에 검색, 정렬 기능
 - 메인 CSS 총괄
 - 상품 남성, 여성, 리뷰 많이 작성된 상품순, 별점 순 정렬 기능 구현
+
+영상 확인
+https://youtu.be/2AN86scH5T8
